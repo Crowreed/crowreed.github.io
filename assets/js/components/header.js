@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 fetch("/includes/main-header.html")
   .then(response => response.text())
   .then(data => {
@@ -7,3 +9,5 @@ fetch("/includes/main-header.html")
   .catch(error => {
     console.error("Erreur lors du chargement de l'en-tête :", error);
   });
+
+});
