@@ -1,3 +1,10 @@
+:root { 
+    font-family: "Inter", sans-serif;
+    --primary-text-color: #271a38;
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: "InterVariable", sans-serif; font-optical-sizing: auto; }
+}
 /* Variable fonts usage:
 :root { font-family: "Inter", sans-serif; }
 @supports (font-variation-settings: normal) {

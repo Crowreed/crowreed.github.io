@@ -1,0 +1,17 @@
+html {
+  /*The font appear smoother*/
+  -webkit-font-smoothing: antialiased; /* only works on macOS */
+  -moz-osx-font-smoothing: grayscale; /* only works on macOS */
+  
+  font-family: InterVariable, sans-serif;
+  font-size: 1.2rem;
+
+  background:#fff;
+}
+
+
+
+body{
+    flex-direction: column;
+}
+
