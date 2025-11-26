@@ -1,0 +1,54 @@
+
+.homepage{
+    width: 1200px;
+
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.hero > p:first-child{
+  font-size: 1.5rem;
+}
+
+.hero > p{
+  text-align: justify;
+}
+
+.hero img{
+  margin: 25px;
+  padding: 0;
+  
+  width: 296px;
+  aspect-ratio: 296 / 296;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #1f232826;
+}
+
+.hero h1{
+  font-size: 6rem;
+  
+  margin: 0;
+}
+
+.hero h2{
+  margin: 15px 0;
+  font-size: 1.875rem;
+}
+
+.hero div{
+  display: flex;
+flex-direction: column;
+align-items: center;
+}

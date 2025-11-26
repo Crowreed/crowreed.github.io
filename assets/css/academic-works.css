@@ -1,0 +1,19 @@
+#lattice_reduction_project{
+background: url('/assets/img/academic-projects/lattice-reduction/lattice-reduction-card.png') center/cover no-repeat;
+border-radius: 15px;
+}
+
+#beckett_project{
+  background: url('/assets/img/academic-projects/beckett-gray-codes/beckett-gray-codes-card-new.png') center/cover no-repeat;
+  border-radius: 15px;
+}
+
+#weyl_transform_project{
+  background: url('/assets/img/academic-projects/weyl-transform/weyl-transform-card.png') center/cover no-repeat;
+  border-radius: 15px;
+}
+
+#dense_packing_project{
+  background: url('/assets/img/academic-projects/dense-packing/dense-packing-card-new.png') center/cover no-repeat;
+  border-radius: 15px;
+}
