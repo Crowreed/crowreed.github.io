@@ -30,7 +30,10 @@
 
 .cite{
 
-  /* typography */
+  /* 
+  les font size en px a changer en rem ?
+  16px = 1rem
+  typography */
   font-size: 16px;
   font-weight: 300;
   
@@ -92,8 +95,8 @@
 .references li a{
 
   /* typography */
+  color: var(--secondary-text-color);
   font-weight: 700;
-  color: #7451eb;
   text-decoration: underline;
   white-space: nowrap;
 

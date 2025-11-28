@@ -11,7 +11,8 @@
 	overflow-x:hidden;
 	overflow: scroll;
 
-  border-right: 1px solid rgb(218, 217, 220);
+  border-right: 1px solid var(--primary-border-color);
+  /* faire une var border color */
 }
 
 .huhu{
@@ -25,7 +26,7 @@
   top:0px;
 
 
-  border-right: 1px solid rgb(218, 217, 220);
+  border-right: 1px solid var(--primary-border-color);
   
 }
 
@@ -106,7 +107,7 @@
   
   top: -16px;
   left: 21px;
-  border-left: 1px solid #dad9dc;
+  border-left: 1px solid var(--primary-border-color);
 
   /* generated content */
   content: " ";
@@ -127,7 +128,6 @@
   font-size: 16px;
 	font-weight: 500;
 	line-height: 26px;
-  color: rgb(39, 26, 56);
 
   /* box model */
   width: 100%;
@@ -179,7 +179,7 @@ background-color: #fff;
   padding: 1rem;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid rgb(218, 217, 220);
+  border-bottom: 1px solid var(--primary-border-color);
 
   align-items:center;
   justify-content: space-between;
@@ -188,7 +188,6 @@ background-color: #fff;
 .chapter-content ul li h4 a{
   font-weight: 500;
   text-decoration: none;
-  color: #271a38;
 }
 .chapter-content ul li h4 a:hover{
   color: #7451eb;

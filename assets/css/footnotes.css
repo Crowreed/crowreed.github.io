@@ -1,5 +1,4 @@
 details{
-  color: #271a38;
   font-weight: 200;
   font-style: normal;
   line-height: 26px;
@@ -28,6 +27,6 @@ details[open] > p, details[open] > .paragraph{
     margin-left: 4px;
     padding-left: 15px;
     padding-bottom: 15px;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid var(--primary-border-color);
+    border-bottom: 1px solid var(--primary-border-color);
 }
