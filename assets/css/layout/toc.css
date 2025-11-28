@@ -1,4 +1,4 @@
-.toc{
+.toc, #toc{
 
   /* box model */
   width:400px;
@@ -29,7 +29,7 @@
   
 }
 
-.toc ul{
+.toc ul, #toc ul{
   list-style: none;
 }
 
@@ -43,7 +43,7 @@
   border-radius: 8px;
 }
 
-.toc{
+.toc, #toc{
   counter-reset: chapter subchapter;
 }
 
@@ -112,7 +112,8 @@
   content: " ";
 }
 
-.toc > ul > li:last-child .chapter-content ul li:last-child::after {
+.toc > ul > li:last-child .chapter-content ul li:last-child::after,
+#toc > ul > li:last-child .chapter-content ul li:last-child::after {
   border-left: 0;
 
   /* generated content */
