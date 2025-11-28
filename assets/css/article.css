@@ -102,7 +102,8 @@
 .theorem, 
 .proposition, 
 .problem, 
-.lemma{
+.lemma,
+.paragraph{
   color: #271a38;
   font-weight: 200;
   font-style: normal;
@@ -133,4 +134,98 @@
     width: 900px;
     margin-left: auto;
     margin-right: auto;
+}
+
+
+
+
+.paragraph, p, li, figcaption{
+  color: #271a38;
+  font-weight: 200;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0px;
+}
+
+
+
+
+strong{
+  color: #271a38;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+
+table{
+  border-collapse: collapse;
+}
+
+
+td, th{
+  border: 1px solid black;
+  width: 50px;
+  height:50px;
+}
+
+
+h1{
+  color: #271a38;
+  font-weight: 700;
+  font-size: 2rem;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+h2{
+  color: #271a38;
+  font-weight: 700;
+  font-size: 1.7rem;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+h3{
+  color: #271a38;
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+h4{
+  color: #271a38;
+  font-weight: 550;
+  font-size: 1.1rem;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+
+
+
+
+/* Je suis un commentaire */
+
+hr{
+  margin: 2rem 0rem;
+}
+
+
+li ul li{
+  list-style-type: square;
+}
+
+a{
+  color: rgb(39, 26, 56);
+  font-weight: 600;
+}
+
+a:hover{
+  text-decoration: none;
 }
