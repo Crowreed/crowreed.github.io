@@ -1,4 +1,7 @@
-.toc, #toc{
+/*.article > #toc{
+}*/
+
+main > #toc{
 
   /* box model */
   width:400px;
@@ -30,8 +33,8 @@
   
 }
 
-.toc ul, #toc ul{
-  list-style: none;
+#toc{
+  list-style-type: none;
 }
 
 .chapter{
@@ -65,7 +68,7 @@
   /* typography */
   font-weight: 500;
 	line-height: 1;
-  font-size: 12px;
+  font-size: 0.7rem;
 	text-transform: uppercase;
   color: rgb(166, 66, 182);
 }

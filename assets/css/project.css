@@ -1,7 +1,7 @@
 .project-page{
   width: 1600px;
-  height: 100%;
-  margin: 0 auto;
+  height: 100% !important;
+  margin: auto auto;
 }
 
 .projects{
@@ -60,7 +60,7 @@
   text-align: center;
   text-transform: none;
   
-  color:#7451eb;
+  color:var(--secondary-text-color);
   margin: 0;
   padding: 5px;
 
@@ -131,9 +131,8 @@ svg{
 
 
 .links{
-  font-size:16px;
+  font-size:0.8rem;
   line-height: 0;
-  width: 100%;
 
   display: flex;
   flex-direction: row;
@@ -148,10 +147,11 @@ svg{
 }
 
 .links a{
+  color: var(--primary-text-color);
   text-decoration: underline;
 }
 
 .links a:hover{
-  color:#7451eb;
+  color:var(--secondary-text-color);
   text-decoration: none;
 }

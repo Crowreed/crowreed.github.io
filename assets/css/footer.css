@@ -19,6 +19,10 @@ footer nav{
 
 
 .previous a, .next a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
   background-color: rgb(171, 71, 188);
   color: rgb(255, 250, 238);
   font-weight: 700;
@@ -45,6 +49,7 @@ footer nav{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 400px;
 }
 
 

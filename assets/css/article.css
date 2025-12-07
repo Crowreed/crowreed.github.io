@@ -217,9 +217,14 @@ hr{
 }
 
 
-li ul li{
+.article li ul li{
   list-style-type: square;
 }
+
+.article li{
+  list-style-type:disc;
+}
+
 
 a:hover{
   text-decoration: none;

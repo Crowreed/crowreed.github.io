@@ -79,9 +79,12 @@ async function loadTableOfContents() {
         console.error("Erreur lors de la génération de la TOC :", error);
     }
 
-     const huhu = document.querySelector(".huhu");
+    const huhu = document.querySelector(".huhu");
 
-  const toggle = () => {
+    toc.classList.toggle("hidden");
+    huhu.classList.toggle("hidden");
+    
+    const toggle = () => {
     toc.classList.toggle("hidden");
     huhu.classList.toggle("hidden");
   };
@@ -89,6 +92,18 @@ async function loadTableOfContents() {
   document.getElementById("toto").addEventListener("click", toggle);
   document.getElementById("eee").addEventListener("click", toggle);
 
+
+
+    const pageTitle = document.title;
+
+    console.log(pageTitle);
+
+}
+
+async function loadFooter() {
+    const pageTitle = document.title;
+
+    console.log(pageTitle);
 }
 
 document.addEventListener("DOMContentLoaded", loadTableOfContents);
