@@ -64,6 +64,16 @@ main > #toc{
 	font-size: 16px;
 }
 
+article > #toc h3{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+article > #toc h4{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+
 .chapter > .num{
   /* typography */
   font-weight: 500;

@@ -27,7 +27,7 @@ header nav ul{
   justify-content: space-between;
 }
 
-header nav ul li{
+#main-header nav ul li{
   
   transition: transform 0.3s ease;
 }
@@ -40,6 +40,6 @@ header nav ul li a{
   letter-spacing: 0px;
 }
 
-header nav ul li:hover{
+#main-header nav ul li:hover{
   transform: scale(1.1);
 }

@@ -8,23 +8,93 @@
         <meta charset="UTF-8">
         <meta name="author" content="Lucas Petit">
         
-        <link rel="stylesheet" href="/assets/css/base/root.css">
+  <link rel="stylesheet" href="/assets/css/base/root.css">
+            <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
         <link rel="stylesheet" href="/assets/css/base/reset.css">
-        <link rel="stylesheet" href="/assets/css/base/base.css">
+        <link rel="stylesheet" href="/assets/css/base/utils.css">
+
         <link rel="stylesheet" href="/assets/css/layout/header.css">
-        <link rel="stylesheet" href="/assets/css/article.css">
         <link rel="stylesheet" href="/assets/css/layout/toc.css">
 
+        <link rel="stylesheet" href="/assets/css/academic-works.css">
+        <link rel="stylesheet" href="/assets/css/article.css">
+        <link rel="stylesheet" href="/assets/css/homepage.css">
+        <link rel="stylesheet" href="/assets/css/project.css">
+        
+        <link rel="stylesheet" href="/assets/css/figure.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/assets/css/icon.css">
+        <link rel="stylesheet" href="/assets/css/references.css">
+        <link rel="stylesheet" href="/assets/css/footnotes.css">
+
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display:true},
+                {left: "\\(", right: "\\)", display:false}
+                ]
+            });
+            });
+        </script>
     </head>
 
     <body>
-        <header id="main-header"></header>
+        
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/academic-works/">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            Travaux académiques
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
         <article class="article">
             <h1>Réduction de réseaux</h1>
 
-            <div id="toc"></div>
+            <div class="paragraph">
+	            Un réseau euclidien peut être intuitivement vu comme un ensemble discret et régulier de points dans l'espace $\R^n$, formant un sous-groupe discret additif. À titre d'exemple, dans le plan $\R^2$, un réseau correspond aux intersections d'un quadrillage régulier. Malgré leur ressemblance avec les espaces vectoriels classiques, les réseaux euclidiens possèdent des propriétés spécifiques et complexes, rendant invalides de nombreux résultats habituellement vérifiés dans les $\K$-espaces vectoriels. Cette complexité fait des réseaux euclidiens un objet d'étude particulièrement riche à la frontière de plusieurs domaines de mathématiques et d'informatiques, en particulier le domaine de la cryptographie.
+            </div>
+            
+            <div class="paragraph">
+                Un des problèmes fondamentaux liés aux réseaux euclidiens est la réduction de réseaux, qui consiste à déterminer une bonne base de ce dernier, c'est-à-dire une base qui facilite la résolution efficace de divers problèmes algorithmiques liés aux réseaux euclidiens, comme celui de trouver le vecteur le plus court d'un réseau, ou trouver le vecteur le plus proche d'une cible donnée. Ces deux problèmes sont connus pour être NP-complets et constituent précisément la difficulté à la base des cryptosystèmes reposant sur les réseaux euclidiens. Tandis que ces questions apparaissent simples et intuitives en basse dimension, elles deviennent rapidement très complexes et coûteuses à résoudre en grande dimension. Un exemple emblématique de l'ambivalence algorithmique des réseaux euclidiens est l’algorithme LLL (Lenstra-Lenstra-Lovász), que nous étudierons, initialement célèbre pour avoir permis la cryptanalyse de systèmes basés sur le problème du sac à dos, mais qui joue aujourd’hui paradoxalement un rôle clé dans la conception de nouveaux schémas cryptographiques robustes.
+            </div>
+
+
+            <div class="paragraph">
+            	Pour mieux comprendre les difficultés intrinsèques de la réduction de réseaux euclidiens, il est pertinent d'étudier les réseaux polynomiaux, une classe analogue aux réseaux euclidiens. Alors que les réseaux euclidiens posent des problèmes NP-difficiles, les réseaux polynomiaux peuvent être réduits exactement et efficacement en temps polynomial. Cette différence fondamentale ouvre une piste prometteuse qui définit le thème de ce stage:             
+            </div>
+
+            <div class="problem">
+                <div class="title">Problématique du stage</div>
+                Serait-il possible d'adapter certaines méthodes exactes de réduction, initialement développées pour les réseaux polynomiaux, au cas des réseaux euclidiens ?
+            </div>
+
+            <div class="paragraph">
+                L'objectif de ce stage est d'explorer, d'analyser et de comparer les deux approches distinctes mais étroitement reliées  en s'appuyant notamment sur l'algorithme LLL dans le cas euclidien, tout en cherchant à le réinterpréter à travers des idées issues du contexte polynomial. Nous tenterons en particulier d'identifier clairement les similarités fondamentales ainsi que les différences essentielles qui se dégagent de cette comparaison. À partir de ces observations, une partie centrale du travail consistera à évaluer précisément l'efficacité potentielle de ces adaptations méthodologiques, à identifier les obstacles théoriques ou pratiques susceptibles de freiner leur transposition, et à proposer des pistes d'améliorations et d'explorations futures.
+            </div>
+
+
+            <div class="paragraph">
+                La pertinence de cette démarche s'inscrit dans un contexte où les systèmes de sécurité actuels, reposant sur la difficulté de la factorisation des grands nombres premiers et du calcul de logarithmes discrets, risquent d'être mis à mal par les progrès en informatique quantique. À l'opposé, les réseaux euclidiens apparaissent comme une alternative prometteuse en cryptographie post-quantique, plusieurs de leurs problèmes fondamentaux semblant résister efficacement aux attaques quantiques.  Ainsi, approfondir la compréhension et améliorer les techniques de réduction de réseaux euclidiens représente un enjeu crucial pour le développement futur de la cryptographie face aux défis quantiques.
+            </div>
+    
+            <div id="toc" class="hidden"></div>
         </article>
 
         <script src="/assets/js/components/article.js"></script>
