@@ -37,8 +37,12 @@ async function loadTableOfContents() {
             chapterDiv.appendChild(numDiv);
 
             const h3 = document.createElement('h3');
-            h3.textContent = chapter.title;
-
+            h3a = document.createElement('a');
+            h3a.href = chapter.filename;
+            h3a.textContent = chapter.title;
+            h3a.title = chapter.title;
+            h3.appendChild(h3a);
+            
             chapterDiv.appendChild(h3);
 
             li.appendChild(chapterDiv);
