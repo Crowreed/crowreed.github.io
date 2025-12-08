@@ -1,0 +1,252 @@
+<!-- En LaTeX, il y a \cite, je pourrais créer un div cite, ce serait intéréssant, on pourrait cliquer dessus?-->
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>
+            La base réduite
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="author" content="Lucas Petit">
+        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
+        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <link rel="stylesheet" href="/assets/css/base/root.css">
+        <link rel="stylesheet" href="/assets/css/base/base.css">
+        <link rel="stylesheet" href="/assets/css/base/inter.css">
+        <link rel="stylesheet" href="/assets/css/base/reset.css">
+        <link rel="stylesheet" href="/assets/css/base/utils.css">
+
+        <link rel="stylesheet" href="/assets/css/layout/header.css">
+        <link rel="stylesheet" href="/assets/css/layout/toc.css">
+
+        <link rel="stylesheet" href="/assets/css/academic-works.css">
+        <link rel="stylesheet" href="/assets/css/article.css">
+        <link rel="stylesheet" href="/assets/css/homepage.css">
+        <link rel="stylesheet" href="/assets/css/project.css">
+        
+        <link rel="stylesheet" href="/assets/css/figure.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/assets/css/icon.css">
+        <link rel="stylesheet" href="/assets/css/references.css">
+        <link rel="stylesheet" href="/assets/css/footnotes.css">
+
+        <link rel="stylesheet" href="/assets/css/algorithm.css">
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display:true},
+                {left: "\\(", right: "\\)", display:false}
+                ]
+            });
+            });
+        </script>
+    </head>
+    <body>
+
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/academic-works/lattice-reduction/">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            Réduction de réseaux
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="huhu hidden">
+            <div>
+                <button id="eee">
+                <svg class="" viewBox="0 0 24 24" fill="black">
+                    <path d="M19 5v14H5V5zm1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9M11 7h6v2h-6zm0 4h6v2h-6zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z"></path>
+                </svg>
+                </button>
+            </div>    
+            </div>
+            <div id="toc"></div>
+
+            <div class="article">
+                <div class="paragraph">
+                    Dans les problèmes liés aux réseaux euclidiens, une base orthogonale représenterait une base idéale.
+                </div>
+
+                <div class="problem">
+                    La base \( B^* \) ( de $\R^n$ ) n'est généralement pas une base du réseau \( \mathscr{L}(B) \).
+                </div>
+
+                <figure>
+                    <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_0_9.png" alt="">
+                    <figcaption> <span class="label"></span> Base de Gram-Schmidt qui n'est pas une base de \( \mathscr{L} \).</figcaption>
+                </figure>
+
+                <div class="paragraph nowrap">
+                    Nous cherchons une base de \( \mathscr{L} \) qui <strong>approxime</strong> la base de Gram-Schmidt aussi fidèlement que possible.
+                </div>
+
+                <div class="notation">
+                    On définit l'entier le plus proche de $x \in \R$ par $\lceil x\rfloor  = \lfloor x+1/2 \rfloor$.
+                </div>
+
+                <div class="proposition">
+                    On a $|x-\lceil x\rfloor| \leq \frac12$ pour tout $x \in \R$.
+                </div>
+
+                <div class="paragraph">
+                    Dans la suite de cette explication, le lecteur est invité à porter une attention particulière aux * qui dénotent un vecteur de la base de Gram-Schmidt.
+                    L'opération d'orthogonaliation de Gram-Schmidt nous donne :
+
+                    $$
+                    \begin{equation}
+                    \mathbf{b}^*_2 \coloneqq \mathbf{b}_2 - \mu_{2,1} \mathbf{b}_1^* \notin \mathscr{L}
+                    \end{equation}
+                    $$
+                </div>
+
+                <div class="paragraph">
+                    Mais \( \mathbf{b}_1^* = \mathbf{b}_1 \in \mathscr{L} \), en prenant \( k \in \Z \), on a
+                    \(
+                    \mathbf{b}_2 - k \mathbf{b}_1 \in \mathscr{L}
+                    \), 
+                    on pourrait donc réaliser l'opération
+                    \[
+                    \mathbf{b}_2 \coloneqq \mathbf{b}_2 - k \mathbf{b}_1 \in \mathscr{L}
+                    \]
+                    On peut donc choisir \( k \in \Z \) qui minimise \( \left \langle b_2, b_1 \right \rangle \), ce qui est réalisé par \( k \coloneqq \nint{\mu_{i,j}}\). On en déduit donc l'opération 
+
+                    $$
+                    \begin{equation}
+                    \mathbf{b}_2 \coloneqq  \mathbf{b}_2 - \lceil\mu_{2,1}\rfloor \mathbf{b}_1 \in \mathscr{L}
+                    \end{equation}
+                    $$
+
+                    On peut donc étendre ce procédé par récurrence pour construire la nouvelle famille \( (b_i)_{1 \leq i \leq n} \).
+
+                    En refaisant les calculs on peut montrer que la base de Gram-Schmidt associée est inchangée, mais que les nouveaux coefficients \( |\mu_{i,j}|<\frac12\) d'après la proposition 2.1.
+                </div>
+
+                <figure>
+                    <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_1_9.png" alt="">
+                    <figcaption><span class="label"></span> Base de \( \mathscr{L} \) proche de la base Gram-Schmidt.</figcaption>
+                </figure>
+
+                <div class="definition">
+	                Soit \( (b_i)_{1 \leq i \leq n} \) une base d'un réseau et \( U \) la matrice triangulaire supérieure telle que \( B = UB^* \) est dite <strong>propre</strong> si 
+	
+                    $$
+	                \begin{equation}
+		            \displaystyle\max_{1 \leq i < j \leq n} |\mu_{i,j}| \leq \frac{1}{2}.
+	                \end{equation}
+                    $$
+                </div>
+
+                <details>
+                    <summary>
+                        <span>
+                            <span class="label"></span>
+                            <span class="title">Base propre</span>
+                        </span>
+                    </summary>
+                    <p>
+                        Une base propre est aussi connue sous le nom de base size-réduite dans la littérature.
+                    </p>
+                </details>
+
+                <div class="counterexample">
+                    Bien que la proprification impose une certaine contrainte sur les coefficients de projection, elle ne garantit pas à elle seule que les vecteurs de la base soient presque orthogonaux.
+    
+    <figure>
+        <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_0_10.png" alt="">
+
+        <figcaption><span class="label"></span>Base propre mais peu orthogonale</figcaption>
+    </figure>
+</div>
+
+<div class="paragraph">
+Idéalement, nous souhaiterions trouver une base \( (b_i)_{1 \leq i \leq n} \) du réseau \( \mathscr{L} \) telle que :
+
+\[
+\| b_1 \| = \lambda_1(\mathscr{L}), \quad
+\| b_2 \| = \lambda_2(\mathscr{L}), \quad \ldots, \quad
+\| b_n \| = \lambda_n(\mathscr{L})
+\]
+Ceci implique \( \| b_1 \| \leq \cdots \leq \| b_n \|\), mais cela est trop difficile de trouver une telle base car cela reviendrait à résoudre SIVP.
+
+</div>
+
+<div class="definition">
+    Une base \( (b_i)_{1 \leq i \leq m} \) satisfait la \textbf{condition de Lovász} \footnote{Une condition plus générale : \( ( \delta - \mu_{i+1,i}^2 ) \, \|b_i^*\|^2 \leq \|b_{i+1}^*\|^2 \text{ pour } 1 \leq i \leq n, \text{ où } \delta \in \left] \frac{1}{4}, 1 \right]  \) } si:
+    \[
+    \|b_i^*\|^2 \leq 2\|b_{i+1}^*\|^2 \quad \text{ pour tout } 1 \leq i < n
+    \]
+</div>
+
+<div class="remark">
+    On peut interpréter cette condition comme une forme de quasi-croissance des normes \( \|b_i^*\| \) : elle n'exige pas que celles-ci soient strictement croissantes, mais impose que toute éventuelle décroissance soit contrôlée, autrement dit, qu'elles ne décroissent pas trop rapidement.
+</div>
+
+<div class="paragraph">
+    Dès lors, il est naturel de se demander pourquoi ne pas échanger les vecteurs lorsque cette condition de Lovász n’est pas satisfaite.
+</div>
+
+<div class="example">
+    Si l’on applique cette idée à l’exemple précédent, alors après permutation des vecteurs concernés et une nouvelle phase de réduction, on obtient à nouveau une base améliorée :
+    
+    <figure>
+        <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_1_10.png" alt="">
+        <figcaption><span class="label"></span> Nouvelle base size-réduite</figcaption>
+    </figure>
+</div>
+
+<div class="definition">
+	Une base \( \mathcal{B} \) d'un réseau \( \mathscr{L} (\mathcal{B}) \)  est dite <strong>LLL-réduite</strong> si
+    <ul>
+        <li>$\mathcal{B}$ est propre.</li>
+        <li>$\mathcal{B}$ satisfait la condition de Lovàsz.</li>
+    </ul>
+</div>
+
+<div class="remark">
+	Chaque vecteur de la base réduite a une norme au moins égale à la moitié de celle du précédent, garantissant ainsi une décroissance modérée.
+</div>
+
+<div class="theorem">
+	Soit \( \mathcal{B} \) une base réduite du réseau \( \mathscr{L} \subseteq \R^n \) et soit \( v \in \mathscr{L} \setminus \{0\} \). Alors
+     \[ \|b_1\| \leq 2^{(n-1)/2} \cdot \|v\| \]
+</div>
+
+<div class="paragraph">
+En particulier, ce résultat s’applique à un vecteur \( v \in \mathscr{L} \) de plus petite norme non nulle, c’est-à-dire un vecteur atteignant \( \lambda_1(\mathscr{L}) \). On en déduit donc :
+\[
+\|b_1\| \leq 2^{(n-1)/2} \cdot \lambda_1(\mathscr{L}),
+\]
+ce qui montre que \( \mathrm{LLL} \) fournit en temps polynomial un vecteur de norme à un facteur \( 2^{(n-1)/2} \) près du plus court vecteur du réseau.
+Autrement dit, l’algorithme \( \mathrm{LLL} \) résout approximativement le problème du plus court vecteur (\( \mathrm{SVP} \)) avec un facteur d’approximation \( \gamma = 2^{(n-1)/2} \).
+Par extension, en renvoyant les vecteurs de la base réduite, \( \mathrm{LLL} \) permet également de résoudre le problème \( \mathrm{SIVP} \) (\textit{Shortest Independent Vectors Problem}) avec le même facteur d’approximation.
+
+
+            </div>
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+        
+        <script src="/assets/js/components/footer.js"></script>
+        <script src="/assets/js/components/header.js"></script>
+        <script src="/assets/js/components/article.js"></script>
+        <script src="/assets/js/components/toc.js"></script>
+        <script src="/assets/js/components/references.js"></script>
+    </body>
+</html>

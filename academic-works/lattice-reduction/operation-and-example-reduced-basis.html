@@ -1,0 +1,383 @@
+<!-- En LaTeX, il y a \cite, je pourrais créer un div cite, ce serait intéréssant, on pourrait cliquer dessus?-->
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>
+            Fonctionnement et exemple
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="author" content="Lucas Petit">
+        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
+        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+<link rel="stylesheet" href="/assets/css/base/root.css">
+            <link rel="stylesheet" href="/assets/css/base/base.css">
+        <link rel="stylesheet" href="/assets/css/base/inter.css">
+        <link rel="stylesheet" href="/assets/css/base/reset.css">
+        <link rel="stylesheet" href="/assets/css/base/utils.css">
+
+        <link rel="stylesheet" href="/assets/css/layout/header.css">
+        <link rel="stylesheet" href="/assets/css/layout/toc.css">
+
+        <link rel="stylesheet" href="/assets/css/academic-works.css">
+        <link rel="stylesheet" href="/assets/css/article.css">
+        <link rel="stylesheet" href="/assets/css/homepage.css">
+        <link rel="stylesheet" href="/assets/css/project.css">
+        
+        <link rel="stylesheet" href="/assets/css/figure.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/assets/css/icon.css">
+        <link rel="stylesheet" href="/assets/css/references.css">
+        <link rel="stylesheet" href="/assets/css/footnotes.css">
+        <link rel="stylesheet" href="/assets/css/algorithm.css">
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display:true},
+                {left: "\\(", right: "\\)", display:false}
+                ]
+            });
+            });
+        </script>
+    </head>
+    <body>
+
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/academic-works/lattice-reduction/">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            Réduction de réseaux
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+               <div class="huhu hidden">
+
+                <div>
+                    <button id="eee">
+                    <svg class="" viewBox="0 0 24 24" fill="black">
+                        <path d="M19 5v14H5V5zm1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9M11 7h6v2h-6zm0 4h6v2h-6zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z"></path>
+                    </svg>
+                </button>
+                
+                </div>
+                
+            </div>
+            <div id="toc"></div>
+
+            <!-- On commence ici la partie de l'article -->
+            <div class="article">
+                <div class="paragraph">
+                    Nous présentons à présent l’algorithme de Lenstra–Lenstra–Lovász (\( \mathrm{LLL} \)), dans sa forme classique. Originellement \( \mathrm{LLL} \) est apparu dans l'article de 1982 et servait à factoriser des polynômes à coefficients rationnels.
+                </div>
+
+
+
+                <div class="algorithm-container">
+    <h2>Algorithme LLL</h2>
+    
+    <div class="algo-meta">
+        <p><strong>Entrée :</strong> Une base $ B = (b_1, \ldots, b_n) $</p>
+        <p><strong>Sortie :</strong> Une base réduite $ G = (g_1, \ldots, g_n) $ de $ B $</p>
+    </div>
+
+    <ol class="algo-body">
+        <li class="algo-loop"><span class="keyword">Pour</span> $ i = 1 $ <span class="keyword">à</span> $ n $ :</li>
+        <li class="algo-statement indented">$ g_i \leftarrow b_i $</li>
+
+        <li class="algo-statement">$ (B^*, U) \leftarrow $ <span class="function">Gram-Schmidt</span> $ (B) $</li>
+
+        <li class="algo-while"><span class="keyword">Tant que</span> $ i \leq n $</li>
+        <ol> <li class="algo-loop"><span class="keyword">Pour</span> $ j = i-1, i-2, \ldots, 1 $ :</li>
+            <ol> <li class="algo-statement indented">$ g_i \leftarrow g_i - \lceil \mu_{i,j} \rfloor \, g_j $</li>
+                <li class="algo-statement indented">Mettre à jour $ B^*, U $</li>
+            </ol>
+            
+            <li class="algo-if"><span class="keyword">Si</span> $i > 1$ <span class="keyword">et</span> $\|g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2$ :</li>
+            <ol>
+                <li class="algo-statement indented">Échanger $ g_{i-1} $ et $ g_i $</li>
+                <li class="algo-statement indented">Mettre à jour $ B^*, U $</li>
+                <li class="algo-statement indented">$ i \leftarrow i - 1 $</li>
+            </ol>
+            
+            <li class="algo-else"><span class="keyword">Sinon</span> :</li>
+            <ol>
+                <li class="algo-statement indented">$ i \leftarrow i + 1 $</li>
+            </ol>
+        </ol>
+
+        <li class="algo-return"><span class="keyword">Retourner</span> $ G = (g_1, \ldots, g_n) $</li>
+    </ol>
+</div>
+
+<div class="paragraph">
+    L’algorithme débute par le calcul de la base orthogonalisée de Gram–Schmidt, qui sert de support aux opérations de réduction.
+
+Le principe général repose sur l’application répétée de deux types d’étapes : des <strong>réductions de taille</strong> visant à raccourcir les vecteurs sans sortir du réseau, et des <strong>permutations</strong> de vecteurs effectuées lorsque la condition de Lovász, qui contrôle la décroissance des normes, n’est pas satisfaite.
+
+L’ensemble de ces opérations est imbriqué dans une boucle \texttt{while} qui se répète tant qu’une condition de progression n’est pas remplie.  
+Nous verrons que cette condition de Lovász garantit non seulement une amélioration à chaque étape, mais également la terminaison de l’algorithme en un nombre fini d’itérations.
+</div>
+
+<div class="example">
+	Soit 
+    \[
+    B =
+    \begin{pmatrix}
+        1 & 1 & 1 \\
+        -1 & 0 & 2 \\
+        3 & 5 & 6
+    \end{pmatrix}
+    \in GL_3(\Z).
+    \]
+    On a $$ |\mathscr{L} (B)| = 9, \quad A = \max_{1 \leq i \leq 3} \| b_i \| = 70$$
+    
+    On va essayer d'estimer un plus court vecteur
+    L'algorithme LLL commence par calculer la décomposition de Gram-Schmidt de \( B \), pour plus de détails sur le calcul de cette décomposition, ce calcul est effectué dans appendix:linear_algebra.
+    
+    On obtient la décomposition
+    
+    \[
+    \begin{aligned}
+        U &= 
+        \begin{pmatrix}
+            1 & 0 & 0 \\
+            \frac{1}{3} & 1 & 0 \\
+            \frac{14}{3} & \frac{13}{14} & 1
+        \end{pmatrix}, \quad
+        B^* =
+        \begin{pmatrix}
+            1 & 1 & 1 \\
+            -\frac{4}{3} & - \frac{1}{3} & \frac{5}{3} \\
+            -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+        \end{pmatrix}.
+    \end{aligned}
+    \] 
+    
+    Voici un tableau récapitulant les principales étapes de l'algorithme. Le tableau est volontairement détaillé et fourni, le lecteur pourra revenir sur cet exemple pour comprendre ce que sont $d_1$, $d_2$, $D$ ou la signification de $Gram(G)$.
+    
+
+    <table>
+        <tr>
+            <td>
+                \( G \)
+                </td>
+            <td>\( U \)</td>
+            <td>\( G^* \)</td>
+            <td>$$\shortstack{ d_1, d_2 \\ D }$$</td>
+            <td>\( \begin{pmatrix} \|g_1^*\|^2 \\ \|g_2^*\|^2 \\ \|g_3^*\|^2 \end{pmatrix} \)</td>
+            <td>\( Gram(G) \)</td>
+        </tr>
+        <tr>
+            <td>\[ \begin{pmatrix} 1\quad 1\quad 1 \\ -1\quad 0\quad 2\\ 3\quad 5\quad 6 \end{pmatrix} \]</td>
+            <td>\( \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{3} & 1 & 0 \\ \frac{14}{3} & \frac{13}{14} & 1 \end{pmatrix} \)</td>
+            <td>\( \begin{pmatrix} 1 & 1 & 1 \\ -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\ -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14} \end{pmatrix} \)</td>
+            <td>\shortstack{\( 3, 14 \) \\ \( 42 \)}</td>
+            <td>\( \begin{pmatrix} 3 \\ \frac{14}{3} \\ \frac{9}{14} \end{pmatrix} \)</td>
+            <td>\( \begin{pmatrix} 3 & 1 & 14 \\ 1 & 1 & 9 \\ 14 & 9 & 70 \end{pmatrix} \)</td>
+        </tr>
+        <tr>
+            <td>\[ \begin{pmatrix} 1\quad 1\quad 1 \\ -1\quad 0\quad 2 \\ 0\quad 1\quad 0 \end{pmatrix} \]</td>
+            <td>\( \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{3} & 1 & 0 \\ \frac{1}{3} & \frac{-1}{14} & 1 \end{pmatrix} \)</td>
+            <td>\( \begin{pmatrix} 1 & 1 & 1 \\ -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\ -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14} \end{pmatrix} \)
+            </td>
+            <td>\shortstack{\( 3, 14 \) \\ \( 42 \)}</td>
+            <td>\( 
+            \begin{pmatrix}
+                3 \\
+                \frac{14}{3} \\
+                \frac{9}{14}
+            \end{pmatrix}
+            \)</td>
+            <td>
+                \(
+                    \begin{pmatrix}
+                        3 & 1 & 1 \\
+                        1 & 5 & 0 \\
+                        1 & 0 & 1
+                    \end{pmatrix}
+                \)
+            </td>
+        </tr>
+        <tr>
+            <td>\[
+                \begin{pmatrix}
+                    1& 1& 1 \\
+                    0& 1& 0 \\
+                    -1& 0& 2
+                \end{pmatrix}
+                \]</td>
+                <td>\(
+            \begin{pmatrix}
+                1           & 0            & 0 \\
+                \frac{1}{3} & 1            & 0 \\
+                \frac{1}{3} & \frac{-1}{2} & 1
+            \end{pmatrix}
+            \) </td>
+                <td>\(
+            \begin{pmatrix}
+                1            & 1           & 1 \\
+                -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
+                -\frac{3}{2} & 0           & \frac{3}{2}
+            \end{pmatrix}
+            \)</td>
+                <td>\shortstack{\( 3, 2 \) \\ \( 6 \)}</td>
+                <td>\( 
+            \begin{pmatrix}
+                3 \\
+                \frac{2}{3} \\
+                \frac{9}{2}
+            \end{pmatrix}
+            \)</td>
+                <td> \(
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                \frac{1}{3} & \frac{-1}{2} & 1
+            \end{pmatrix}
+            \)</td>
+        </tr>
+        <tr>
+            <td>\[
+                \begin{pmatrix}
+                    0& 1& 0 \\
+                    1& 1& 1 \\
+                    -1& 0& 2
+                \end{pmatrix}
+                \]</td>
+                <td> \( 
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                1 & 1 & 0 \\
+                \frac{1}{3} & \frac{-1}{2} & 1
+            \end{pmatrix}
+            \)</td>
+                <td>\(
+            \begin{pmatrix}
+                0 & 1 & 0 \\
+                1 & 0 & 1 \\
+                -\frac{3}{2} & 0 & \frac{3}{2}
+            \end{pmatrix}
+            \)  </td>
+                <td>\shortstack{\( 1, 2 \) \\ \( 2 \)}</td>
+                <td> \( \begin{pmatrix} 1 \\ 2 \\ \frac{9}{2} \end{pmatrix} \) </td>
+                <td> \( \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ \frac{1}{3} & \frac{-1}{2} & 1 \end{pmatrix} \) </td>
+        </tr>
+         <tr>
+            <td>\[
+                \begin{pmatrix}
+                    0 & 1 & 0 \\
+                    1 & 0 & 1 \\
+                    -1& 0 & 2
+                \end{pmatrix}
+                \]</td>
+            <td>\(
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                \frac{1}{3} & \frac{-1}{2} & 1
+            \end{pmatrix}
+            \)</td>
+            <td> \(
+            \begin{pmatrix}
+                0 & 1 & 0 \\
+                1 & 0 & 1 \\
+                -\frac{3}{2} & 0 & \frac{3}{2}
+            \end{pmatrix}
+            \) </td>
+            <td> \shortstack{\( 1, 2 \) \\ \( 2 \)}</td>
+            <td> \( 
+            \begin{pmatrix}
+                1 \\
+                2 \\
+                \frac{9}{2}
+            \end{pmatrix}
+            \)</td>
+            <td>\(
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                0 & 2 & 1 \\
+                0 & 1 & 5
+            \end{pmatrix}
+            \)</td>
+        </tr>
+    </table>
+
+    On obtient la base  LLL réduite :
+
+    \[
+    g_{reduced}=
+    \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 1 \\
+        -1 & 0 & 2
+    \end{pmatrix}
+    \in M_3(\Z) 
+    \]
+
+
+</div>
+
+<!--
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[->, thick, bend right=80]
+    ([xshift=0em]pic cs:l1) to
+    node[midway, left]{\small \shortstack{proprification\\ $\bg_3$}}
+    ([xshift=0em, yshift=1em]pic cs:l2);
+    
+    \draw[->, thick, bend right=80]
+    ([xshift=0em]pic cs:l2) to
+    node[midway, left]{\small \shortstack{Lovasz\\ $\bg_2 \leftrightarrow \bg_3$}}
+    ([xshift=0em, yshift=1em]pic cs:l3);
+    
+    \draw[->, thick, bend right=80]
+    ([xshift=0em]pic cs:l3) to
+    node[midway, left]{\small \shortstack{Lovasz\\ $\bg_1 \leftrightarrow \bg_2$}}
+    ([xshift=0em, yshift=1em]pic cs:l4);
+    
+    \draw[->, thick, bend right=80]
+    ([xshift=0em]pic cs:l4) to
+    node[midway, left]{\small \shortstack{proprification\\ $\bg_2$}}
+    ([xshift=0em, yshift=1em]pic cs:l5);
+\end{tikzpicture}
+-->
+
+
+                <div class="remark">
+                    <ul>
+                        <li>
+                            La valeur $d_3$ ne nous intéresse pas car il s'agit d'un invariant,
+                        </li>
+                        <li>
+                            \(Gram(G)\) se rapproche petit a petit d'une matrice diagonale.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+        
+        <script src="/assets/js/components/footer.js"></script>
+        <script src="/assets/js/components/header.js"></script>
+        <script src="/assets/js/components/article.js"></script>
+        <script src="/assets/js/components/toc.js"></script>
+        <script src="/assets/js/components/references.js"></script>
+    </body>
+</html>

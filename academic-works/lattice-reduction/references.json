@@ -1,0 +1,556 @@
+[
+    {
+        "id": "ref-ajtai-1996",
+        "type": "paper",
+        "url": "http://dx.doi.org/10.1145/237814.237838",
+        "title": "Generating hard instances of lattice problems",
+        "year": "1996",
+        "authors":[
+            {
+                "given":"Miklós",
+                "family":"Ajtai"
+            }
+        ]
+    },
+    {
+        "id": "ref-hales-2015",
+        "type":"paper",
+        "url": "https://arxiv.org/abs/1501.02155",
+        "title":"A formal proof of the Kepler conjecture",
+        "year":"2015",
+        "authors":[
+            {
+                "given":"Thomas",
+                "family":"Hales"
+            },
+            {
+                "given":"Mark",
+                "family":"Adams"
+            },
+            {
+                "given":"Gertrud",
+                "family":"Bauer"
+            },
+            {
+                "given":"Dat Tat",
+                "family":"Dang"
+            },
+            {
+                "given":"John",
+                "family":"Harrison"
+            },
+            {
+                "given":"Truong",
+                "family":"Le Hoang"
+            },
+            {
+                "given":"Cezary",
+                "family":"Kaliszyk"
+            },
+            {
+                "given":"Victor",
+                "family":"Magron"
+            },
+            {
+                "given":"Sean",
+                "family":"McLaughlin"
+            },
+            {
+                "given":"Thang",
+                "family":"Tat Nguyen"
+            },
+            {
+                "given":"Truong Quang",
+                "family":"Nguyen"
+            },
+            {
+                "given":"Tobias",
+                "family":"Nipkow"
+            },
+            {
+                "given":"Steven",
+                "family":"Obua"
+            },
+            {
+                "given":"Joseph",
+                "family":"Pleso"
+            },
+            {
+                "given":"Jason",
+                "family":"Rute"
+            },
+            {
+                "given":"Alexey",
+                "family":"Solovyev"
+            },
+            {
+                "given":"An Hoai",
+                "family":"Thi Ta"
+            },
+            {
+                "given":"Trung Nam",
+                "family":"Tran"
+            },
+            {
+                "given":"Diep Thi",
+                "family":"Trieu"
+            },
+            {
+                "given":"Josef",
+                "family":"Urban"
+            },
+            {
+                "given":"Ky Khac",
+                "family":"Vu"
+            },
+            {
+                "given":"Roland",
+                "family":"Zumkeller"
+            }
+        ]
+    },
+    {
+        "id": "ref-boudgoust-2023",
+        "type":"Lecture Notes",
+        "url": "",
+        "title":"Hardness Assumptions in Lattice-Based Cryptography",
+        "year":"2023",
+        "authors":[
+            {
+                "given":"Katharina",
+                "family":"Boudgoust"
+            }
+        ]
+    },
+    {
+        "id": "ref-schnorr-1994",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1007/BF01581144",
+        "title":"Lattice basis reduction: Improved practical algorithms and solving subset sum problems",
+        "year":"1994",
+        "authors":[
+            {
+                "given":"Claus Peter",
+                "family":"Schnorr"
+            },
+            {
+                "given":"M.",
+                "family":"Euchner"
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "ref-mulders-2003",
+        "type":"",
+        "url": "http://dx.doi.org/10.1016/S0747-7171(02)00139-6",
+        "title":"On lattice reduction for polynomial matrices",
+        "year":"2003",
+        "authors":[
+            {
+                "given":"A.",
+                "family":"Storjohann"
+            },
+            {
+                "given":"T.",
+                "family":"Mulders"
+            }
+        ]
+    },
+    {
+        "id": "ref-lenstra-1982",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1007/BF01457454",
+        "title":"Factoring polynomials with rational coefficients",
+        "year":"1982",
+        "authors":[
+            {
+                "given":"Lenstra",
+                "family":""
+            },
+            {
+                "given":"Lenstra",
+                "family":""
+            },
+            {
+                "given":"Lovász",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "ref-goldreich-1999",
+        "type":"article",
+        "url": "https://doi.org/10.1016/S0020-0190(99)00083-6",
+        "title":"Approximating Shortest Lattice Vectors is not Harder than Approximating Closest Lattice Vectors",
+        "year":"1999",
+        "authors":[
+            {
+                "given":"Jean-Pierre",
+                "family":"Seifert"
+            },
+            {
+                "given":"Shmuel",
+                "family":"Safra"
+            },
+            {
+                "given":"Daniele",
+                "family":"Micciancio"
+            },
+            {
+                "given":"Oded",
+                "family":"Goldreich"
+            }
+        ]
+    },
+    {
+        "id": "ref-nguyen-2009",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1137/070705702",
+        "title":"An LLL Algorithm with Quadratic Complexity",
+        "year":"2009",
+        "authors":[
+            {
+                "given":"Phong Q",
+                "family":"Nguyen"
+            },
+            {
+                "given":"Damien",
+                "family":"Stehlé"
+            }
+        ]
+    },
+    {
+        "id": "ref-nielsen-2013",
+        "type":"",
+        "url": "",
+        "title":"Generalised Multi-sequence Shift-Register Synthesis using Module Minimisation",
+        "year":"2013",
+        "authors":[
+            {
+                "given":"Johan S. R. Nielsen",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "ref-novocin-2011",
+        "type":"",
+        "url": "http://dx.doi.org/10.1145/1993636.1993691",
+        "title":"An LLL-reduction algorithm with quasi-linear time complexity: extended abstract",
+        "year":"2011",
+        "authors":[
+            {
+                "given":"Andrew",
+                "family":"Novocin"
+            },
+            {
+                "given":"Damien",
+                "family":"Stehlé"
+            },
+            {
+                "given":"Gilles",
+                "family":"Villard"
+            }
+        ]
+    },
+    {
+        "id": "ref-bostan-2005",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1016/j.jco.2004.09.009",
+        "title":"Polynomial evaluation and interpolation on special sets of points",
+        "year":"2005",
+        "authors":[
+            {
+                "given":"Éric",
+                "family":"Schost"
+            },
+            {
+                "given":"Alin",
+                "family":"Bostan"
+            }
+        ]
+    },
+    {
+        "id": "ref-mca-2003",
+        "type":"book",
+        "url": "",
+        "title":"Modern Computer Algebra",
+        "year":"2003",
+        "authors":[
+            {
+                "given":"Gerhard",
+                "family":"Jurgen"
+            },
+            {
+                "given":"Gathen",
+                "family":"Joachim Von Zur"
+            }
+        ]
+    },
+    {
+        "id": "ref-kirchner-2021",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1007/978-3-030-84245-1_26",
+        "title":"Towards Faster Polynomial-Time Lattice Reduction",
+        "year":"2021",
+        "authors":[
+            {
+                "given":"Paul",
+                "family":"Kirchner"
+            },
+            {
+                "given":"Thomas",
+                "family":"Espitau"
+            },
+            {
+                "given":"Pierre-Alain",
+                "family":"Fouque"
+            }
+        ]
+    },
+    {
+        "id": "ref-havas-1998",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1080/10586458.1998.10504362",
+        "title":"Extended GCD and Hermite Normal Form Algorithms via Lattice Basis Reduction",
+        "year":"1998",
+        "authors":[
+            {
+                "given":"George",
+                "family":"Havas"
+            },
+            {
+                "given":"Bohdan S.",
+                "family":"Majewski"
+            },
+            {
+                "given":"Keith R.",
+                "family":"Matthews"
+            }
+        ]
+    },
+    {
+        "id": "ref-bkz-2011",
+        "type":"",
+        "url": "https://eprint.iacr.org/2011/198",
+        "title":"Terminating BKZ",
+        "year":"2011",
+        "authors":[
+            {
+                "given":"Guillaume",
+                "family":"Hanrot"
+            },
+            {
+                "given":"Xavier",
+                "family":"Pujol"
+            },
+            {
+                "given":"Damien",
+                "family":"Stehlé"
+            }
+        ]
+    },
+    {
+        "id": "ref-ryan-2023",
+        "type":"",
+        "url": "http://dx.doi.org/10.1007/978-3-031-38548-3_1",
+        "title":"Fast Practical Lattice Reduction Through Iterated Compression",
+        "year":"2023",
+        "authors":[
+            {
+                "given":"Nadia",
+                "family":"Heninger"
+            },
+            {
+                "given":"Keegan",
+                "family":"Ryan"
+            }
+        ]
+    },
+    {
+        "id": "ref-banaszczyk-1993",
+        "type":"article",
+        "url": "http://dx.doi.org/10.1007/BF01445125",
+        "title":"New bounds in some transference theorems in the geometry of numbers",
+        "year":"1993",
+        "authors":[
+            {
+                "given":"W.",
+                "family":"Banaszczyk"
+            },
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "stephens-davidowitz_latticeproblems",
+        "type":"",
+        "url": "http://noahsd.com/latticeproblems.pdf",
+        "title":"Dimension-Preserving Reductions Between Lattice Problems",
+        "year":"2015",
+        "authors":[
+            {
+                "given":"Noah Stephens-Davidowitz",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "",
+        "type":"article",
+        "url": "https://arxiv.org/abs/1603.06518",
+        "title":"The sphere packing problem in dimension 24",
+        "year":"2016",
+        "authors":[
+            {
+                "given":"Maryna",
+                "family":"Viazovska"
+            },
+            {
+                "given":"Danylo",
+                "family":"Radchenko"
+            },
+            {
+                "given":"Stephen D.",
+                "family":"Miller"
+            },
+            {
+                "given":"Abhinav",
+                "family":"Kumar"
+            },
+            {
+                "given":"Henry",
+                "family":"Cohn"
+            }
+        ]
+    },
+    {
+        "id": "ref-viazovska-2016",
+        "type":"",
+        "url": "https://arxiv.org/abs/1603.04246",
+        "title":"The sphere packing problem in dimension 8",
+        "year":"2016",
+        "authors":[
+            {
+                "given":"Maryna",
+                "family":"Viazovska"
+            }
+        ]
+    },
+    {
+        "id": "ref-allini-2014",
+        "type":"",
+        "url": "",
+        "title":"Théorie alorithmique des nombres",
+        "year":"2014",
+        "authors":[
+            {
+                "given":"Elie Noumon",
+                "family":"Allini"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "type":"wikipedia",
+        "url": "",
+        "title":"Réseau (géométrie)",
+        "year":"",
+        "authors":[
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    },
+    {
+        "id": "harari_modules",
+        "type":"",
+        "url": "",
+        "title":"Modules sur un anneau commutatif",
+        "year":"",
+        "authors":[
+            {
+                "given":"David",
+                "family":"Harari"
+            }
+        ]
+    },
+    {
+        "id": "ring_modules",
+        "type":"wikipedia",
+        "url": "",
+        "title":"Module sur un anneau",
+        "year":"",
+        "authors":[]
+    },
+    {
+        "id": "ref-lebreton-2014",
+        "type":"",
+        "url": "",
+        "title":"A crash course on Order Bases : Theory and Algorithms",
+        "year":"2014",
+        "authors":[
+            {
+                "given":"Romain",
+                "family":"Lebreton"
+            }
+        ]
+    },
+    {
+        "id": "ref-wallet",
+        "type":"",
+        "url": "",
+        "title":"Réseaux euclidiens et cryptographie",
+        "year":"",
+        "authors":[
+            {
+                "given":"Alexandre",
+                "family":"Wallet"
+            },
+            {
+                "given":"",
+                "family":""
+            },
+            {
+                "given":"",
+                "family":""
+            }
+        ]
+    }
+
+]

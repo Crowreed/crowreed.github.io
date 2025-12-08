@@ -3,6 +3,8 @@ header{
   /* box model */
   width: 100%;
   height: 63px;
+
+  border-bottom: 1px solid var(--primary-border-color);
 }
 
 header nav{
@@ -12,8 +14,6 @@ header nav{
   height:100%;
   margin:auto;
   padding: 0 20px;
-  
-  border-bottom: 1px solid var(--primary-border-color);
 }
 
 header nav ul{

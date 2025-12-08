@@ -19,48 +19,48 @@
     },
     {
         "title": "Réduction de réseaux euclidiens",
-        "filename": "",
+        "filename": "euclidean-lattice-reduction.html",
         "children": [
             {
                 "title": "La base réduite",
-                "filename": ""
+                "filename": "reduced-basis.html"
             },
             {
                 "title": "Fonctionnement et exemple",
-                "filename": ""
+                "filename": "operation-and-example-reduced-basis.html"
             }
         ]
     },
     {
-        "title": "Correction, terminaison et complexité de LLL",
-        "filename": "",
+        "title": "Correction, terminaison et complexité de LLL (pas fait)",
+        "filename": "lll-correction-termination-complexity.html",
         "children": [
             {
-                "title": "Terminaison",
-                "filename": ""
+                "title": "Terminaison (pas fait)",
+                "filename": "lll-termination.html"
             },
             {
-                "title": "Correction et complexité",
-                "filename": ""
+                "title": "Correction et complexité (pas fait)",
+                "filename": "lll-correction-complexity.html"
             }
         ]
     },
     {
-        "title": "État de l'art sur la réduction de réseaux euclidiens",
-        "filename": "",
+        "title": "État de l'art sur la réduction de réseaux euclidiens (pas fait)",
+        "filename": "state-of-the-art-lattice-reduction.html",
         "children": []
     },
     {
-        "title": "Réseaux polynomiaux",
-        "filename": "",
+        "title": "Réseaux polynomiaux (pas fait)",
+        "filename": "polynomial-lattices.html",
         "children": [
             {
-                "title": "Définitions et exemples",
-                "filename": ""
+                "title": "Définitions et exemples (pas fait)",
+                "filename": "polynomial-lattices-definitions-examples.html"
             },
             {
-                "title": "Notion de degré en ligne",
-                "filename": ""
+                "title": "Notion de degré en ligne (pas fait)",
+                "filename": "notion-row-degree.html"
             }
             
         ]
