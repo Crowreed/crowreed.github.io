@@ -96,12 +96,12 @@
                         <li>
                             <strong>1991</strong>
                             <strong>BKZ</strong>
-                            \parencite{Schnorr1994}
+                            <a class="ref-schnorr-1994"></a>
                             introduit une approche par blocs. L’algorithme applique un solveur SVP de petite dimension \(\beta\) à des sous-blocs de la base :
-    \[
-    \|\bb_1\| \leq \gamma_\beta^{(n-1)/(\beta - 1)} \cdot \lambda_1(\LL)
-    \]
-    Le coût est exponentiel en \(\beta\) mais reste efficace pour \(\beta \leq 40\) en pratique.
+                            \[
+                            \|b_1\| \leq \gamma_\beta^{(n-1)/(\beta - 1)} \cdot \lambda_1(\mathscr{L})
+                            \]
+                            Le coût est exponentiel en \(\beta\) mais reste efficace pour \(\beta \leq 40\) en pratique.
                         </li>
                         <li>
                             <strong>2009</strong>
@@ -114,20 +114,20 @@
                             <strong>$\tilde{L}_1$</strong>
                             \parencite{Novocin2011}
                             propose une version rapide de LLL inspirée du GCD rapide de Knuth–Schönhage. Il introduit une stratégie récursive appelée \emph{Lift-Reduction} et atteint une complexité quasi-linéaire :
-    \[
-    \mathcal{O}\left(d^{5+\varepsilon} \beta + d^{\omega+1+\varepsilon} \beta^{1+\varepsilon} \right)
-    \]
-    avec une qualité comparable à LLL : \( \|b_1\| \leq 2^{\alpha n} \cdot |\mathscr{L}|^{1/n} \).
+                            \[
+                            \mathcal{O}\left(d^{5+\varepsilon} \beta + d^{\omega+1+\varepsilon} \beta^{1+\varepsilon} \right)
+                            \]
+                            avec une qualité comparable à LLL : \( \|b_1\| \leq 2^{\alpha n} \cdot |\mathscr{L}|^{1/n} \).
                         </li>
                         <li> 
                             <strong>2011</strong>
                             <strong>Terminating BKZ</strong>
                             \parencite{cryptoeprint:2011/198}
                             propose une modélisation dynamique affine de BKZ. Ils montrent que même interrompu prématurément, BKZ garantit :
-    \[
-    \|b_1\| \leq 2^{\frac{\gamma_\beta(n-1)}{2(\beta - 1)} + \frac{3}{2}} \cdot |\mathscr{L}|^{1/n}
-    \]
-    après seulement \( \mathcal{O}(n^3/\beta^2 \cdot \log \|B\|) \) appels à un solveur SVP.
+                            \[
+                            \|b_1\| \leq 2^{\frac{\gamma_\beta(n-1)}{2(\beta - 1)} + \frac{3}{2}} \cdot |\mathscr{L}|^{1/n}
+                            \]
+                            après seulement \( \mathcal{O}(n^3/\beta^2 \cdot \log \|B\|) \) appels à un solveur SVP.
                         </li>
                         <li>
                             <strong>2019</strong>

@@ -1,6 +1,8 @@
 [
     {
         "title": "Réseaux euclidiens",
+        "type": "chapter",
+        "isNumbered": true,
         "filename": "euclidean-lattices.html",
         "children": [
             {
@@ -19,6 +21,8 @@
     },
     {
         "title": "Réduction de réseaux euclidiens",
+        "type": "chapter",
+        "isNumbered": true,
         "filename": "euclidean-lattice-reduction.html",
         "children": [
             {
@@ -33,6 +37,8 @@
     },
     {
         "title": "Correction, terminaison et complexité de LLL",
+        "type": "chapter",
+        "isNumbered": true,
         "filename": "lll-correction-termination-complexity.html",
         "children": [
             {
@@ -47,11 +53,15 @@
     },
     {
         "title": "État de l'art sur la réduction de réseaux euclidiens",
+        "type": "chapter",
+        "isNumbered": false,
         "filename": "state-of-the-art-lattice-reduction.html",
         "children": []
     },
     {
         "title": "Réseaux polynomiaux",
+        "type": "",
+        "isNumbered": true,
         "filename": "polynomial-lattices.html",
         "children": [
             {
@@ -63,6 +73,113 @@
                 "filename": "notion-row-degree.html"
             }
             
+        ]
+    },
+    {
+        "title": "Réduction de réseaux polynomiaux",
+        "type": "chapter",
+        "isNumbered": true,
+        "filename": "polynomial-lattice-reduction.html",
+        "children": [
+            {
+                "title": "Généralités et notion de base d’ordre",
+                "filename": "generalities-order-basis-notion.html"
+            },
+            {
+                "title": "Algorithmes de calculs de base d’ordre",
+                "filename": "algorithms-computing-order-basis.html"
+            }
+        ]
+    },
+    {
+        "title": "Adaptation de la réduction de réseaux polynomiaux au cas des réseaux euclidiens",
+        "type": "chapter",
+        "isNumbered": true,
+        "filename": "adapting-polynomial-reduction-to-euclidean.html",
+        "children": [
+            {
+                "title": "Fonction potentielle et bornes",
+                "filename": "potential-function-and-bounds.html"
+            },
+            {
+                "title": "Vers une réduction LLL adaptée aux réseaux d’approximation",
+                "filename": "lll-reduction-for-approximation-lattices.html"
+            },
+            {
+                "title": "Comprendre le rôle du shift dans le cas euclidien",
+                "filename": "role-of-shift-in-euclidean-case.html"
+            }
+        ]
+    },
+    {
+        "title": "Conclusion",
+        "type": "chapter",
+        "isNumbered": false,
+        "filename": "conclusion.html",
+        "children": []
+    },
+    {
+        "title": "Détails de preuves de LLL",
+        "type": "appendix",
+        "isNumbered": true,
+        "filename": "lll-proof-details.html",
+        "children": [
+            {
+                "title": "Terminaison et complexité",
+                "filename": "lll-proof-termination-complexity.html"
+            }
+        ]
+    },
+    {
+        "title": "Rappels sur les anneaux",
+        "type": "appendix",
+        "isNumbered": true,
+        "filename": "ring-theory-review.html",
+        "children": [
+            {
+                "title": "Généralités",
+                "filename": "rings-generalities.html"
+            },
+            {
+                "title": "Anneaux de polynômes",
+                "filename": "polynomial-rings.html"
+            }
+        ]
+    },
+    {
+        "title": "Rappels sur les modules",
+        "type": "appendix",
+        "isNumbered": true,
+        "filename": "module-theory-review.html",
+        "children": [
+            {
+                "title": "Généralités",
+                "filename": "modules-generalities.html"
+            },
+            {
+                "title": "Modules sur un anneau principal",
+                "filename": "modules-over-pid.html"
+            }
+        ]
+    },
+    {
+        "title": "Rappels d’algèbre linéaire",
+        "type": "appendix",
+        "isNumbered": true,
+        "filename": "linear-algebra-review.html",
+        "children": [
+            {
+                "title": "Orthogonalisation de Gram–Schmidt",
+                "filename": "gram-schmidt-orthogonalization.html"
+            },
+            {
+                "title":  "Matrice de Gram",
+                "filename": "gram-matrix.html"
+            },
+            {
+                "title": "Complexité",
+                "filename": "linear-algebra-complexity.html"
+            }
         ]
     }
 ]

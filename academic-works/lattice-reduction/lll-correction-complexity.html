@@ -80,9 +80,11 @@
 
             <div class="article">
                 <div class="theorem">
-                    <span class="title">Terminaison et complexité</span>
-                
-                    On pose \( \displaystyle A = \max_{1 \leq i \leq n} \| \bg_i \| \). L'algorithme \hyperref[algo:LLL_MCA]{\emph{LLL}} termine et utilise \( \OO(n^4 \log A) \) opérations arithmétiques sur des entiers.
+                    <span class="title">Terminaison et complexité</span> <br>
+
+                    <p class="nowrap">
+                        On pose \( \displaystyle A = \max_{1 \leq i \leq n} \| g_i \| \). L'algorithme LLL termine et utilise \( \mathcal{O}(n^4 \log A) \) opérations arithmétiques sur des entiers.
+                    </p>                
                 </div>
 
                 <div class="paragraph">
@@ -91,160 +93,148 @@
 
                 <div class="lemma">
                     <ul>
-                        <li>Orthogonalisation de Gram-Schmidt nécessite \( \OO(n^3) \) opérations dans \( \Z \).</li>
-                        <li>\hyperref[step:P]{\emph{Proprification de \( \bg_i \)}} nécessite \( \OO(n^2) \) opérations dans \( \Z \).</li>
-                        <li>\hyperref[step:R]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}} nécessite \( \OO(n) \) opérations dans \( \Z \).</li>
+                        <li>Orthogonalisation de Gram-Schmidt nécessite \( \mathcal{O}(n^3) \) opérations dans \( \Z \).</li>
+                        <li>Proprification de \( g_i \) nécessite \( \mathcal{O}(n^2) \) opérations dans \( \Z \).</li>
+                        <li>Réduction de \( g_{i-1}, g_{i} \) nécessite \( \mathcal{O}(n) \) opérations dans \( \Z \).</li>
                     </ul>
 
                 </div>
 
                 <div class="paragraph">
-                    Il reste à borner le nombre d'itérations de la boucle Tant que à l'étape \hyperref[step:LLL]{\emph{LLL}}. 
+                    Il reste à borner le nombre d'itérations de la boucle Tant que à l'étape LLL. 
 
-Pour tout \( 1 \leq k \leq n \), on pose
-\[
-\bg_k = 
-\begin{pmatrix}
-    \bg_1 \\
-    \vdots \\
-    \bg_k
-\end{pmatrix}
-\in \Z^{k \x n}
-, \quad d_0=1, \quad d_k = \det(\bg_k \cdot \bg_k^T) \in \Z.
-\]
+                    Pour tout \( 1 \leq k \leq n \), on pose
+                    \[
+                    g_k = 
+                    \begin{pmatrix}
+                    g_1 \\
+                    \vdots \\
+                    g_k
+                    \end{pmatrix}
+                    \in \Z^{k \times n}
+                    , \quad d_0=1, \quad d_k = det(g_k \cdot g_k^T) \in \Z.
+                    \]
                 </div>
 
                 <div class="lemma">
                     Pour tout \( 1 \leq k \leq n \), on a :
-    \[
-    d_k = \prod_{1 \leq l \leq k} \| \bg_l^* \|^2 > 0.
-    \]
+                    \[
+                    d_k = \prod_{1 \leq l \leq k} \| g_l^* \|^2 > 0.
+                    \]
                 </div>
 
                 <div class="lemma">
                     <ul>
                         <li>
-                            \hyperref[step:P]{\emph{Proprification de \( \bg_i \)}} ne change pas \( d_k \)  pour tout \( 1 \leq k \leq n \).
+                            Proprification de \( g_i \) ne change pas \( d_k \)  pour tout \( 1 \leq k \leq n \).
                         </li>
                         <li>
-                            Si \( \bg_{i-1} \) et \( \bg_i \) sont échangés à l’étape \hyperref[step:P]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}}, et si \( d_k^* \) désigne la nouvelle valeur de \( d_k \), alors :
-        \[
-        d_k^* = d_k \quad \text{pour tout } k \neq i - 1, \quad \text{et} \quad d_{i-1}^* \leq \frac{3}{4} d_{i-1}.
-        \]
+                            Si \( g_{i-1} \) et \( g_i \) sont échangés à l’étape Réduction de \( g_{i-1}, g_{i} \), et si \( d_k^* \) désigne la nouvelle valeur de \( d_k \), alors :
+                            \[
+                            d_k^* = d_k \quad \text{pour tout } k \neq i - 1, \quad \text{et} \quad d_{i-1}^* \leq \frac{3}{4} d_{i-1}.
+                            \]
                         </li>
                     </ul>
                 </div>
 
                 <div class="proof">
-\begin{proof}
-    \begin{enumerate}
-        \item D'après le lemme 2.2 \hyperref[step:P]{\emph{Proprification de \( \bg_i \)}} ne modifie pas \( \bg_k^* \) et donc ne modifie pas \( d_k \).
+                    <ol>
+                        <li>
+                            D'après le lemme 2.2 Proprification de \( g_i \) ne modifie pas \( g_k^* \) et donc ne modifie pas \( d_k \).
+                        </li>
+                        <li>
+                            Pour \( k \neq i-1\), une exécution de Réduction de \( g_{i-1}, g_{i} \) multiplie \( g_k \) par une matrice de permutation, donc \( d_k^* = d_k \)
         
-        \item Pour \( k \neq i-1\), une exécution de \hyperref[step:P]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}} multiplie \( \bg_k \) par une matrice de permutation, donc \( d_k^* = d_k \)
-        
-        De plus, on a
-        \[
-        d_{i-1} \eqjust{2.6} \prod_{1 \leq l \leq i-1} \| \bg_l^* \|^2 \leqjust{2.3} \frac{3}{4} \prod_{1 \leq l \leq i-1} \| \mathbf{h}_l^* \|^2 \eqjust{2.6} \frac{3}{4} d_{i-1}^* 
-        \] 
-    \end{enumerate}
-\end{proof}
+                            De plus, on a
+                            \[
+                            d_{i-1} = \prod_{1 \leq l \leq i-1} \| g_l^* \|^2 \leq \frac{3}{4} \prod_{1 \leq l \leq i-1} \| \mathbf{h}_l^* \|^2 = \frac{3}{4} d_{i-1}^* 
+                            \] 
+                        </li>
+                    </ol>
                 </div>
 
                 <div class="paragraph">
-On pose
-\[
-D = \prod_{1 \leq k < n} d_k, \quad \displaystyle A = \max_{1 \leq i \leq n} \| \bg_i \|
-\]
+                    On pose
+                    \[
+                    D = \prod_{1 \leq k < n} d_k, \quad A = \max_{1 \leq i \leq n} \| g_i \|
+                    \]
 
-On désigne \( D_0 \) désigne la valeur de \( D \) au début de l'algorithme, on a \( 1 \leq D \in \Z \) et 
+                    On désigne \( D_0 \) désigne la valeur de \( D \) au début de l'algorithme, on a \( 1 \leq D \in \Z \) et 
 
-\[
-\begin{aligned}
-    D_0 &= \|\bg^*_1\|^{2(n-1)} \|\bg^*_2\|^{2(n-2)} \cdots \|\bg^*_{n-1}\|^2 \\
-    &\leq \|\bg_1\|^{2(n-1)} \|\bg_2\|^{2(n-2)} \cdots \|\bg_{n-1}\|^2\\
-    &\leq A^{n(n-1)}
-\end{aligned} 
-\] 
+                    \[
+                    \begin{aligned}
+                        D_0 &= \|g^*_1\|^{2(n-1)} \|g^*_2\|^{2(n-2)} \cdots \|g^*_{n-1}\|^2 \\
+                        &\leq \|g_1\|^{2(n-1)} \|g_2\|^{2(n-2)} \cdots \|g_{n-1}\|^2\\
+                        &\leq A^{n(n-1)}
+                    \end{aligned} 
+                    \] 
 
-
-Puisque \( g^*_i \) est une projection de \( g_i \) pour tout \( i \). 
+                    Puisque \( g^*_i \) est une projection de \( g_i \) pour tout \( i \). 
                 </div>
 
                 <div class="lemma">
-\begin{lemma}
-    \leavevmode\vspace{0.5\baselineskip}
-    \begin{enumerate}
-        \item \hyperref[step:P]{\emph{Proprification de \( \bg_i \)}} ne modifie pas \( D \).
-        \item \( D \) diminue d’au moins un facteur \( 3/4 \) si un échange a lieu dans \hyperref[step:R]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}}
-    \end{enumerate}
-\end{lemma}
-
+                    <ol>
+                        <li>
+                            Proprification de \( g_i \) ne modifie pas \( D \).
+                        </li>
+                        <li>
+                            \( D \) diminue d’au moins un facteur \( 3/4 \) si un échange a lieu dans Réduction de \( g_{i-1}, g_{i} \)
+                        </li>
+                    </ol>
                 </div>
 
                 <div class="proof">
-\begin{proof}
-    \begin{enumerate}
-        \item D'après le lemme 2.7 \hyperref[step:P]{\emph{Proprification de \( \bg_i \)}} ne modifie pas \( d_k \) et donc ne modifie pas \( D \).
+                    <ol>
+                        <li>
+                            D'après le lemme 2.7 Proprification de \( g_i \) ne modifie pas \( d_k \) et donc ne modifie pas \( D \).
+                        </li>
+                        <li>
+                            Si \( g_{i-1} \) et \( g_i \) sont échangés lors de l'exécution de Réduction de \( g_{i-1}, g_{i} \), en notant \( D^* \) la nouvelle valeur de \( D \), alors d'après le lemme 2.7
         
-        \item Si \( \bg_{i-1} \) et \( \bg_i \) sont échangés lors de l'exécution de \hyperref[step:R]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}}, en notant \( D^* \) la nouvelle valeur de \( D \), alors d'après le lemme 2.7
-        
-        \[
-        d_k^* = d_k, \quad d_{i-1}^* \leq \frac{3}{4} d_{i-1} \text{ donc } D^* \leq \frac{3}{4} D.
-        \]
-    \end{enumerate}
-\end{proof}
+                            \[
+                            d_k^* = d_k, \quad d_{i-1}^* \leq \frac{3}{4} d_{i-1} \text{ donc } D^* \leq \frac{3}{4} D.
+                            \]
+                        </li>
+                    </ol>
                 </div>
 
                 <div class="paragraph">
-À tout moment de l’algorithme, soit \( e \in \N \) le nombre d’échanges effectués jusqu’à présent, et \( e^* \) le nombre de fois où la branche alternative (le \textit{else}) dans \hyperref[step:R]{\emph{Réduction de \( \bg_{i-1}, \bg_{i} \)}} a été prise.
+                    À tout moment de l’algorithme, soit \( e \in \N \) le nombre d’échanges effectués jusqu’à présent, et \( e^* \) le nombre de fois où la branche alternative (le \textit{else}) dans Réduction de \( g_{i-1}, g_{i} \) a été prise.
                 </div>
 
                 <div class="lemma">
-                    
-\begin{lemma}
-    On a
-    \[
-    e \leq \log_{4/3} D_0 \in \OO(n^2 \log A)
-    \]
-\end{lemma}
-
+                    On a
+                    \[
+                    e \leq \log_{4/3} D_0 \in \mathcal{O}(n^2 \log A)
+                    \]
                 </div>
 
                 <div class="proof">
-\begin{proof}
-    Soit \( D_e \) la valeur de \( D \) après \( e \) échanges.
+                    Soit \( D_e \) la valeur de \( D \) après \( e \) échanges.
     
-    On doit avoir
-    \[
-    1 \;\le\; D_e \; \le\;\left(\frac34\right)^{e} D_0 \le\; \left(\frac34\right)^{e}A^{\,n(n-1)}.
-    \]
+                    On doit avoir
+                    \[
+                    1 \;\le\; D_e \; \le\;\left(\frac34\right)^{e} D_0 \le\; \left(\frac34\right)^{e}A^{\,n(n-1)}.
+                    \]
     
-    En appliquant \( lo\bg_{3/4} \), aux extrémités de l'inégalité.
+                    En appliquant \( log_{3/4} \), aux extrémités de l'inégalité.
     
-    \[
-    0=\log_{3/4}(1) \;\ge\; e + \log_{3/4}(A^{\,n(n-1)})=e + n(n-1)\frac{\log A}{\log(3/4)}.
-    \]
+                    \[
+                    0=\log_{3/4}(1) \;\ge\; e + \log_{3/4}(A^{\,n(n-1)})=e + n(n-1)\frac{\log A}{\log(3/4)}.
+                    \]
     
-    On en déduit que \( e \; \leq n(n-1)\frac{\log A}{-\log(3/4)}\) et donc \( e \in \OO(n^2 \log A)\)
-    
-\end{proof}
+                    On en déduit que \( e \; \leq n(n-1)\frac{\log A}{-\log(3/4)}\) et donc \( e \in \mathcal{O}(n^2 \log A)\)
                 </div>
 
                 <div class="proof">
-\begin{proof}[Preuve de la terminaison et la complexité]
+                    <span class="title"> Preuve de la terminaison et la complexité </span>
+
+                    Comme \( i \) est décrémenté de \( 1 \) lors d’un échange et incrémenté de \( 1 \) sinon l'entier \( i + e - e^* \) est constant tout au long de LLL.
     
-    Comme \( i \) est décrémenté de \( 1 \) lors d’un échange et incrémenté de \( 1 \) sinon l'entier \( i + e - e^* \) est constant tout au long de \hyperref[step:LLL]{\emph{LLL}}.
-    
-    Initialement \( i + e - e^* = 2 \) et à la fin de \hyperref[step:LLL]{\emph{LLL}} on a \( n + 1 + e - e^* = 2 \).
-    On en déduit donc que \( e + e^* = 2e + n - 1 \in \OO(n^2 \log A) \).
-    et donc d'après le lemme 2.5 le coût total de \hyperref[step:LLL]{\emph{LLL}} est \( \OO(n^2 \x n^2 \log A) \) opérations dans \( \Z \). Ce qui acheve la preuve.
-\end{proof}
+                    Initialement \( i + e - e^* = 2 \) et à la fin de LLL on a \( n + 1 + e - e^* = 2 \).
+                    On en déduit donc que \( e + e^* = 2e + n - 1 \in \mathcal{O}(n^2 \log A) \).
+                    et donc d'après le lemme 2.5 le coût total de LLL est \( \mathcal{O}(n^2 \times n^2 \log A) \) opérations dans \( \Z \). Ce qui acheve la preuve.
                 </div>
-
-
-
-
-                <div id="main-references"></div>
             </div>
 
         </main>

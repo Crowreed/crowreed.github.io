@@ -8,6 +8,7 @@
 .definition,
 .lemma,
 .notation,
+.proof,
 table{
   margin: 1.5rem 0rem;
 }
@@ -26,7 +27,23 @@ table{
 .paragraph ul,
 .definition ul,
 .lemma ul,
-.notation ul{
+.notation ul,
+.proof ul{
+  padding: 0rem 40px;
+}
+
+.remark ol, 
+.example ol, 
+.counterexample ol, 
+.proposition ol, 
+.theorem ol,
+.problem ol,
+.conjecture ol,
+.paragraph ol,
+.definition ol,
+.lemma ol,
+.notation ol,
+.proof ol{
   padding: 0rem 40px;
 }
 
@@ -40,7 +57,24 @@ table{
 .paragraph ul li,
 .definition ul li,
 .lemma ul li,
-.notation ul li{
+.notation ul li,
+.proof ul li{
+  padding: 2px 0px;
+}
+
+
+.remark ol li,
+.example ol li,
+.counterexample ol li,
+.proposition ol li,
+.theorem ol li,
+.problem ol li,
+.conjecture ol li,
+.paragraph ol li,
+.definition ol li,
+.lemma ol li,
+.notation ol li,
+.proof o&l li{
   padding: 2px 0px;
 }
 
@@ -70,6 +104,12 @@ table{
 }
 
 
+.proof > .label::before{
+  content: "Preuve.";
+}
+
+/*faire un aft'er pour le symbole qed*/
+ 
 
 .proposition > .label::before{
   content: "Proposition.";
@@ -98,7 +138,8 @@ table{
 
 .example, 
 .counterexample,
-.notation{
+.notation,
+.proof{
 
   font-weight: 200;
   font-style: italic;
@@ -231,17 +272,32 @@ hr{
   list-style-type: square;
 }
 
-.remark li,
-.example li,
-.counterexample li,
-.proposition li,
-.theorem li,
-.problem li,
-.conjecture li,
-.definition li,
-.lemma li,
-.paragraph li{
+.remark ul li,
+.example ul li,
+.counterexample ul li,
+.proposition ul li,
+.theorem ul li,
+.problem ul li,
+.conjecture ul li,
+.definition ul li,
+.lemma ul li,
+.paragraph ul li,
+.proof ul li{
   list-style-type:disc;
+}
+
+.remark ol li,
+.example ol li,
+.counterexample ol li,
+.proposition ol li,
+.theorem ol li,
+.problem ol li,
+.conjecture ol li,
+.definition ol li,
+.lemma ol li,
+.paragraph ol li,
+.proof ol li{
+  list-style-type:upper-roman;
 }
 
 
