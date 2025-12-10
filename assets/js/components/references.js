@@ -43,16 +43,23 @@ async function loadReferences() {
 
       // on fait maintenant la partie reference du bas
 
-      const container = document.getElementById('main-references');
+      if(refList.length>0) {
+
+        const container = document.getElementById('main-references');
 
       const h1 = document.createElement('h1');
       h1.textContent = "Références";
+      
       
       container.appendChild(h1);
 
       const ol = document.createElement('ol');
       ol.className = "references";
 
+        
+      }
+
+      
       refList.forEach(rr => {
 
         
