@@ -2,15 +2,30 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Réseaux euclidiens
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
-<link rel="stylesheet" href="/assets/css/base/root.css">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Réseaux euclidiens</title>
+
+        <meta
+            name="description"
+            content="Découvrez l'histoire et les fondements des réseaux euclidiens, de leurs origines au XVIIIe siècle avec Euler et Minkowski (1891) à leur rôle crucial dans la cryptographie moderne et post-quantique. Introduction aux concepts clés d'optimisation et de minimisation."
+        >
+        
+        <meta 
+            name="keywords"
+            content="réseaux euclidiens, cryptographie, cryptographie post-quantique, Hermann Minkowski, théorie géométrique des nombres, Leonhard Euler, optimisation, minimisation, Ajtai, Dwork, Regev, systèmes cryptographiques, difficultés algorithmiques, attaques quantiques."
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="stylesheet" href="/assets/css/base/root.css">
             <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
         <link rel="stylesheet" href="/assets/css/base/reset.css">
@@ -65,11 +80,7 @@
         </header>
         
         <main>
-            <!-- La table de contenu, le sommaire -->
-            <!-- On va essayer de rajouter la barre de scroll aujourd'hui -->
-             <!-- <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-10vyf6v" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CloseIcon"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg><span class="MuiTouchRipple-root css-w0pj6f"></span>-->
-            <!-- 7451eb -->
-               <div class="huhu hidden">
+               <div style="height:80vh;" class="huhu hidden">
 
                 <div>
                     <button id="eee">
@@ -81,27 +92,43 @@
                 </div>
                 
             </div>
-            <div id="toc"></div>
+            <div style="height:80vh;" id="toc"></div>
 
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
-                <!--Ceci est un commentaire-->
-                <!-- < &lt; > &gt;  & &amp;  &nbsp-->
                 <h1>Réseaux euclidiens</h1>
 
                 <div class="paragraph">
-                    L'étude des <strong>réseaux euclidiens </strong> puise ses racines dans les travaux mathématiques du XVIIIe siècle, notamment ceux de <strong><a target="_blank" href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> </strong> sur l'organisation géométrique des points dans l'espace. C'est cependant en <time datetime="1891">1891 </time> qu'<strong><a target="_blank" href="https://fr.wikipedia.org/wiki/Hermann_Minkowski">Hermann Minkowski</a> </strong> établit véritablement les fondements modernes avec l'introduction de la théorie géométrique des nombres, reliant explicitement les réseaux à divers problèmes d'<strong>optimisation </strong> et de <strong>minimisation</strong>. Ses résultats joueront ultérieurement un rôle déterminant dans le développement de la <strong>cryptographie moderne</strong>.
+                    L'étude des <strong>réseaux euclidiens</strong> puise ses racines dans les travaux mathématiques du
+                    <time datetime="17XX">XVIIIe</time> siècle, 
+                    notamment ceux de 
+                    <strong><a title="Voir la page wikipedia de Euler !" target="_blank" href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> </strong> 
+                    sur l'organisation géométrique des points dans l'espace. C'est cependant en <time datetime="1891">1891</time> 
+                    qu'
+                    <strong><a title="Voir la page wikipedia de Minkowski !" target="_blank" href="https://fr.wikipedia.org/wiki/Hermann_Minkowski">Hermann Minkowski</a> </strong> 
+                    établit véritablement les fondements modernes avec l'introduction de la théorie géométrique des nombres, reliant explicitement 
+                    les réseaux à divers problèmes d'<strong>optimisation</strong> et de <strong>minimisation</strong>. 
+                    Ses résultats joueront ultérieurement un rôle déterminant dans le développement de la <strong>cryptographie moderne</strong>.
                 </div>
                 
                 <div class="paragraph">
-                    Néanmoins, c'est au cours du XXe siècle, et plus particulièrement à partir des années <time datetime="1990">1990</time>, que les réseaux euclidiens connaissent une véritable intégration dans la <strong>cryptographie</strong>.
+                    Néanmoins, c'est au cours du 
+                    <time datetime="19XX">XXe</time> siècle,
+                    et plus particulièrement à partir des années <time datetime="1990">1990</time>,
+                    que les réseaux euclidiens connaissent une véritable intégration dans la <strong>cryptographie</strong>.
                 </div>
                 
                 <div class="paragraph">
-                    Les travaux de chercheurs tels que <strong><a target="_blank" href="https://fr.wikipedia.org/wiki/Mikl%C3%B3s_Ajtai">Ajtai</a> </strong>, <strong><a target="_blank" href="https://fr.wikipedia.org/wiki/Bernard_Dwork">Dwork</a> </strong> ou <strong><a target="_blank" href="https://fr.wikipedia.org/wiki/Oded_Regev">Regev</a> </strong> marquent alors un tournant décisif, en démontrant que les difficultés algorithmiques intrinsèques aux réseaux peuvent constituer une base solide pour la conception de nouveaux systèmes cryptographiques résistants aux attaques <strong>conventionnelles </strong> et <strong>quantiques </strong>. Ce chapitre vise précisément à introduire de manière approfondie les concepts fondamentaux liés aux réseaux euclidiens.
+                    Les travaux de chercheurs tels que 
+                    <strong><a title="Voir la page wikipedia de Ajtai !" target="_blank" href="https://fr.wikipedia.org/wiki/Mikl%C3%B3s_Ajtai">Ajtai</a> </strong>,
+                    <strong><a title="Voir la page wikipedia de Dwork !" target="_blank" href="https://fr.wikipedia.org/wiki/Bernard_Dwork">Dwork</a> </strong> ou
+                    <strong><a title="Voir la page wikipedia de Regev !" target="_blank" href="https://fr.wikipedia.org/wiki/Oded_Regev">Regev</a> </strong>
+                    marquent alors un tournant décisif,
+                    en démontrant que les difficultés algorithmiques intrinsèques aux réseaux peuvent constituer une base solide pour la
+                    conception de nouveaux systèmes cryptographiques résistants aux attaques <strong>conventionnelles</strong> et
+                    <strong>quantiques</strong>. Ce chapitre vise précisément à introduire de manière approfondie les concepts fondamentaux liés
+                    aux réseaux euclidiens.
                 </div>
             </div>
-
         </main>
 
         <footer id="main-footer"></footer>

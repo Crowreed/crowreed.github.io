@@ -2,14 +2,29 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Quelques problèmes algorithmiques liés aux réseaux euclidiens
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Quelques problèmes algorithmiques liés aux réseaux euclidiens</title>
+
+        <meta 
+            name="description"
+            content="Introduction aux problèmes algorithmiques fondamentaux sur les réseaux euclidiens : SVP (Shortest Vector Problem) et CVP (Closest Vector Problem), tous deux NP-complets. Détail des versions exactes et approximatives (SIVP_gamma, GapSVP_gamma, CVP_gamma), et leur complexité (temps exponentiel vs. LLL en temps polynomial)."
+        >
+    
+        <meta 
+            name="keywords"
+            content="problèmes algorithmiques réseaux euclidiens, SVP, Shortest Vector Problem, CVP, Closest Vector Problem, SIVP, GapSVP, GapCVP, NP-complet, cryptographie post-quantique, algorithme LLL, réduction de réseaux, complexité exponentielle, enumeration, crible, vecteur le plus court, vecteur le plus proche"
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+        
         
         <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
@@ -77,66 +92,71 @@
             </div>
             <div id="toc"></div>
 
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <h2>Quelques problèmes algorithmiques liés aux réseaux euclidiens</h2>
 
-                    <div class="paragraph">
-                        Cette section s’inspire largement des travaux de <a class="ref-boudgoust-2023"></a>, auxquels le lecteur intéressé pourra se référer pour un traitement plus approfondi.
-                        On définira deux problèmes algorithmiques important sur les réseaux euclidiens. 
-                        Il y en a beaucoup plus, <a class="ref-stephens-davidowitz-2015"></a> donne un aperçu des réductions entre ces problèmes.
-                    </div>
+                <div class="paragraph">
+                    Cette section s’inspire largement des travaux de <a class="ref-boudgoust-2023"></a>, auxquels le lecteur intéressé pourra se référer pour un traitement plus approfondi.
+                    On définira deux problèmes algorithmiques important sur les réseaux euclidiens. 
+                    Il y en a beaucoup plus, <a class="ref-stephens-davidowitz-2015"></a> donne un aperçu des réductions entre ces problèmes.
+                </div>
 
-                    <h3>Des problèmes faciles</h3>
-                    
-                    <div class="paragraph"> <!-- OK -->
-                        Certains problèmes liés aux réseaux euclidiens sont relativement simples à résoudre, notamment la vérification de l’appartenance d’un vecteur à un réseau donné, ou encore la décision de l’égalité de deux bases de réseaux. Le lecteur intéressé pourra s’exercer en tentant de résoudre ces problèmes.
-                    </div>
+                <h3>Des problèmes faciles</h3>
+                
+                <div class="paragraph"> <!-- OK -->
+                    Certains problèmes liés aux réseaux euclidiens sont relativement simples à résoudre, notamment la vérification de l’appartenance d’un vecteur à un réseau donné, ou encore la décision de l’égalité de deux bases de réseaux. Le lecteur intéressé pourra s’exercer en tentant de résoudre ces problèmes.
+                </div>
 
-                    <div class="problem"> <!-- OK -->
-                        <span class="title">Adhésion</span>
-                        <p>
-                            Étant donné une base $B$ d’un réseau $\mathscr{L}$, et $v \in \R^n$, décider si $v \in \mathscr{L}$.
-                        </p>
-                    </div>
+                <div class="problem"> <!-- OK -->
+                    <span class="title">Adhésion</span>
+                    <p>
+                        Étant donné une base $B$ d’un réseau $\mathscr{L}$, et $v \in \R^n$, décider si $v \in \mathscr{L}$.
+                    </p>
+                </div>
 
+                <div class="problem"> <!-- OK -->
+                    <span class="title">Équivalence</span>
+                    <p>
+                        Étant donné deux bases $B$ et $B'$, décider si $\mathscr{L}(B) = \mathscr{L}(B')$,
+                    </p>
+                </div>
 
-                    <div class="problem"> <!-- OK -->
-                        <span class="title">Équivalence</span>
-                        <p>
-                            Étant donné deux bases $B$ et $B'$, décider si $\mathscr{L}(B) = \mathscr{L}(B')$,
-                        </p>
-                    </div>
-
-                    <h3>Le problème du vecteur le plus court</h3>
-
-                    <div class="paragraph"> <!-- OK -->
-                        Considérons le problème suivant, paramétré par la dimension $n$ du réseau :
-                    </div>
-
-                    <div class="problem">
-                        <span class="title">Shortest Vector Problem (SVP), NP-complet, 
-                            <a class="ref-ajtai-1996"></a>  
-                        </span>
-                        <p>
-                            Étant donné une base $B$ d’un réseau $\mathscr{L}$, trouver un vecteur $v \neq \mathbf{0}$ tel que $\|v\|_2 = \lambda_1(\mathscr{L})$.
-                        </p>
-                    </div>
-
-                    <div class="paragraph">
-                        On ne connaît que des algorithmes demandant au moins un nombre exponentiel d'opérations pour résoudre ce problème, même en utilisant des algorithmes quantiques. 
-                        Les algorithmes de type <strong>énumération</strong> et les algorithmes de type <strong>crible</strong> se démarquent pour ce problème. 
-                        Le calcul d'un plus court vecteur dans un réseau euclidien de $\R^n$ est en général un problème difficile qui sert de fondation à de nombreuses primitives cryptographiques. On s’intéresse souvent à la version approximative :
-                    </div>
+                <h3>Le problème du vecteur le plus court</h3>
 
                 <div class="paragraph"> <!-- OK -->
-                    Ils énumèrent tous les vecteurs du réseau qui sont dans une certaine boule bien choisie, en pratique ils sont utilisés jusqu'aux dimensions $n \approx 80$. On peut leur ajouter des optimisations et des heuristiques.
+                    Considérons le problème suivant, paramétré par la dimension $n$ du réseau :
                 </div>
+
+                <div class="problem">
+                    <span class="title">Shortest Vector Problem (SVP), NP-complet, 
+                        <a class="ref-ajtai-1996"></a>  
+                    </span>
+                    <p>
+                        Étant donné une base $B$ d’un réseau $\mathscr{L}$, trouver un vecteur $v \neq \mathbf{0}$ tel que $\|v\|_2 = \lambda_1(\mathscr{L})$.
+                    </p>
+                </div>
+
+                <div class="paragraph">
+                    On ne connaît que des algorithmes demandant au moins un nombre exponentiel d'opérations pour résoudre ce problème,
+                    même en utilisant des algorithmes quantiques. 
+                    Les algorithmes de type <strong>énumération</strong> et les algorithmes de type <strong>crible</strong> se démarquent pour ce problème. 
+                    Le calcul d'un plus court vecteur dans un réseau euclidien de $\R^n$ est en général un problème difficile qui sert de fondation à de nombreuses primitives cryptographiques. On s’intéresse souvent à la version approximative :
+                </div>
+
+                <details>
+                    <summary>Algorithmes de type énumération</summary>
+                    <p>
+                        Ils énumèrent tous les vecteurs du réseau qui sont dans une certaine boule bien choisie, en pratique ils sont utilisés jusqu'aux dimensions $n \approx 80$. On peut leur ajouter des optimisations et des heuristiques.
+                    </p>
+                </details>
                     
-                <div class="paragraph"> <!-- OK -->
-                    On génère deux listes d'éléments du réseau, puis on construit la liste de toutes les différences entre les éléments des deux listes. On espère obtenir des vecteurs plus court. On recommence le procédé. Le temps d'exécution est en $2^{\mathcal{O}(n)}$.  
-                </div>
-  
+                <details>
+                    <summary>Algorithmes de type crible</summary>
+                    <p>
+                        On génère deux listes d'éléments du réseau, puis on construit la liste de toutes les différences entre les éléments des deux listes. On espère obtenir des vecteurs plus court. On recommence le procédé. Le temps d'exécution est en $2^{\mathcal{O}(n)}$.  
+                    </p>
+                </details>
+
                 <div class="problem"> <!-- OK -->
                     <span class="title">SIVP$_\gamma$, où $\gamma > 0$</span>
                     <p>
@@ -145,8 +165,12 @@
                 </div>
 
                 <figure class="figure"> <!-- OK -->
-                    <div class="fig-container"><img src="/assets/img/academic-projects/lattice-reduction/euclidean-algorithmic-problems/lattice_0_8.png" alt=""></div>
-                    <figcaption> <span class="label"></span>Une instance de SIVP.</figcaption>
+                    <div class="fig-container">
+                        <img
+                            src="/assets/img/academic-projects/lattice-reduction/euclidean-algorithmic-problems/lattice_0_8.png"
+                            alt="Diagramme montrant une instance du problème du vecteur le plus court (SIVP) dans un réseau euclidien. Les points noirs représentent le réseau. Un cercle bleu de rayon $\lambda_1$ entoure un point du réseau. Un cercle rouge, de rayon $\lambda_2$ (minimum successif), entoure également ce point, montrant les deux premières longueurs minimales du réseau.">
+                    </div>
+                    <figcaption>Une instance de SIVP.</figcaption>
                 </figure>
 
                 <div class="paragraph"> <!-- OK -->
@@ -156,19 +180,23 @@
                             Pour $\gamma = \mathcal{O}(1)$, le problème est prouvé <strong>NP-complet</strong>,
                             <a class="ref-ajtai-1996"></a> 
                         </li>
-                        <!-- Pas d'algo exp-->
-                        <li>Pour $\gamma = \text{poly}(n)$, il existe des algorithmes en <strong>temps exponentiel</strong>.</li>
+                        <li>
+                            Pour $\gamma = \text{poly}(n)$, il existe des algorithmes en <strong>temps exponentiel</strong>.
+                        </li>
                         <li class="nowrap">
                             Pour $\gamma = 2^{\mathcal{O}(n)}$, l’algorithme <strong>LLL</strong>
                             <a class="ref-lenstra-1982"></a>
-                            permet de le résoudre en <strong>temps polynomial</strong>.</li>
+                            permet de le résoudre en <strong>temps polynomial</strong>.
+                        </li>
                     </ul>
                 </div>
 
                 <div class="problem"> <!-- OK -->
                     <span class="title">GapSVP$_\gamma$, où $\gamma > 0$</span>
                     <p>           
-                        Étant donné une base $B$ du réseau $\mathscr{L}$, et $r \in \R_+^*$. Décider si \( \lambda_1(\mathscr{L}) \leq r \) (instance positive) ou \( \lambda_1(\mathscr{L}) > \gamma \cdot r \) (instance négative).
+                        Étant donné une base $B$ du réseau $\mathscr{L}$, et $r \in \R_+^*$. 
+                        Décider si \( \lambda_1(\mathscr{L}) \leq r \) (instance positive)
+                        ou \( \lambda_1(\mathscr{L}) > \gamma \cdot r \) (instance négative).
                     </p>
                 </div>
 
@@ -186,10 +214,11 @@
 
                 <div class="conjecture"> <!-- OK -->
                     <p>
-                        Il n'existe aucun algorithme classique ou quantique en temps polynomial qui approxime les problèmes de réseaux $\mathrm{SVP}_\gamma$, $\mathrm{GapSVP}_\gamma$ ou à un facteur polynomial près $\gamma$ (pour tous les réseaux d'entrée possibles).
+                        Il n'existe aucun algorithme classique ou quantique en temps polynomial qui approxime
+                        les problèmes de réseaux $\mathrm{SVP}_\gamma$, $\mathrm{GapSVP}_\gamma$ ou à un facteur polynomial près $\gamma$
+                        (pour tous les réseaux d'entrée possibles).
                     </p>
                 </div>
-
 
                 <h3>Le problème du vecteur le plus proche</h3> <!-- OK -->
                 
@@ -202,29 +231,37 @@
                         <a class="ref-ajtai-1996"></a> 
                     </span>
                     <p>
-                        Étant donnés $t \in \R^n$, un réseau $\mathscr{L}(B)$, trouver $v \in \mathscr{L}$ tel que $$\displaystyle \|t - v\|_2  = d(t, \mathscr{L}) := \min_{ v \in \mathscr{L}} \{ \|t - v\|_2  \}.$$
+                        Étant donnés $t \in \R^n$, un réseau $\mathscr{L}(B)$, trouver $v \in \mathscr{L}$ tel que
+                        $$
+                        \displaystyle \|t - v\|_2  = d(t, \mathscr{L}) := \min_{ v \in \mathscr{L}} \{ \|t - v\|_2  \}.
+                        $$
                     </p>
                 </div>
 
                 <div class="paragraph"> <!-- OK -->
-                    Le problème $\mathrm{CVP}$ est en général difficile pour un réseau arbitraire. Cependant, pour certaines familles spécifiques de réseaux, comme $\Z^n$, des algorithmes en temps polynomial sont connus. La qualité de la base choisie joue un rôle crucial dans la résolution du problème. De même, on peut considérer une version approximative :
+                    Le problème $\mathrm{CVP}$ est en général difficile pour un réseau arbitraire. 
+                    Cependant, pour certaines familles spécifiques de réseaux,
+                    comme $\Z^n$, des algorithmes en temps polynomial sont connus. 
+                    La qualité de la base choisie joue un rôle crucial dans la résolution du problème. 
+                    De même, on peut considérer une version approximative :
                 </div>
 
                 <div class="problem"> <!-- OK -->
                     <span class="title">CVP$_\gamma$, $\gamma > 0$</span>
                     <p>
-                        Étant donnés $t \in \R^n$, un réseau $\mathscr{L}(B)$, trouver $v \in \mathscr{L}$ tel que \(\|t - v\|_2  \leq \gamma \cdot d(t, \mathscr{L}).\)
+                        Étant donnés $t \in \R^n$, un réseau $\mathscr{L}(B)$, trouver $v \in \mathscr{L}$ tel que
+                        \(\|t - v\|_2  \leq \gamma \cdot d(t, \mathscr{L}).\)
                     </p>
                 </div>
 
                 <div class="problem"> <!-- OK -->
                     <span class="title">GapCVP$_\gamma$, $\gamma > 0$</span>
                     <p>
-                        Étant donné \( r \in \R_+^* \), $t \in \R^n$, un réseau $\mathscr{L}(B)$. Décider si il existe \( v \in \mathscr{L}\) tel que \( \|t - v\|_2  \leq r \) (instance positive) ou \( \|t - v\|_2  > \gamma \cdot r \) (instance négative)
+                        Étant donné \( r \in \R_+^* \), $t \in \R^n$, un réseau $\mathscr{L}(B)$. 
+                        Décider si il existe \( v \in \mathscr{L}\) tel que \( \|t - v\|_2  \leq r \) (instance positive) ou 
+                        \( \|t - v\|_2  > \gamma \cdot r \) (instance négative)
                     </p>
                 </div>
-
-                
 
                 <div class="theorem"> <!-- OK -->
                     <span class="title">
@@ -242,7 +279,13 @@
                 </div>
 
                 <div class="paragraph"> <!-- OK -->
-                    L'efficacité des algorithmes dépend grandement de la qualité de la base du réseau euclidien choisie. Le chapitre sur la réduction abordera des techniques pour améliorer la base, via l'algorithme <strong>LLL</strong>. En dimension fixée, résoudre <strong>exactement</strong> le problème <strong>SVP</strong> pour la norme $\|\cdot\|_\infty$ fournit en fait une $\gamma$-approximation (avec $\gamma$ dépendant de la dimension) pour le problème <strong>SVP</strong> dans la norme $\|\cdot\|_2$. Il existe notamment une constante $C$ telle que $\|v\|_2 \leq C \|v\|_\infty$ pour tout $v \in \R^n$. Ainsi, un vecteur minimisant $\|v\|_\infty$ donne un vecteur $\sqrt{n}$-proche du vecteur réellement le plus court en norme euclidienne.
+                    L'efficacité des algorithmes dépend grandement de la qualité de la base du réseau euclidien choisie.
+                    Le chapitre sur la réduction abordera des techniques pour améliorer la base, via l'algorithme <strong>LLL</strong>.
+                    En dimension fixée, résoudre <strong>exactement</strong> le problème <strong>SVP</strong> pour la norme 
+                    $\|\cdot\|_\infty$ fournit en fait une $\gamma$-approximation (avec $\gamma$ dépendant de la dimension)
+                    pour le problème <strong>SVP</strong> dans la norme $\|\cdot\|_2$. Il existe notamment une constante $C$ 
+                    telle que $\|v\|_2 \leq C \|v\|_\infty$ pour tout $v \in \R^n$. Ainsi, un vecteur minimisant $\|v\|_\infty$
+                    donne un vecteur $\sqrt{n}$-proche du vecteur réellement le plus court en norme euclidienne.
                 </div>
             </div>
         </main>

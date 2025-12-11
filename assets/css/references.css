@@ -49,6 +49,8 @@
 
   border-radius: 5px;
   transition: background-color 0.2s;
+
+  color: var(--primary-text-color) !important;
 }
 .cite:hover{
 
@@ -69,7 +71,7 @@
 
   /* layout */
   position: absolute;
-  top: 0em;
+  top: 0.1em;
   left: 0em;
 
   /* generated content */
@@ -81,19 +83,14 @@
   /* layout */
   position: absolute;
   top: -0.2em;
-  right: 0.6em;
+  right: 0.3em;
   
   /* generated content */
   content: "↗";
 
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.cite:hover::after {
-
   opacity: 1;
 }
+
 
 .references li a{
 

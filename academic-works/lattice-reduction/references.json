@@ -111,7 +111,7 @@
     },
     {
         "id": "ref-boudgoust-2023",
-        "type":"Lecture Notes",
+        "type":"paper",
         "url": "",
         "title":"Hardness Assumptions in Lattice-Based Cryptography",
         "year":"2023",
@@ -164,16 +164,16 @@
         "year":"1982",
         "authors":[
             {
-                "given":"Lenstra",
-                "family":""
+                "given":"Arjen Klaas",
+                "family":"Lenstra"
             },
             {
-                "given":"Lenstra",
-                "family":""
+                "given":"Hendrik Willem",
+                "family":"Lenstra"
             },
             {
-                "given":"Lovász",
-                "family":""
+                "given":"László",
+                "family":"Lovász"
             }
         ]
     },
@@ -382,14 +382,14 @@
     },
     {
         "id": "ref-stephens-davidowitz-2015",
-        "type":"",
+        "type":"paper",
         "url": "http://noahsd.com/latticeproblems.pdf",
         "title":"Dimension-Preserving Reductions Between Lattice Problems",
         "year":"2015",
         "authors":[
             {
-                "given":"Noah Stephens-Davidowitz",
-                "family":""
+                "given":"Noah",
+                "family":"Stephens-Davidowitz"
             }
         ]
     },

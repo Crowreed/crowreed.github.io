@@ -2,16 +2,36 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Réseaux euclidiens : Définitions et exemples
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
-<link rel="stylesheet" href="/assets/css/base/root.css">
-           <link rel="stylesheet" href="/assets/css/base/base.css">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Réseaux euclidiens : Définitions et exemples</title>
+
+        <meta
+            name="description"
+            content="Définition et propriétés fondamentales des réseaux euclidiens, incluant les notions de base, de rang, de volume (taille) et du vecteur minimal. Introduction au Premier Théorème de Minkowski et à la constante d'Hermite, essentiels pour la réduction de réseaux en cryptographie."
+        >
+        
+        <meta
+            name="keywords"
+            content="réseaux euclidiens, définition réseau, produit scalaire, norme euclidienne, base de réseau, rang de réseau, sous-groupe discret, Z-module libre, taille de réseau, volume de réseau, déterminant, vecteur minimal λ1​, Premier Théorème de Minkowski, constante de Hermite, constante γn​, inégalité d'Hadamard, réduction de réseaux, groupe unimodulaire, réseau d'Eisenstein."
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+
+
+        
+        
+
+        <link rel="stylesheet" href="/assets/css/base/root.css">
+        <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
         <link rel="stylesheet" href="/assets/css/base/reset.css">
         <link rel="stylesheet" href="/assets/css/base/utils.css">
@@ -49,8 +69,6 @@
             });
             });
         </script>
-
-    <!-- on va essayèer de faire le code ici poiur le t'oc-->
             
 
     </head>
@@ -85,21 +103,32 @@
 
             <div id="toc"></div>
             
-
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <h2>Définition et exemples</h2>
                 
                 <div class="paragraph">
-                    Nous considérons un <strong>espace euclidien</strong>, c'est-à-dire un espace vectoriel réel de dimension finie muni d'un produit scalaire, noté $\langle f , g \rangle$. Dans ce chapitre, nous utiliserons le <strong>produit scalaire usuel</strong> défini par $\langle f , g \rangle \coloneqq f \cdot g = \sum_{i=1}^{n} f_i g_i$, lequel induit la norme-2 donnée par $\|f\|_2 = \sqrt{\sum_{i=1}^{n} f_i^2}$. Pour alléger les notations, nous omettrons l'indice $2$.
+                    Nous considérons un <strong>espace euclidien</strong>, c'est-à-dire un espace vectoriel réel de dimension finie
+                    muni d'un produit scalaire, noté $\langle f , g \rangle$.
+                    Dans ce chapitre, nous utiliserons le <strong>produit scalaire usuel</strong> défini par 
+                    $\langle f , g \rangle \coloneqq f \cdot g = \sum_{i=1}^{n} f_i g_i$, lequel induit la norme-2 donnée par
+                    $\|f\|_2 = \sqrt{\sum_{i=1}^{n} f_i^2}$. Pour alléger les notations, nous omettrons l'indice $2$.
                 </div>
 
                 <div class="paragraph"> <!-- OK -->
-                    Ce chapitre se contentera d'exposer les résultats classiques, sans chercher à les redémontrer. Rappelons qu'au sein de $\mathbb{R}^n$, toutes les normes sont équivalentes, cequi signifie qu'aucune ne change la nature intrinsèque des problèmes que nous aborderons. Nous nous concentrerons néanmoins sur la norme-$2$ pour sa simplicité géométrique, car elle offre une mesure intuitive des longueurs et des angles, point essentiel pour étudier la structure des <strong>réseaux euclidiens</strong>.
+                    Ce chapitre se contentera d'exposer les résultats classiques, sans chercher à les redémontrer.
+                    Rappelons qu'au sein de $\mathbb{R}^n$, toutes les normes sont équivalentes, cequi signifie qu'aucune ne change
+                    la nature intrinsèque des problèmes que nous aborderons. Nous nous concentrerons néanmoins sur la norme-$2$ pour
+                    sa simplicité géométrique, car elle offre une mesure intuitive des longueurs et des angles, point essentiel pour
+                    étudier la structure des <strong>réseaux euclidiens</strong>.
                 </div>
 
                 <div class="paragraph"> <!-- OK -->
-                    Afin de simplifier l'écriture, nous désignerons par $B=(b_i)_{1 \leq i \leq n}$ une base de $\mathbb{R}^n$ et par $B^∗ = (b^∗_i )_{1 \leq i \leq n}$ sa base orthogonalisée par le procédé de Gram-Schmidt. Les matrices $B$ et $B^∗$ (sans calligraphie) seront composées (en ligne) des vecteurs de la famille $(b_i)_{1 \leq i \leq n}$ et $(b^∗_i)_{1 \leq i \leq n}$ respectivement. On commence par introduire la notion de réseau euclidien. Pour un rappel sur les groupes ou les modules le lecteur est invité à lire les annexes correspondantes. Le point de vue de module nous sera utile dans la suite de ce manuscrit.
+                    Afin de simplifier l'écriture, nous désignerons par $B=(b_i)_{1 \leq i \leq n}$ une base de $\mathbb{R}^n$
+                    et par $B^∗ = (b^∗_i )_{1 \leq i \leq n}$ sa base orthogonalisée par le procédé de Gram-Schmidt.
+                    Les matrices $B$ et $B^∗$ (sans calligraphie) seront composées (en ligne) des vecteurs de la famille $(b_i)_{1 \leq i \leq n}$
+                    et $(b^∗_i)_{1 \leq i \leq n}$ respectivement. On commence par introduire la notion de réseau euclidien.
+                    Pour un rappel sur les groupes ou les modules le lecteur est invité à lire les annexes correspondantes.
+                    Le point de vue de module nous sera utile dans la suite de ce manuscrit.
                 </div>
 
                 <div class="definition">
@@ -108,37 +137,52 @@
                     </p>
 
                     <ul>
-                        <li> Un <strong>réseau euclidien </strong> $\mathscr{L}$ est un sous-groupe discret additif de $\R^n$. </li>
+                        <li>
+                            Un <strong>réseau euclidien </strong> $\mathscr{L}$ est un sous-groupe discret additif de $\R^n$.
+                        </li>
                         <li style="list-style-type: none;">
                             <ul>
-                                <li> Sous-groupe additif : $\mathbf{0} \in \mathscr{L}$, et pour tout $x, y \in \mathscr{L}$, $x + y, -x \in \mathscr{L}$ </li>
-                                <li> Discret : $\forall x \in \mathscr{L}, \exists \varepsilon > 0$ tel que $\mathcal{B}(x, \varepsilon) \cap \mathscr{L} = \{x\}$ <br> (où $\mathcal{B}(x, \varepsilon)$ désigne la boule ouverte de rayon $\varepsilon$ centrée en $x$). </li>
+                                <li>
+                                    Sous-groupe additif : 
+                                    $\mathbf{0} \in \mathscr{L}$, et pour tout $x, y \in \mathscr{L}$, $x + y, -x \in \mathscr{L}$ 
+                                </li>
+                                <li>
+                                    Discret :
+                                    $\forall x \in \mathscr{L}, \exists \varepsilon > 0$ tel que $\mathcal{B}(x, \varepsilon) \cap \mathscr{L} = \{x\}$ <br> 
+                                    (où $\mathcal{B}(x, \varepsilon)$ désigne la boule ouverte de rayon $\varepsilon$ centrée en $x$).
+                                </li>
                             </ul>
                         </li>
-                        <li> Un <strong>réseau euclidien</strong> $\mathscr{L}$ est un $\Z$-module libre de type fini de $\R^n$. </li>
+                        <li>
+                            Un <strong>réseau euclidien</strong> $\mathscr{L}$ est un $\Z$-module libre de type fini de $\R^n$.
+                        </li>
                     </ul>
                 </div>
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Différentes définitions d'un réseau euclidien</span>
-                        </span>
+                        <span class="title">Différentes définitions d'un réseau euclidien</span>
                     </summary>
                     <p>
-                        Plusieurs définitions équivalentes d’un réseau euclidien coexistent dans la littérature, selon que l’on se place ou non dans un espace euclidien $\R^n$, ou dans un espace $\R^n$ équipé explicitement d’une forme quadratique définie positive. Dans tous les cas, l’idée générale reste la même : un réseau euclidien est un sous-ensemble discret de $\R^n$ formé par toutes les combinaisons linéaires entières d’un ensemble de vecteurs générateurs.
+                        Plusieurs définitions équivalentes d’un réseau euclidien coexistent dans la littérature, selon que l’on se place ou non 
+                        dans un espace euclidien $\R^n$, ou dans un espace $\R^n$ équipé explicitement d’une forme quadratique définie positive.
+                        Dans tous les cas, l’idée générale reste la même : un réseau euclidien est un sous-ensemble discret de $\R^n$ formé par
+                        toutes les combinaisons linéaires entières d’un ensemble de vecteurs générateurs.
                     </p>
                 </details>
 
                 <div class="definition"> <!-- OK -->
                     <p>
-                        Un <strong>sous-réseau </strong>$\mathscr{L}'$ de $\mathscr{L}$ est un sous groupe de $\mathscr{L}$, on notera $\mathscr{L}' \subseteq \mathscr{L}$.
+                        Un <strong>sous-réseau </strong>$\mathscr{L}'$ de $\mathscr{L}$ est un sous groupe de $\mathscr{L}$,
+                        on notera $\mathscr{L}' \subseteq \mathscr{L}$.
                     </p>
                 </div>
 
                 <div class="example"> <!-- OK -->
-                    <p class="nowrap">Les entiers de Gauss, définit par $\Z[i]:= \Z \oplus i \Z$ forment un réseau de rang $2$ dans $\mathbb{C}$, c'est même un anneau.</p>
+                    <p class="nowrap">
+                        Les entiers de Gauss, définit par $\Z[i]:= \Z \oplus i \Z$ forment un réseau de rang $2$ dans
+                        $\mathbb{C}$, c'est même un anneau.
+                    </p>
                 </div>
 
                 <div class="example"> <!-- OK -->
@@ -149,26 +193,37 @@
                 
                 <div class="counterexample">
                     <p class="nowrap">
-                        $\mathbb{Q}$ n'est pas un réseau euclidien, car $\mathbb{Q}$ est dense dans $\mathbb{R}$, ce qui brise la discrétude, bien que ce soit un sous-groupe de $\mathbb{R}$.
+                        $\mathbb{Q}$ n'est pas un réseau euclidien, car $\mathbb{Q}$ est dense dans $\mathbb{R}$, ce qui brise la discrétude,
+                         bien que ce soit un sous-groupe de $\mathbb{R}$.
                     </p>
                 </div>
 
                 <div class="paragraph">
-                    En particulier on peut montrer qu'il existe une famille $\Z$-libre maximale $(b_i)_{1 \leq i \leq m}$ dans $\mathscr{L}$ telle que $$\mathscr{L} = \bigoplus\limits_{1 \leq i \leq m} \Z b_i:=\{a_1 b_1 + \cdots a_m b_m : a_i \in \Z\}$$ Cette famille est appelée <strong>base</strong> de $\mathscr{L}$, si on note $B$ la matrice de la famille $(b_i)_{1 \leq i \leq m}$ on notera $\mathscr{L}(B)$ le réseau de base $B$, donc <strong>engendré</strong> par la famille $(b_i)_{1 \leq i \leq m}$. L'entier $m$ est commun à toutes les bases de $\mathscr{L}$ et on l'appelle <strong>rang</strong> de $\mathscr{L}$. Lorsque $n=m$, on dit que le réseau est de <strong>rang plein</strong>.
+                    En particulier on peut montrer qu'il existe une famille $\Z$-libre maximale $(b_i)_{1 \leq i \leq m}$ dans
+                    $\mathscr{L}$ telle que 
+                    
+                    $$
+                    \mathscr{L} = \bigoplus\limits_{1 \leq i \leq m} \Z b_i:=\{a_1 b_1 + \cdots a_m b_m : a_i \in \Z\}
+                    $$
+                    
+                    Cette famille est appelée <strong>base</strong> de $\mathscr{L}$, si on note $B$ la matrice de la famille
+                    $(b_i)_{1 \leq i \leq m}$ on notera $\mathscr{L}(B)$ le réseau de base $B$, donc <strong>engendré</strong> 
+                    par la famille $(b_i)_{1 \leq i \leq m}$. L'entier $m$ est commun à toutes les bases de $\mathscr{L}$ et on 
+                    l'appelle <strong>rang</strong> de $\mathscr{L}$. Lorsque $n=m$, on dit que le réseau est de <strong>rang plein</strong>.
                 </div>
 
                 <div class="example"> <!-- OK -->
                     <p>
-                        On a la suite d'inclusions $$2\Z \subset \Z \subset \frac{1}{2}\Z$$ Bien que $$rang(2\Z) = rang(\Z) = rang\left(\frac{1}{2}\Z\right)$$, ces ensembles sont distincts. Cela montre que, contrairement aux espaces vectoriels, avoir une relation d'inclusion et avoir le même rang ne suffit pas à garantir l'égalité des réseaux.
+                        On a la suite d'inclusions $$2\Z \subset \Z \subset \frac{1}{2}\Z$$
+                        Bien que $$rang(2\Z) = rang(\Z) = rang\left(\frac{1}{2}\Z\right)$$, ces ensembles sont distincts. 
+                        Cela montre que, contrairement aux espaces vectoriels, avoir une relation d'inclusion et avoir le même rang
+                        ne suffit pas à garantir l'égalité des réseaux.
                     </p>
                 </div>
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Définition de a\(\Z\)</span>
-                        </span>
+                        <span class="title">Définition de a\(\Z\)</span>
                     </summary>
                     <p>
                         On rappelle que pour $ a \in \R $, on a \( a\Z = \{ an \in \R | n \in \Z \} \).
@@ -176,39 +231,45 @@
                 </details>
 
                 <div class="paragraph"> <!-- OK -->
-                    Existe-t-il une notion de <strong>bonne</strong> base ? Nous verrons qu'une base idéale est celle qui est en un sens la plus orthogonale possible. Il n'existe pas toujours de base strictement orthogonale, ce qui justifie la notion de quasi-orthogonalité. Nous allons rajouter des façons de mesurer la qualité d'une base dans le chapitre suivant et introduire la notion de réduction, qui consistera à trouver une telle base.
+                    Existe-t-il une notion de <strong>bonne</strong> base ? Nous verrons qu'une base idéale est celle qui est en un sens
+                    la plus orthogonale possible. Il n'existe pas toujours de base strictement orthogonale, ce qui justifie la notion
+                    de quasi-orthogonalité. Nous allons rajouter des façons de mesurer la qualité d'une base dans le chapitre suivant
+                    et introduire la notion de réduction, qui consistera à trouver une telle base.
                 </div>
 
                 <figure> <!-- OK -->
                     <div class="subfig-container">
                         <figure class="subfigure">
-                            <img src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/lattice_0_2.png" alt="" srcset="">
-                            <figcaption><span class="label"></span> $B = \begin{pmatrix} 3 & -1 \\ 2 & 0 \end{pmatrix}$ </figcaption>
+                            <img 
+                                src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/lattice_0_2.png"
+                                alt="Diagramme du réseau euclidien en R2, montrant la base B définie par les vecteurs (3, 2) et (-1, 0) tracés à partir de l'origine.">
+                            <figcaption>$B = \begin{pmatrix} 3 & -1 \\ 2 & 0 \end{pmatrix}$ </figcaption>
                         </figure>
                         <figure class="subfigure">
-                             <img src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/lattice_1_2.png" alt="" srcset="">
-                            <figcaption><span class="label"></span> $B' = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$ </figcaption>
+                            <img
+                                src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/lattice_1_2.png"
+                                alt="Diagramme du même réseau euclidien en R2, montrant une autre base B' définie par les vecteurs (1, 1) et (1, -1).">
+                            <figcaption>$B' = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$ </figcaption>
                         </figure>
                     </div>
                         
-                    <figcaption><span class="label"></span>Deux bases pour le même réseau de $\R^2$.</figcaption>
+                    <figcaption>Deux bases pour le même réseau de $\R^2$.</figcaption>
                 </figure> 
 
                 <div class="definition"> <!-- OK -->
                     <p class="nowrap">
-                        La <strong>taille</strong> d'un réseau $\mathscr{L}(B)$ est $|det(B)|$ et est noté $|\mathscr{L}|$. La taille d'un réseau est indépendante de la base choisie.
+                        La <strong>taille</strong> d'un réseau $\mathscr{L}(B)$ est $|det(B)|$ et est noté $|\mathscr{L}|$. 
+                        La taille d'un réseau est indépendante de la base choisie.
                     </p>
                 </div>
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">taille, volume</span>
-                        </span>
+                        <span class="title">taille, volume</span>
                     </summary>
                     <p>
-                        <strong>taille</strong> et <strong>volume</strong> sont synonymes, mais l'usage le plus courant dans la littérature anglaise est "déterminant du réseau" ou "volume".
+                        <strong>taille</strong> et <strong>volume</strong> sont synonymes, mais l'usage le plus courant dans la 
+                        littérature anglaise est "déterminant du réseau" ou "volume".
                     </p>
                 </details>
                 
@@ -221,34 +282,56 @@
                 </div>
 
                 <div class="theorem"> <!-- OK -->
-                    (Inégalité d'Hadamard). <br>
+                    <span class="title">Inégalité d'Hadamard</span> <br>
                     <p>
-                        Soit $B \in M_n(\mathbb{K})$ et $\mathscr{L}(B)$ un réseau. Alors $$|\mathscr{L}|=|\det(B)| \leq \prod_{i=1}^{n} \| b_i \|$$ La borne est atteinte si, et seulement si $(b_i)_{1 \leq i \leq n}$ est une famille orthogonale.
+                        Soit $B \in M_n(\mathbb{K})$ et $\mathscr{L}(B)$ un réseau.
+                        Alors $$|\mathscr{L}|=|\det(B)| \leq \prod_{i=1}^{n} \| b_i \|$$ La borne est atteinte si, et seulement si
+                        $(b_i)_{1 \leq i \leq n}$ est une famille orthogonale.
                     </p>
                 </div>
 
                 <div class="paragraph">
-                    Toutes les bases d'un réseau euclidien diffèrent d'une transformation de déterminant $\pm 1$. L'ensemble de ces transformations est connu sous le nom de groupe unimodulaire. Un ensemble de points non alignés dans un réseau ne constitue pas une base si son déterminant est différent de $\pm |\mathscr{L}|$.
+                    Toutes les bases d'un réseau euclidien diffèrent d'une transformation de déterminant $\pm 1$.
+                    L'ensemble de ces transformations est connu sous le nom de groupe unimodulaire.
+                    Un ensemble de points non alignés dans un réseau ne constitue pas une base si son déterminant est différent de $\pm |\mathscr{L}|$.
                 </div>
 
                 <div class="proposition"> <!-- OK -->
                     <p>
-                        Soit $\mathscr{L}$ et $\mathscr{L}'$ deux réseaux de rang $n$ de base $B$ et $B'$. Alors $\mathscr{L}$ = $\mathscr{L}'$ si et seulement si il existe $ U \in \mathrm{GL}_n(\Z)$ tel que $B'=BU$.<br>
-                        Où $\mathrm{GL}_n(\Z)= \{M \in \Z^{n x n} | det (M) = \pm 1\}$.
+                        Soit $\mathscr{L}$ et $\mathscr{L}'$ deux réseaux de rang $n$ de base $B$ et $B'$. <br>
+                        Alors $\mathscr{L}$ = $\mathscr{L}'$ si et seulement si il existe $ U \in \mathrm{GL}_n(\Z)$ tel que $B'=BU$.<br>
                     </p>
                 </div>
 
+                <details>
+                    <summary>
+                        <span class="title">$\mathrm{GL}_n(\Z)$</span>
+                    </summary>
+                    <p>
+                        Où $\mathrm{GL}_n(\Z)= \{M \in \Z^{n \times n} | det (M) = \pm 1\}$.
+                    </p>
+                </details>
+
                 <div class="remark">
                     <p>
-                        On a l'action de groupe $$ \begin{align*} \mathrm{GL}_n(\Z) \times \mathrm{GL}_n(\R) &\longrightarrow \mathrm{GL}_n(\R) \\ (U, \mathbf{B}) &\longmapsto \mathbf{B}U \end{align*}$$ Un réseau est exactement une orbite de cette action. Nous verrons dans le chapitre suivant que la réduction de réseaux consiste à trouver un bon représentant pour chaque orbite.
+                        On a l'action de groupe
+                        $$
+                        \begin{align*} \mathrm{GL}_n(\Z) \times \mathrm{GL}_n(\R) &\longrightarrow \mathrm{GL}_n(\R) \\ (U, \mathbf{B}) &\longmapsto \mathbf{B}U \end{align*}
+                        $$
+                        Un réseau est exactement une orbite de cette action.
+                        Nous verrons dans le chapitre suivant que la réduction de réseaux consiste à trouver un bon représentant pour chaque orbite.
                     </p>
                 </div>
 
                 <div class="paragraph"> <!-- OK -->
                     Nous présentons maintenant deux <strong>invariants</strong> fondamentaux d'un réseau : 
                     <ul>
-                        <li>La <strong>taille du vecteur minimal </strong> du réseau, notée $\lambda_1(\mathscr{L})$.</li>
-                        <li>Le <strong>volume du réseau </strong>, aussi appelé la <strong>taille du réseau</strong> souvent désigné par $|\mathscr{L}|$.</li>
+                        <li>
+                            La <strong>taille du vecteur minimal </strong> du réseau, notée $\lambda_1(\mathscr{L})$.
+                        </li>
+                        <li>
+                            Le <strong>volume du réseau </strong>, aussi appelé la <strong>taille du réseau</strong> souvent désigné par $|\mathscr{L}|$.
+                        </li>
                     </ul>
                 </div>
 
@@ -268,10 +351,7 @@
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Autre vision de \( \lambda_1 \)</span>
-                        </span>
+                        <span class="title">Autre vision de \( \lambda_1 \)</span>
                     </summary>
                     <p>
                         On peut aussi le définir comme $\lambda_1(\mathscr{L}) = \min\{r>0 : |\mathcal{B}(r)\cap\mathscr{L}|>1\} \in \R_+$.
@@ -304,10 +384,7 @@
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span> 
-                            <span class="title">Fonction \(\Gamma\)</span>
-                        </span> 
+                        <span class="title">Fonction \(\Gamma\)</span>
                     </summary>
                     <p>
                         La fonction \(\Gamma\), appelée fonction gamma, généralise la notion de factorielle aux nombres réels (et complexes). Elle est définie, pour tout \(z \in \mathbb{C}\), par la formule suivante : \[\Gamma(z) = \int_0^{+\infty} t^{z-1} e^{-t} \, dt.\]
@@ -323,17 +400,13 @@
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Empilement compact</span>
-                        </span>
+                        <span class="title">Empilement compact</span>
                     </summary>
                     <p>
                         Un empilement compact d'une collection d'objets est un agencement de ces objets de telle sorte qu'ils occupent le moins d'espace possible.
                     </p>
                 </details>
                 
-                <!-- Expliquer c'est quoi un empilement comapct dans un autre article -->
                 <div class="example"> <!-- OK -->
                     On ne connaît pas la valeur exacte de \( \gamma_n \) pour tout \( n \). Seuls les valeurs dans le tableau suivant sont connues de manières exactes.
                 
@@ -349,16 +422,13 @@
                             </table>
                         </div>
 
-                        <figcaption><span class="label"></span>Valeurs connues de $ \gamma _n$</figcaption>
+                        <figcaption>Valeurs connues de $ \gamma _n$</figcaption>
                     </figure>
                 </div>
                 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Empilements compacts connus</span>
-                        </span>
+                        <span class="title">Empilements compacts connus</span>
                     </summary>
 
                     <div class="paragraph">
@@ -377,7 +447,7 @@
                         </ul>
 
                         <div class="paragraph">
-                            Des avancées majeures ont été obtenues pour les <strong>dimensions</strong> $n = 8$ et $n = 24$ grâce à la mathématicienne ukrainienne Maryna Viazovska, qui a démontré l’optimalité du réseau $E_8$ 
+                            Des avancées majeures ont été obtenues pour les <strong>dimensions</strong> $n = 8$ et $n = 24$ grâce à la mathématicienne ukrainienne Maryna Viazovska, qui a démontré l’optimalité du réseau $E_8$ <br>
                             <a class="ref-viazovska-2016"></a>
                             et, en collaboration, celle du réseau de Leech
                             <a class="ref-henry-2016"></a>
@@ -390,32 +460,40 @@
                     On sait que \( ( \gamma _n)_n \) est une suite d'ordre de croissance linéaire mais on ne sait pas si elle est croissante.
                 </div>
 
-
                 <div class="example">
                     <p>
-                        Le <strong>réseau d'Eisenstein</strong>, ou <strong>réseau en nid d'abeille</strong>, est un réseau de \(\R^2\) de rang $2$, engendré par la base 
+                        Le <strong>réseau d'Eisenstein</strong>, ou <strong>réseau en nid d'abeille</strong>,
+                        est un réseau de \(\R^2\) de rang $2$, engendré par la base 
                         \(
                         \begin{pmatrix}
                             1 & \frac{1 + \sqrt{3}}{2} \\
                             1 & \frac{1 - \sqrt{3}}{2}
                         \end{pmatrix} \). 
                         On a \(|\mathscr{L}| = \sqrt{3},  \lambda_1 = \sqrt{2}, \gamma(\mathscr{L}) = \frac{2}{\sqrt{3}}\).
-                        En traçant des sphères de centre les points du réseaux et de rayon \(\sqrt{2}\), on obtient l'empilement compact le plus dense en dimension $2$.
+                        En traçant des sphères de centre les points du réseaux et de rayon \(\sqrt{2}\),
+                        on obtient l'empilement compact le plus dense en dimension $2$.
                     </p>
                     
                      <figure>
-                        <img src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/hexagonal_lattice.png" alt="" srcset="" width="200">
-                        <figcaption><span class="label"></span>Empilement hexagonal dans \(\R^2\)</figcaption>
+                        <img
+                            src="/assets/img/academic-projects/lattice-reduction/euclidean-lattices-definitions/hexagonal_lattice.png"
+                            alt="Diagramme montrant un empilement hexagonal compact de cercles dans le plan R2, avec des points de couleur au centre de chaque cercle pour indiquer la structure."
+                            width="200">
+                        <figcaption>Empilement hexagonal dans \(\R^2\)</figcaption>
                     </figure>
                 </div>
-                    <div class="proposition">
-                        <p>
-                            Soit $\mathscr{L}\subset \R^n$ un réseau de base $(b_i)_{1 \leq i \leq n}$ et sa base de Gram-Schmidt associée $(b_i^*)_{1 \leq i \leq n}$. Alors pour tout $v \in \mathscr{L}\backslash \{\mathbf{0}\}$, on a $$\lambda_1(\mathscr{L}) \geq \|v\| \geq \min_{1 \le i \le n} \|b_i^*\|$$ 
-                        </p>
-                    </div>
-                    <div class="paragraph"> <!-- OK -->
-                        Tous ces résultats et inégalités vont nous donner des critères de mesure de la qualité de réduction d'une base dans le chapitre sur la réduction de réseaux euclidiens.
-                    </div>
+
+                <div class="proposition">
+                    <p>
+                        Soit $\mathscr{L}\subset \R^n$ un réseau de base $(b_i)_{1 \leq i \leq n}$
+                        et sa base de Gram-Schmidt associée $(b_i^*)_{1 \leq i \leq n}$.
+                        Alors pour tout $v \in \mathscr{L}\backslash \{\mathbf{0}\}$, on a $$\lambda_1(\mathscr{L}) \geq \|v\| \geq \min_{1 \le i \le n} \|b_i^*\|$$ 
+                    </p>
+                </div>
+                    
+                <div class="paragraph"> <!-- OK -->
+                    Tous ces résultats et inégalités vont nous donner des critères de mesure de la qualité de réduction d'une base dans le chapitre sur la réduction de réseaux euclidiens.
+                </div>
             </div>
         </main>
 

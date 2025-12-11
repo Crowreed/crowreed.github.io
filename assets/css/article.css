@@ -37,6 +37,7 @@
 .lemma,
 .notation,
 .proof,
+details,
 table{
   margin: 1.5rem 0rem;
 }
@@ -49,6 +50,10 @@ table{
 .paragraph a{
   display: inline;
   text-decoration: underline;
+}
+
+#article a {
+  color: var(--secondary-text-color);
 }
 
 .paragraph a:hover{

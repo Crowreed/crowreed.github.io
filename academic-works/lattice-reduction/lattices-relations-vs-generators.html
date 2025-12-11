@@ -2,16 +2,32 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Réseaux définis par des relations plutôt que par des générateurs
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="/assets/css/base/root.css">
+        <title>Réseaux définis par des relations plutôt que par des générateurs</title>
+
+        <meta 
+            name="description"
+            content="Étude approfondie du concept de réseau dual (L^vee), de ses propriétés (rang, volume inverse), et du Théorème de Transfert. Introduction aux réseaux speciaux : réseau A_n et réseaux q-aires essentiels en cryptographie à base de réseaux."
+        >
+        
+        <meta 
+            name="keywords"
+            content="réseau dual, auto-dual, Théorème de Transfert, lambda 1, lambda n, minima successifs, Banaszczyk, réseau An, réseaux q-aires, cryptographie à base de réseaux, Lq(A), Lq_perp(A^T), dualité des réseaux, volume inverse"
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        
+        
+            <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
         <link rel="stylesheet" href="/assets/css/base/reset.css">
@@ -81,150 +97,208 @@
 
             <div id="toc"></div>
 
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <h2>Réseaux définis par relations plutôt que par générateurs</h2> <!-- OK -->
 
-                    <div class="definition"> <!-- OK -->
-                        <p>
-                            Soit $\mathscr{L}\subset \R^n$ un réseau de base $(b_i)_{1 \leq i \leq n}$. Le <strong>dual</strong> de \( \mathscr{L}\) est défini par \[ \mathscr{L}^\vee:=\{ x \in \R^n ~|~ \forall y \in \mathscr{L}, \langle x, y \rangle \in \Z\}.\]
-                        </p>
+                <div class="definition"> <!-- OK -->
+                    <p>
+                        Soit $\mathscr{L}\subset \R^n$ un réseau de base $(b_i)_{1 \leq i \leq n}$.
+                        Le <strong>dual</strong> de \( \mathscr{L}\) est défini par 
+                        \[
+                        \mathscr{L}^\vee:=\{ x \in \R^n ~|~ \forall y \in \mathscr{L}, \langle x, y \rangle \in \Z\}.
+                        \]
+                    </p>
+                </div>
+
+                <div class="proposition">
+                    <p>
+                        On a $\mathscr{L}= \mathscr{L}(b_1, \ldots, b_m)$ si et seulement si 
+                        $\mathscr{L}^\vee= \mathscr{L}(b_1^\vee, \ldots, b_n^\vee)$, où \( b_i^\vee \) 
+                        vérifie \( \left \langle b_i^\vee, b_i \right \rangle = \delta_{i,j}\). 
+                    </p>
+                </div>
+
+                <details>
+                    <summary>
+                        \( \delta_{i,j} \)
+                    </summary>
+                    <p>
+                        \( \delta_{i,j} \) est le <strong>symbole de Kronecker</strong>, il vaut \( 1 \) si \( i = j \) et \( 0 \) sinon.
+                    </p>
+                </details>
+                
+                <div class="proposition">
+                    $\mathscr{L}^\vee$ est un réseau de base :         
+                    <ul>
+                        <li>
+                            $(B^t)^{-1}$ lorsque le réseau est de rang plein.
+                        </li>
+                        <li>
+                            $ B(B^t B)^{-1} $ lorsque le réseau n'est pas de rang plein.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="proposition">
+                    De la proposition précédente découle les propriétés suivantes :
+                    <ul>
+                        <li>
+                            $rang(\mathscr{L}) = rang(\mathscr{L}^\vee)$.
+                        </li>
+                        <li>
+                            $|\mathscr{L}^\vee| = |\mathscr{L}|^{-1}$.
+                        </li>
+                        <li>
+                            \( (\mathscr{L}^\vee)^\vee = \mathscr{L}\)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="definition"> <!-- OK -->
+                    <p>
+                        On dit que \( \mathscr{L} \) est <span>auto-dual</span> si \( \mathscr{L}= \mathscr{L}^\vee \).
+                    </p>
+                </div>
+
+                <div class="proposition"> <!-- OK -->
+                    On a les propriétés suivantes :
+                    <ul>
+                        <li>
+                            $(a \mathscr{L})^\vee = \frac{1}{a} \mathscr{L}^\vee$ pour tout $a \in \R^*$.
+                        </li>
+                        <li>
+                            $(\Z u)^\vee= \frac{1}{ \|u\|} \Z u$ pour tout $u \in \R^m \backslash \{ \mathbf{0} \}$.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="example"> <!-- OK -->
+                    <p>
+                        Le réseau dual de $\Z^n$ est $\Z^n$ et est donc auto-dual.
+                    </p>
+                </div>
+
+                <figure> <!-- OK -->
+                    <div class="subfig-container">
+                        <figure>
+                            <img
+                                src="/assets/img/academic-projects/lattice-reduction/lattices-relations-vs-generators/lattice_0_5.png"
+                                alt="Diagramme du réseau 2Z^2 dans R2. Les points noirs sont espacés de 2 unités horizontalement et verticalement, illustrant un réseau de base (2, 0) et (0, 2).">
+                            <figcaption>\( 2 \Z^2 \)</figcaption>
+                        </figure>
+                        <figure>
+                            <img
+                                src="/assets/img/academic-projects/lattice-reduction/lattices-relations-vs-generators/lattice_1_5.png"
+                                alt="Diagramme du réseau dual, 1/2Z^2, dans R2. Les points noirs sont très densément espacés (1/2 unité) sur une grille, montrant un réseau plus fin que le réseau d'origine.">
+                            <figcaption>$\frac12 \Z^2$</figcaption>
+                        </figure>
                     </div>
+                    <figcaption>Un réseau et son dual.</figcaption>
+                </figure>
 
-                    <div class="proposition">
-                        <p>
-                            On a $\mathscr{L}= \mathscr{L}(b_1, \ldots, b_m)$ si et seulement si $\mathscr{L}^\vee= \mathscr{L}(b_1^\vee, \ldots, b_n^\vee)$, où \( b_i^\vee \) vérifie \( \left \langle b_i^\vee, b_i \right \rangle = \delta_{i,j}\). \( \delta_{i,j} \) est le symbole de Kronecker, il vaut \( 1 \) si \( i = j \) et \( 0 \) sinon.
-                        </p>
-                    </div>
+                <div class="proposition"> <!-- OK -->
+                    Soit $\mathscr{L}_1$, $\mathscr{L}_2$ des réseaux, alors 
+                    $$
+                    (\mathscr{L}_1 \oplus \mathscr{L}_2)^\vee = \mathscr{L}_1^\vee \oplus \mathscr{L}_2^\vee
+                    $$
+                </div>
 
-                    <div class="proposition">
-                        $\mathscr{L}^\vee$ est un réseau de base : 
-                        
-                        <ul>
-                            <li>$(B^t)^{-1}$ lorsque le réseau est de rang plein.</li>
-                            <li>$ B(B^t B)^{-1} $ lorsque le réseau n'est pas de rang plein.</li>
-                        </ul>
-                    </div>
+                <div class="lemma">
+                    Soit $\mathscr{L}$ un réseau de dimension $n$. On a
+                    <ul>
+                        <li>
+                            $\lambda_1(\mathscr{L}) \cdot \lambda_1(\mathscr{L}^\vee) \leq n$,
+                        </li>
+                        <li>
+                            $\lambda_1(\mathscr{L}) \cdot \lambda_n(\mathscr{L}^\vee) \geq 1$.
+                        </li>
+                    </ul>
+                </div>
 
-                    <div class="proposition">
-                        De la proposition précédente découle les propriétés suivantes :
-                        <ul>
-                            <li>$rang(\mathscr{L}) = rang(\mathscr{L}^\vee)$.</li>
-                            <li>$|\mathscr{L}^\vee| = |\mathscr{L}|^{-1}$.</li>
-                            <li>\( (\mathscr{L}^\vee)^\vee = \mathscr{L}\)</li>
-                        </ul>
-                    </div>
+                <div class="paragraph">
+                    <a class="ref-banaszczyk-1993"></a>
+                    a démontré une relation encore plus forte entre les minima d'un réseau et ceux de son dual,
+                    connue sous le nom de théorème de transfert.
+                </div>
 
+                <div class="theorem">
+                    <span class="title">Théorème de transfert</span>
+                    <p>
+                        Soit $\mathscr{L}$ un réseau de dimension $n$. On a \[1 \leq \lambda_1(\mathscr{L}) \cdot \lambda_n(\mathscr{L}^\vee) \leq n.\]
+                    </p>
+                </div>
 
-                    <div class="definition"> <!-- OK -->
-                        <p>
-                            On dit que \( \mathscr{L} \) est <span>auto-dual</span> si \( \mathscr{L}= \mathscr{L}^\vee \).
-                        </p>
-                    </div>
+                <div class="definition">
+                    <p>
+                        On définit le réseau euclidien \( A_n \subset \R^{n+1} \) par : \[A_n = \left\{ (x_1, \dots, x_{n+1}) \in \Z^{n+1} \;\middle|\; \sum_{i=1}^{n+1} x_i = 0 \right\}\]
+                    </p>
+                </div>
 
-                    <!-- Faire un quiz -->
+                <div class="example">
+                    On a : 
+                    $$
+                    \begin{align*}
+                        A_0 &= \{ 0 \} \subset \R, \\
+                        A_1 &= \{ (x, -x) \in \Z^2 \}, \text{ donc } A_1 \text{ est de rang } 1\\
+                        A_2 &= \{ (x, y, z) \in \Z^3 \mid x + y + z = 0 \}, \\
+                        &= \langle a_1, a_2 \rangle \quad \text{où } 
+                        a_1 = (1, -1, 0), \quad a_2 = (0, 1, -1), \\
+                        &\text{donc } A_2 \text{ est de rang } 2.
+                    \end{align*}
+                    $$
+                </div>
 
-                    <div class="proposition"> <!-- OK -->
-                        On a les propriétés suivantes :
-                        <ul>
-                            <li>$(a \mathscr{L})^\vee = \frac{1}{a} \mathscr{L}^\vee$ pour tout $a \in \R^*$.</li>
-                            <li>$(\Z u)^\vee= \frac{1}{ \|u\|} \Z u$ pour tout $u \in \R^m \backslash \{ \mathbf{0} \}$.</li>
-                        </ul>
-                    </div>
+                <div class="proposition">
+                    <p>
+                        Pour tout $n \in \N$, \( A_n \) a pour matrice génératrice :
+                        \[
+                        B_n :=
+                        \begin{pmatrix}
+                            1 & 0 & 0 & \cdots & 0 \\
+                            -1 & 1 & 0 & \cdots & 0 \\
+                            0 & -1 & 1 & \cdots & 0 \\
+                            \vdots & \vdots & \ddots & \ddots & \vdots \\
+                            0 & 0 & \cdots & -1 & 1 \\
+                        \end{pmatrix}
+                        \in M_n(\Z)
+                        \]
+                    </p>
+                </div>
 
-                    <div class="example"> <!-- OK -->
-                        <p>
-                            Le réseau dual de $\Z^n$ est $\Z^n$ et est donc auto-dual.
-                        </p>
-                    </div>
+                <div class="proposition"> <!-- OK -->
+                    <p>
+                        \( A_n \) est un réseau euclidien de rang \( n \), pour tout \( n \in \N \).
+                    </p>
+                </div>
 
+                <div class="paragraph"> <!-- OK -->
+                    Il existe une classe particulière de réseaux qui joue un rôle important en cryptographie.
+                </div>
 
-                    <figure> <!-- OK -->
-                        <div class="subfig-container">
-                            <figure>
-                                 <img src="/assets/img/academic-projects/lattice-reduction/lattices-relations-vs-generators/lattice_0_5.png" alt="">
-                                 <figcaption><span class="label"></span>\( 2 \Z^2 \)</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="/assets/img/academic-projects/lattice-reduction/lattices-relations-vs-generators/lattice_1_5.png" alt="">
-                                <figcaption><span class="label"></span>$\frac12 \Z^2$</figcaption>
-                            </figure>
-                        </div>
-                        <figcaption><span class="label"></span>Un réseau et son dual.</figcaption>
-                    </figure>
+                <div class="definition"> <!-- OK -->
+                    <span class="title">(Réseau $q$-aire)</span>
+                    <p>
+                        Un réseau $\mathscr{L}$ est un réseau $q$-aire si \[q\mathbb{Z}^n \subseteq \mathscr{L}\subseteq \mathbb{Z}^n.\]
+                    </p>
+                </div>
 
-                    <div class="proposition"> <!-- OK -->
-                        Soit $\mathscr{L}_1$, $\mathscr{L}_2$ des réseaux, alors $$(\mathscr{L}_1 \oplus \mathscr{L}_2)^\vee = \mathscr{L}_1^\vee \oplus \mathscr{L}_2^\vee$$
-                    </div>
-
-                    <div class="lemma">
-                        Soit $\mathscr{L}$ un réseau de dimension $n$. On a
-                        <ul>
-                            <li>$\lambda_1(\mathscr{L}) \cdot \lambda_1(\mathscr{L}^\vee) \leq n$,</li>
-                            <li>$\lambda_1(\mathscr{L}) \cdot \lambda_n(\mathscr{L}^\vee) \geq 1$.</li>
-                        </ul>
-                    </div>
-
-                    <div class="paragraph">
-                        <a href="#ref-banaszczyk-1993" class="ref-banaszczyk-1993"></a>
-                        a démontré une relation encore plus forte entre les minima d'un réseau et ceux de son dual, connue sous le nom de théorème de transfert.
-                    </div>
-
-                    <div class="theorem">
-                        <span class="title">Théorème de transfert</span>
-                        <p>
-                            Soit $\mathscr{L}$ un réseau de dimension $n$. On a \[1 \leq \lambda_1(\mathscr{L}) \cdot \lambda_n(\mathscr{L}^\vee) \leq n.\]
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="label"></span>
-                        <p>
-                            On définit le réseau euclidien \( A_n \subset \R^{n+1} \) par : \[A_n = \left\{ (x_1, \dots, x_{n+1}) \in \Z^{n+1} \;\middle|\; \sum_{i=1}^{n+1} x_i = 0 \right\}\]
-                        </p>
-                    </div>
-
-                    <div class="example">
-                        On a : $$
-                        \begin{align*}
-                            A_0 &= \{ 0 \} \subset \R, \\
-                            A_1 &= \{ (x, -x) \in \Z^2 \}, \text{ donc } A_1 \text{ est de rang } 1\\
-                            A_2 &= \{ (x, y, z) \in \Z^3 \mid x + y + z = 0 \}, \\
-                            &= \langle a_1, a_2 \rangle \quad \text{où } 
-                            a_1 = (1, -1, 0), \quad a_2 = (0, 1, -1), \\
-                            &\text{donc } A_2 \text{ est de rang } 2.
-                        \end{align*} $$
-                    </div>
-
-                    <div class="proposition">
-                        <p>
-                            Pour tout $n \in \N$, \( A_n \) a pour matrice génératrice :\[ B_n := \begin{pmatrix} 1 & 0 & 0 & \cdots & 0 \\-1 & 1 & 0 & \cdots & 0 \\0 & -1 & 1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & \cdots & -1 & 1 \\ \end{pmatrix} \in M_n(\Z)\]
-                        </p>
-                    </div>
-
-
-                    <div class="proposition"> <!-- OK -->
-                        <p>
-                            \( A_n \) est un réseau euclidien de rang \( n \), pour tout \( n \in \N \).
-                        </p>
-                    </div>
-
-                    <div class="paragraph"> <!-- OK -->
-                        Il existe une classe particulière de réseaux qui joue un rôle important en cryptographie.
-                    </div>
-
-                    <div class="definition"> <!-- OK -->
-                        <span class="title">(Réseau $q$-aire)</span>
-                        <p>
-                            Un réseau $\mathscr{L}$ est un réseau $q$-aire si \[q\mathbb{Z}^n \subseteq \mathscr{L}\subseteq \mathbb{Z}^n.\]
-                        </p>
-                    </div>
-
-                    <div class="paragraph">
-                        Étant donnée une matrice $\mathbf{A} \in \Z_q^{m \times n}$ pour certains entiers $n, m, q \in \N$, on peut définir deux réseaux : \[\mathscr{L}_q(\mathbf{A}) = \left\{ y \in \Z^m : y = \mathbf{A}\mathbf{s} \bmod q \text{ pour un certain } \mathbf{s} \in \Z^n \right\}\] \[\mathscr{L}_q^\perp(\mathbf{A}^T) = \left\{ y \in \Z^m : \mathbf{A}^T y = 0 \bmod q \right\}\]. Les deux réseaux sont de dimension $m$. Le premier est engendré par les lignes de $\mathbf{A}$ et a pour déterminant $q^{m-n}$, tandis que le second contient tous les vecteurs orthogonaux aux lignes de $\mathbf{A}$ et a pour déterminant $q^n$. De plus, ils sont liés par la dualité des réseaux, c’est-à-dire :\[ \mathscr{L}_q^\perp(\mathbf{A}^T) = q \cdot \mathscr{L}_q(\mathbf{A})^\vee \quad \text{et} \quad \mathscr{L}_q(\mathbf{A}) = q \cdot \mathscr{L}_q^\perp(\mathbf{A}^T)^\vee. \]
-                    </div>
+                <div class="paragraph">
+                    Étant donnée une matrice $\mathbf{A} \in \Z_q^{m \times n}$ pour certains entiers $n, m, q \in \N$, 
+                    on peut définir deux réseaux :
+                    \[
+                    \mathscr{L}_q(\mathbf{A}) = \left\{ y \in \Z^m : y = \mathbf{A}\mathbf{s} \bmod q \text{ pour un certain } \mathbf{s} \in \Z^n \right\}
+                    \]
+                    \[
+                    \mathscr{L}_q^\perp(\mathbf{A}^T) = \left\{ y \in \Z^m : \mathbf{A}^T y = 0 \bmod q \right\}
+                    \]
+                    Les deux réseaux sont de dimension $m$. Le premier est engendré par les lignes de $\mathbf{A}$ et a pour déterminant $q^{m-n}$, 
+                    tandis que le second contient tous les vecteurs orthogonaux aux lignes de $\mathbf{A}$ et a pour déterminant $q^n$.
+                    De plus, ils sont liés par la dualité des réseaux, c’est-à-dire :
+                    \[
+                    \mathscr{L}_q^\perp(\mathbf{A}^T) = q \cdot \mathscr{L}_q(\mathbf{A})^\vee \quad \text{et} \quad \mathscr{L}_q(\mathbf{A}) = q \cdot \mathscr{L}_q^\perp(\mathbf{A}^T)^\vee.
+                    \]
+                </div>
             </div>
-
         </main>
 
         <footer id="main-footer"></footer>

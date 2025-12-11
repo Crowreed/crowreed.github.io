@@ -2,14 +2,29 @@
 
 <html lang="fr">
     <head>
-        <title>
-            La base réduite
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>La base réduite</title>
+
+        <meta 
+            name="description"
+            content="Définition des critères de réduction pour l'algorithme LLL. Exploration des concepts de base propre (size-réduite) et de la condition de Lovász. Démonstration que la base LLL-réduite résout approximativement les problèmes SVP et SIVP avec un facteur $2^{(n-1)/2}$ en temps polynomial."
+        >
+    
+        <meta 
+            name="keywords"
+            content="algorithme LLL, LLL-réduite, réduction de base, base propre, size-réduite, condition de Lovász, Gram-Schmidt, approximation SVP, SIVP, Shortest Independent Vectors Problem, temps polynomial, facteur d'approximation, vecteur minimal"
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+        
         <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
@@ -87,8 +102,12 @@
                 </div>
 
                 <figure>
-                    <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_0_9.png" alt="">
-                    <figcaption> <span class="label"></span> Base de Gram-Schmidt qui n'est pas une base de \( \mathscr{L} \).</figcaption>
+                    <img
+                        width="500"
+                        src="/assets/img/academic-projects/lattice-reduction/lattice_0_9.png"
+                        alt="Diagramme d'un réseau euclidien oblique en R2. Deux vecteurs rouges, non orthogonaux entre eux, sont tracés à partir d'un point central, représentant la base de Gram-Schmidt associée à la base du réseau. Ces vecteurs ne joignent pas les points du réseau, indiquant qu'ils ne forment pas une base du réseau."
+                    >
+                    <figcaption>Base de Gram-Schmidt qui n'est pas une base de \( \mathscr{L} \).</figcaption>
                 </figure>
 
                 <div class="paragraph nowrap">
@@ -137,8 +156,12 @@
                 </div>
 
                 <figure>
-                    <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_1_9.png" alt="">
-                    <figcaption><span class="label"></span> Base de \( \mathscr{L} \) proche de la base Gram-Schmidt.</figcaption>
+                    <img
+                        width="500"
+                        src="/assets/img/academic-projects/lattice-reduction/lattice_1_9.png"
+                        alt="Diagramme d'un réseau euclidien oblique en R2. Deux vecteurs verts, représentant la base orthogonalisée de Gram-Schmidt, sont tracés à partir d'un point du réseau. Ces vecteurs ne joignent pas les points entiers du réseau, illustrant le fait que la base de Gram-Schmidt n'est pas une base entière du réseau L."
+                    >
+                    <figcaption>Base de \( \mathscr{L} \) proche de la base Gram-Schmidt.</figcaption>
                 </figure>
 
                 <div class="definition">
@@ -153,10 +176,7 @@
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Base propre</span>
-                        </span>
+                        <span class="title">Base propre</span>
                     </summary>
                     <p>
                         Une base propre est aussi connue sous le nom de base size-réduite dans la littérature.
@@ -167,9 +187,13 @@
                     Bien que la proprification impose une certaine contrainte sur les coefficients de projection, elle ne garantit pas à elle seule que les vecteurs de la base soient presque orthogonaux.
     
                     <figure>
-                        <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_0_10.png" alt="">
+                        <img
+                            width="500"
+                            src="/assets/img/academic-projects/lattice-reduction/lattice_0_10.png"
+                            alt="Diagramme d'un réseau euclidien oblique en R2. Deux longs vecteurs noirs, qui définissent le réseau, sont tracés et montrent que la base est propre mais très peu orthogonale, avec un angle aigu entre eux, illustrant une base de 'mauvaise qualité'."
+                        >
 
-                        <figcaption><span class="label"></span>Base propre mais peu orthogonale</figcaption>
+                        <figcaption>Base propre mais peu orthogonale</figcaption>
                     </figure>
                 </div>
 
@@ -193,10 +217,7 @@
 
                 <details>
                     <summary>
-                        <span>
-                            <span class="label"></span>
-                            <span class="title">Condition plus générale</span>
-                        </span>
+                        <span class="title">Condition plus générale</span>    
                     </summary>
                     <p>
                         Une condition plus générale : \( ( \delta - \mu_{i+1,i}^2 ) \, \|b_i^*\|^2 \leq \|b_{i+1}^*\|^2 \text{ pour } 1 \leq i \leq n, \text{ où } \delta \in \left] \frac{1}{4}, 1 \right]  \)
@@ -215,8 +236,12 @@
                     Si l’on applique cette idée à l’exemple précédent, alors après permutation des vecteurs concernés et une nouvelle phase de réduction, on obtient à nouveau une base améliorée :
     
                     <figure>
-                        <img width="600" src="/assets/img/academic-projects/lattice-reduction/lattice_1_10.png" alt="">
-                        <figcaption><span class="label"></span> Nouvelle base size-réduite</figcaption>
+                        <img
+                            width="500"
+                            src="/assets/img/academic-projects/lattice-reduction/lattice_1_10.png"
+                            alt="Diagramme d'un réseau oblique. Deux vecteurs verts, plus courts que ceux de la base initiale, sont tracés. Ils représentent une base size-réduite, où la première base vectorielle est de longueur minimale ou proche de l'orthogonalité."
+                        >
+                        <figcaption>Nouvelle base size-réduite</figcaption>
                     </figure>
                 </div>
 
@@ -224,8 +249,12 @@
 	                Une base \( \mathcal{B} \) d'un réseau \( \mathscr{L} (\mathcal{B}) \)  est dite <strong>LLL-réduite</strong> si
                     
                     <ul>
-                        <li>$\mathcal{B}$ est propre.</li>
-                        <li>$\mathcal{B}$ satisfait la condition de Lovàsz.</li>
+                        <li>
+                            $\mathcal{B}$ est propre.
+                        </li>
+                        <li>
+                            $\mathcal{B}$ satisfait la condition de Lovàsz.
+                        </li>
                     </ul>
                 </div>
 
@@ -240,11 +269,12 @@
 
                 <div class="paragraph">
                     En particulier, ce résultat s’applique à un vecteur \( v \in \mathscr{L} \) de plus petite norme non nulle, c’est-à-dire un vecteur atteignant \( \lambda_1(\mathscr{L}) \). On en déduit donc :
-                    \[ \|b_1\| \leq 2^{(n-1)/2} \cdot \lambda_1(\mathscr{L}), \] ce qui montre que \( \mathrm{LLL} \) fournit en temps polynomial un vecteur de norme à un facteur \( 2^{(n-1)/2} \) près du plus court vecteur du réseau.
+                    \[
+                    \|b_1\| \leq 2^{(n-1)/2} \cdot \lambda_1(\mathscr{L}),
+                    \]
+                    ce qui montre que \( \mathrm{LLL} \) fournit en temps polynomial un vecteur de norme à un facteur \( 2^{(n-1)/2} \) près du plus court vecteur du réseau.
                     Autrement dit, l’algorithme \( \mathrm{LLL} \) résout approximativement le problème du plus court vecteur (\( \mathrm{SVP} \)) avec un facteur d’approximation \( \gamma = 2^{(n-1)/2} \). Par extension, en renvoyant les vecteurs de la base réduite, \( \mathrm{LLL} \) permet également de résoudre le problème \( \mathrm{SIVP} \) ( <strong> Shortest Independent Vectors Problem </strong>) avec le même facteur d’approximation.
                 </div>
-
-               
             </div>
         </main>
 

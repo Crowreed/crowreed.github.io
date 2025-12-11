@@ -2,14 +2,32 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Réduction de réseaux euclidiens
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+
+        <title>Réduction de réseaux euclidiens</title>
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Réseaux euclidiens : Définitions et exemples</title>
+
+        <meta 
+            name="description"
+            content="Introduction à l'algorithme LLL (Lenstra, Lenstra, Lovasz), un algorithme de réduction de réseaux euclidiens en temps polynomial. Découvrez ses applications clés en cryptanalyse (problème du sac à dos), factorisation de polynômes et calcul de la forme normale d'Hermite (HNF)."
+        >
+        
+        <meta 
+            name="keywords"
+            content="algorithme LLL, réduction de réseaux euclidiens, Lenstra Lenstra Lovasz, temps polynomial, cryptanalyse, problème du sac à dos, factorisation de polynômes, forme normale d'Hermite, HNF, algorithme BKZ, décomposition de Gram-Schmidt"
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+
 <link rel="stylesheet" href="/assets/css/base/root.css">
             <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
@@ -65,7 +83,7 @@
         </header>
         
         <main>
-               <div class="huhu hidden">
+               <div  style="height:80vh;" class="huhu hidden">
 
                 <div>
                     <button id="eee">
@@ -77,23 +95,28 @@
                 </div>
                 
             </div>
-            <div id="toc"></div>
+            <div  style="height:80vh;" id="toc"></div>
 
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <div class="paragraph">
-                    Dans ce chapitre, nous nous concentrerons sur un algorithme de réduction de réseaux euclidiens s’exécutant en temps polynomial : l’algorithme $\mathrm{LLL}$, du nom de ses auteurs A. Lenstra, H. Lenstra et L. Lovász. L'algorithme $\mathrm{LLL}$ possède de nombreuses applications, notamment en cryptanalyse de schémas basés sur le problème du sac à dos, en factorisation efficace de polynômes, ou encore dans le calcul rapide de décompositions en forme normale d'Hermite (HNF). Le lecteur pourra consulter 
-                    <a class="ref-havas-1998"></a>
-                    pour un aperçu plus complet de ses usages.
+                    Dans ce chapitre, nous nous concentrerons sur un algorithme de réduction de réseaux euclidiens
+                    s’exécutant en temps polynomial :
+                    l’algorithme $\mathrm{LLL}$, du nom de ses auteurs A. Lenstra, H. Lenstra et L. Lovász.
+                    L'algorithme $\mathrm{LLL}$ possède de nombreuses applications,
+                    notamment en cryptanalyse de schémas basés sur le problème du sac à dos, en factorisation efficace de polynômes,
+                    ou encore dans le calcul rapide de décompositions en forme normale d'Hermite (HNF). <br>
+                    Le lecteur pourra consulter <a class="ref-havas-1998"></a> pour un aperçu plus complet de ses usages.
                 </div>
 
                 <div class="paragraph">
-                    Nous ne traiterons pas d’autres algorithmes de réductions de réseaux euclidiens comme $\mathrm{BKZ}$, afin de rester dans un cadre plus élémentaire. L’algorithme $\mathrm{LLL}$ repose sur une idée simple mais puissante : il produit une approximation entière de la décomposition de Gram-Schmidt et réorganise les vecteurs de la base pour en améliorer la structure. Un rappel sur le procédé d’orthogonalisation de Gram-Schmidt est dans l’annexe dédiée. Celle-ci ne sera pas rappelée ici afin de préserver la concision du texte. Au cours de mon stage j'ai réalisé une présentation de l'algorithme LLL, ainsi qu'une idée rapide de sa preuve, que vous pourrez trouver ici.
+                    Nous ne traiterons pas d’autres algorithmes de réductions de réseaux euclidiens comme $\mathrm{BKZ}$,
+                    afin de rester dans un cadre plus élémentaire. L’algorithme $\mathrm{LLL}$ repose sur une idée simple mais puissante :
+                    il produit une approximation entière de la décomposition de Gram-Schmidt et réorganise les vecteurs de la base
+                    pour en améliorer la structure. Un rappel sur le procédé d’orthogonalisation de Gram-Schmidt est dans l’annexe dédiée.
+                    Celle-ci ne sera pas rappelée ici afin de préserver la concision du texte. Au cours de mon stage j'ai réalisé une présentation
+                    de l'algorithme LLL, ainsi qu'une idée rapide de sa preuve, que vous pourrez trouver ici.
                 </div>
             </div>
-
-           
-
         </main>
 
         <footer id="main-footer"></footer>

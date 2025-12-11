@@ -10,10 +10,14 @@
 }
 
 .algorithm h2{
-    margin-top: 0;
+    margin-top: 0 !important;
     margin-bottom: 10px;
     font-size: 1.2em;
     color: var(--primary-text-color);
+}
+
+.algorithm h2::before{
+    content: "Algorithme : ";
 }
 
 .meta {
@@ -32,21 +36,38 @@
     font-weight: bold;
 }
 
-.for{
+.for, .while, .if, .else{
     position: relative;
 }
 
-.for .c{
+.for .c,
+.while .c,
+.if .c,
+.else .c{
     padding-left: 40px;
 }
 
-.for::before{
+.for::before,
+.while::before{
     content: '';
     position: absolute;
 
     left: 1em;
     top: 1.5em; /* Commence après la ligne */
     bottom: 1.5em; /* Se termine juste avant le dernier élément de la boucle */
+
+    width: 1px; /* Ligne d'épaisseur zéro */
+    border-left: 2px solid var(--primary-border-color); /* La ligne verticale */
+}
+
+.if::before,
+.else::before{
+    content: '';
+    position: absolute;
+
+    left: 1em;
+    top: 1.5em; /* Commence après la ligne */
+    bottom: 0.5em; /* Se termine juste avant le dernier élément de la boucle */
 
     width: 1px; /* Ligne d'épaisseur zéro */
     border-left: 2px solid var(--primary-border-color); /* La ligne verticale */

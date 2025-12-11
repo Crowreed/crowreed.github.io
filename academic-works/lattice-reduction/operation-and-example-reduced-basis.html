@@ -83,56 +83,86 @@
             <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <div class="paragraph">
-                    Nous présentons à présent l’algorithme de Lenstra–Lenstra–Lovász (\( \mathrm{LLL} \)), dans sa forme classique. Originellement \( \mathrm{LLL} \) est apparu dans l'article de 1982 et servait à factoriser des polynômes à coefficients rationnels.
+                    Nous présentons à présent l’algorithme de Lenstra–Lenstra–Lovász (\( \mathrm{LLL} \)), dans sa forme classique.
+                    Originellement \( \mathrm{LLL} \) est apparu dans l'article de 1982 et servait à factoriser des polynômes à coefficients rationnels.
                 </div>
 
+                <div class="algorithm">
+                    <h2>LLL</h2>
 
+                    <div class="meta">
+                        <div class="in"> Une base $ B = (b_1, \ldots, b_n) $ </div>
+                        <div class="out"> Une base réduite $ G = (g_1, \ldots, g_n) $ de $ B $ </div>
+                    </div>
 
-                <div class="algorithm-container">
-    <h2>Algorithme LLL</h2>
+                    $ (B^*, U) \leftarrow $ <span class="function">Gram-Schmidt</span> $ (B) $
+
+                    <div class="for">
+                        <span class="forS"> \( i = 1 \) </span>
+                        <span class="forE"> \( k-1 \) </span>
+                        
+                        <div class="c">
+                            $ g_i \leftarrow b_i $
+                        </div>
+                    </div>
     
-    <div class="algo-meta">
-        <p><strong>Entrée :</strong> Une base $ B = (b_1, \ldots, b_n) $</p>
-        <p><strong>Sortie :</strong> Une base réduite $ G = (g_1, \ldots, g_n) $ de $ B $</p>
-    </div>
+                 
+                    <div class="while">
+                        <span class="condition">$ i \leq n $ </span>
+                        <span class="keyword">faire</span>
+                                               
+                        <div class="c">
+                            <div class="for">
+                                <span class="forS"> \( j = i-1, i-2 \) </span>
+                                <span class="forE"> \( 1 \) </span>
+                                
+                                <div class="c">
+                                    $ g_i \leftarrow g_i - \lceil \mu_{i,j} \rfloor \, g_j $ <br>
+                                    Mettre à jour $ B^*, U $
+                                </div>
+                            </div>
+                            
+                            <div class="conditional">
+                                <div class="if">
+                                    
+                                        $i > 1$ 
+                                        <strong>et</strong>
+                                        $\|g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2$
+                                        <span class="keyword">faire</span>
+                                    
+                        
+                                    <div class="c">                
+                                        Échanger $ g_{i-1} $ et $ g_i $ <br>
+                                        Mettre à jour $ B^*, U $<br>
+                                        $ i \leftarrow i - 1 $<br>
+                                    </div>
+                                </div>
+                                <div class="else">
+                                    <span class="keyword">faire</span>
+                                    <div class="c">
+                                        $ i \leftarrow i + 1 $
 
-    <ol class="algo-body">
-        <li class="algo-loop"><span class="keyword">Pour</span> $ i = 1 $ <span class="keyword">à</span> $ n $ :</li>
-        <li class="algo-statement indented">$ g_i \leftarrow b_i $</li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="return"> $ G = (g_1, \ldots, g_n) $ </div>
+            </div>
 
-        <li class="algo-statement">$ (B^*, U) \leftarrow $ <span class="function">Gram-Schmidt</span> $ (B) $</li>
+            <div class="paragraph">
+                L’algorithme débute par le calcul de la base orthogonalisée de Gram–Schmidt, qui sert de support aux opérations de réduction.
 
-        <li class="algo-while"><span class="keyword">Tant que</span> $ i \leq n $</li>
-        <ol> <li class="algo-loop"><span class="keyword">Pour</span> $ j = i-1, i-2, \ldots, 1 $ :</li>
-            <ol> <li class="algo-statement indented">$ g_i \leftarrow g_i - \lceil \mu_{i,j} \rfloor \, g_j $</li>
-                <li class="algo-statement indented">Mettre à jour $ B^*, U $</li>
-            </ol>
-            
-            <li class="algo-if"><span class="keyword">Si</span> $i > 1$ <span class="keyword">et</span> $\|g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2$ :</li>
-            <ol>
-                <li class="algo-statement indented">Échanger $ g_{i-1} $ et $ g_i $</li>
-                <li class="algo-statement indented">Mettre à jour $ B^*, U $</li>
-                <li class="algo-statement indented">$ i \leftarrow i - 1 $</li>
-            </ol>
-            
-            <li class="algo-else"><span class="keyword">Sinon</span> :</li>
-            <ol>
-                <li class="algo-statement indented">$ i \leftarrow i + 1 $</li>
-            </ol>
-        </ol>
+                Le principe général repose sur l’application répétée de deux types d’étapes :
+                des <strong>réductions de taille</strong> visant à raccourcir les vecteurs sans sortir du réseau,
+                et des <strong>permutations</strong> de vecteurs effectuées lorsque la condition de Lovász,
+                qui contrôle la décroissance des normes, n’est pas satisfaite.
 
-        <li class="algo-return"><span class="keyword">Retourner</span> $ G = (g_1, \ldots, g_n) $</li>
-    </ol>
-</div>
-
-<div class="paragraph">
-    L’algorithme débute par le calcul de la base orthogonalisée de Gram–Schmidt, qui sert de support aux opérations de réduction.
-
-Le principe général repose sur l’application répétée de deux types d’étapes : des <strong>réductions de taille</strong> visant à raccourcir les vecteurs sans sortir du réseau, et des <strong>permutations</strong> de vecteurs effectuées lorsque la condition de Lovász, qui contrôle la décroissance des normes, n’est pas satisfaite.
-
-L’ensemble de ces opérations est imbriqué dans une boucle \texttt{while} qui se répète tant qu’une condition de progression n’est pas remplie.  
-Nous verrons que cette condition de Lovász garantit non seulement une amélioration à chaque étape, mais également la terminaison de l’algorithme en un nombre fini d’itérations.
-</div>
+                L’ensemble de ces opérations est imbriqué dans une boucle while qui se répète 
+                tant qu’une condition de progression n’est pas remplie.  
+                Nous verrons que cette condition de Lovász garantit non seulement une amélioration à chaque étape,
+                mais également la terminaison de l’algorithme en un nombre fini d’itérations.
+            </div>
 
 <div class="example">
 	Soit 
@@ -378,5 +408,6 @@ Nous verrons que cette condition de Lovász garantit non seulement une améliora
         <script src="/assets/js/components/article.js"></script>
         <script src="/assets/js/components/toc.js"></script>
         <script src="/assets/js/components/references.js"></script>
+        <script src="/assets/js/components/algorithm.js"></script>
     </body>
 </html>
