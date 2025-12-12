@@ -2,16 +2,32 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Fonctionnement et exemple
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
-<link rel="stylesheet" href="/assets/css/base/root.css">
-            <link rel="stylesheet" href="/assets/css/base/base.css">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Fonctionnement et exemple</title>
+
+        <meta 
+            name="description"
+            content="Algorithme LLL (Lenstra–Lenstra–Lovász) pour la réduction de réseaux euclidiens en temps polynomial. Détail des étapes : réduction de taille et permutations basées sur la condition de Lovász. Inclut un exemple complet de réduction de base 3x3."
+        >
+        
+        <meta 
+            name="keywords"
+            content="algorithme LLL, réduction de réseaux, Lenstra Lovász, Gram-Schmidt, condition de Lovász, réduction de taille, permutation de vecteurs, complexité polynomiale, cryptanalyse, SVP, exemple LLL"
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+        
+        
+        <link rel="stylesheet" href="/assets/css/base/root.css">
+        <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
         <link rel="stylesheet" href="/assets/css/base/reset.css">
         <link rel="stylesheet" href="/assets/css/base/utils.css">
@@ -33,22 +49,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <!-- for rendering latex -->
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
 
@@ -80,7 +89,6 @@
             </div>
             <div id="toc"></div>
 
-            <!-- On commence ici la partie de l'article -->
             <div id="article">
                 <div class="paragraph">
                     Nous présentons à présent l’algorithme de Lenstra–Lenstra–Lovász (\( \mathrm{LLL} \)), dans sa forme classique.
@@ -105,7 +113,6 @@
                             $ g_i \leftarrow b_i $
                         </div>
                     </div>
-    
                  
                     <div class="while">
                         <span class="condition">$ i \leq n $ </span>
@@ -124,269 +131,433 @@
                             
                             <div class="conditional">
                                 <div class="if">
-                                    
-                                        $i > 1$ 
-                                        <strong>et</strong>
-                                        $\|g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2$
+                                    $i > 1$ 
+                                    <strong>et</strong>
+                                    $\|g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2$
                                         <span class="keyword">faire</span>
-                                    
-                        
-                                    <div class="c">                
-                                        Échanger $ g_{i-1} $ et $ g_i $ <br>
-                                        Mettre à jour $ B^*, U $<br>
-                                        $ i \leftarrow i - 1 $<br>
+                                
+                                        <div class="c">                
+                                            Échanger $ g_{i-1} $ et $ g_i $ <br>
+                                            Mettre à jour $ B^*, U $<br>
+                                            $ i \leftarrow i - 1 $<br>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="else">
-                                    <span class="keyword">faire</span>
-                                    <div class="c">
-                                        $ i \leftarrow i + 1 $
-
+                                    <div class="else">
+                                        <span class="keyword">faire</span>
+                                        <div class="c">
+                                            $ i \leftarrow i + 1 $
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <div class="return"> $ G = (g_1, \ldots, g_n) $ </div>
-            </div>
+                    <div class="return"> $ G = (g_1, \ldots, g_n) $ </div>
+                </div>
 
             <div class="paragraph">
-                L’algorithme débute par le calcul de la base orthogonalisée de Gram–Schmidt, qui sert de support aux opérations de réduction.
-
+                L’algorithme débute par le calcul de la base orthogonalisée de Gram–Schmidt,
+                qui sert de support aux opérations de réduction.
                 Le principe général repose sur l’application répétée de deux types d’étapes :
                 des <strong>réductions de taille</strong> visant à raccourcir les vecteurs sans sortir du réseau,
                 et des <strong>permutations</strong> de vecteurs effectuées lorsque la condition de Lovász,
                 qui contrôle la décroissance des normes, n’est pas satisfaite.
-
                 L’ensemble de ces opérations est imbriqué dans une boucle while qui se répète 
                 tant qu’une condition de progression n’est pas remplie.  
                 Nous verrons que cette condition de Lovász garantit non seulement une amélioration à chaque étape,
                 mais également la terminaison de l’algorithme en un nombre fini d’itérations.
             </div>
 
-<div class="example">
-	Soit 
-    \[
-    B =
-    \begin{pmatrix}
-        1 & 1 & 1 \\
-        -1 & 0 & 2 \\
-        3 & 5 & 6
-    \end{pmatrix}
-    \in GL_3(\Z).
-    \]
-    On a $$ |\mathscr{L} (B)| = 9, \quad A = \max_{1 \leq i \leq 3} \| b_i \| = 70$$
+            <div class="example">
+	            Soit
+                \[
+                B =
+                \begin{pmatrix}
+                    1 & 1 & 1 \\
+                    -1 & 0 & 2 \\
+                    3 & 5 & 6
+                \end{pmatrix}
+                \in GL_3(\Z).
+                \]
+                
+                On a
+                
+                $$
+                |\mathscr{L} (B)| = 9, \quad A = \max_{1 \leq i \leq 3} \| b_i \| = 70
+                $$
     
-    On va essayer d'estimer un plus court vecteur
-    L'algorithme LLL commence par calculer la décomposition de Gram-Schmidt de \( B \), pour plus de détails sur le calcul de cette décomposition, ce calcul est effectué dans appendix:linear_algebra.
+                On va essayer d'estimer un plus court vecteur
+                L'algorithme LLL commence par calculer la décomposition de Gram-Schmidt de \( B \),
+                pour plus de détails sur le calcul de cette décomposition, ce calcul est effectué dans appendix:linear_algebra.
     
-    On obtient la décomposition
+                On obtient la décomposition
     
-    \[
-    \begin{aligned}
-        U &= 
-        \begin{pmatrix}
-            1 & 0 & 0 \\
-            \frac{1}{3} & 1 & 0 \\
-            \frac{14}{3} & \frac{13}{14} & 1
-        \end{pmatrix}, \quad
-        B^* =
-        \begin{pmatrix}
-            1 & 1 & 1 \\
-            -\frac{4}{3} & - \frac{1}{3} & \frac{5}{3} \\
-            -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
-        \end{pmatrix}.
-    \end{aligned}
-    \] 
+                \[
+                \begin{aligned}
+                    U &= 
+                    \begin{pmatrix}
+                        1 & 0 & 0 \\
+                        \frac{1}{3} & 1 & 0 \\
+                        \frac{14}{3} & \frac{13}{14} & 1
+                    \end{pmatrix}
+                    , \quad
+                    B^* =
+                    \begin{pmatrix}
+                        1 & 1 & 1 \\
+                        -\frac{4}{3} & - \frac{1}{3} & \frac{5}{3} \\
+                        -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+                    \end{pmatrix}.
+                \end{aligned}
+                \]
     
-    Voici un tableau récapitulant les principales étapes de l'algorithme. Le tableau est volontairement détaillé et fourni, le lecteur pourra revenir sur cet exemple pour comprendre ce que sont $d_1$, $d_2$, $D$ ou la signification de $Gram(G)$.
+                Voici un tableau récapitulant les principales étapes de l'algorithme. Le tableau est volontairement détaillé et fourni, le lecteur pourra revenir sur cet exemple pour comprendre ce que sont $d_1$, $d_2$, $D$ ou la signification de $Gram(G)$.
     
 
-    <table>
-        <tr>
-            <td>
-                \( G \)
-                </td>
-            <td>\( U \)</td>
-            <td>\( G^* \)</td>
-            <td>$$\shortstack{ d_1, d_2 \\ D }$$</td>
-            <td>\( \begin{pmatrix} \|g_1^*\|^2 \\ \|g_2^*\|^2 \\ \|g_3^*\|^2 \end{pmatrix} \)</td>
-            <td>\( Gram(G) \)</td>
-        </tr>
-        <tr>
-            <td>\[ \begin{pmatrix} 1\quad 1\quad 1 \\ -1\quad 0\quad 2\\ 3\quad 5\quad 6 \end{pmatrix} \]</td>
-            <td>\( \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{3} & 1 & 0 \\ \frac{14}{3} & \frac{13}{14} & 1 \end{pmatrix} \)</td>
-            <td>\( \begin{pmatrix} 1 & 1 & 1 \\ -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\ -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14} \end{pmatrix} \)</td>
-            <td>\shortstack{\( 3, 14 \) \\ \( 42 \)}</td>
-            <td>\( \begin{pmatrix} 3 \\ \frac{14}{3} \\ \frac{9}{14} \end{pmatrix} \)</td>
-            <td>\( \begin{pmatrix} 3 & 1 & 14 \\ 1 & 1 & 9 \\ 14 & 9 & 70 \end{pmatrix} \)</td>
-        </tr>
-        <tr>
-            <td>\[ \begin{pmatrix} 1\quad 1\quad 1 \\ -1\quad 0\quad 2 \\ 0\quad 1\quad 0 \end{pmatrix} \]</td>
-            <td>\( \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{3} & 1 & 0 \\ \frac{1}{3} & \frac{-1}{14} & 1 \end{pmatrix} \)</td>
-            <td>\( \begin{pmatrix} 1 & 1 & 1 \\ -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\ -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14} \end{pmatrix} \)
-            </td>
-            <td>\shortstack{\( 3, 14 \) \\ \( 42 \)}</td>
-            <td>\( 
-            \begin{pmatrix}
-                3 \\
-                \frac{14}{3} \\
-                \frac{9}{14}
-            \end{pmatrix}
-            \)</td>
-            <td>
-                \(
-                    \begin{pmatrix}
-                        3 & 1 & 1 \\
-                        1 & 5 & 0 \\
-                        1 & 0 & 1
-                    \end{pmatrix}
-                \)
-            </td>
-        </tr>
-        <tr>
-            <td>\[
-                \begin{pmatrix}
-                    1& 1& 1 \\
-                    0& 1& 0 \\
-                    -1& 0& 2
-                \end{pmatrix}
-                \]</td>
-                <td>\(
-            \begin{pmatrix}
-                1           & 0            & 0 \\
-                \frac{1}{3} & 1            & 0 \\
-                \frac{1}{3} & \frac{-1}{2} & 1
-            \end{pmatrix}
-            \) </td>
-                <td>\(
-            \begin{pmatrix}
-                1            & 1           & 1 \\
-                -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
-                -\frac{3}{2} & 0           & \frac{3}{2}
-            \end{pmatrix}
-            \)</td>
-                <td>\shortstack{\( 3, 2 \) \\ \( 6 \)}</td>
-                <td>\( 
-            \begin{pmatrix}
-                3 \\
-                \frac{2}{3} \\
-                \frac{9}{2}
-            \end{pmatrix}
-            \)</td>
-                <td> \(
-            \begin{pmatrix}
-                1 & 0 & 0 \\
-                0 & 1 & 0 \\
-                \frac{1}{3} & \frac{-1}{2} & 1
-            \end{pmatrix}
-            \)</td>
-        </tr>
-        <tr>
-            <td>\[
-                \begin{pmatrix}
-                    0& 1& 0 \\
-                    1& 1& 1 \\
-                    -1& 0& 2
-                \end{pmatrix}
-                \]</td>
-                <td> \( 
-            \begin{pmatrix}
-                1 & 0 & 0 \\
-                1 & 1 & 0 \\
-                \frac{1}{3} & \frac{-1}{2} & 1
-            \end{pmatrix}
-            \)</td>
-                <td>\(
-            \begin{pmatrix}
-                0 & 1 & 0 \\
-                1 & 0 & 1 \\
-                -\frac{3}{2} & 0 & \frac{3}{2}
-            \end{pmatrix}
-            \)  </td>
-                <td>\shortstack{\( 1, 2 \) \\ \( 2 \)}</td>
-                <td> \( \begin{pmatrix} 1 \\ 2 \\ \frac{9}{2} \end{pmatrix} \) </td>
-                <td> \( \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ \frac{1}{3} & \frac{-1}{2} & 1 \end{pmatrix} \) </td>
-        </tr>
-         <tr>
-            <td>\[
+                <table>
+                    <tr>
+                        <td>
+                            \( G \)
+                        </td>
+                        <td>
+                            \( U \)
+                        </td>
+                        <td>
+                            \( G^* \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                d_1, d_2 \\
+                                D
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                \|g_1^*\|^2 \\
+                                \|g_2^*\|^2 \\
+                                \|g_3^*\|^2
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            Gram(G)
+                            \)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            \[
+                            \begin{pmatrix}
+                            1\quad 1\quad 1 \\
+                            -1\quad 0\quad 2\\
+                            3\quad 5\quad 6
+                            \end{pmatrix}
+                            \]
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                \frac{1}{3} & 1 & 0 \\
+                                \frac{14}{3} & \frac{13}{14} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 1 & 1 \\
+                                -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
+                                -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                3, 14 \\
+                                42
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                3 \\ \frac{14}{3} \\
+                                \frac{9}{14}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                3 & 1 & 14 \\
+                                1 & 1 & 9 \\
+                                14 & 9 & 70
+                            \end{pmatrix}
+                            \)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            \[
+                            \begin{pmatrix}
+                                1\quad 1\quad 1 \\
+                                -1\quad 0\quad 2 \\
+                                0\quad 1\quad 0
+                            \end{pmatrix}
+                            \]
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                \frac{1}{3} & 1 & 0 \\
+                                \frac{1}{3} & \frac{-1}{14} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 1 & 1 \\
+                                -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
+                                -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                3, 14 \\
+                                42
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                3 \\
+                                \frac{14}{3} \\
+                                \frac{9}{14}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                3 & 1 & 1 \\
+                                1 & 5 & 0 \\
+                                1 & 0 & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            \[
+                            \begin{pmatrix}
+                                1& 1& 1 \\
+                                0& 1& 0 \\
+                                -1& 0& 2
+                            \end{pmatrix}
+                            \]
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1           & 0            & 0 \\
+                                \frac{1}{3} & 1            & 0 \\
+                                \frac{1}{3} & \frac{-1}{2} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1            & 1           & 1 \\
+                                -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
+                                -\frac{3}{2} & 0           & \frac{3}{2}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                3, 2 \\
+                                6
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td>
+                            \( 
+                            \begin{pmatrix}
+                                3 \\
+                                \frac{2}{3} \\
+                                \frac{9}{2}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                0 & 1 & 0 \\
+                                \frac{1}{3} & \frac{-1}{2} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            \[
+                            \begin{pmatrix}
+                                0& 1& 0 \\
+                                1& 1& 1 \\
+                                -1& 0& 2
+                            \end{pmatrix}
+                            \]
+                        </td>
+                        <td>
+                            \( 
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                1 & 1 & 0 \\
+                                \frac{1}{3} & \frac{-1}{2} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                0 & 1 & 0 \\
+                                1 & 0 & 1 \\
+                                -\frac{3}{2} & 0 & \frac{3}{2}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                1, 2 \\
+                                2
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td> 
+                            \(
+                            \begin{pmatrix}
+                                1 \\ 
+                                2 \\ 
+                                \frac{9}{2} 
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\ 
+                                0 & 1 & 0 \\ 
+                                \frac{1}{3} & \frac{-1}{2} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            \[
+                            \begin{pmatrix}
+                                0 & 1 & 0 \\
+                                1 & 0 & 1 \\
+                                -1& 0 & 2
+                            \end{pmatrix}
+                            \]
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                0 & 1 & 0 \\
+                                \frac{1}{3} & \frac{-1}{2} & 1
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                0 & 1 & 0 \\
+                                1 & 0 & 1 \\
+                                -\frac{3}{2} & 0 & \frac{3}{2}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            $$
+                            \begin{matrix}
+                                1, 2 \\
+                                2
+                            \end{matrix}
+                            $$
+                        </td>
+                        <td>
+                            \( 
+                            \begin{pmatrix}
+                                1 \\
+                                2 \\
+                                \frac{9}{2}
+                            \end{pmatrix}
+                            \)
+                        </td>
+                        <td>
+                            \(
+                            \begin{pmatrix}
+                                1 & 0 & 0 \\
+                                0 & 2 & 1 \\
+                                0 & 1 & 5
+                            \end{pmatrix}
+                            \)
+                        </td>
+                    </tr>
+                </table>
+
+                On obtient la base  LLL réduite :
+
+                \[
+                g_{reduced}=
                 \begin{pmatrix}
                     0 & 1 & 0 \\
                     1 & 0 & 1 \\
-                    -1& 0 & 2
+                    -1 & 0 & 2
                 \end{pmatrix}
-                \]</td>
-            <td>\(
-            \begin{pmatrix}
-                1 & 0 & 0 \\
-                0 & 1 & 0 \\
-                \frac{1}{3} & \frac{-1}{2} & 1
-            \end{pmatrix}
-            \)</td>
-            <td> \(
-            \begin{pmatrix}
-                0 & 1 & 0 \\
-                1 & 0 & 1 \\
-                -\frac{3}{2} & 0 & \frac{3}{2}
-            \end{pmatrix}
-            \) </td>
-            <td> \shortstack{\( 1, 2 \) \\ \( 2 \)}</td>
-            <td> \( 
-            \begin{pmatrix}
-                1 \\
-                2 \\
-                \frac{9}{2}
-            \end{pmatrix}
-            \)</td>
-            <td>\(
-            \begin{pmatrix}
-                1 & 0 & 0 \\
-                0 & 2 & 1 \\
-                0 & 1 & 5
-            \end{pmatrix}
-            \)</td>
-        </tr>
-    </table>
+                \in M_3(\Z) 
+                \]
+            </div>
 
-    On obtient la base  LLL réduite :
-
-    \[
-    g_{reduced}=
-    \begin{pmatrix}
-        0 & 1 & 0 \\
-        1 & 0 & 1 \\
-        -1 & 0 & 2
-    \end{pmatrix}
-    \in M_3(\Z) 
-    \]
-
-
-</div>
-
-<!--
-\begin{tikzpicture}[remember picture, overlay]
-    \draw[->, thick, bend right=80]
-    ([xshift=0em]pic cs:l1) to
-    node[midway, left]{\small \shortstack{proprification\\ $\bg_3$}}
-    ([xshift=0em, yshift=1em]pic cs:l2);
+            <!--
+            \begin{tikzpicture}[remember picture, overlay]
+                \draw[->, thick, bend right=80]
+                ([xshift=0em]pic cs:l1) to
+                node[midway, left]{\small \shortstack{proprification\\ $\bg_3$}}
+                ([xshift=0em, yshift=1em]pic cs:l2);
     
-    \draw[->, thick, bend right=80]
-    ([xshift=0em]pic cs:l2) to
-    node[midway, left]{\small \shortstack{Lovasz\\ $\bg_2 \leftrightarrow \bg_3$}}
-    ([xshift=0em, yshift=1em]pic cs:l3);
+                \draw[->, thick, bend right=80]
+                ([xshift=0em]pic cs:l2) to
+                node[midway, left]{\small \shortstack{Lovasz\\ $\bg_2 \leftrightarrow \bg_3$}}
+                ([xshift=0em, yshift=1em]pic cs:l3);
     
-    \draw[->, thick, bend right=80]
-    ([xshift=0em]pic cs:l3) to
-    node[midway, left]{\small \shortstack{Lovasz\\ $\bg_1 \leftrightarrow \bg_2$}}
-    ([xshift=0em, yshift=1em]pic cs:l4);
+                \draw[->, thick, bend right=80]
+                ([xshift=0em]pic cs:l3) to
+                node[midway, left]{\small \shortstack{Lovasz\\ $\bg_1 \leftrightarrow \bg_2$}}
+                ([xshift=0em, yshift=1em]pic cs:l4);
     
-    \draw[->, thick, bend right=80]
-    ([xshift=0em]pic cs:l4) to
-    node[midway, left]{\small \shortstack{proprification\\ $\bg_2$}}
-    ([xshift=0em, yshift=1em]pic cs:l5);
-\end{tikzpicture}
--->
-
+                \draw[->, thick, bend right=80]
+                ([xshift=0em]pic cs:l4) to
+                node[midway, left]{\small \shortstack{proprification\\ $\bg_2$}}
+                ([xshift=0em, yshift=1em]pic cs:l5);
+            \end{tikzpicture}
+            -->
 
                 <div class="remark">
                     <ul>

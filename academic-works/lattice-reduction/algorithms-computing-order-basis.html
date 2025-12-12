@@ -35,21 +35,16 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
+        
     </head>
     <body>
         <header>
@@ -78,12 +73,252 @@
             <div id="toc"></div>
 
             <div id="article">
-            </div>
 
+                <h2>Algorithmes de calculs de base d'ordre</h2>
+
+                <div class="paragraph">
+                    Cette section va montrer qu'il existe des algorithmes plus rapide que
+                    <a class="ref-mulders-2003"></a> pour calculer des bases d'ordres.
+                </div>
+
+                <h3>Cas initial quand \( \sigma = 1 \)</h3>
+
+                <div class="paragraph">
+
+
+Si \( \sigma = 1 \), alors 
+
+$$
+\begin{aligned}
+    (F, \sigma) & = \{ v \in \F[x]^{1 \x m}  ~|~  vF = 0 \mod x^1 \} \\
+    &= \{ v \in \F^{1 \x m}  ~|~  vF = 0 \}
+\end{aligned}
+$$
+Soit \( F \in \F^{m \x n} \), nous cherchons une base de \( (F, 1) \).
+
+On remarque que si 
+\[
+\begin{pmatrix} 
+	S \\
+	K 
+\end{pmatrix} 
+F =
+\begin{pmatrix} 
+	R \\
+	0 
+\end{pmatrix}
+\text{avec } 
+ R 
+ \text{ de rang maximal}
+\]
+
+alors
+\[
+\begin{pmatrix}
+	xS \\
+	K 
+\end{pmatrix} 
+F = 
+\begin{pmatrix} 
+	xR \\ 
+	0 
+\end{pmatrix} 
+= 0 \mod x
+\]
+ce qui implique que 
+\(
+\begin{pmatrix}
+	xS \\
+	K 
+\end{pmatrix}
+\text{ est une base de }
+(F, 1)
+\)
+Il existe des candidats naturels pour \( S \) et \( K \) : \( K \)  le noyau de $F$ et \( S \) le supplémentaire de $K$. On pourra choisir le noyau \( K \) utilisant les lignes de \( F \) de plus petit degré, une façon de les calculer consiste alors à obtenir la forme échelonnée par lignes de \( F \), avec une bonne permutation de façon à choisir les lignes de plus petit degrés, ceci aura son importance par la suite.
+
+Il faut donc calculer une décomposition:
+\[
+\underbrace{
+    \begin{pmatrix}
+        L_r & 0 \\
+        G   & I_{m-r} 
+    \end{pmatrix}}_{L} 
+ \cdot 
+\begin{bmatrix}
+    e_{\tau(1)} \\
+    \vdots \\
+    e_{\tau(n)}
+\end{bmatrix} \cdot F =  
+\underbrace{
+    \begin{pmatrix}
+        E' \\
+        0 
+    \end{pmatrix}
+}_{E}
+\]
+où \( E \) est échelonnée en ligne, \( L \) est triangulaire inférieure, \( r \)est le rang de \( E \) et \( \tau \) est une permutation.
+
+\vspace{0.2cm}
+
+\begin{smallalgo}{Basis}{algo:Basis}
+    \LinesNumbered 
+    
+    \KwIn{\( F \in (\F[x]_{\leq 0})^{m \times n} \), un vecteur de décalage \( s \).}
+    \KwOut{Une \( (F, 1, s) \)-base d’ordre et son degré de ligne \( s \)-décalé.}
+    
+    On suppose que \( s \) est croissant.\;
+    
+    Calculer une forme ligne échelonnée \( F = \tau \cdot L \cdot E \) avec :\;
+    \Indp
+    \Indm  
+    \KwRet{
+        \(
+        \begin{pmatrix} 
+            xL_r & 0 \\ 
+            G    & I_{m-r} 
+        \end{pmatrix},
+        \quad
+        \tau^{-1}s + [1_r, 0_{n-r}]
+        \)
+    }
+\end{smallalgo}
+
+\vspace{0.2cm}
+
+L'algorithme Basis calcul correctement une base d'ordre de \( (F, 1) \) d'après la construction ci-dessus, l'hypothèse que \( s \) est croissant est primordiale pour obtenir une base d'ordre. On ne cherchera pas à redémontrer ce résultat.
+
+
+                </div>
+
+                <h3>Algorithmes pour le cas général</h3>
+
+                <div class="paragraph">
+                    On va devoir découper le problème pour trouver une base d'ordre pour \( \sigma > 1 \). 
+                </div>
+
+                <div class="theorem">
+                    Soit \( P_1\), \( P_2 \) des bases d'ordre de \( (F, \sigma_1)\) et \((F, \sigma_2)  \) respectivement,
+                    \( M \in \F [x]^{m \x n} \) tel que \( P_1F = x^{\sigma_1} M\). 
+    
+                    Alors: \( P_2 P_1 \) est une base d'ordre de \( (F, \sigma_1 + \sigma_2 ) \).
+                </div>
+
+                <div class="paragraph">
+                    On peut découper par pas de \( 1 \), on se doute qu'il y aura plus efficace juste après ces lignes,
+                    on présente un algorithme itératif \textbf{quadratique}.
+                    \[ 
+                    (F, 1) \rightarrow (F, 2) \rightarrow (F, 3) \rightarrow \cdots (F, \sigma-1) \rightarrow  (F, \sigma) 
+                    \]
+                </div>
+
+                <div class="algorithm">
+                    <h2>M-Basis</h2>
+                    <div class="meta">
+                        <div class="in"> \( F \in (\mathbb{F}[x]_{<\sigma})^{m \times n} \), un vecteur de décalage \( \vec{s} \), \( \sigma \in \mathbb{N} \)</div>
+                        <div class="out"> Une \( (F, \sigma, \vec{s}) \)-base d’ordre et son degré de ligne \( \vec{s} \)</div>
+                    </div>
+
+    
+                    \( P_0 \gets Basis(F \bmod x) \)
+    
+                    <div class="for">
+                        \( k \) de \( 1 \) à \( \sigma - 1 \)
+                        <div class="c">
+                            \( F' \gets x^{-k} P_{k-1} F \)\tcp*[r]{Décalage du problème} <br>
+                            \( M_k \gets Basis(F' \bmod x) \) <br>
+                            \( P_k \gets M_k P_{k-1} \)\; <br>
+                        </div>
+                    </div>
+
+                    <div class="return">
+                        \( P_{\sigma -1} \)
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    La complexité de l'algorithme Basis est \( \mathcal{O} (m^\omega \sigma^2) \) opérations dans le corps de base.
+                </div>
+
+                <div class="remark">
+                    <ul>
+                        <li class="nowrap">
+                            On peut réaliser la ligne 4 en \( \mathcal{O} (m^\omega \sigma)\), la ligne 5 est en \( \mathcal{O} (m^\omega) \)
+                            car les coefficients sont entiers.
+                        </li>
+                        <li>
+                            Il faut voir la ligne 3 comme un décalage.
+                        </li>
+                        <li>
+                            On se sert du théorème 5.3 pour prouver la correction de l'algorithme.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="paragraph">
+                    On présente maintenant un algorithme sur le principe diviser-pour-régner \textbf{quasi-linéaire} qui découpe la précision en \(2\).
+                    \[ 
+                    (F, 1) \rightarrow (F, 2) \rightarrow (F, 4) \rightarrow \cdots \rightarrow \left(F, \frac{\sigma}{2}\right) \rightarrow  (F, \sigma) 
+                    \]
+                </div>
+
+                <div class="algorithm">
+                    <h2>PM-Basis</h2>
+
+                    <div class="meta">
+                        <div class="in"> \( F \in (\mathbb{F}[x]_{<\sigma})^{m \times n} \), un vecteur de décalage \( \vec{s} \), \( \sigma \in \mathbb{N} \)</div>
+                        <div class="out"> Une \( (F, \sigma, \vec{s}) \)-base d’ordre et son degré de ligne \( \vec{s} \)</div>
+                    </div>
+
+                    <div class="conditional">
+                        <div class="if">
+                            \( \sigma = 1 \)
+                            <div class="c">
+                                <div class="return">Basis\( (F \bmod x) \)</div>
+                            </div>
+                        </div>
+
+                        <div class="else">
+                            <div class="c">
+                                \( P_{\text{low}} \gets PM-Basis(F, \lfloor \sigma/2 \rfloor) \)\tcp*[r]{Premier sous-problème} <br>
+                                Soit \( F' \) tel que \( P_{\text{low}} F = x^{k} F' \)\tcp*[r]{Décalage du problème} <br>
+                                \( P_{\text{high}} \gets PM-Basis(F', \lfloor \sigma/2 \rfloor) \)\tcp*[r]{Deuxième sous-problème} <br>
+
+                            </div>
+
+                        </div>
+                    </div>
+                        <div class="return">\( P_{\text{high}} \cdot P_{\text{low}} \)}\tcp*[r]{Résoudre le problème original}</div>
+                </div>
+
+                <div class="theorem nowrap">
+	                La complexité de l'algorithme PM-Basis est \( \mathcal{O} MM(m, \sigma) \log(\sigma) \)
+                    opérations dans le corps de base.
+                </div>
+    
+                <div class="remark">
+                    <ul>
+                        <li>
+                            Il faut voir la ligne 5 comme un décalage.
+                        </li>
+                        <li>
+                            La complexité peut se calculer en écrivant l'arbre binaire associé.
+                        </li>
+                        <li>
+                            On se sert du théorème 5.3 pour prouver la correction de l'algorithme.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="paragraph">
+                    Les algorithmes que nous avons vus sont des algorithmes pour calculer des bases d'ordre et non
+                    réduire des matrices par lignes.
+                </div>
+            </div>
         </main>
 
         <footer id="main-footer"></footer>
         
+        <script src="/assets/js/components/algorithm.js"></script>
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>

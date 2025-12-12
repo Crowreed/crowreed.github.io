@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -66,7 +60,7 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
+            <div style="height: 90vh ;" class="huhu hidden">
                 <div>
                     <button id="eee">
                         <svg class="" viewBox="0 0 24 24" fill="black">
@@ -75,11 +69,12 @@
                     </button>
                 </div>
             </div>
-            <div id="toc"></div>
+            <div style="height: 90vh ;" id="toc"></div>
 
             <div id="article">
                 <div class="paragraph">
-                    On commence par introduire la notion de réseau polynomial. Des rappels détaillés sur les anneaux et sur les modules sont dans l’annexe correspondante.
+                    On commence par introduire la notion de réseau polynomial.
+                    Des rappels détaillés sur les anneaux et sur les modules sont dans l’annexe correspondante.
                 </div>
                 
                 <div class="definition">
@@ -87,12 +82,19 @@
                 </div>
 
                 <div class="paragraph">
-                    On peut montrer qu'il existe une famille $\mathbb{K}[x]$-libre maximale $(b_i)_{1 \leq i \leq m}$ dans $\mathscr{L}$ telle que
+                    On peut montrer qu'il existe une famille $\mathbb{K}[x]$-libre maximale
+                    $(b_i)_{1 \leq i \leq m}$ dans $\mathscr{L}$ telle que
 
-                    $$\mathscr{L} = \bigoplus\limits_{1 \leq i \leq m} \mathbb{K}[x] b_i:=\{a_1 b_1 + \cdots a_m b_m : a_i \in \mathbb{K}[x]\}$$
+                    $$
+                    \mathscr{L} = \bigoplus\limits_{1 \leq i \leq m} \mathbb{K}[x] b_i:=\{a_1 b_1 + \cdots a_m b_m : a_i \in \mathbb{K}[x]\}
+                    $$
 
-                    Cette famille est appelée <strong>base</strong> de $\mathscr{L}$, si on note \(B \in \mathbb{K}[x]^{m \times n} \) la matrice de la famille $(b_i)_{1 \leq i \leq m}$ on notera $\mathscr{L}(B)$ le réseau de base $B$, donc <strong>engendré</strong> par la famille $(b_i)_{1 \leq i \leq m}$.
-                    L'entier $m$ est commun à toutes les bases de $\mathscr{L}$ et on l'appelle <strong>rang</strong> de $\mathscr{L}$. Lorsque $n=m$, on dit que le réseau est de <strong>rang plein</strong>. Un élément de \( \mathbb{K}[x]^{m \times n} \) est appelé matrice polynomiale.
+                    Cette famille est appelée <strong>base</strong> de $\mathscr{L}$, si on note
+                    \(B \in \mathbb{K}[x]^{m \times n} \) la matrice de la famille $(b_i)_{1 \leq i \leq m}$ on notera $\mathscr{L}(B)$
+                    le réseau de base $B$, donc <strong>engendré</strong> par la famille $(b_i)_{1 \leq i \leq m}$.
+                    L'entier $m$ est commun à toutes les bases de $\mathscr{L}$ et on l'appelle <strong>rang</strong> de $\mathscr{L}$.
+                    Lorsque $n=m$, on dit que le réseau est de <strong>rang plein</strong>. Un élément de \( \mathbb{K}[x]^{m \times n} \)
+                    est appelé <strong>matrice polynomiale</strong>.
                 </div>
 
                 <div class="example">
@@ -108,20 +110,26 @@
                 </div>
 
                 <div class="proposition">
-                    Soient \( P \) et \( Q \) deux bases de lignes d’un même \( \mathbb{F}[x] \)-module libre . Alors, il existe une matrice unimodulaire \( U \) telle que
+                    Soient \( P \) et \( Q \) deux bases de lignes d’un même \( \mathbb{F}[x] \)-module libre.
+                    Alors, il existe une matrice unimodulaire \( U \) telle que
                     \[
                     P \;=\; U \, Q.
                     \]
                 </div>
 
                 <div class="paragraph">
-                    On observe une analogie structurelle entre les matrices et les modules : de même que les matrices à coefficients dans \( \mathbb{K} \) sont naturellement liées aux \( \mathbb{K} \)-espaces vectoriels, les matrices à coefficients dans \( \mathbb{K}[x] \) interviennent dans l'étude des \( \mathbb{K}[x] \)-modules libres.
+                    On observe une analogie structurelle entre les matrices et les modules :
+                    de même que les matrices à coefficients dans \( \mathbb{K} \) sont naturellement
+                    liées aux \( \mathbb{K} \)-espaces vectoriels, les matrices à coefficients dans
+                    \( \mathbb{K}[x] \) interviennent dans l'étude des \( \mathbb{K}[x] \)-modules libres.
                 </div>
             </div>
 
         </main>
 
         <footer id="main-footer"></footer>
+
+        <script src="/assets/js/components/algorithm.js"></script>
         
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>

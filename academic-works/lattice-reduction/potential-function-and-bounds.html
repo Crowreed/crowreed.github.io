@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,69 +72,81 @@
             <div id="toc"></div>
 
             <div id="article">
-                \section{Fonction potentielle et bornes}
+                <h2>Fonction potentielle et bornes</h2>
 
-\subsection{Les cas polynomial}
+                <h3>Les cas polynomial</h3>
 
-Dans l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}, chaque opération entraîne soit une diminution du degré total par lignes, soit un déplacement du pivot d’une ligne vers la gauche.
+                <div class="paragraph">
+                    Dans l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}, chaque opération entraîne soit une diminution du degré total par lignes, soit un déplacement du pivot d’une ligne vers la gauche.
 
-\parencite{nielsen2013gmssr} définit une fonction de \emph{valeur} pour les vecteurs :
-\[
-\psi : 
-\begin{array}{rcl}
-    \mathbb{F}[x]^{\ell+1} & \longrightarrow & \mathbb{N}_0 \\
-    \mathbf{v} & \longmapsto & (\ell + 1) \cdot \rdeg \mathbf{v} + \mathrm{LP}(\mathbf{v})
-\end{array}
-\]
+                    \parencite{nielsen2013gmssr} définit une fonction de \emph{valeur} pour les vecteurs :
+                    \[
+                    \psi : 
+                    \begin{array}{rcl}
+                        \mathbb{F}[x]^{\ell+1} & \longrightarrow & \mathbb{N}_0 \\
+                        \mathbf{v} & \longmapsto & (\ell + 1) \cdot \rdeg \mathbf{v} + \mathrm{LP}(\mathbf{v})
+                    \end{array}
+                    \]
 
-où \( \mathrm{LP}(\mathbf{v} \) désigne l'indice du pivot de \( \mathbf{v} \).
+                    où \( \mathrm{LP}(\mathbf{v} \) désigne l'indice du pivot de \( \mathbf{v} \).
+                </div>
 
-\begin{lemma}
-    Soit \( \mathbf{v}_j' \) le vecteur qui remplace \( \mathbf{v}_j \) lors d’une réduction de ligne dans \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}.
-    Alors :
-    \[
-    \psi(\mathbf{v}_j') < \psi(\mathbf{v}_j).
-    \]
-\end{lemma}
+                <div class="lemma">
+                    Soit \( \mathbf{v}_j' \) le vecteur qui remplace \( \mathbf{v}_j \) lors d’une réduction de ligne dans \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}.
+                    Alors :
+                    \[
+                    \psi(\mathbf{v}_j') < \psi(\mathbf{v}_j).
+                    \]
+                </div>
+                
+                <div class="paragraph">
+                    Ainsi, l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}} repose sur une fonction potentielle qui décroît strictement à chaque opération. Cette fonction atteint nécessairement une valeur minimale, correspondant à une situation où aucune opération supplémentaire n’est possible, c’est-à-dire lorsque la matrice est réduite en ligne. Cette même idée se traduit dans l'algorithme.
+                </div>
+                
+                <h3>Le cas entier</h3>
 
-Ainsi, l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}} repose sur une fonction potentielle qui décroît strictement à chaque opération. Cette fonction atteint nécessairement une valeur minimale, correspondant à une situation où aucune opération supplémentaire n’est possible, c’est-à-dire lorsque la matrice est réduite en ligne. Cette même idée se traduit dans l'algorithme.
+                <div class="paragraph">
+                    Le lecteur pourra utilement se référer à la démonstration de la terminaison de l’algorithme \( \mathrm{LLL} \). Dans cette preuve, une quantité \( D \) a été introduite, qui décroît d’un facteur \( \frac{3}{4}\) à chaque échange de vecteurs. Cette décroissance strictement contrôlée constitue l’invariant principal garantissant la terminaison de l’algorithme.
+                </div>
 
-\subsection{Le cas entier}
+                <div class="definition">
+                    <span class="title">Rappel</span>
+                    On définit \( \displaystyle D \coloneqq \prod_{1 \leq k < n} d_k = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)}\)
+                </div>
 
-Le lecteur pourra utilement se référer à la démonstration de la terminaison de l’algorithme \( \mathrm{LLL} \). Dans cette preuve, une quantité \( D \) a été introduite, qui décroît d’un facteur \( \frac{3}{4}\) à chaque échange de vecteurs. Cette décroissance strictement contrôlée constitue l’invariant principal garantissant la terminaison de l’algorithme.
+                <div class="paragraph">                    
+                    En pratique, la valeur de \( D \) peut devenir très grande, il est donc plus pertinent de regarder l’ordre de grandeur en considérant son logarithme \( \log(D) \), c’est-à-dire son nombre de bits, puisque c'est comme ça qu'il est considérer dans la démonstration.
+                </div>
 
-\begin{definition}[Rappel]
-    On définit \( \displaystyle D \coloneqq \prod_{1 \leq k < n} d_k = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)}\)
-\end{definition}
+                <div class="proposition">
+                    \( \displaystyle \log(D) = \sum_{k=1}^{n-1} 2(n-k) \log (\| \bb_k^*\|)\)
+                </div>
 
-En pratique, la valeur de \( D \) peut devenir très grande, il est donc plus pertinent de regarder l’ordre de grandeur en considérant son logarithme \( \log(D) \), c’est-à-dire son nombre de bits, puisque c'est comme ça qu'il est considérer dans la démonstration.
+                <div class="paragraph">
+                    On impose dans la preuve de terminaison que \( D \geq 1 \). Toutefois, \( D = 1 \) si et seulement si le réseau est isomorphe à \( \mathbb{Z}^n \). Un raisonnement similaire montre que très peu de réseaux satisfont \( D = 2 \). En pratique, la valeur de \( D \) reste largement supérieure à \( 1 \), et l’algorithme retourne une base \( \mathrm{LLL} \)-réduite avec \( D \gg 1 \). Ainsi, bien que le critère de terminaison repose sur une décroissance stricte de \( D \), cela ne reflète pas toujours le fait que l’algorithme a effectivement atteint un état suffisant de réduction.
 
-\begin{proposition}
-    \( \displaystyle \log(D) = \sum_{k=1}^{n-1} 2(n-k) \log (\| \bb_k^*\|)\)
-\end{proposition}
+                    On peut essayer d'améliorer la borne inférieure, on se place dans l'hypothèse que la base est \( \mathrm{LLL} \)-réduite et donc satisfait la condition de Lovàsz.
 
-On impose dans la preuve de terminaison que \( D \geq 1 \). Toutefois, \( D = 1 \) si et seulement si le réseau est isomorphe à \( \mathbb{Z}^n \). Un raisonnement similaire montre que très peu de réseaux satisfont \( D = 2 \). En pratique, la valeur de \( D \) reste largement supérieure à \( 1 \), et l’algorithme retourne une base \( \mathrm{LLL} \)-réduite avec \( D \gg 1 \). Ainsi, bien que le critère de terminaison repose sur une décroissance stricte de \( D \), cela ne reflète pas toujours le fait que l’algorithme a effectivement atteint un état suffisant de réduction.
+                    \[
+                    \begin{aligned}
+                    D & = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)} \\
+                      & = \|\bb_1^*\|^{2(n-1)} \x \|\bb_2^*\|^{2(n-2)} \x \cdots \x \|b_n^*\|^2 \\
+                      & \geq \|\bb_1^*\|^{2(n-1)} \x \left(\frac{\|\bb_1^*\|}{2}\right)^{2(n-2)} \x \cdots \x \left(\frac{\|\bb_1^*\|}{2^{n-2}}\right)^2 \\
+                      & \geq \left( \frac{\|b_1^*\|}{2^{\frac{4}{3} (n-2)}} \right)^{(n-1)n}
+                    \end{aligned}
+                    \]
+                </div>
 
-On peut essayer d'améliorer la borne inférieure, on se place dans l'hypothèse que la base est \( \mathrm{LLL} \)-réduite et donc satisfait la condition de Lovàsz.
+                <div class="paragraph">
+                    Après la remise de ce rapport, mon travail consistera à explorer la portée pratique de cette borne. Contrairement au cas polynomial, le comportement de \( D \) dans le cas entier reste difficile à cerner, et l’on ne sait pas précisément jusqu’où cette quantité peut décroître.
 
-\[
-\begin{aligned}
-    D & = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)} \\
-      & = \|\bb_1^*\|^{2(n-1)} \x \|\bb_2^*\|^{2(n-2)} \x \cdots \x \|b_n^*\|^2 \\
-      & \geq \|\bb_1^*\|^{2(n-1)} \x \left(\frac{\|\bb_1^*\|}{2}\right)^{2(n-2)} \x \cdots \x \left(\frac{\|\bb_1^*\|}{2^{n-2}}\right)^2 \\
-      & \geq \left( \frac{\|b_1^*\|}{2^{\frac{4}{3} (n-2)}} \right)^{(n-1)n}
-\end{aligned}
-\]
-
-Après la remise de ce rapport, mon travail consistera à explorer la portée pratique de cette borne. Contrairement au cas polynomial, le comportement de \( D \) dans le cas entier reste difficile à cerner, et l’on ne sait pas précisément jusqu’où cette quantité peut décroître.
-
-De manière similaire au raisonnement précédent, une borne supérieure sur \( D \) est également disponible.  
-Dans \parencite{MCA}, on trouve :
-\[
-D \leq \left( \max_{1 \leq i \leq n} \| \bg_i \| \right)^{n(n-1)}.
-\]
-Une question naturelle est alors de savoir si cette borne peut être améliorée. On peut voir que l'exposant \( n(n-1) \) peut devenir \( (n-1)n \). Plutôt que d'utiliser \( \max_{1 \leq i \leq n} \| \bg_i \| \), on pourrait utiliser un invariant lié au réseau comme \( |\LL| \). 
-
+                    De manière similaire au raisonnement précédent, une borne supérieure sur \( D \) est également disponible.  
+                    Dans \parencite{MCA}, on trouve :
+                    \[
+                    D \leq \left( \max_{1 \leq i \leq n} \| \bg_i \| \right)^{n(n-1)}.
+                    \]
+                    Une question naturelle est alors de savoir si cette borne peut être améliorée. On peut voir que l'exposant \( n(n-1) \) peut devenir \( (n-1)n \). Plutôt que d'utiliser \( \max_{1 \leq i \leq n} \| \bg_i \| \), on pourrait utiliser un invariant lié au réseau comme \( |\LL| \). 
+                </div>
             </div>
 
         </main>

@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,7 +72,66 @@
             <div id="toc"></div>
 
             <div id="article">
-            </div>
+                <h2>Conclusion et perspectives</h2>
+
+                <div class="paragraph">
+                    Ce stage a été l’occasion de m’immerger pleinement dans une thématique à la frontière de plusieurs domaines,
+                    en explorant les liens entre la réduction de bases dans les réseaux polynomiaux et euclidiens.
+                    J'ai appris beaucoup de choses sur la cryptographie. L’objectif initial, comprendre dans quelle mesure certaines
+                    techniques exactes issues du cas polynomial peuvent être transposées au cas entier, m’a conduit à une réflexion
+                    profonde sur les structures internes de ces deux cadres, leurs obstacles respectifs, et c'est difficile, j'ai
+                    perdu littéralement des cheveux.
+                </div>
+
+                <div class="paragraph">
+                     Après une première phase dédiée à la compréhension fine de l’algorithme de Lenstra–Lenstra–Lovász (LLL), de sa
+                     preuve et de ses variantes, j’ai étudié les réseaux d’approximation dans le cas polynomial, en particulier à
+                     travers les algorithmes de type \textsc{Basis}, \textsc{M-Basis} et \textsc{PM-Basis}. Cela m’a permis de me
+                     familiariser avec des notions comme les fonctions potentielles, les décalages, et les stratégies de réduction modulaire.
+                </div>
+
+               <div class="paragraph">
+ Dans un second temps, j’ai tenté d’adapter certaines de ces idées au cadre euclidien. J’ai notamment proposé une version \(p\)-adique de réduction de type LLL, fondée sur une stratégie récursive par précision croissante, et prouvé la validité d’un algorithme que j’ai nommé \textsc{shiftLLL}, inspiré d’une vision géométrique du changement de base. Ces constructions, bien qu’exploratoires, constituent des pistes sérieuses pour une adaptation plus fine des techniques de réduction exactes aux contraintes du calcul numérique.
+
+               </div>
+
+               
+               <div class="paragraph">
+                 Ce stage m’a permis d’approfondir mes compétences en mathématiques théoriques et en algorithmique constructive, tout en me confrontant à des problématiques de mise en œuvre concrète, notamment via SageMath. J’ai également eu l’opportunité de présenter certains résultats à l’oral, d’échanger avec des chercheurs du domaine, et de développer une plus grande autonomie dans la conduite d’un projet de recherche. Ce travail ouvre naturellement la voie à de nombreuses questions, que ce soit du point de vue théorique (analyse fine de la stabilité des produits de bases réduites) ou algorithmique (optimisation, généralisation, complexité).
+
+               </div>
+
+               
+               <div class="paragraph">
+                 Plusieurs directions naturelles s’ouvrent à la suite de ce travail. Un premier axe concerne l’analyse fine du comportement de la fonction potentielle \( D \) dans le cadre euclidien : mieux comprendre ses bornes effectives, son lien avec la qualité de la base en sortie de LLL, et la possibilité d’adapter dynamiquement ses paramètres à des situations spécifiques. 
+
+               </div>
+
+               
+               <div class="paragraph">
+                 Un second axe réside dans l’étude approfondie des algorithmes de type \textsc{LLL-DAC-Padique}. Leur structure récursive offre un cadre intéressant pour l’optimisation par précision croissante, mais leur stabilité, leur efficacité réelle et la propagation des erreurs méritent une étude plus systématique, notamment en lien avec les bornes théoriques et le comportement empirique.
+
+               </div>
+
+               
+               <div class="paragraph">
+                 Enfin, une piste originale, initiée ici, concerne l’exploration de stratégies de réduction adaptées à un décalage donné. L’algorithme \textsc{shiftLLL} en constitue une première illustration. Il serait pertinent d’approfondir les conditions sous lesquelles un produit de matrices \( \mathrm{LLL} \)-réduites reste lui-même bien réduit, et de développer des critères mesurant le degré de "quasi-réduction" d’une base obtenue par composition. Ces réflexions pourraient notamment s’articuler autour de notions telles que la \( k \)-quasi-croissance ou la structure spectrale du produit de Gram-Schmidt associé.
+
+               </div>
+
+               
+               <div class="paragraph">
+                 Lors de la présentation orale du stage, j’envisage de compléter ce travail théorique par des simulations numériques illustrant concrètement les algorithmes développés.
+
+               </div>
+
+               
+               <div class="paragraph">
+                Je tiens à remercier vivement mon encadrant Romain Lebreton pour ses conseils, sa bienveillance et la richesse des échanges tout au long de ce stage.
+           
+               </div>
+
+                 </div>
 
         </main>
 

@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -66,7 +60,7 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
+            <div style="height: 80vh;" class="huhu hidden">
                 <div>
                     <button id="eee">
                         <svg class="" viewBox="0 0 24 24" fill="black">
@@ -75,27 +69,36 @@
                     </button>
                 </div>
             </div>
-            <div id="toc"></div>
+            <div style="height: 80vh;" id="toc"></div>
 
             <div id="article">
                 <div class="paragraph">
-                    Lorsque les coefficients des matrices appartiennent à un corps \( \mathbb{K} \), les opérations classiques telles que la multiplication, l'inversion, le calcul du déterminant ou la résolution de systèmes linéaires possèdent des complexités comparables.
-                    En revanche, lorsqu'on considère des matrices à coefficients dans l'anneau \( \mathbb{K}[x] \), des différences apparaissent : si le calcul du déterminant conserve la même complexité que celle du produit matriciel, l'inversion est plus coûteuse.
-                    Cette complexité découle de la structure de l'anneau \( \mathbb{K}[x] \) : bien qu'il s'agisse d'un anneau principal (à la différence de \( \mathbb{K}[x,y] \)), il ne s'agit pas d'un corps. 
-                    Ainsi, certaines opérations, comme l’inversion, ne sont plus systématiquement réalisables. Notamment, dans \( \mathbb{K}[x] \), seuls les polynômes constants non nuls sont inversibles. 
-                    Cette restriction impose de repenser et redéfinir rigoureusement plusieurs notions de l'algèbre linéaire. Les matrices à coefficients dans \( \mathbb{K}[x] \) sont essentielles dans de nombreuses applications. 
-                    
+                    Lorsque les coefficients des matrices appartiennent à un corps \( \mathbb{K} \), les opérations classiques telles
+                    que la multiplication, l'inversion, le calcul du déterminant ou la résolution de systèmes linéaires possèdent des
+                    complexités comparables. En revanche, lorsqu'on considère des matrices à coefficients dans l'anneau \( \mathbb{K}[x] \),
+                    des différences apparaissent : si le calcul du déterminant conserve la même complexité que celle du produit matriciel,
+                    l'inversion est plus coûteuse. Cette complexité découle de la structure de l'anneau \( \mathbb{K}[x] \) : bien qu'il
+                    s'agisse d'un anneau principal (à la différence de \( \mathbb{K}[x,y] \)), il ne s'agit pas d'un corps. 
+                    Ainsi, certaines opérations, comme l’inversion, ne sont plus systématiquement réalisables. Notamment, dans
+                    \( \mathbb{K}[x] \), seuls les polynômes constants non nuls sont inversibles. 
+                    Cette restriction impose de repenser et redéfinir rigoureusement plusieurs notions de l'algèbre linéaire.
+                    Les matrices à coefficients dans \( \mathbb{K}[x] \) sont essentielles dans de nombreuses applications. 
                 </div>
 
-                <div class="paragraph">
-                    \footnote{Par exemple dans l’interpolation bivariée, une étape centrale du décodage des codes de Reed-Solomon}.
-                </div>
+                <details>
+                    <summary>Interpolation bivariée</summary>
+                    <p>
+                        Par exemple dans l’interpolation bivariée, une étape centrale du décodage des codes de Reed-Solomon.
+                    </p>
+                </details>
 
                 <div class="paragraph">
                      Ce chapitre vise à explorer les réseaux polynomiaux  et leurs propriétés spécifiques.
-                    Ce mémoire avait pour ambition initiale de motiver rigoureusement l’introduction des bases réduites dans le cadre des matrices polynomiales.
-                    Toutefois, afin de ne pas aborder un sujet trop éloigné des objectifs du stage, et par souci de concision, nous ne détaillerons pas ici les aspects liés aux mesures de complexité. Ce que j'avais rédigé initialement se retrouve en annexe.
-                    Notons simplement qu’il est essentiel d’analyser finement le comportement des matrices polynomiales vis-à-vis des opérations algébriques usuelles, en particulier la multiplication.
+                    Ce mémoire avait pour ambition initiale de motiver rigoureusement l’introduction des bases réduites dans le cadre des
+                    matrices polynomiales. Toutefois, afin de ne pas aborder un sujet trop éloigné des objectifs du stage, et par souci de
+                    concision, nous ne détaillerons pas ici les aspects liés aux mesures de complexité. Ce que j'avais rédigé initialement
+                    se retrouve en annexe. Notons simplement qu’il est essentiel d’analyser finement le comportement des matrices
+                    polynomiales vis-à-vis des opérations algébriques usuelles, en particulier la multiplication.
                     Cela justifie l’introduction de la notion de degré de ligne, qui jouera un rôle central dans le chapitre suivant.
                 </div>
             </div>

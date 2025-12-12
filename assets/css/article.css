@@ -18,7 +18,7 @@
 }
 
 #article ol > li{
-  list-style-type:upper-roman;
+  list-style-type:decimal;
 }
 
 .article li ul > li{

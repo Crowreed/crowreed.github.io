@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,6 +72,226 @@
             <div id="toc"></div>
 
             <div id="article">
+                <h2>Détails de preuves de LLL</h2>
+
+\begin{lemma} 
+    \leavevmode\vspace{0.5\baselineskip}
+    \begin{enumerate}
+        \item Soit \( G, G^*, M \in \Q^{n \x n}\) et \( H, H^*, N  \in \Q^{n \x n} \) les matrices des \( \bg_k \), \( g^*_k \), \( \mu_{k,l} \) avant et après \hyperref[step:PP]{\emph{Proprification partielle de $\bg_i$}}. Soit \( E = I_n -\lceil \mu_{i,j} \rfloor E_{i,j} \in \Z^{n \x n} \), où \( E_{i,j}\) désigne la matrice élémentaire.
+        % faire une citation de la matrice élémentaire dans l'annexe 
+        
+        Alors
+        \[
+        H = EG \text{, } \quad N = EM \text{, } \quad H^* = G^* .
+        \]
+        
+        \item Avant \hyperref[step:PP]{\emph{Proprification partielle de $\bg_i$}}, on a :
+        \[
+        |\mu_{i,l}| \leq \frac{1}{2} \quad \text{pour} \quad j < l < i.
+        \]
+    \end{enumerate}		
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \begin{itemize}[label=\textbullet]
+            \item \hyperref[step:PP]{\emph{Proprification partielle de $\bg_i$}} se traduit matriciellement par \( H = EG \).
+            
+            \item La nouvelle famille est 
+            \[ 
+            \left(\bg_1,\; \ldots,\; \bg_{i-1},\; \bg_i - \lceil \mu_{i,j} \rfloor \bg_j,\; \bg_{i+1},\; \ldots,\; \bg_n\right).
+            \]
+            
+            On rappelle que \( i \) et \( j \) sont fixés et que \( 1 \leq j \leq i-1\). On a par définition du procédé de Gram-Schmidt \( h_k^* = \bg_k^*\) pour \( 1 \leq k \leq i-1\).
+            
+            Pour \( k = i\), on a
+            
+            \[
+            \begin{aligned}
+                h_i^* &= h_i - \sum_{k = 1}^{i-1} \gscoeff{h_i}{h_k^*} \\
+                &= \bg_j - \nint{\mu_{i,j}}  \bg_j - \sum_{k = 1}^{i-1} \gscoeff{\bg_i - \nint{\mu_{i,j}} \bg_j}{\bg_k^*}\\
+                &= \bg_i^* + \nint{\mu_{i,j}} \sum_{k=1}^{i-1} \gscoeff{\bg_j}{\bg_k^*} - \nint{\mu_{i,j}} \bg_j\\
+                &= \bg_i^* + \nint{\mu_{i,j}} \sum_{k=1}^{j} \gscoeff{\bg_j}{\bg_k^*} - \nint{\mu_{i,j}} \bg_j\\
+                &= \bg_i^* + \nint{\mu_{i,j}} \sum_{k=1}^{j-1} \gscoeff{\bg_j}{\bg_k^*} + \bg_j^*- \nint{\mu_{i,j}} \bg_j \\
+                &= \bg_i^*
+            \end{aligned}
+            \]
+            
+            Ainsi \( h_i^* = \bg_i^*\). En poursuivant le procédé de Gram-Schmidt , on en conclut \( H^* = G^*\).
+            
+            \item On a \( NG^*\eqjust{1}NH^*\eqjust{D.1}H\eqjust{1}EG\eqjust{D.1}EMG^*\). En identifiant on a \( N=EM \). % D'après 
+        \end{itemize}
+        
+        \item Au début de la boucle lorsque \( j=i-1 \) on a trivialement l'inégalité.
+        
+        La \( i \)-ème ligne de \( M \)
+        \[
+        (\mu_{i,1},\; \cdots,\; \mu_{i,j},\; \cdots,\; \mu_{i,i-1})
+        \]
+        Devient
+        \[
+        (\mu_{i,1}-\nint{\mu_{i,j}} \mu_{j,1},\; \cdots,\; \mu_{i,j}-\nint{\mu_{i,j}} \mu_{j,j},\; \cdots,\; \mu_{i,i-1}-\nint{\mu_{i,j}} \mu_{j,i-1})
+        \]
+        
+        \[
+        (\mu_{i,1}-\nint{\mu_{i,j}} \mu_{j,1},\cdots,\; \mu_{i,j}-\nint{\mu_{i,j}},\; \cdots,\; \mu_{i,i-1})
+        \] 
+        
+    \end{enumerate}
+\end{proof}
+
+\begin{smallalgo}{Proprification de \( \bg_{i} \)}{step:P}
+    \For{$j = i{-}1, i{-}2, \dots, 1$}{
+        \hyperref[step:PP]{\emph{Proprification partielle de \( \bg_i \)}}\;
+    }
+\end{smallalgo}
+
+\begin{lemma}
+    \hyperref[step:P]{\emph{Proprification de $\bg_i$}} ne change pas $G^*$ et à la fin on a 
+    \[
+    |\mu_{i,l}| \leq \frac{1}{2} \text{ pour } 1 \leq l < i. 
+    \]
+\end{lemma}
+
+\begin{proof}
+    D'après le lemme 2.1, après l'exécution de \hyperref[step:P]{\emph{Proprification de $\bg_i$}}, \( G^* \) n'a pas été modifié et en appliquant le lemme 2.1 pour \( j = 1 \) on a 
+    \[
+    |\mu_{i,l}| \leq \frac{1}{2} \text{ pour } 1 \leq l < i. 
+    \]
+\end{proof}
+On voit donc que la partie de mise à jour est en réalité simple à calculer et ne necessite pas de recalculer la decomposition de GS à chaque fois.
+
+
+On étudie maintenant l'étape de réduction, l'idée consiste à réorganiser les vecteurs afin de garantir une progression quantifiable, qui assurera la terminaison de LLL.
+
+\begin{smallalgo}{Réduction de \( \bg_{i-1}, \bg_i \)}{step:R}
+    \If{\( i > 1 \) \textbf{et} \( \norm{\bg_{i-1}^*}^2 > 2 \norm{\bg_{i}^*}^2 \)}
+    {
+        Échanger \( \bg_{i-1} \) et \( \bg_i \)\;
+        
+        Mettre à jour \( (B^*, U)  \)\;
+        
+        \( i \leftarrow i - 1 \)\;
+    }
+    \Else
+    {
+        \( i \leftarrow i + 1 \)\;
+    }
+\end{smallalgo}
+
+\begin{lemma}
+    Supposons que \( \bg_{i-1} \) et \( \bg_i \) sont échangés à l'étape \hyperref[step:R]{\emph{Réduction de $\bg_{i-1}, \bg_{i}$}}. 
+    
+    On note \( h_k \) les vecteurs après échange et \( h_k^* \) leur base orthogonale de Gram-Schmidt.
+    
+    Alors
+    
+    \begin{enumerate}
+        \item \( h_k^* = \bg_k^* \quad \text{pour tout } k \in \{1, \dots, n\} \setminus \{i-1, i\} \),
+        \item \( \| h_{i-1}^* \|^2 < \dfrac{3}{4} \| \bg_{i-1}^* \|^2 \),
+        \item \( \| h_i^* \| \leq \| \bg_{i-1}^* \| \).
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item La famille
+        \[
+        (\bg_1, \; \ldots,\; \bg_{i-2},\; \bg_{i-1},\; \bg_i,\; \bg_{i+1},\; \ldots,\; \bg_n)
+        \]
+        
+        
+        devient
+        
+        \[
+        (h_1:=\bg_1,\; \ldots,\; h_{i-2}:=\bg_{i-2},\; h_{i}:=\bg_{i},\; h_{i-1}:=\bg_{i-1},\; h_{i+1}:=\bg_{i+1},\; \ldots,\; h_n:=\bg_n)
+        \]
+        
+        Par construction de Gram-Schmidt on a \( h_k^* = \bg_k^* \) pour \( 1 \leq k \leq i-2\).
+        
+        On a 
+        \[
+        \begin{aligned}
+            h_{i+1}^* &= h_{i+1}- \sum_{j=1}^{i} \gscoeff{h_{i+1}}{h_j^*} \\
+            &= \bg_{i+1}- \sum_{j=1}^{i-2} \gscoeff{\bg_{i+1}}{\bg_j^*} + \gscoeff{\bg_{i+1}}{\bg_{i}^*} + \gscoeff{\bg_{i+1}}{\bg_{i-1}^*} \\
+            &= \bg_{i+1}^*    
+        \end{aligned}
+        \] 
+        
+        On en déduit donc que \( h_k^* = \bg_k^* \) pour \( i+1 \leq k \leq n\).
+        \item Le vecteur \( h_{i-1}^* \) est la composante de \( \bg_i \) orthogonale à \( \sum_{1 \leq l < i-1} \R \bg_l \), or \( \bg_i = \bg_i^* + \sum_{1 \leq l < i-1} \mu_{i,l} \bg_l^*\).
+        
+        Alors 
+        \[
+        \begin{aligned}
+            h_{i-1}^* &= \bg_i^* + \mu_{i,i-1} \bg_{i-1}^*
+        \end{aligned}
+        \] 
+        
+        et donc 
+        
+        \[
+        \begin{aligned}
+            \norm{h_{i-1}^*}^2 &= \norm{\bg_i^*}^2 + \mu_{i,i-1}^2 \norm{\bg_{i-1}^*}^2 \\ 
+            &\leq \frac{1}{2}\norm{\bg_{i-1}^*}^2 + \frac{1}{4} \norm{\bg_{i-1}^*}^2\\
+            &=\frac{3}{4} \norm{\bg_{i-1}^*}^2
+        \end{aligned}
+        \]
+        
+        \item Soit \( \displaystyle u = \sum_{1 \leq l < i-1} \mu_{i-1,l} \bg_l^* \) et posons \(\displaystyle  U = \sum_{1 \leq l < i-1} \R \bg_l \) pour simplifier l’écriture.
+        
+        Alors, le vecteur \( h_i^* \) est la composante de \( \bg_{i-1} = \bg_{i-1}^* + u \) orthogonale à \( U + \R \bg_i \).
+        
+        Or \( u \in U \subseteq U + \R \bg_i \). 
+        
+        Alors, le vecteur \( h_i^* \) est la composante de \( \bg_{i-1}^* \) orthogonale à \( U + \R \bg_i \).
+        
+        Par conséquent,
+        \[
+        \|h_i^*\| \leq \|\bg_{i-1}^*\|.
+        \]
+        
+    \end{enumerate}
+\end{proof}
+
+\begin{smallalgo}{LLL}{step:LLL}
+    \While{\( i \leq n \)}
+    {
+        \textit{Proprification de \( \bg_i \)}\;
+        \textit{Réduction de \( \bg_{i-1}, \bg_i \)}\;
+    }
+\end{smallalgo}
+
+\begin{lemma}
+    Au début de chaque itération de la boucle à l'étape \hyperref[step:LLL]{\emph{LLL}}, les invariants suivants sont vérifiés :
+    \[
+    |\mu_{k,l}| \leq \frac{1}{2} \quad \text{pour } 1 \leq l < k < i, \qquad \|\bg_{k-1}^*\|^2 \leq 2 \|\bg_k^*\|^2 \quad \text{pour } 1 < k < i.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Au début de l’étape \hyperref[step:LLL]{\emph{LLL}}, les deux inégalités considérées sont satisfaites.
+    
+    Supposons qu’elles restent vraies juste avant l’étape de \textit{Proprification de \( \bg_i \)}.
+    
+    Le lemme 2.1 garantit que cette phase ne les altère pas : les inégalités demeurent donc valides après \hyperref[step:P]{\emph{Proprification de $\bg_i$}}.
+    
+    Passons à l’étape \hyperref[step:R]{\emph{Réduction de $\bg_{i-1}, \bg_{i}$}}. Un échange effectué durant cette réduction ne modifie aucun coefficient $\mu_{k,l}$ avec $k<i-1$ ; par conséquent, la première inégalité reste satisfaite. Par ailleurs, d’après le lemme 2.3, un échange ne modifie pas $\bg_k^{\ast}$ pour $k\notin\{i-1,i\}$, ce qui préserve la seconde inégalité.
+    
+    Ainsi, à la fin de l’étape \hyperref[step:R]{\emph{Réduction de $\bg_{i-1}, \bg_{i}$}} et donc au début de l’itération de \hyperref[step:LLL]{\emph{LLL}} suivante les deux inégalités sont toujours vérifiées. Par récurrence sur les itérations, elles le sont à chaque instant de l’algorithme, ce qui conclut la démonstration.
+\end{proof}
+
+
+\begin{proof}[Preuve de la correction]
+    Le lemme 2.4 implique qu'à la fin de \hyperref[step:LLL]{\emph{LLL}}, comme \( i = n\), on a 
+    
+    \[
+    |\mu_{k,l}| \leq \frac{1}{2} \quad \text{pour } 1 \leq l < k < n, \qquad \|\bg_{k-1}^*\|^2 \leq 2 \|\bg_k^*\|^2 \quad \text{pour } 1 < k < n.
+    \]
+    
+    ce qui prouve que la base est réduite.
+\end{proof}
+
             </div>
 
         </main>

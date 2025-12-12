@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,17 +72,21 @@
             <div id="toc"></div>
 
             <div id="article">
-
                 <div class="theorem">
                     <span class="title">Correction</span>
                     L'algorithme LLL calcule une base réduite de \( \mathscr{L} \).
                 </div>
                 
-                <div class="algorithm-container">
+                <div class="algorithm">
                     <h2>Proprification de \( g_{i} \)</h2>
-    \For{$j = i{-}1, i{-}2, \dots, 1$}{
-        \hyperref[step:PP]{\emph{Proprification partielle de \( \bg_i \)}}\;
-    }
+
+                    <div class="for">
+                        <span class="forS">$j = i{-}1, i{-}2$</span> a 
+                        <span class="forE">1</span>
+                        <div class="c">
+                            Proprification partielle de \( g_i \)
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lemma">
@@ -103,20 +101,21 @@
                 </div>
 
 
-                <div class="algorithm-container">
+                <div class="algorithm">
                     <h2>Réduction de \( g_{i-1}, g_i \)</h2>
-    \If{\( i > 1 \) \textbf{et} \( \norm{\bg_{i-1}^*}^2 > 2 \norm{\bg_{i}^*}^2 \)}
-    {
-        Échanger \( \bg_{i-1} \) et \( \bg_i \)\;
-        
-        Mettre à jour \( (B^*, U)  \)\;
-        
-        \( i \leftarrow i - 1 \)\;
-    }
-    \Else
-    {
-        \( i \leftarrow i + 1 \)\;
-    }
+                    <div class="conditional">
+                        <div class="if">
+                            \( i > 1 \) et \( \| g_{i-1}^*\|^2 > 2 \|g_{i}^*\|^2 \)
+                            <div class="c">
+                                Échanger \( g_{i-1} \) et \( g_i \) <br>
+                                Mettre à jour \( (B^*, U)  \) <br>
+                                \( i \leftarrow i - 1 \)
+                            </div>
+                        </div>
+                        <div class="else">
+                            \( i \leftarrow i + 1 \)
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lemma">
@@ -137,13 +136,17 @@
                     </ul>
                 </div>
 
-                <div class="algorithm-container">
+                <div class="algorithm">
                     <h2>LLL</h2>
-    \While{\( i \leq n \)}
-    {
-        \textit{Proprification de \( \bg_i \)}\;
-        \textit{Réduction de \( \bg_{i-1}, \bg_i \)}\;
-    }
+                    
+                    <div class="while">
+                        \( i \leq n \)
+                        <div class="c">
+                            Proprification de \( g_i \) <br>
+                            Réduction de \( g_{i-1}, g_i \)
+                        </div>
+                    </div>
+    
                 </div>
 
                 <div class="lemma">
@@ -158,6 +161,7 @@
 
         <footer id="main-footer"></footer>
         
+        <script src="/assets/js/components/algorithm.js"></script>
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>

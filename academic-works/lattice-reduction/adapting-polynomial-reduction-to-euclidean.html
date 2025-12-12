@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -66,7 +60,7 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
+            <div style="height: 80vh;" class="huhu hidden">
                 <div>
                     <button id="eee">
                         <svg class="" viewBox="0 0 24 24" fill="black">
@@ -75,9 +69,17 @@
                     </button>
                 </div>
             </div>
-            <div id="toc"></div>
+            <div style="height: 80vh;" id="toc"></div>
 
             <div id="article">
+                <h2>Adaptation de la réduction de réseaux polynomiaux <br> au cas des réseaux euclidiens</h2>
+
+                <div class="paragraph">
+                    Ce chapitre constitue le cœur de mon stage. Il vise à explorer l’adaptation des techniques exactes
+                    de réduction de réseaux polynomiaux, au cadre des réseaux euclidiens. Il s'agit d’esquisser des pistes,
+                    de formuler des questions pertinentes et de suggérer des idées nouvelles. L’ensemble de ce travail a
+                    été réalisé en collaboration avec mon encadrant, Romain Lebreton.
+                </div>
             </div>
 
         </main>

@@ -2,15 +2,38 @@
 
 <html lang="fr">
     <head>
-        <title>
-            Correction, terminaison et complexité de LLL
-        </title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- metadata -->
+         
         <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Correction, terminaison et complexité de LLL</title>
+
+        <meta 
+            name="description"
+            content="Aperçu du chapitre de preuve de l'algorithme LLL. Met en évidence l'importance de la décroissance de la quantité D pour garantir la terminaison de l'algorithme et la complexité polynomiale."
+        >
+        
+        <meta 
+            name="keywords"
+            content="preuve LLL, terminaison algorithme LLL, complexité LLL, quantité D, décroissance, lemmes, démonstrations annexes"
+        >
+
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
 
         <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
@@ -66,7 +89,7 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
+            <div style="height: 80vh;" class="huhu hidden">
                 <div>
                     <button id="eee">
                         <svg class="" viewBox="0 0 24 24" fill="black">
@@ -75,13 +98,18 @@
                     </button>
                 </div>
             </div>
-            <div id="toc"></div>
+            <div style="height: 80vh;" id="toc"></div>
 
             <div id="article">
                 <div class="paragraph">
-                    Le lecteur pourra choisir de passer ce chapitre en première lecture. 
-                    Les preuves et les résultats secondaires (lemmes et démonstrations annexes) sont regroupés en annexe afin d'alléger la lecture. 
-                    Dans tous les cas, il suffira de garder à l'esprit que la terminaison de l'algorithme LLL repose sur la décroissance d'une quantité notée $D$, dont l'étude sera essentielle dans la suite. Le lecteur pourra également, s'il le souhaite, consulter directement les résultats relatifs à la complexité algorithmique de LLL.
+                    Le lecteur pourra choisir de passer ce chapitre en première lecture.
+                </div>
+                <div class="paragraph">
+                    Les preuves et les résultats secondaires (lemmes et démonstrations annexes) sont regroupés en annexe
+                    afin d'alléger la lecture. Dans tous les cas, il suffira de garder à l'esprit que la terminaison de
+                    l'algorithme LLL repose sur la décroissance d'une quantité notée $D$, dont l'étude sera essentielle
+                    dans la suite. Le lecteur pourra également, s'il le souhaite, consulter directement les résultats
+                    relatifs à la complexité algorithmique de LLL.
                 </div>
             </div>
         </main>

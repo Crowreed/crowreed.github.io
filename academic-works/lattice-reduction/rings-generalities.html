@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,8 +72,177 @@
             <div id="toc"></div>
 
             <div id="article">
-            </div>
+                <h2>Généralités</h2>
 
+                <div class="paragraph">
+                    Ces résultats sont classiques de la théorie des anneaux commutatifs.
+                    Pour plus de détails, on pourra se reporter à un manuel standard d’algèbre.
+                </div>
+                
+                <div class="definition"> 
+                    Un <strong>anneau</strong> $(A, +, \cdot)$ est un ensemble $A$ muni de deux lois internes :
+
+                    <ul>
+                        <li>$(A, +)$ est un <strong>groupe abélien</strong> (on note $0$ son élément neutre et $-a$ l’inverse de $a$),</li>
+                        <li>la multiplication $\cdot : A \x A \to A$, notée simplement $ab$, est <strong>associative</strong> et <strong>distributive</strong> par rapport à $+$, c’est-à-dire :
+                            \[
+                            a(b + c) = ab + ac, 
+                            \quad (b + c)a = ba + ca,
+                            \quad \forall a, b, c \in A,
+                            \]
+                            et possède un <strong>élément neutre</strong> $1 \in A$ (on dit alors que $A$ est un anneau <strong>unitaire</strong>).</li>
+                    </ul>
+                </div>
+
+                <div class="definition">
+                    Un anneau $A$ est <strong>commutatif</strong> si $ab = ba$ pour tout $a, b \in A$.
+                </div>
+
+                <div class="paragraph">
+                    Dans ce mémoire et dans cette annexe, tous les anneaux seront supposés commutatifs par défaut,
+                    conformément aux usages standards, sauf indication explicite du contraire.
+                </div>
+
+                <div class="definition">
+                    Un anneau $A$ est <strong>intègre</strong> si, pour tout $a, b \in A$, on a
+                    \[
+                    ab = 0 \quad\Longrightarrow\quad (a=0 \ \text{ou}\ b=0).
+                    \]
+                </div>
+
+                <div class="remark">
+                    Autrement dit, $A$ est intègre si et seulement si il n'a pas de diviseurs de $0$.
+                </div>
+
+                <div class="definition">
+                    Soit $A$ un anneau commutatif. Un <strong>idéal</strong> $I \subseteq A$ est un sous-groupe additif de $(A, +)$
+                    tel que, pour tout $a \in A$ et tout $x \in I$, on ait
+                    \(ax \in I.\)
+                </div>
+
+                <div class="remark">
+                        En commutatif, $ax = xa$, donc une seule condition suffit à le décrire.
+                </div>
+
+                <div class="definition">
+                    Un idéal $I$ de $A$ est dit <strong>principal</strong> s’il existe un unique $r \in A$ tel que
+                     $I = \langle r \rangle = \{ar : a \in A\}$. Un anneau $A$ est <strong>principal</strong> si tous ses idéaux sont principaux.
+                </div>
+
+                <div class="definition">
+                        Un anneau $A$ est <strong>noethérien</strong> si toutes ses chaînes d’idéaux (i.e. $I_1 \subseteq I_2 \subseteq \ldots$)
+                        sont stationnaires, c’est-à-dire qu’il n’existe pas de chaîne infinie strictement croissante d’idéaux.
+                </div>
+
+                <div class="remark">
+                    Cette définition est équivalente à dire que tout idéal de $A$ est de type fini, i.e.
+                     $I = \langle x_1,\dots,x_k\rangle$ pour un nombre fini d’éléments.
+                </div>
+
+
+                <div class="definition">
+                    Un anneau intègre $A$ est <strong>factoriel</strong> si tout élément non nul et non inversible de $A$
+                    admet une factorisation en éléments irréductibles unique à l’ordre près (et inversibles près).
+                </div>
+
+                <div class="paragraph nowrap">
+                    Tout <strong>anneau euclidien</strong> est principal, tout <strong>anneau principal</strong> est factoriel et tout 
+                    <strong>anneau principal</strong> est noethérien.
+                </div>
+
+                <figure>
+                    <div class="fig-container">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>Anneau</strong>
+                                </td>
+                                <td>
+                                    <strong>Commutatif</strong>
+                                </td>
+                                <td>
+                                    <strong>Intègre</strong>
+                                </td>
+                                <td>
+                                    <strong>Principal</strong>
+                                </td>
+                                <td>
+                                    <strong>Factoriel</strong>
+                                </td>
+                                <td>
+                                    <strong>Noethérien</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>$\Z$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$\Z/n\Z$ (non premier)</td>
+                                <td>$\checkmark$</td>
+                                <td>$\times$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\times$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$\Z/p\Z$ ($p$ premier)</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$\Z[i]$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$\Z[\sqrt{-5}]$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$\Z \x \Z$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$M_n(\K)$, $n \geq 2$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>$\checkmark$</td>
+                            </tr>
+                            <tr>
+                                <td>$C^0([0,1], \R)$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\checkmark$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                                <td>$\times$</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <figcaption>Quelques exemples d'anneaux et leurs propriétés</figcaption>
+                </figure>
+            </div>
         </main>
 
         <footer id="main-footer"></footer>

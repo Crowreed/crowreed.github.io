@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -80,20 +74,18 @@
             <div id="article">
                 <div class="paragraph">
                     Voici une rétrospective structurée des avancées majeures dans la réduction de réseaux euclidiens.
+                </div>
 
-                    <ul>
-                        <li>
-                            <strong>1982</strong>
-                            <strong>LLL</strong>
-                            (Lenstra, Lenstra, Lovász)
-                            <a class="ref-lenstra-1982"></a>
+                <div class="paragraph">
+                    <ol>
+                        <li value="1982">
+                            <strong>LLL</strong> (Lenstra, Lenstra, Lovász) <a class="ref-lenstra-1982"></a>
                             introduisent le premier algorithme de réduction polynomial, basé sur une combinaison de <strong>size reduction</strong> et d'une condition de Lovász. Il garantit :
                             \[
                             \|b_1\| \leq (4/3)^{(n-1)/2} \cdot \lambda_1(\mathscr{L}), \quad \text{avec complexité binaire } \mathcal{O}(n^5 \beta^2)
                             \]
                         </li>
-                        <li>
-                            <strong>1991</strong>
+                        <li value="1991">
                             <strong>BKZ</strong>
                             <a class="ref-schnorr-1994"></a>
                             introduit une approche par blocs. L’algorithme applique un solveur SVP de petite dimension \(\beta\) à des sous-blocs de la base :
@@ -102,47 +94,40 @@
                             \]
                             Le coût est exponentiel en \(\beta\) mais reste efficace pour \(\beta \leq 40\) en pratique.
                         </li>
-                        <li>
-                            <strong>2009</strong>
+                        <li value="2009">
                             <strong>L2</strong>
-                            \parencite{Nguyen2009}
+                            <a class="ref-nguyen-2009"></a>
                             améliore LLL sur le plan de la stabilité numérique, sans gain théorique majeur sur la qualité de la base. Complexité similaire à LLL, mais plus efficace pour des entrées en flottants.
                         </li>
-                        <li>
-                            <strong>2011</strong>
+                        <li value="2011">
                             <strong>$\tilde{L}_1$</strong>
-                            \parencite{Novocin2011}
+                            <a class="ref-novocin-2011"></a>
                             propose une version rapide de LLL inspirée du GCD rapide de Knuth–Schönhage. Il introduit une stratégie récursive appelée \emph{Lift-Reduction} et atteint une complexité quasi-linéaire :
                             \[
                             \mathcal{O}\left(d^{5+\varepsilon} \beta + d^{\omega+1+\varepsilon} \beta^{1+\varepsilon} \right)
                             \]
                             avec une qualité comparable à LLL : \( \|b_1\| \leq 2^{\alpha n} \cdot |\mathscr{L}|^{1/n} \).
                         </li>
-                        <li> 
-                            <strong>2011</strong>
+                        <li value="2011">
                             <strong>Terminating BKZ</strong>
-                            \parencite{cryptoeprint:2011/198}
+                            <a class="ref-bkz-2011"></a>
                             propose une modélisation dynamique affine de BKZ. Ils montrent que même interrompu prématurément, BKZ garantit :
                             \[
                             \|b_1\| \leq 2^{\frac{\gamma_\beta(n-1)}{2(\beta - 1)} + \frac{3}{2}} \cdot |\mathscr{L}|^{1/n}
                             \]
                             après seulement \( \mathcal{O}(n^3/\beta^2 \cdot \log \|B\|) \) appels à un solveur SVP.
                         </li>
-                        <li>
-                            <strong>2019</strong>
-                            <strong>KEF</strong>
-                             \parencite{Kirchner2021}
-                             propose un algorithme heuristique récursif exploitant la \emph{Geometric Series Assumption} (GSA) pour guider la réduction. Il utilise des techniques de FFT et obtient une complexité heuristique :
-    \[
-    \widetilde{\mathcal{O}}(n^\omega \cdot \log \kappa(B))
-    \]
-    avec une qualité empirique équivalente à BKZ en grande dimension (\( n > 2000 \)).
+                        <li value="2019">
+                            <strong>KEF</strong> <a class="ref-kirchner-2021"></a>
+                            propose un algorithme heuristique récursif exploitant la <strong>Geometric Series Assumption (GSA)</strong> pour guider la réduction. Il utilise des techniques de FFT et obtient une complexité heuristique :
+                            \[
+                            \widetilde{\mathcal{O}}(n^\omega \cdot \log \kappa(B))
+                            \]
+                            avec une qualité empirique équivalente à BKZ en grande dimension (\( n > 2000 \)).
                         </li>
-                        <li>
-                            <strong>2023</strong>
-                            <strong>Iterated Compression</strong>
-                             \parencite{Ryan2023}
-                             présente un algorithme récursif fondé sur des opérations de compression stables, une métrique de \emph{drop}, et des profils dynamiques :
+                        <li  value="2023">
+                            <strong>Iterated Compression</strong> <a class="ref-ryan-2023"></a>
+                            présente un algorithme récursif fondé sur des opérations de compression stables, une métrique de <strong>drop</strong>, et des profils dynamiques :
                             \[
                             \|b_1\| \leq 2^{\alpha n} \cdot |\mathscr{L}|^{1/n}, \quad \|b_n^*\| \geq 2^{-\alpha n} \cdot |\mathscr{L}|^{1/n}
                             \]
@@ -151,7 +136,7 @@
                             \mathcal{O}(n^\omega(C + n)^{1+\varepsilon}), \quad C = \log(\|B\| \cdot \|B^{-1}\|)
                             \]  
                         </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
 

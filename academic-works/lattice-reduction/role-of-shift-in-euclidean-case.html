@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -81,68 +75,87 @@
 
                 <h1>Comprendre le rôle du shift dans le cas euclidien</h1>
 
+                <div class="paragraph">
+                    On rappel que calculer le degré de ligne décalé d'une matrice revient à calculer le degré de ligne de cette matrice multipliée à gauche par une matrice diagonale.
 
-On rappel que calculer le degré de ligne décalé d'une matrice revient à calculer le degré de ligne de cette matrice multipliée à gauche par une matrice diagonale.
+                    On pourrait ici définir une notion de décalage avec une matrice ligne-orthogonale. Cela a donné lieu à l'algorithme suivant que j'ai écris et dont j'ai prouvé la correction par moi-même.
+                </div>
 
-On pourrait ici définir une notion de décalage avec une matrice ligne-orthogonale. Cela a donné lieu à l'algorithme suivant que j'ai écris et dont j'ai prouvé la correction par moi-même.
+                <div class="algorithm">
+                    <h2>shiftLLL</h2>
+                    <div class="meta">
+                        <div class="in"> Une base \( G \) de \( \mathscr{L} \), \( S^* \) une matrice ligne-orthogonale</div>
+                        <div class="out"> Une base \( B \) de \( \mathscr{L} \) tel que \( BS^* \) soit \( \mathrm{LLL} \)-réduite</div>
+                    </div> 
 
-\begin{smallalgo}{\textsc{shiftLLL}}{algo:shiftLLL}
-    \KwIn{Une base \( G \) de \( \LL \), \( S^* \) une matrice ligne-orthogonale}
-    \KwOut{Une base \( B \) de \( \LL \) tel que \( BS^* \) soit \( \mathrm{LLL} \)-réduite}
-    
-    \KwRet{ \( \mathrm{LLL}(G S^*) \cdot (S^*)^{-1} \) }
-\end{smallalgo}
+                    <div class="return">\( \mathrm{LLL}(G S^*) \cdot (S^*)^{-1} \) </div>
+                </div>
 
+                <div class="theorem nowrap">
+                    L'algorithme shiftLLL calcule correctement une base \( B \) du réseau \( \mathscr{L} \) telle que \( BS^* \)
+                    soit \( \mathrm{LLL} \)-réduite.
+                </div>
 
-\begin{theoreme}
-    L'algorithme \hyperref[algo:shiftLLL]{\emph{shiftLLL}} calcule correctement une base \( B \) du réseau \( \LL \) telle que \( BS^* \) soit \( \mathrm{LLL} \)-réduite.
-\end{theoreme}
-
-\begin{proof}
-    On a le diagramme commutatif suivant en voyant \( S^* \) comme la matrice de passage de la base canonique \( \mathcal{C} \) à la base \( \mathcal{C'} \coloneqq S^* \). L'écriture \( \LL_{\mathcal{C}} \) où \( \mathcal{C} \) est une base représente \( \LL \) exprimée dans la base \( \mathcal{C} \).
+                <div class="proof">
+                    On a le diagramme commutatif suivant en voyant \( S^* \) comme la matrice de passage de la base canonique
+                    \( \mathcal{C} \) à la base \( \mathcal{C'} \coloneqq S^* \). L'écriture \( \mathscr{L}_{\mathcal{C}} \) où
+                    \( \mathcal{C} \) est une base représente \( \mathscr{L} \) exprimée dans la base \( \mathcal{C} \).
      
-    \[\begin{tikzcd}
-        {\LL_{\mathcal{C}}} && {\LL_{\mathcal{C}}} \\
-        \\
-        && {\LL_{\mathcal{C}'}} 
-        \arrow["G", from=1-1, to=1-3]
-        \arrow["{GS^*}"', from=1-1, to=3-3]
-        \arrow["{S^*}", from=1-3, to=3-3]
-    \end{tikzcd}\]
+                    \[
+                    \begin{tikzcd}
+                        {\mathscr{L}_{\mathcal{C}}} && {\mathscr{L}_{\mathcal{C}}} \\
+                        \\
+                        && {\mathscr{L}_{\mathcal{C}'}} 
+                        \arrow["G", from=1-1, to=1-3]
+                        \arrow["{GS^*}"', from=1-1, to=3-3]
+                        \arrow["{S^*}", from=1-3, to=3-3]
+                    \end{tikzcd}
+                    \]
 
-    Comme \( LLL(GS^*) \) est une base de \( \LL_{\mathcal{C}'}\), on en déduit le diagramme commutatif suivant et donc que \( LLL(GS^*) (S^*)^{-1} \) est une base de \( \LL_{\mathcal{C}} \).
+                    Comme \( LLL(GS^*) \) est une base de \( \LL_{\mathcal{C}'}\), on en déduit le diagramme commutatif suivant et donc que \( LLL(GS^*) (S^*)^{-1} \) est une base de \( \LL_{\mathcal{C}} \).
      
-    \[\begin{tikzcd}
-        {\LL_{\mathcal{C}}} && {\LL_{\mathcal{C}}} \\
-        \\
-        && {\LL_{\mathcal{C}'}}
-        \arrow["{\mathrm{LLL}(GS^*)(S^*)^{-1}}", from=1-1, to=1-3]
-        \arrow["{\mathrm{LLL}(GS^*)}"', from=1-1, to=3-3]
-        \arrow["{S^*}", from=1-3, to=3-3]
-    \end{tikzcd}\]
+                    \[
+                    \begin{tikzcd}
+                        {\LL_{\mathcal{C}}} && {\LL_{\mathcal{C}}} \\
+                        \\
+                        && {\LL_{\mathcal{C}'}}
+                        \arrow["{\mathrm{LLL}(GS^*)(S^*)^{-1}}", from=1-1, to=1-3]
+                        \arrow["{\mathrm{LLL}(GS^*)}"', from=1-1, to=3-3]
+                        \arrow["{S^*}", from=1-3, to=3-3]
+                    \end{tikzcd}
+                    \]
 
-    On a par construction de \( \mathrm{LLL} \) que \( LLL(GS^*) (S^*)^{-1} S^*\) est \( \mathrm{LLL}\)-réduite.
-\end{proof}
+                    On a par construction de \( \mathrm{LLL} \) que \( LLL(GS^*) (S^*)^{-1} S^*\) est \( \mathrm{LLL}\)-réduite.
+                </div>
 
-L'algorithme termine car \( \mathrm{LLL}\) termine et sa complexité est de l'ordre de la complexité de \( \mathrm{LLL}\).
+                <div class="paragraph">
+                    L'algorithme termine car \( \mathrm{LLL}\) termine et sa complexité est de l'ordre de la complexité de \( \mathrm{LLL}\). <br>
 
-En revenant à la décomposition précédente, en calculant une base telle que \(V_1 V_2^*\) est \( \mathrm{LLL}\)-réduite, c'est-à-dire \(V_1 \) est \( \mathrm{LLL}\)-réduite pour le décalage \(V_2^*\). On peut se poser les questions suivantes qui sont des pistes à explorer :
+                    En revenant à la décomposition précédente, en calculant une base telle que \(V_1 V_2^*\) est \( \mathrm{LLL}\)-réduite,
+                    c'est-à-dire \(V_1 \) est \( \mathrm{LLL}\)-réduite pour le décalage \(V_2^*\). On peut se poser les questions suivantes
+                    qui sont des pistes à explorer : <br>
 
-Est-ce que \( (V_2^*)^{-1} U_2 V_2 \) est "quasi" \( \mathrm{LLL}\)-réduite ?
+                    Est-ce que \( (V_2^*)^{-1} U_2 V_2 \) est "quasi" \( \mathrm{LLL}\)-réduite ?
+                </div>
 
-\begin{problem}[Hypothèse]
-    \( (V_2^*)^{-1} U_2 V_2 \) est une base propre, c'est-à-dire qu'en écrivant sa décomposition de Gram-Schmidt, les coefficients correspondant ne sont pas trop grand.
-\end{problem}
-
-La condition de Lovász peut être interprétée comme une forme de \(2\)-quasi-croissance.  
-Une question naturelle serait alors de se demander si, par analogie, le produit calculé par LLL pourrait satisfaire une propriété de \(4\)-quasi-croissance.
-
+                <div class="problem">
+                    <span class="title">(Hypothèse)</span> <br>
+                    \( (V_2^*)^{-1} U_2 V_2 \) est une base propre, c'est-à-dire qu'en écrivant sa décomposition de Gram-Schmidt,
+                    les coefficients correspondant ne sont pas trop grand.
+                </div>
+                
+                <div class="paragraph">
+                    La condition de Lovász peut être interprétée comme une forme de \(2\)-quasi-croissance.  
+                    Une question naturelle serait alors de se demander si, par analogie, le produit calculé
+                    par LLL pourrait satisfaire une propriété de \(4\)-quasi-croissance.
+                </div>
             </div>
 
         </main>
 
         <footer id="main-footer"></footer>
         
+        <script src="/assets/js/components/algorithm.js"></script>
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>

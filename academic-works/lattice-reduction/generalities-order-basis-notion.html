@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,12 +72,261 @@
             <div id="toc"></div>
 
             <div id="article">
+                <h2>Généralités et notion de base d'ordre</h2>
+
+                <div class="paragraph">
+                    Soit \( F \in \mathbb{F}[x]^{m \times n},\) et un <strong>degré de précision</strong> \( \sigma \in \N \).
+                    On définit
+                    \[
+                    (F, \sigma):= \{v \in \mathbb{F}[x]^{1 \times m}  ~|~  vF = 0 \mod x^\sigma\}
+                    \]
+                </div>
+
+                <div class="proposition">
+	                \( (F, \sigma) \) est un réseau polynomial de dimension \( m \).
+                </div>
+
+                <div class="paragraph">
+                    On va s'intérésser à étudier les bases de ce réseau et définir une notion de base réduite.
+                </div>
+
+                <div class="definition">
+	                Une \( (F, \sigma) \)-<strong>base d'ordre</strong> est une base \footnote{au sens des \( \mathbb{F}[x] \)-modules}
+                    de \( (F, \sigma) \) de degré minimale.
+                </div>
+
+                <div class="paragraph">
+                    Quelle est la définition du degré ? Que signifie minimale dans ce contexte ?
+                </div>
+
+                <div class="definition">
+	                Soit \( F \in \mathbb{F}[x]^{m \times n} \).
+                    On dit que \( F \) est <strong>réduite par ligne</strong> si,
+                    pour tout \( U \in \mathbb{F}[x]^{m \times m} \) unimodulaire, on a : 
+                    \[
+                    rdeg(F) \leq_{ob} rdeg(UF).
+                    \]
+                </div>
+
+                <div class="paragraph">
+                    Pour parler d'un minimum, il faut un ordre total. On voit enfin la nouvelle définition de base réduite.
+                </div>
+
+                <div class="definition">
+	                Une <strong>base d'ordre</strong> est une base de \( (F, \sigma) \) qui est réduite par ligne.
+                </div>
+
+                <div class="paragraph">
+                    On peut définir une notion de base d'ordre en incluant la notion de décalage des degrés, on munit \( (F, \sigma) \) d'un vecteur de décalage \( s \), qu'on notera \( (F, \sigma, s) \), on peut alors dire qu'une base d'ordre de cet ensemble est une base d'ordre de \( (F x^s, \sigma) \), on peut l'interpréter intuitivement comme une base réduite pour un décalage, qui sera utile dans le chapitre 6.
+
+                    L'existence d'une base réduite est garantie, mais elle n'est pas nécessairement unique. Pour assurer l'unicité, une condition supplémentaire est requise : la forme de Popov.
+                </div>
+
+                <div class="proof">
+                    <span class="title">Preuve naïve (incorrecte)</span> <br>
+
+	                Considérons le minimum de tous les $rdeg(P U)$ triés, pour toutes les matrices unimodulaires
+                    \( U \in \mathbb{F}[x]^{m \times m} \).
+	
+	                Toute base \( PU \) ayant un degré minimal est une base d'ordre.
+                    Attention : l'ordre \( \leq_{ob} \) n'est pas un ordre total.
+                    En effet, il est possible d'avoir deux bases dont les degrés en ligne sont respectivement
+                    \( (1,2,3) \) et \( (1,1,4) \). On ne peut pas encore garantir l'existence d'un minimum !
+                </div>
+
+                <!--Est-ce qu'on pourrait faire un lien avec le dev de Taylor-->
+
+                <div class="definition">
+	                Soit \( A \in \mathbb{F}[x]^{m \times n} \) et soit \( v = rdeg_u(A) \).
+                    On définit la <strong>matrice des coefficients dominants</strong>
+                    de \( A \), notée \( lcoeff(A) \in \mathbb{F}^{m \times n} \), comme étant la matrice obtenue
+                    en extrayant la partie constante de \( x^{-v} A\), c'est-à-dire :
+	                \[
+	                lcoeff(A) = \lim_{x \to \infty} x^{-v} A.
+	                \]
+                </div>
+
+                <details>
+                    <summary>SageMath et leading_matrix</summary>
+                    <p>
+                        La matrice des coefficients dominants est accessible dans SageMath via la méthode <span class="function">leading_matrix()</span>.
+                    </p>
+                </details>
+
+                <div class="example">
+	                Soit 
+	                \[
+	                F = 
+	                \begin{pmatrix}
+		                1 & 0 & 1 \\
+		                x & 1 & 1 + x \\
+		                1 & x^2 + x^3 & x
+	                \end{pmatrix}
+                    , \quad
+                    \vec{v} := rdeg(F) = (0,1,3)
+	                \]
+	
+	                Alors
+	                \[
+                    \displaystyle
+	                x^{-\vec{v}} \cdot F =
+	                \begin{pmatrix}
+		                1 & 0 & 1\\
+		                1 & x^{-1} & x^{-1} + 1 \\
+		                x^{-3} & x^{-1} + 1 & x^{-2}\\
+	                \end{pmatrix}
+	                = 
+	                \begin{pmatrix}
+		                1 & 0 & 1 \\
+		                1 & 0 & 1 \\
+		                0 & 1 & 0 
+	                \end{pmatrix}
+	                + 
+	                \mathcal{O}_{x \to \infty}(x^{-1})
+	                \]
+                </div>
+
+                <div class="proposition">
+                    <span class="title">Transitivité, revisitée</span> <br>
+	                Soient \( c := b \cdot A \), \( v = rdeg_u(A) \) et \( w = rdeg_v(b) \). <br>
+	                Si \( lcoeff(A) \) est  <strong>injective à gauche</strong>, alors \( rdeg_u(c) = w \).
+                </div>
+
+                <div class="remark">
+                    On a donc l'égalité par rapport à la proposition 4.4.
+                </div>
+
+                <div class="proposition">
+	                Soit \( A \) une matrice. Si \( lcoeff(A) \) est injective à gauche, alors \( A \) est réduite par ligne.
+                </div>
+
+                <div class="paragraph">
+                    Maintenant que l'on connaît la définition d'une base réduite et un critère pour la définir comment la calculer efficacement ?
+                </div>
+
+                <div class="definition">
+                    On définit le <strong>pivot</strong> d'une ligne comme l'élément non nul de degré maximal le plus à droite dans cette ligne.
+                </div>
+
+                <div class="definition">
+	                Soit \( W \in \mathbb{F}[x]^{m \times n} \). La matrice \( W \) est dite en
+                    <strong>forme Popov faible</strong> si chaque ligne de \( W \) possède un pivot,
+                    et si les indices de colonnes de ces pivots sont distincts deux à deux.
+                </div>
+
+                <div class="example">
+	                Soit $ W_1, W_2 \in M_2(\Z_7 [x])$ tel que
+	                \[
+                    W_1=
+	                \begin{pmatrix}
+                    3x + 4 & x^9 \\
+                    5 & x^2+1
+                    \end{pmatrix}
+                    ,~W_2= 
+                    \begin{pmatrix}
+                        2x^7 + 5x^5 + 3x + 4 & x^5 \\
+                        5 & x^2+1
+                    \end{pmatrix}
+	                \]
+	                On note les pivots en rouge. $W_1$ n'est pas en forme de Popov faible car les pivots sont sur la même colonne,
+                    et $W_2$ est en forme Popov faible, car les pivots, ont des indices de colonnes distincts.
+                </div>
+
+                <div class="paragraph">
+                    Pour transformer une matrice en forme Popov faible, on peut utiliser l'algorithme proposé dans <br>
+                    <a href="" class="ref-mulders-2003"></a>
+                    , qui fournit une méthode systématique pour y parvenir en appliquant des transformations unimodulaires par lignes.
+                </div>
+
+                <div class="definition">
+                    On appelle <strong>transformation simple</strong> de la ligne \(k\) sur la ligne \(l\)
+                    l'opération consistant à soustraire \(c x^e\) fois la ligne \(k\) à la ligne \(l\), où
+                    \(c \in \mathbb{F}\) et \(e \in \mathbb{N}\). On dit qu'elle est du <strong>premier type</strong>
+                    si les pivots de la ligne \( k \) et de la ligne \( l \) ont les mêmes indices et du
+                    <strong>deuxième type</strong> sinon.
+                </div>
+
+                <!--Une suite décroissante de row degree doit être stable, lien avec base de grobner-->
+
+                <details>
+                    <summary>SageMath et WeakPopovForm</summary>
+                    <p>
+                        L'algorithme suivant est disponible dans SageMath via la méthode <span class="function">weak_popov_form()</span>.
+                    </p>
+                </details>
+
+                <div class="algorithm">
+                    <h2>WeakPopovForm <a class="ref-mulders-2003"></a></h2>
+
+                    <div class="meta">
+                        <div class="in"> \( \mathcal{M} \in \mathbb{F}[x]^{n \times m} \)</div>
+                        <div class="out"> \( \mathcal{N} \) en forme de Popov faible, obtenue par des transformations simples de premier type appliquées à \( \mathcal{M} \)</div>
+                    </div>
+
+    
+                    \( A \gets \text{copie}(\mathcal{M}) \) <br>
+    
+                    <div class="while">
+                        \( A \) n’est pas en forme de Popov faible
+                        <div class="c">
+                            Appliquer une transformation simple du premier type à \( A \)
+                        </div>
+                    </div>
+
+                    \( \mathcal{N} \gets \text{copie}(A) \)
+    
+                    <div class="return">
+                        \( \mathcal{N} \)
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <span class="title">Correction et complexité</span> <br> 
+                    L'algorithme <strong>WeakPopovForm</strong> est correct. 
+                    Sa complexité est bornée par $\mathcal{O}(n m r d^2)$ opérations dans le corps de base, où $r$ désigne le rang de la matrice $M$, et $d$ une borne supérieure sur le degré des coefficients de $\mathcal{M}$.
+                </div>
+
+                <div class="example">
+	                \[
+                    \begin{pmatrix}
+                        3x + 4 & x^9 \\
+                        5 & x^2+1
+                    \end{pmatrix}
+	                \rightarrow
+	                \begin{pmatrix}
+                        2x^7+3x + 4 & 6x^7 \\
+                        5 & x^2+1
+                    \end{pmatrix}
+                    \rightarrow
+	                \begin{pmatrix}
+                        2x^7 + 5x^5 + 3x + 4 & x^5 \\
+                        5 & x^2+1
+                    \end{pmatrix}
+	                \]
+	
+                    <ol>
+                        <li>
+                            Ajouter \( 6 x^7 \) fois la deuxième ligne à la première ligne.
+                        </li>
+                        <li>
+                            Ajouter \( x^5 \) fois la deuxième ligne à la première ligne.
+                        </li>
+                    </ol>
+	
+	                La matrice finale est en forme Popov faible, les pivots ont des indices de colonnes distincts.
+                </div>
+
+                <div class="theorem">
+                    Toute matrice en <strong>forme Popov faible</strong> est réduite par ligne.
+                </div>
+
+
             </div>
 
         </main>
 
         <footer id="main-footer"></footer>
-        
+        <script src="/assets/js/components/algorithm.js"></script>
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>

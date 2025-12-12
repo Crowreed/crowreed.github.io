@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -66,7 +60,7 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
+            <div style="height: 80vh;" class="huhu hidden">
                 <div>
                     <button id="eee">
                         <svg class="" viewBox="0 0 24 24" fill="black">
@@ -75,9 +69,16 @@
                     </button>
                 </div>
             </div>
-            <div id="toc"></div>
+            <div style="height: 80vh;" id="toc"></div>
 
             <div id="article">
+                <div class="paragraph">
+                    La réduction des réseaux polynomiaux est une étape essentielle dans plusieurs applications algorithmiques,
+                    en particulier dans le décodage efficace des codes de Reed-Solomon généralisés. Cette opération vise à
+                    transformer une base quelconque d'un réseau polynomial en une base simplifiée. Dans cette section, nous
+                    détaillerons les principaux concepts, outils et algorithmes permettant de réaliser cette réduction en temps
+                    polynomial. On notera \( \mathbb{K} \) un corps quelconque.
+                </div>                
             </div>
 
         </main>

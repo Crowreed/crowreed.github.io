@@ -35,21 +35,15 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script defer src="/assets/js/katex-config.js"></script>
     </head>
     <body>
         <header>
@@ -78,38 +72,48 @@
             <div id="toc"></div>
 
             <div id="article">
-                \section{Vers une réduction LLL adaptée aux réseaux d’approximation}
+                <h2>Vers une réduction LLL adaptée aux réseaux d’approximation</h2>
 
+                <div class="paragraph">
+                    On va donner une définition équivalente du réseau d'approximation \( (F, \sigma) \) mais adaptée pour les réseaux euclidiens.
+                </div>
 
-On va donner une définition équivalente du réseau d'approximation \( (F, \sigma) \) mais adaptée pour les réseaux euclidiens.
+                <div class="definition">
+                    Soit \( F \in M_n (\Z) \), un degré de précision \( \sigma \in \N\), et \(p \in \N\). On définit
+                    \[
+                    F_{p^\sigma} \coloneqq  \{ v \in \Z^n | vF = 0 \mod p^\sigma \}
+                    \]
+                </div>
+                
+                <div class="paragraph">
+                    Contrairement au cas polynomial, la situation est ici fondamentalement différente.
+                    Nous verrons par la suite s’il est nécessaire d’imposer des restrictions sur \( p \) et \( \sigma \),
+                    et le cas échéant, lesquelles.
+                </div>
 
-\begin{definition}
-    Soit \( F \in M_n (\Z) \), un degré de précision \( \sigma \in \N\), et \(p \in \N\). On définit
-    \[
-    F_{p^\sigma} \coloneqq  \{ v \in \Z^n | vF = 0 \mod p^\sigma \}
-    \]
-\end{definition}
+                <div class="proposition">
+                    \( F_{p^\sigma} \) est un réseau euclidien de dimension \( n \).
+                </div>
 
-Contrairement au cas polynomial, la situation est ici fondamentalement différente. Nous verrons par la suite s’il est nécessaire d’imposer des restrictions sur \( p \) et \( \sigma \), et le cas échéant, lesquelles.
+                <div class="remark">
+                    \( F_{p^\sigma} \) est un réseau \( p^\sigma\)-aire.
+                </div>
 
-\begin{proposition}
-    \( F_{p^\sigma} \) est un réseau euclidien de dimension \( n \).
-\end{proposition}
-
-\begin{remark}
-    \( F_{p^\sigma} \) est un réseau \( p^\sigma\)-aire.
-\end{remark}
-
-Comment peut-on calculer une base de \( F_{p^\sigma} \)~? Est-il possible d’en extraire une base \( \mathrm{LLL} \)-réduite, et ce, de manière efficace~? Comme dans le cas polynomial traité pour le réseau \( (F, \sigma) \), il est d'abord nécessaire de calculer une décomposition \footnote{Il s’agit d’une généralisation de la décomposition \( P L F = U \), où \( U \) était une matrice triangulaire supérieure. Ici, on relâche cette contrainte en ne demandant que \( U \) soit échelonnée par lignes.} de la forme
-
-\begin{equation}
-\underbrace{
-    \begin{bmatrix}
-        e_{\tau(1)} \\
-        \vdots \\
-        e_{\tau(n)}
-    \end{bmatrix}
-}_{P}
+                <div class="paragraph">
+                    Comment peut-on calculer une base de \( F_{p^\sigma} \) ?
+                    Est-il possible d’en extraire une base \( \mathrm{LLL} \)-réduite, et ce, de manière efficace ?
+                    Comme dans le cas polynomial traité pour le réseau \( (F, \sigma) \), il est d'abord nécessaire
+                    de calculer une décomposition de la forme
+                    
+                    $$
+                    \begin{equation}
+                        \underbrace{
+                            \begin{bmatrix}
+                                e_{\tau(1)} \\
+                                \vdots \\
+                                e_{\tau(n)}
+                            \end{bmatrix}
+                        }_{P}
 \cdot
 \underbrace{
     \begin{bmatrix}
@@ -127,13 +131,31 @@ F
     \end{bmatrix}
 }_{E}
 \end{equation}
-
+$$
 où \(r \coloneqq \rang(F) \), \( P \) est une matrice de permutation, \( L \) est une matrice triangulaire inférieure et \( E \) est échelonnée en ligne.
 
 
-\begin{smallalgo}{\textsc{PLE}$(A)$}{algo:ple}
-    \KwIn{$A \in \mathbb{K}^{n \times m}$}
-    \KwOut{Matrices \( P \), \( L \), \( E \) telles que \( 6.1 \) est satisfaite.}
+                </div>
+
+                <details>
+                    <summary></summary>
+
+                    <p>
+Il s’agit d’une généralisation de la décomposition \( P L F = U \),
+                        où \( U \) était une matrice triangulaire supérieure. Ici, on relâche cette contrainte en ne demandant
+                        que \( U \) soit échelonnée par lignes.}
+                    </p>
+                </details>
+
+                <div class="algorithm">
+                    <h2>\textsc{PLE}$(A)$</h2>
+                    <div class="meta">
+                        <div class="in">\KwIn{$A \in \mathbb{K}^{n \times m}$}</div>
+                        <div class="out">\KwOut{Matrices \( P \), \( L \), \( E \) telles que \( 6.1 \) est satisfaite.}</div>
+                    </div>
+
+    
+    
     
     $n \gets \text{nrows}(A)$,\quad $m \gets \text{ncols}(A)$\;
     $P \gets I_n$, \quad $L \gets I_n$, \quad $E \gets A$\;
@@ -162,106 +184,122 @@ où \(r \coloneqq \rang(F) \), \( P \) est une matrice de permutation, \( L \) e
         }
     }
     
-    \KwRet{$(P, L, E)$}
-\end{smallalgo}
+                    <div class="return">$(P, L, E)$</div>
+                </div>
 
-\begin{remark}
+                <div class="remark">
+                    Comme c'est vrai pour toute permutations, il serait intéressant de choisir certaines permutations particulières,
+                    notamment qui ordonne les vecteurs par norme croissante.
+                </div>
 
-Comme c'est vrai pour toute permutations, il serait intéressant de choisir certaines permutations particulières, notamment qui ordonne les vecteurs par norme croissante.
+                <div class="remark">
+                    J'ai mis trop d'investissement dans cet algorithme, j'en ai fais plusieurs versions, allant d'une version naïve
+                    où je calculais tous les pivots pour ordonner les lignes de façon à avoir les mineurs principaux inversibles,
+                    à une stratégie plus subtile d'échange quand nécessaire, grâce aux conseils avisés de mon encadrant. Cet algorithme
+                    fonctionne sur \( \Z_p \) pour \( p \) premier, car les pivots sont inversibles, je réfléchissais à une stratégie
+                    pour rendre cet algorithme fonctionnel  sur \( \Z_n \).
+                </div>
 
-\end{remark}
+                <div class="theorem">
+                    L'algorithme PLE calcule correctement une décomposition qui satisfait 6.1.
+                </div>
 
-\begin{remark}
-    J'ai mis trop d'investissement dans cet algorithme, j'en ai fais plusieurs versions, allant d'une version naïve où je calculais tous les pivots pour ordonner les lignes de façon à avoir les mineurs principaux inversibles, à une stratégie plus subtile d'échange quand nécessaire, grâce aux conseils avisés de mon encadrant. Cet algorithme fonctionne sur \( \Z_p \) pour \( p \) premier, car les pivots sont inversibles, je réfléchissais à une stratégie pour rendre cet algorithme fonctionnel  sur \( \Z_n \).
-\end{remark}
-
-\begin{theoreme}
-    L'algorithme \textsc{PLE} calcule correctement une décomposition qui satisfait 6.1.
-\end{theoreme}
-
-\begin{counterexample}[Limite de l’algorithme \textsc{PLE}]
-    L’algorithme \textsc{PLE} ne s’applique pas dans tous les cas. 
+                <div class="counterexample">
+                    <span class="title">Limite de l’algorithme PLE</span> <br>
+                    
+                    L’algorithme PLE ne s’applique pas dans tous les cas. 
     
-    Soit
-    \[
-    A =
-    \begin{bmatrix}
-        3 & 4 \\
-        4 & 3
-    \end{bmatrix}
-    \in M_2(\mathbb{Z}/12\mathbb{Z}).
-    \]
-    Dans cet anneau, les coefficients \( 3 \) et \( 4 \) ne sont pas inversibles, ce qui empêche de procéder aux opérations de pivot nécessaires.\\
+                    Soit
+                    
+                    \[
+                    A =
+                    \begin{bmatrix}
+                        3 & 4 \\
+                        4 & 3
+                    \end{bmatrix}
+                    \in M_2(\mathbb{Z}/12\mathbb{Z}).
+                    \]
+
+                    Dans cet anneau, les coefficients \( 3 \) et \( 4 \) ne sont pas inversibles, ce qui empêche de procéder aux opérations
+                    de pivot nécessaires. <br>
     
-    Ce contre-exemple montre que la validité de l’algorithme repose sur une hypothèse cruciale : \emph{les pivots doivent être inversibles}.
-\end{counterexample}
+                    Ce contre-exemple montre que la validité de l’algorithme repose sur une hypothèse cruciale :
+                    <strong>les pivots doivent être inversibles</strong>. 
+                </div>
+                
+                <div class="example">
+                    \[
+                    \displaystyle
+                    \underbrace{
+                        \begin{pmatrix}
+                            1 & 0 & 0 & 0 \\
+                            -\frac{3}{4} & 1 & 0 & 0 \\
+                            -\frac{1}{2} & 0 & 1 & 0 \\
+                            0 & -\frac{1}{3} & 0 & 1
+                        \end{pmatrix}
+                    }_{L}
+                    \times
+                    \underbrace{
+                        \begin{pmatrix}
+                            1 & 0 & 0 & 0 \\
+                            0 & 0 & 1 & 0 \\
+                            0 & 1 & 0 & 0 \\
+                            0 & 0 & 0 & 1
+                        \end{pmatrix}
+                    }_{P}
+                    \underbrace{
+                        \begin{pmatrix}
+                            4 & 2 & 4 & 2 \\
+                            2 & 1 & 2 & 1 \\
+                            3 & 3 & 3 & 3 \\
+                            1 & 1 & 1 & 1
+                        \end{pmatrix}
+                    }_{F}
+                    =
+                    \underbrace{
+                        \begin{pmatrix}
+                            4 & 2 & 4 & 2 \\
+                            0 & \frac{3}{2} & 0 & \frac{3}{2} \\
+                            0 & 0 & 0 & 0 \\
+                            0 & 0 & 0 & 0
+                        \end{pmatrix}
+                    }_{E}
+                    \]
+                </div>
+                
+                <div class="paragraph">
+                    On en déduit donc un algorithme pour calculer une base.
 
+                    De 6.1 on déduit que 
 
+                    \[
+                    \begin{bmatrix}
+                        e_{\tau(1)} \\
+                        \vdots \\
+                        e_{\tau(n)}
+                    \end{bmatrix}
+                    \cdot
+                    \begin{bmatrix}
+                        L_r \cdot p^\sigma & 0 \\
+                        G & I_{m-r}
+                    \end{bmatrix}
+                    \cdot
+                    F
+                    =
+                    \begin{bmatrix}
+                        E' \cdot p^\sigma\\
+                        0
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        0\\
+                        0
+                    \end{bmatrix}
+                    \mod p^\sigma
+                    \]
+                </div>
 
-\begin{example}
-    \[ \displaystyle
-    \underbrace{\begin{pmatrix}
-            1 & 0 & 0 & 0 \\
-            -\frac{3}{4} & 1 & 0 & 0 \\
-            -\frac{1}{2} & 0 & 1 & 0 \\
-            0 & -\frac{1}{3} & 0 & 1
-    \end{pmatrix}}_{L}
-    \x
-    \underbrace{
-        \begin{pmatrix}
-            1 & 0 & 0 & 0 \\
-            0 & 0 & 1 & 0 \\
-            0 & 1 & 0 & 0 \\
-            0 & 0 & 0 & 1
-        \end{pmatrix}
-    }_{P}
-    \underbrace{\begin{pmatrix}
-            4 & 2 & 4 & 2 \\
-            2 & 1 & 2 & 1 \\
-            3 & 3 & 3 & 3 \\
-            1 & 1 & 1 & 1
-    \end{pmatrix}}_{F}
-    =
-    \underbrace{\begin{pmatrix}
-            4 & 2 & 4 & 2 \\
-            0 & \frac{3}{2} & 0 & \frac{3}{2} \\
-            0 & 0 & 0 & 0 \\
-            0 & 0 & 0 & 0
-    \end{pmatrix}}_{E}
-    \]
-\end{example}
-
-
-On en déduit donc un algorithme pour calculer une base.
-
-
-De 6.1 on déduit que 
-
-\[
-\begin{bmatrix}
-    e_{\tau(1)} \\
-    \vdots \\
-    e_{\tau(n)}
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-    L_r \cdot p^\sigma & 0 \\
-    G & I_{m-r}
-\end{bmatrix}
-\cdot
-F
-=
-\begin{bmatrix}
-    E' \cdot p^\sigma\\
-    0
-\end{bmatrix}
-=
-\begin{bmatrix}
-    0\\
-    0
-\end{bmatrix}
-\mod p^\sigma
-\]
+                <div class="theorem">
 
 \begin{theoreme}
     Les matrices
@@ -290,69 +328,105 @@ F
     \]
     sont deux bases de \( F_{p^\sigma}\)
 \end{theoreme}
+                </div>
 
-\begin{remark}
-    Il vaut mieux privilégier la seconde base car les \(r\) premières lignes sont orthonormées, ce qui nous permet de déduire intuitivement que la base sera de meilleure qualité.
-\end{remark}
-%CA MARCHE QUE QUAND SIGMA VAUT 1
-\begin{smallalgo}{\textsc{Basis}$(F, p, \texttt{mode})$}{algo:basis_modes}
-    \KwIn{Une matrice \( F \in \mathbb{K}[x]^{m \times n} \), un scalaire \( p \in \mathbb{K} \), et une chaîne \texttt{mode} égale à \texttt{v1} ou \texttt{v2}}
-    \KwOut{Une base transformée selon le mode choisi}
-    
-    $G \gets \text{copie}(F)$\;
-    $(P, L, E) \gets \textsc{PLE}(G)$\;
-    $r \gets \text{rang}(F)$\;
-    
-    \Si{\texttt{mode} = \texttt{v1}}{
-        \Pour{$i \gets 0$ \KwTo $r{-}1$}{
-            Multiplier la ligne $i$ de $L$ par $p$\;
-        }
-    }
-    
-    \Si{\texttt{mode} = \texttt{v2}}{
-        \Pour{$i \gets 0$ \KwTo $r{-}1$}{
-            Remplacer la ligne $i$ de $L$ par $p \cdot e_i$\;
-            \tcp*{$e_i$ : $i$-ème vecteur de la base canonique}
-        }
-    }
-    
-    \KwRet{$L \cdot P$}
-\end{smallalgo}
+                <div class="remark">
+                    Il vaut mieux privilégier la seconde base car les \(r\) premières lignes sont orthonormées, ce qui nous
+                    permet de déduire intuitivement que la base sera de meilleure qualité.
+                </div>
 
+                <!--%CA MARCHE QUE QUAND SIGMA VAUT 1-->
 
-\begin{example}
-    
-    En partant de la matrice 
-    \(
-    F = 
-    \begin{pmatrix}
-        4 & 2 & 4 & 2 \\
-        2 & 1 & 2 & 1 \\
-        3 & 3 & 3 & 3 \\
-        1 & 1 & 1 & 1
-    \end{pmatrix}
-    \)
-    
-    On peut calculer une base de \( F_{5^4}\)
-    
-    \[
-        \begin{pmatrix}
-            625 & 0 & 0 & 0 \\
-            -\frac{1}{2} & 1 & 0 & 0 \\
-            0 & 0 & 625 & 0 \\
-            0 & 0 & -\frac{1}{3} & 1
-        \end{pmatrix}
-    \]
-\end{example}
+                <div class="algorithm">
+                    <h2>Basis$(F, p, \texttt{mode})$</h2>
 
-On peut donc maintenant définir un algorithme sur un principe diviser pour régner.  
-\begin{smallalgo}{\textsc{LLL-DAC-Padique}$(F, p, \sigma)$}{algo:lll_dac_padic}
-    \KwIn{$F \in \mathbb{K}^{m \times n}$, un entier premier $p$, un entier $\sigma \geq 1$}
-    \KwOut{Une base "LLL-réduite?" en précision $p^\sigma$}
+                    <div class="meta">
+                        <div class="in"> Une matrice \( F \in \mathbb{K}[x]^{m \times n} \), un scalaire \( p \in \mathbb{K} \), et une chaîne mode égale à v1 ou v2</div>
+                        <div class="out"> Une base transformée selon le mode choisi</div>
+                    </div>
     
-    \Si{$\sigma = 1$}{
-        \KwRet{$\textsc{LLL}(\textsc{ApproximantBasis}(F, p))$}
-    }
+                    $G \gets \text{copie}(F)$<br>
+                    $(P, L, E) \gets \textsc{PLE}(G)$ <br>
+                    $r \gets \text{rang}(F)$ <br>
+    
+                    <div class="conditional">
+                        <div class="if">
+                            mode = v1
+                            <div class="c">
+                                <div class="for">
+                                    $i \gets 0$ \KwTo $r{-}1$
+                                    <div class="c">
+                                        Multiplier la ligne $i$ de $L$ par $p$
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conditional">
+                        <div class="if">
+                            mode = v2
+                            <div class="c">
+                                <div class="for">
+                                    $i \gets 0$ \KwTo $r{-}1$
+                                    <div class="c">
+                                        Remplacer la ligne $i$ de $L$ par $p \cdot e_i$\;
+                                        \tcp*{$e_i$ : $i$-ème vecteur de la base canonique}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div class="return">$L \cdot P$</div>
+                </div>
+
+                <div class="example">
+                    En partant de la matrice 
+                    \(
+                    F = 
+                    \begin{pmatrix}
+                        4 & 2 & 4 & 2 \\
+                        2 & 1 & 2 & 1 \\
+                        3 & 3 & 3 & 3 \\
+                        1 & 1 & 1 & 1
+                    \end{pmatrix}
+                    \)
+    
+                    On peut calculer une base de \( F_{5^4}\)
+    
+                    \[
+                    \begin{pmatrix}
+                        625 & 0 & 0 & 0 \\
+                        -\frac{1}{2} & 1 & 0 & 0 \\
+                        0 & 0 & 625 & 0 \\
+                        0 & 0 & -\frac{1}{3} & 1
+                    \end{pmatrix}
+                    \]
+                </div>
+                
+                <div class="paragraph">
+                    On peut donc maintenant définir un algorithme sur un principe diviser pour régner.
+                </div>
+  
+                <div class="algorithm">
+                    <h2>LLL-DAC-Padique$(F, p, \sigma)$</h2>
+
+                    <div class="meta">
+                        <div class="in"> $F \in \mathbb{K}^{m \times n}$, un entier premier $p$, un entier $\sigma \geq 1$</div>
+                        <div class="out"> Une base "LLL-réduite?" en précision $p^\sigma$</div>
+                    </div>
+    
+    
+                    <div class="conditional">
+                        <div class="if">
+                            $\sigma = 1$
+                            <div class="c">
+                                <div class="return"> $LLL(ApproximantBasis(F, p))$</div>
+                            </div>
+                        </div>
+                    </div>
+    
     
     $\tau \gets \left\lfloor \dfrac{\sigma + 1}{2} \right\rfloor$\;
     
@@ -361,25 +435,35 @@ On peut donc maintenant définir un algorithme sur un principe diviser pour rég
     $F_{\text{low}} \gets \dfrac{V_1 \cdot F}{p^\tau}$ \tcp*[r]{Mise à jour du problème}
     
     $V_2 \gets \textsc{LLL-DAC-Padique}(F_{\text{low}}, p, \sigma - \tau)$ \tcp*[r]{Appel récursif décalé}
-    
-    \KwRet{$V_2 \cdot V_1$}
-\end{smallalgo}
 
-Similairement à la preuve du chapitre précédent, \(V_2 V_1\) est une base de \( F_{p^\sigma} \).
+                    <div class="return">$V_2 \cdot V_1$</div>
+                </div>
 
-\begin{problem}[\textbf{Question}]
-    Dans quelle mesure le produit de matrices LLL-réduites reste-t-il lui-même LLL-réduit ? Peut-on quantifier cette propriété ?
-\end{problem}
+                <div class="paragraph">
+                    Similairement à la preuve du chapitre précédent, \(V_2 V_1\) est une base de \( F_{p^\sigma} \).
+                </div>
 
-Si \( V_1 \) est une matrice orthogonale, c'est-à-dire dont les lignes sont orthonormées, alors \( V_2 V_1\) est \( \mathrm{LLL}\)-réduite.
+                <div class="problem">
+                    <span class="title"> <strong> (Question)</strong></span> <br>
+                    Dans quelle mesure le produit de matrices LLL-réduites reste-t-il lui-même LLL-réduit ?
+                    Peut-on quantifier cette propriété ?
+                </div>
 
-On rappelle que \( V_1 = U_1 V_1^* \) d'après le procédé de Gram-Schmidt. En écrivant \( V_1 V_2 = V_1 V_2^* ((V_2^*)^{-1} U_2 V_2^*) \), peut-être pourront nous mieux contrôler le résultat du produit.
+                <div class="paragraph">
+                    Si \( V_1 \) est une matrice orthogonale, c'est-à-dire dont les lignes sont orthonormées,
+                    alors \( V_2 V_1\) est \( \mathrm{LLL}\)-réduite.
 
+                    On rappelle que \( V_1 = U_1 V_1^* \) d'après le procédé de Gram-Schmidt. <br>
+                    <span class="nowrap">En écrivant \( V_1 V_2 = V_1 V_2^* ((V_2^*)^{-1} U_2 V_2^*) \), peut-être pourront nous mieux contrôler
+                    le résultat du produit.</span>
+                </div>
             </div>
 
         </main>
 
         <footer id="main-footer"></footer>
+
+        <script src="/assets/js/components/algorithm.js"></script>
         
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
