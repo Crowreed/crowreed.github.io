@@ -175,10 +175,6 @@
             {
                 "title":  "Matrice de Gram",
                 "filename": "gram-matrix.html"
-            },
-            {
-                "title": "Complexité",
-                "filename": "linear-algebra-complexity.html"
             }
         ]
     }

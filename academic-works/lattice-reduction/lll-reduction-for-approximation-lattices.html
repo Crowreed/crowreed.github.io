@@ -7,15 +7,21 @@
         <meta charset="UTF-8">
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <title>Vers une réduction LLL adaptée aux réseaux d’approximation</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta
+            name="description"
+            content="Définition des réseaux d'approximation euclidiens $F_{p^\sigma}$ et introduction de l'algorithme LLL-DAC-Padique. Analyse de la décomposition matricielle $P L F = E$ et des limites de l'algorithme PLE (nécessité de pivots inversibles)."
+        >
 
+        <meta
+            name="keywords"
+            content="réseau d'approximation euclidien, $F_{p^\sigma}$, LLL-DAC-Padique, PLE decomposition, $p^\sigma$-aire, base LLL-réduite, Diviser-pour-Régner, pivots inversibles, réduction p-adique, Gram-Schmidt produit"
+        >
+
+        <meta name="author" content="Lucas Petit">
+ 
         <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
@@ -145,48 +151,68 @@ où \(r \coloneqq \rang(F) \), \( P \) est une matrice de permutation, \( L \) e
                     <summary></summary>
 
                     <p>
-Il s’agit d’une généralisation de la décomposition \( P L F = U \),
+                        Il s’agit d’une généralisation de la décomposition \( P L F = U \),
                         où \( U \) était une matrice triangulaire supérieure. Ici, on relâche cette contrainte en ne demandant
                         que \( U \) soit échelonnée par lignes.}
                     </p>
                 </details>
 
                 <div class="algorithm">
-                    <h2>\textsc{PLE}$(A)$</h2>
+                    <h2>PLE$(A)$</h2>
                     <div class="meta">
-                        <div class="in">\KwIn{$A \in \mathbb{K}^{n \times m}$}</div>
-                        <div class="out">\KwOut{Matrices \( P \), \( L \), \( E \) telles que \( 6.1 \) est satisfaite.}</div>
+                        <div class="in"> $A \in \mathbb{K}^{n \times m}$</div>
+                        <div class="out"> Matrices \( P \), \( L \), \( E \) telles que \( 6.1 \) est satisfaite.</div>
                     </div>
 
+                    $n \gets \text{nrows}(A),\quad m \gets \text{ncols}(A)$ <br>
+                    $P \gets I_n, \quad L \gets I_n, \quad E \gets A$
     
-    
-    
-    $n \gets \text{nrows}(A)$,\quad $m \gets \text{ncols}(A)$\;
-    $P \gets I_n$, \quad $L \gets I_n$, \quad $E \gets A$\;
-    
-    \Pour{$i \gets 0$ \KwTo $m{-}1$}{
-        $(\text{pivot}, i_{\text{pivot}}) \gets \textsc{Pivot}(E_{*,i}, \{i, \dots, n{-}1\})$\;
-        
-        \Si{$\text{pivot} = \texttt{None}$}{
-            \textbf{continuer}
-        }
-        
-        \Si{$i_{\text{pivot}} \neq i$}{
-            Échanger les lignes $i$ et $i_{\text{pivot}}$ dans $P$ et $E$\;
+                    <div class="for">
+                        $i \gets 0$ \KwTo $m{-}1$
             
-            \Pour{$k \gets 0$ \KwTo $i{-}1$}{
-                Échanger $L[i,k]$ et $L[i_{\text{pivot}},k]$\;
-            }
-        }
+                        <div class="c">
+                            $(pivot, i_{pivot}) \gets Pivot(E_{*,i}, \{i, \dots, n{-}1\})$
         
-        \Pour{$j \gets i{+}1$ \KwTo $n{-}1$}{
-            $s \gets E[j,i] / \text{pivot}$\;
-            \Si{$s \neq 0$}{
-                $E \gets E$ avec ligne $j$ \textbf{moins} $s$ fois ligne $i$\;
-                $L \gets L$ avec ligne $j$ \textbf{moins} $s$ fois ligne $i$\;
-            }
-        }
-    }
+                <div class="if">
+                    pivot = None
+                    <div class="c">
+                        <span class="keyword">continuer</span>
+                    </div>
+                </div>
+
+                <div class="if">
+                    $i_{pivot} \neq i$
+                    
+                    <div class="c">
+                        Échanger les lignes $i$ et $i_{\text{pivot}}$ dans $P$ et $E$
+                        
+                        <div class="for">
+                            $k \gets 0$ \KwTo $i{-}1$
+                            <div class="c">    
+                                Échanger $L[i,k]$ et $L[i_{\text{pivot}},k]$
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+                
+                <div class="for">
+                    {$j \gets i{+}1$ \KwTo $n{-}1$}
+                    <div class="c">
+                        $s \gets E[j,i] / \text{pivot}$
+                        <div class="conditional">
+                            <div class="if">
+                                $s \neq 0$
+                                <div class="c">
+                                    $E \gets E$ avec ligne $j$ <strong>moins</strong> $s$ fois ligne $i$ <br>
+                                    $L \gets L$ avec ligne $j$ <strong>moins</strong> $s$ fois ligne $i$
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
     
                     <div class="return">$(P, L, E)$</div>
                 </div>
@@ -304,34 +330,31 @@ Il s’agit d’une généralisation de la décomposition \( P L F = U \),
                 </div>
 
                 <div class="theorem">
-
-\begin{theoreme}
-    Les matrices
-    \[
-    \begin{bmatrix}
-        L_r \cdot p^\sigma & 0 \\
-        G & I_{m-r}
-    \end{bmatrix}
-    \cdot
-    \begin{bmatrix}
-        e_{\tau(1)} \\
-        \vdots \\
-        e_{\tau(n)}
-    \end{bmatrix}
-    , \quad
-    \begin{bmatrix}
-        I_r \cdot p^\sigma & 0 \\
-        G & I_{m-r}
-    \end{bmatrix}
-    \cdot
-    \begin{bmatrix}
-        e_{\tau(1)} \\
-        \vdots \\
-        e_{\tau(n)}
-    \end{bmatrix}
-    \]
-    sont deux bases de \( F_{p^\sigma}\)
-\end{theoreme}
+                    Les matrices
+                    \[
+                    \begin{bmatrix}
+                        L_r \cdot p^\sigma & 0 \\
+                        G & I_{m-r}
+                    \end{bmatrix}
+                    \cdot
+                    \begin{bmatrix}
+                        e_{\tau(1)} \\
+                        \vdots \\
+                        e_{\tau(n)}
+                    \end{bmatrix}
+                    , \quad
+                    \begin{bmatrix}
+                        I_r \cdot p^\sigma & 0 \\
+                        G & I_{m-r}
+                    \end{bmatrix}
+                    \cdot
+                    \begin{bmatrix}
+                        e_{\tau(1)} \\
+                        \vdots \\
+                        e_{\tau(n)}
+                    \end{bmatrix}
+                    \]
+                    sont deux bases de \( F_{p^\sigma}\)
                 </div>
 
                 <div class="remark">
@@ -374,8 +397,7 @@ Il s’agit d’une généralisation de la décomposition \( P L F = U \),
                                 <div class="for">
                                     $i \gets 0$ \KwTo $r{-}1$
                                     <div class="c">
-                                        Remplacer la ligne $i$ de $L$ par $p \cdot e_i$\;
-                                        \tcp*{$e_i$ : $i$-ème vecteur de la base canonique}
+                                        Remplacer la ligne $i$ de $L$ par $p \cdot e_i$ // $e_i$ : $i$-ème vecteur de la base canonique
                                     </div>
                                 </div>
                             </div>
@@ -432,13 +454,13 @@ Il s’agit d’une généralisation de la décomposition \( P L F = U \),
                     </div>
     
     
-    $\tau \gets \left\lfloor \dfrac{\sigma + 1}{2} \right\rfloor$\;
+                    $\tau \gets \left\lfloor \dfrac{\sigma + 1}{2} \right\rfloor$ <br>
     
-    $V_1 \gets \textsc{LLL-DAC-Padique}(F, p, \tau)$ \tcp*[r]{Appel récursif sur demi-précision}
+                    $V_1 \gets LLL-DAC-Padique(F, p, \tau)$ //Appel récursif sur demi-précision<br>
     
-    $F_{\text{low}} \gets \dfrac{V_1 \cdot F}{p^\tau}$ \tcp*[r]{Mise à jour du problème}
+                    $F_{\text{low}} \gets \dfrac{V_1 \cdot F}{p^\tau}$ // Mise à jour du problème<br>
     
-    $V_2 \gets \textsc{LLL-DAC-Padique}(F_{\text{low}}, p, \sigma - \tau)$ \tcp*[r]{Appel récursif décalé}
+                    $V_2 \gets LLL-DAC-Padique(F_{\text{low}}, p, \sigma - \tau)$ //Appel récursif décalé
 
                     <div class="return">$V_2 \cdot V_1$</div>
                 </div>

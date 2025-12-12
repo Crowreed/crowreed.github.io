@@ -10,12 +10,18 @@
 
         <title>Fonction potentielle et bornes</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="UTF-8">
-        <meta name="author" content="Lucas Petit">
-        <meta name="description" content="Dans ce cours, vous apprendrez les bases de la théorie des réseaux euclidiens utilisés en cryptographie. Prêt pour l'aventure ?">
-        <meta name="keywords" content="Réseaux Euclidiens, Cryptographie">
+        <meta
+            name="description"
+            content="Analyse des fonctions potentielles dans la réduction de réseaux : fonction de valeur $\psi$ (WeakPopovForm polynomial) et quantité $D$ (LLL euclidien). Exploration des bornes inférieure et supérieure de $D$ dans le cas entier réduit."
+        >
 
+        <meta
+            name="keywords"
+            content="fonction potentielle, quantité D, borne inférieure D, borne supérieure D, terminaison LLL, WeakPopovForm, degré en ligne, LLL-réduit, polynôme de Gram, $\psi$ fonction de valeur"
+        >
+
+        <meta name="author" content="Lucas Petit">
+ 
         <link rel="stylesheet" href="/assets/css/base/root.css">
         <link rel="stylesheet" href="/assets/css/base/base.css">
         <link rel="stylesheet" href="/assets/css/base/inter.css">
@@ -81,22 +87,29 @@
                 <h3>Les cas polynomial</h3>
 
                 <div class="paragraph">
-                    Dans l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}, chaque opération entraîne soit une diminution du degré total par lignes, soit un déplacement du pivot d’une ligne vers la gauche.
+                    Dans l’algorithme <a class="ref-mulders-2003"></a>, chaque opération entraîne soit une diminution du degré total par lignes,
+                    soit un déplacement du pivot d’une ligne vers la gauche.
 
-                    \parencite{nielsen2013gmssr} définit une fonction de \emph{valeur} pour les vecteurs :
-                    \[
-                    \psi : 
-                    \begin{array}{rcl}
-                        \mathbb{F}[x]^{\ell+1} & \longrightarrow & \mathbb{N}_0 \\
-                        \mathbf{v} & \longmapsto & (\ell + 1) \cdot \rdeg \mathbf{v} + \mathrm{LP}(\mathbf{v})
-                    \end{array}
-                    \]
+                    <a class="ref-nielsen-2013"></a> définit une fonction de <strong>valeur</strong> pour les vecteurs :
+                    
+                    $\psi :$
+                    
+                    <table>
+                        <tr>
+                            <td>$\mathbb{F}[x]^{\ell+1} & \longrightarrow & \mathbb{N}_0 $
+                            </td></tr>
+                        <tr><td>
+                            $\mathbf{v} & \longmapsto & (\ell + 1) \cdot \rdeg \mathbf{v} + \mathrm{LP}(\mathbf{v})$
+                        </td></tr>
+                    </table>
 
-                    où \( \mathrm{LP}(\mathbf{v} \) désigne l'indice du pivot de \( \mathbf{v} \).
+                    où \( \mathrm{LP}(\mathbf{v}) \) désigne l'indice du pivot de \( \mathbf{v} \).
                 </div>
 
                 <div class="lemma">
-                    Soit \( \mathbf{v}_j' \) le vecteur qui remplace \( \mathbf{v}_j \) lors d’une réduction de ligne dans \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}}.
+                    Soit \( \mathbf{v}_j' \) le vecteur qui remplace \( \mathbf{v}_j \) lors d’une réduction de ligne dans
+                    WeakPopovForm <a class="ref-mulders-2003"></a>
+                    <br>
                     Alors :
                     \[
                     \psi(\mathbf{v}_j') < \psi(\mathbf{v}_j).
@@ -104,18 +117,27 @@
                 </div>
                 
                 <div class="paragraph">
-                    Ainsi, l’algorithme \hyperref[algo:WeakPopovForm]{\emph{\parencite{Mulders2003}}} repose sur une fonction potentielle qui décroît strictement à chaque opération. Cette fonction atteint nécessairement une valeur minimale, correspondant à une situation où aucune opération supplémentaire n’est possible, c’est-à-dire lorsque la matrice est réduite en ligne. Cette même idée se traduit dans l'algorithme.
+                    Ainsi, l’algorithme WeakPopovForm <a class="ref-mulders-2003"></a> repose sur une fonction potentielle
+                     qui décroît strictement à chaque opération. Cette fonction atteint nécessairement une valeur minimale, correspondant 
+                     à une situation où aucune opération supplémentaire n’est possible, c’est-à-dire lorsque la matrice est réduite en ligne.
+                    Cette même idée se traduit dans l'algorithme.
                 </div>
                 
                 <h3>Le cas entier</h3>
 
                 <div class="paragraph">
-                    Le lecteur pourra utilement se référer à la démonstration de la terminaison de l’algorithme \( \mathrm{LLL} \). Dans cette preuve, une quantité \( D \) a été introduite, qui décroît d’un facteur \( \frac{3}{4}\) à chaque échange de vecteurs. Cette décroissance strictement contrôlée constitue l’invariant principal garantissant la terminaison de l’algorithme.
+                    Le lecteur pourra utilement se référer à la démonstration de la terminaison de l’algorithme \( \mathrm{LLL} \).
+                    Dans cette preuve, une quantité \( D \) a été introduite, qui décroît d’un facteur \( \frac{3}{4}\) à chaque
+                    échange de vecteurs. Cette décroissance strictement contrôlée constitue l’invariant principal garantissant
+                    la terminaison de l’algorithme.
                 </div>
 
                 <div class="definition">
-                    <span class="title">Rappel</span>
-                    On définit \( \displaystyle D \coloneqq \prod_{1 \leq k < n} d_k = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)}\)
+                    <span class="title">Rappel</span> <br>
+                    On définit
+                    \[
+                    \displaystyle D \coloneqq \prod_{1 \leq k < n} d_k = \prod_{1 \leq k < n} \| b_k^*\|^{2(n-k)}
+                    \]
                 </div>
 
                 <div class="paragraph">                    
@@ -123,7 +145,7 @@
                 </div>
 
                 <div class="proposition">
-                    \( \displaystyle \log(D) = \sum_{k=1}^{n-1} 2(n-k) \log (\| \bb_k^*\|)\)
+                    \( \displaystyle \log(D) = \sum_{k=1}^{n-1} 2(n-k) \log (\| b_k^*\|)\)
                 </div>
 
                 <div class="paragraph">
@@ -133,23 +155,30 @@
 
                     \[
                     \begin{aligned}
-                    D & = \prod_{1 \leq k < n} \| \bb_k^*\|^{2(n-k)} \\
-                      & = \|\bb_1^*\|^{2(n-1)} \x \|\bb_2^*\|^{2(n-2)} \x \cdots \x \|b_n^*\|^2 \\
-                      & \geq \|\bb_1^*\|^{2(n-1)} \x \left(\frac{\|\bb_1^*\|}{2}\right)^{2(n-2)} \x \cdots \x \left(\frac{\|\bb_1^*\|}{2^{n-2}}\right)^2 \\
+                    D & = \prod_{1 \leq k < n} \| b_k^*\|^{2(n-k)} \\
+                      & = \|b_1^*\|^{2(n-1)} \times \|b_2^*\|^{2(n-2)} \times \cdots \times \|b_n^*\|^2 \\
+                      & \geq \|b_1^*\|^{2(n-1)} \times \left(\frac{\|b_1^*\|}{2}\right)^{2(n-2)} \times \cdots \times \left(\frac{\|b_1^*\|}{2^{n-2}}\right)^2 \\
                       & \geq \left( \frac{\|b_1^*\|}{2^{\frac{4}{3} (n-2)}} \right)^{(n-1)n}
                     \end{aligned}
                     \]
                 </div>
 
                 <div class="paragraph">
-                    Après la remise de ce rapport, mon travail consistera à explorer la portée pratique de cette borne. Contrairement au cas polynomial, le comportement de \( D \) dans le cas entier reste difficile à cerner, et l’on ne sait pas précisément jusqu’où cette quantité peut décroître.
+                    Après la remise de ce rapport, mon travail consistera à explorer la portée pratique de cette borne.
+                    Contrairement au cas polynomial, le comportement de \( D \) dans le cas entier reste difficile à cerner,
+                    et l’on ne sait pas précisément jusqu’où cette quantité peut décroître.
 
                     De manière similaire au raisonnement précédent, une borne supérieure sur \( D \) est également disponible.  
                     Dans \parencite{MCA}, on trouve :
+                    
                     \[
-                    D \leq \left( \max_{1 \leq i \leq n} \| \bg_i \| \right)^{n(n-1)}.
+                    D \leq \left( \max_{1 \leq i \leq n} \| g_i \| \right)^{n(n-1)}.
                     \]
-                    Une question naturelle est alors de savoir si cette borne peut être améliorée. On peut voir que l'exposant \( n(n-1) \) peut devenir \( (n-1)n \). Plutôt que d'utiliser \( \max_{1 \leq i \leq n} \| \bg_i \| \), on pourrait utiliser un invariant lié au réseau comme \( |\LL| \). 
+
+                    Une question naturelle est alors de savoir si cette borne peut être améliorée.
+                    On peut voir que l'exposant \( n(n-1) \) peut devenir \( (n-1)n \).
+                    Plutôt que d'utiliser \( \max_{1 \leq i \leq n} \| g_i \| \), on pourrait utiliser un invariant
+                    lié au réseau comme \( |\LL| \). 
                 </div>
             </div>
 

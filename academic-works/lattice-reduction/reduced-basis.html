@@ -10,14 +10,14 @@
 
         <title>La base réduite</title>
 
-        <meta 
+        <meta
             name="description"
-            content="Définition des critères de réduction pour l'algorithme LLL. Exploration des concepts de base propre (size-réduite) et de la condition de Lovász. Démonstration que la base LLL-réduite résout approximativement les problèmes SVP et SIVP avec un facteur $2^{(n-1)/2}$ en temps polynomial."
+            content="Définition et propriétés de la base LLL-réduite : condition de taille (propre) et condition de Lovász. Démonstration que LLL résout SVP et SIVP avec un facteur d'approximation de $2^{(n-1)/2}$ en temps polynomial."
         >
-    
-        <meta 
+
+        <meta
             name="keywords"
-            content="algorithme LLL, LLL-réduite, réduction de base, base propre, size-réduite, condition de Lovász, Gram-Schmidt, approximation SVP, SIVP, Shortest Independent Vectors Problem, temps polynomial, facteur d'approximation, vecteur minimal"
+            content="base LLL-réduite, condition de Lovász, base propre, size-réduite, approximation SVP, SIVP, Gram-Schmidt, borne LLL, facteur d'approximation, $\|b_1\|$, $2^{(n-1)/2}$"
         >
 
         <meta
@@ -58,22 +58,7 @@
         <link rel="stylesheet" href="/assets/css/algorithm.css">
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\[", right: "\\]", display:true},
-                {left: "\\(", right: "\\)", display:false}
-                ]
-            });
-            });
-        </script>
+        
     </head>
     <body>
 
