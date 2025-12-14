@@ -1,0 +1,208 @@
+#toc-container{
+    position: sticky;
+    align-self: flex-start;
+    top: 0px;
+    
+    height: 100vh;
+}
+
+#full-toc{
+    width: 400px;
+    height: 100%;
+
+    overflow: scroll;
+    overflow-x: hidden;
+
+    border-right: 1px solid var(--primary-border-color);
+}
+
+.toc-head{
+    padding: 1rem;
+    border-bottom: 1px solid var(--primary-border-color);
+
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toc-head h5{
+    margin: 10px 0px;
+    
+    font-size: 1rem;
+}
+
+#toc-close-button{
+    border-radius: 50%;
+    background-color: white; 
+    border: 0;
+    color: rgba(0, 0, 0, 0.54);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+#toc-close-button:hover{
+    background-color: rgba(218, 217, 220, 0.34);
+}
+
+.chapter{
+    background-color: rgba(171, 71, 188, 0.08);
+    
+    margin: 16px;
+    border-radius: 8px;
+}
+
+.chapter:hover{
+    background-color: rgba(171, 71, 188, 0.18);
+}
+
+.chapter > a{
+    display: block;
+
+    padding: 16px 48px;
+}
+
+.chapter > a > .num{
+    font-weight: 500;
+    line-height: 1;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: rgb(166, 66, 182);
+}
+
+.chapter h3{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.chapter-content{
+    margin: 0rem 0.5rem;
+    padding: 0rem 1rem;
+}
+  
+.chapter-content ul{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.chapter-content li{
+    font-weight: 200;
+    
+    padding: 12px 8px;
+    margin: 0;
+    border-radius: 5px;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+    position: relative;
+}
+
+.chapter-content li::after{
+    height: calc(100% + 32px);
+    border-left: 1px solid var(--primary-border-color);
+    content: " ";
+
+    z-index: -1;
+    position: absolute;
+    top: -16px;
+    left: 21px;
+}
+
+#full-toc > ul > li:last-child .chapter-content ul li:last-child::after {
+    border-left: 0;
+    content: none;
+}
+
+.chapter-content h4{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    
+    width: 100%;
+    padding-left: 16px;
+    
+    display: flex;
+}
+
+.chapter-content .num{
+    background-color: #fff;
+    z-index: 1;
+    
+    margin: 0;
+    padding: 0;
+    min-width: 24px;
+    max-width: 24px;
+    height: 24px;
+    border: 1px solid rgb(96, 91, 104);
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(96, 91, 104);
+}
+
+.chapter-content a{
+    display: flex;
+    align-items: center;
+    
+    width: 100%;
+  
+    text-decoration: none;
+    color: inherit;
+}
+  
+.chapter-content a:hover{
+    color: #7451eb;
+}
+
+/* modifier tous les font size en rem
+les coulerus en var global
+faire t'ransit'ion pour t'ous les bout'ons et' t'ous les survopls*/
+#min-toc{
+    width: 32px;
+    height: 100%;
+    
+    position: sticky;
+    align-self: flex-start;
+    top: 0px;
+
+    border-right: 1px solid var(--primary-border-color);
+}
+
+#toc-open-button{
+    width: 57px;
+    height: 48px;
+
+    position: absolute; 
+    top: 150px;
+    left: 33px;
+    
+    background-color: rgba(171, 71, 188, 0.08);
+    border-radius: 0px 32px 32px 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#toc-open-button:hover{
+    background-color: rgba(171, 71, 188, 0.18);
+}  
+
+#toc-open-button svg{      
+    width: 24px;
+    height: 24px;
+}

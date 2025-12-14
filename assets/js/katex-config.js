@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {left: "\\(", right: "\\)", display:false}
         ],
         macros: {
+            "\\F": "\\mathbb{F}",
             "\\ps": "\\left\\langle #1 , #2 \\right\\rangle",
             "\\K": "\\mathbb{K}",
             "\\LL": "\\mathscr{L}",

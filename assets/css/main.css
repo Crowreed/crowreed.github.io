@@ -1,0 +1,22 @@
+@import '01_settings/root.css';
+
+@import '02_base/reset.css';
+@import '02_base/base.css';
+
+@import '03_layout/header.css';
+@import '03_layout/footer.css';
+
+@import '04_components/figure.css';
+@import '04_components/footnotes.css';
+@import '04_components/icon.css';
+@import '04_components/inter.css';
+@import '04_components/references.css';
+@import '04_components/toc.css';
+
+@import '05_pages/academic-works.css';
+@import '05_pages/algorithm.css';
+@import '05_pages/article.css';
+@import '05_pages/homepage.css';
+@import '05_pages/project.css';
+
+@import '06_trumps/utils.css';

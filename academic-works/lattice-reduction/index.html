@@ -19,26 +19,11 @@
             name="keywords"
             content="réseaux euclidiens, réduction de réseaux, algorithme LLL, réseaux polynomiaux, cryptographie post-quantique, base réduite, théorie des nombres"
         >
-        
-        <link rel="stylesheet" href="/assets/css/base/root.css">
-        <link rel="stylesheet" href="/assets/css/base/base.css">
-        <link rel="stylesheet" href="/assets/css/base/inter.css">
-        <link rel="stylesheet" href="/assets/css/base/reset.css">
-        <link rel="stylesheet" href="/assets/css/base/utils.css">
 
-        <link rel="stylesheet" href="/assets/css/layout/header.css">
-        <link rel="stylesheet" href="/assets/css/layout/toc.css">
-
-        <link rel="stylesheet" href="/assets/css/academic-works.css">
-        <link rel="stylesheet" href="/assets/css/article.css">
-        <link rel="stylesheet" href="/assets/css/homepage.css">
-        <link rel="stylesheet" href="/assets/css/project.css">
-        
-        <link rel="stylesheet" href="/assets/css/figure.css">
-        <link rel="stylesheet" href="/assets/css/footer.css">
-        <link rel="stylesheet" href="/assets/css/icon.css">
-        <link rel="stylesheet" href="/assets/css/references.css">
-        <link rel="stylesheet" href="/assets/css/footnotes.css">
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
@@ -46,11 +31,15 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        
+
         <!-- JS -->
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
         <script defer src="/assets/js/katex-config.js"></script>
+        
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
     </head>
 
     <body>
@@ -68,6 +57,12 @@
             </nav>
         </header>
 
+        <main>
+            <div id="toc-container">
+                <div id="min-toc"></div>
+                <div id="full-toc" class="hidden"></div>
+            </div>
+        
         <article id="article">
             <h1>Réduction de réseaux</h1>
 
@@ -100,9 +95,13 @@
                 La pertinence de cette démarche s'inscrit dans un contexte où les systèmes de sécurité actuels, reposant sur la difficulté de la factorisation des grands nombres premiers et du calcul de logarithmes discrets, risquent d'être mis à mal par les progrès en <strong>informatique quantique</strong>. À l'opposé, les réseaux euclidiens apparaissent comme une alternative prometteuse en cryptographie post-quantique, plusieurs de leurs problèmes fondamentaux semblant résister efficacement aux attaques quantiques.  Ainsi, approfondir la compréhension et améliorer les techniques de réduction de réseaux euclidiens représente un enjeu crucial pour le développement futur de la cryptographie face aux défis quantiques.
             </div>
     
-            <div id="toc" class="hidden"></div>
+            
+
+
         </article>
+    </main>
         
+
         <footer>
             <nav>
                 <div style="display:flex; flex-direction: row;">
@@ -128,7 +127,7 @@
                 </div>
                 <div>
                     <p>
-                        Mis à jour le 9 déc. 2025.
+                        Mis à jour le 14 déc. 2025.
                     </p>
                 </div>
             </nav>
@@ -138,6 +137,6 @@
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/references.js"></script>
         <script src="/assets/js/components/svg.js"></script>
-        <script src="/assets/js/components/toc.js"></script>
+        <script type="module" src="/assets/js/components/toc.js"></script>
     </body>
 </html>

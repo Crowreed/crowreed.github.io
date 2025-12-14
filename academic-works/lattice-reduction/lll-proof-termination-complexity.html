@@ -20,28 +20,10 @@
             content="terminaison LLL, complexité LLL, borne polynomiale, invariant D, nombre d'échanges, Gram-Schmidt, taille des entiers, borne algorithmique, $\mathcal{O}(n^4 \log A)$"
         >
         
-        <meta name="author" content="Lucas Petit">
-        
-        <link rel="stylesheet" href="/assets/css/base/root.css">
-        <link rel="stylesheet" href="/assets/css/base/base.css">
-        <link rel="stylesheet" href="/assets/css/base/inter.css">
-        <link rel="stylesheet" href="/assets/css/base/reset.css">
-        <link rel="stylesheet" href="/assets/css/base/utils.css">
-
-        <link rel="stylesheet" href="/assets/css/layout/header.css">
-        <link rel="stylesheet" href="/assets/css/layout/toc.css">
-
-        <link rel="stylesheet" href="/assets/css/academic-works.css">
-        <link rel="stylesheet" href="/assets/css/article.css">
-        <link rel="stylesheet" href="/assets/css/homepage.css">
-        <link rel="stylesheet" href="/assets/css/project.css">
-        
-        <link rel="stylesheet" href="/assets/css/figure.css">
-        <link rel="stylesheet" href="/assets/css/footer.css">
-        <link rel="stylesheet" href="/assets/css/icon.css">
-        <link rel="stylesheet" href="/assets/css/references.css">
-        <link rel="stylesheet" href="/assets/css/footnotes.css">
-        <link rel="stylesheet" href="/assets/css/algorithm.css">
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
@@ -49,11 +31,15 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-        
+
         <!-- JS -->
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
         <script defer src="/assets/js/katex-config.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
     </head>
     <body>
         <header>
@@ -70,16 +56,10 @@
         </header>
         
         <main>
-            <div class="huhu hidden">
-                <div>
-                    <button id="eee">
-                        <svg class="" viewBox="0 0 24 24" fill="black">
-                            <path d="M19 5v14H5V5zm1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9M11 7h6v2h-6zm0 4h6v2h-6zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z"></path>
-                        </svg>
-                    </button>
-                </div>
+            <div id="toc-container" style="height: 100vh;">
+                <div id="min-toc"></div>
+                <div id="full-toc" class="hidden"></div>
             </div>
-            <div id="toc"></div>
 
             <div id="article">
                 <h2>Terminaison et complexité</h2>
@@ -528,7 +508,7 @@
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>
-        <script src="/assets/js/components/toc.js"></script>
+        <script type="module" src="/assets/js/components/toc.js"></script>
         <script src="/assets/js/components/references.js"></script>
     </body>
 </html>

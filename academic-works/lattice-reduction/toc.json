@@ -131,15 +131,11 @@
         ]
     },
     {
-        "title": "Rappels sur les anneaux",
+        "title": "Anneaux : Généralités",
         "type": "appendix",
         "isNumbered": true,
-        "filename": "ring-theory-review.html",
+        "filename": "rings-generalities.html",
         "children": [
-            {
-                "title": "Généralités",
-                "filename": "rings-generalities.html"
-            },
             {
                 "title": "Anneaux de polynômes",
                 "filename": "polynomial-rings.html"
@@ -147,15 +143,11 @@
         ]
     },
     {
-        "title": "Rappels sur les modules",
+        "title": "Modules : Généralités",
         "type": "appendix",
         "isNumbered": true,
-        "filename": "module-theory-review.html",
+        "filename": "modules-generalities.html",
         "children": [
-            {
-                "title": "Modules : Généralités",
-                "filename": "modules-generalities.html"
-            },
             {
                 "title": "Modules sur un anneau principal",
                 "filename": "modules-over-pid.html"

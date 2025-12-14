@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Généralités</title>
+        <title>Anneaux : Généralités</title>
 
         <meta 
             name="description"
@@ -20,29 +20,11 @@
             content="anneau, anneau commutatif, anneau unitaire, groupe abélien, idéal, anneau principal, PID, anneau factoriel, UFD, anneau noethérien, anneau intègre, diviseurs de zéro, anneau euclidien, Z[i], Z/nZ"
         >
         
-        <meta name="author" content="Lucas Petit">
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
         
-        <link rel="stylesheet" href="/assets/css/base/root.css">
-        <link rel="stylesheet" href="/assets/css/base/base.css">
-        <link rel="stylesheet" href="/assets/css/base/inter.css">
-        <link rel="stylesheet" href="/assets/css/base/reset.css">
-        <link rel="stylesheet" href="/assets/css/base/utils.css">
-
-        <link rel="stylesheet" href="/assets/css/layout/header.css">
-        <link rel="stylesheet" href="/assets/css/layout/toc.css">
-
-        <link rel="stylesheet" href="/assets/css/academic-works.css">
-        <link rel="stylesheet" href="/assets/css/article.css">
-        <link rel="stylesheet" href="/assets/css/homepage.css">
-        <link rel="stylesheet" href="/assets/css/project.css">
-        
-        <link rel="stylesheet" href="/assets/css/figure.css">
-        <link rel="stylesheet" href="/assets/css/footer.css">
-        <link rel="stylesheet" href="/assets/css/icon.css">
-        <link rel="stylesheet" href="/assets/css/references.css">
-        <link rel="stylesheet" href="/assets/css/footnotes.css">
-        <link rel="stylesheet" href="/assets/css/algorithm.css">
-
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
 
         <!-- for rendering latex -->
@@ -54,8 +36,15 @@
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
         <script defer src="/assets/js/katex-config.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
     </head>
     <body>
+        
+        
+
         <header>
             <nav>
                 <ul>
@@ -68,21 +57,16 @@
                 </ul>
             </nav>
         </header>
-        
+       
         <main>
-            <div class="huhu hidden">
-                <div>
-                    <button id="eee">
-                        <svg class="" viewBox="0 0 24 24" fill="black">
-                            <path d="M19 5v14H5V5zm1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9M11 7h6v2h-6zm0 4h6v2h-6zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z"></path>
-                        </svg>
-                    </button>
-                </div>
+            <div id="toc-container" style="height: 100vh;">
+                <div id="min-toc"></div>
+                <div id="full-toc" class="hidden"></div>
             </div>
-            <div id="toc"></div>
+
 
             <div id="article">
-                <h2>Généralités</h2>
+                <h2>Anneaux : Généralités</h2>
 
                 <div class="paragraph">
                     Ces résultats sont classiques de la théorie des anneaux commutatifs.
@@ -93,14 +77,19 @@
                     Un <strong>anneau</strong> $(A, +, \cdot)$ est un ensemble $A$ muni de deux lois internes :
 
                     <ul>
-                        <li>$(A, +)$ est un <strong>groupe abélien</strong> (on note $0$ son élément neutre et $-a$ l’inverse de $a$),</li>
-                        <li>la multiplication $\cdot : A \x A \to A$, notée simplement $ab$, est <strong>associative</strong> et <strong>distributive</strong> par rapport à $+$, c’est-à-dire :
+                        <li>
+                            $(A, +)$ est un <strong>groupe abélien</strong> (on note $0$ son élément neutre et $-a$ l’inverse de $a$),
+                        </li>
+                        <li>
+                            la multiplication $\cdot : A \times A \to A$, notée simplement $ab$, est <strong>associative</strong> et
+                            <strong>distributive</strong> par rapport à $+$, c’est-à-dire :
                             \[
                             a(b + c) = ab + ac, 
                             \quad (b + c)a = ba + ca,
                             \quad \forall a, b, c \in A,
                             \]
-                            et possède un <strong>élément neutre</strong> $1 \in A$ (on dit alors que $A$ est un anneau <strong>unitaire</strong>).</li>
+                            et possède un <strong>élément neutre</strong> $1 \in A$ (on dit alors que $A$ est un anneau <strong>unitaire</strong>).
+                        </li>
                     </ul>
                 </div>
 
@@ -224,7 +213,7 @@
                                 <td>$\checkmark$</td>
                             </tr>
                             <tr>
-                                <td>$\Z \x \Z$</td>
+                                <td>$\Z \times \Z$</td>
                                 <td>$\checkmark$</td>
                                 <td>$\times$</td>
                                 <td>$\times$</td>
@@ -260,7 +249,9 @@
         <script src="/assets/js/components/footer.js"></script>
         <script src="/assets/js/components/header.js"></script>
         <script src="/assets/js/components/article.js"></script>
-        <script src="/assets/js/components/toc.js"></script>
+        <script type="module" src="/assets/js/components/utils.js"></script>
+        <script type="module" src="/assets/js/components/toc.js"></script>
+        
         <script src="/assets/js/components/references.js"></script>
     </body>
 </html>
