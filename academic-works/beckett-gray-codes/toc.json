@@ -1,9 +1,6 @@
-
-
 [
     {
-        "title": "Codes de Beckett-Gray",
-        "folder_name":"introduction",
+        "title": "Introduction",
         "type": "chapter",
         "isNumbered": true,
         "filename": "/academic-works/beckett-gray-codes/introduction/",
@@ -11,7 +8,6 @@
     },
     {
         "title": "Organisation du travail",
-        "folder_name":"work-organization",
         "type": "chapter",
         "isNumbered": true,
         "filename": "/academic-works/beckett-gray-codes/work-organization/",
@@ -19,7 +15,6 @@
     },
     {
         "title": "Les codes de Gray",
-        "folder_name":"gray-codes",
         "type": "chapter",
         "isNumbered": true,
         "filename": "/academic-works/beckett-gray-codes/gray-codes/",
@@ -53,13 +48,12 @@
     },
     {
         "title": "Les codes de Beckett-Gray",
-        "folder_name":"beckett-gray-codes",
         "type": "chapter",
         "isNumbered": true,
         "filename": "/academic-works/beckett-gray-codes/beckett-gray-codes/",
         "children": [
             {
-                "title": "Introduction",
+                "title": "Les codes de Beckett-Gray : Introduction",
                 "filename": "/academic-works/beckett-gray-codes/beckett-gray-codes/beckett-introduction.html"
             },
             {
@@ -90,7 +84,6 @@
     },
     {
         "title": "Etudes statistiques sur les codes de Beckett-Gray",
-        "folder_name":"beckett-statistical-studies",
         "type": "chapter",
         "isNumbered": true,
         "filename": "/academic-works/beckett-gray-codes/beckett-statistical-studies/",

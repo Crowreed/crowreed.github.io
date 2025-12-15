@@ -1,43 +1,47 @@
 import { createLink } from '../utils/utils.js';
 
+async function fetchReferences() {
+	const paths = ['../references.json', 'references.json', '/references.json'];
+	for (const path of paths){
+		try {
+			const res = await fetch(path);
+			if (res.ok) return await res.json();
+		} catch (e) {}
+	}
+	return null;
+}
+
 export async function loadReferences() {
-	try {
-    	const response = await fetch('references.json');
-    	const references = await response.json();
+	const referencesData = await fetchReferences();
+    if (!referencesData) return console.error("Impossible de charger references.json");
 
-    	const refList = [];
+    const refList = [];
+    const refs = document.querySelectorAll('a[class^=ref-]');
 
-    	const refs = document.querySelectorAll('a[class^=ref-]');
-
-    	refs.forEach(ref => {
-			const elt = references.find(REF => REF.id === ref.className);
+    refs.forEach(ref => {
+		const elt = referencesData.find(REF => REF.id === ref.className);
       
-      		if (!refList.includes(elt)) {
-        		refList.push(elt);
-      		}
+      	if (!refList.includes(elt)) {
+        	refList.push(elt);
+      	}
 
-      		ref.title=elt.title;
-      		ref.href="#"+ref.className;
+      	ref.title=elt.title;
+    	ref.href="#"+ref.className;
 
-      		const spanAuthor = document.createElement('span');
-      		spanAuthor.className="author";
-      		spanAuthor.textContent=elt.authors[0].given[0] +". "+elt.authors[0].family;
+      	const spanAuthor = document.createElement('span');
+      	spanAuthor.className="author";
+    	spanAuthor.textContent=elt.authors[0].given[0] +". "+elt.authors[0].family;
 
-			const year = document.createElement('strong');
-      		year.textContent = elt.year;
+		const year = document.createElement('strong');
+      	year.textContent = elt.year;
 
-      		ref.appendChild(spanAuthor);
-      		ref.appendChild(year);
+      	ref.appendChild(spanAuthor);
+      	ref.appendChild(year);
 
-      		ref.className="cite " + ref.className;
-    	})
+      	ref.className="cite " + ref.className;
+    })
 
-		createReferencesList(refList);
-
-      
-  	} catch (error) {
-    	console.log(error);
-  	}
+	createReferencesList(refList);
 }
 
 function createReferencesList(refList) {
