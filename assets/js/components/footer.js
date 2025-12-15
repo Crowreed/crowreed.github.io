@@ -1,7 +1,28 @@
+async function load_TOC_file() {
+    const cheminsPossibles = [
+        '../toc.json', 
+        'toc.json',    
+        '/toc.json'    
+    ];
+
+    for (const chemin of cheminsPossibles) {
+        try {
+            const response = await fetch(chemin);
+            if (response.ok) {
+                console.log(`Fichier toc.json chargé via : ${chemin}`);
+                return await response.json(); 
+            }
+        } catch (error) {
+            console.warn(`Échec du chargement via ${chemin}. Raison: ${error.message}.`);
+        }
+    }
+    throw new Error("Impossible de charger le fichier toc.json.");
+}
+
+
 export async function loadFooter() {
     try {
-        const response = await fetch('toc.json');
-        const toc = await response.json();
+        const toc = await load_TOC_file();
 
         const list = [];
 
