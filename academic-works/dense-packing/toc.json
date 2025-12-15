@@ -1,31 +1,134 @@
-Introduction
-
-1 Empilements compacts
-1.1 Decouverte
-1.2 Empilements de disques egaux en dimension 2
-1.3 Empilements de boules egales en dimension 3
-1.4 Un mot sur les dimensions superieures
-
-2 Les empilements compacts et l'inegalite isoperimetrique
-2.1 Introduction : Le probleme de Didon
-2.2 Un d´ebut de formalisme
-2.3 Le formalisme mathematique
-2.4 Conclusion : Du nid d’abeille aux bulles de savons
-
-3 La conjecture du nid d’abeille
-3.1 Introduction : les nids d’abeilles
-3.2 Preuve de la conjecture
-3.3 L'inegalite isoperimetrique hexagonale pour les courbes planes fermees
-
-4 Simulations
-4.1 Premiere partie : Isoperimetrie
-4.2 Deuxieme partie : Densite
-4.3 Troisieme partie : Diagramme de Voronoi
-
-A Rappels sur les polygones
-
-B Code et aspect mathematique des simulations informatiques
-B.1 Aspects mathematiques
-B.2 Theorie de la simulation de l'inegalite isoperimetrique
-B.3 Les diagrammes de Voronoi
-B.4 Le code
+[
+    {
+        "title": "Introduction",
+        "type": "chapter",
+        "isNumbered": false,
+        "filename": "/academic-works/dense-packing/introduction/",
+        "children": []
+    },
+    {
+        "title": "Empilements compacts",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/compact-packings/",
+        "filename": "index.html",
+        "children": [
+            {
+                "title": "Découverte",
+                "filename": "/academic-works/dense-packing/compact-packings/discovery.html"
+            },
+            {
+                "title": "Empilements de disques égaux en dimension 2",
+                "filename": "/academic-works/dense-packing/compact-packings/disk-packing-2d.html"
+            },
+            {
+                "title": "Empilements de boules égales en dimension 3",
+                "filename": "/academic-works/dense-packing/compact-packings/sphere-packing-3d.html"
+            },
+            {
+                "title": "Un mot sur les dimensions supérieures",
+                "filename": "/academic-works/dense-packing/compact-packings/higher-dimensions.html"
+            }
+        ]
+    },
+    {
+        "title": "Les empilements compacts et l'inégalité isopérimétrique",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/packings-and-isoperimetric/",
+        "filename": "index.html",
+        "children": [
+            {
+                "title": "Introduction : Le problème de Didon",
+                "filename": "/academic-works/dense-packing/packings-and-isoperimetric/dido-problem.html"
+            },
+            {
+                "title": "Un début de formalisme",
+                "filename": "/academic-works/dense-packing/packings-and-isoperimetric/formalism-intro.html"
+            },
+            {
+                "title": "Le formalisme mathématique",
+                "filename": "/academic-works/dense-packing/packings-and-isoperimetric/mathematical-formalism.html"
+            },
+            {
+                "title": "Conclusion : Du nid d’abeille aux bulles de savons",
+                "filename": "/academic-works/dense-packing/packings-and-isoperimetric/conclusion-honeycomb-soap-bubbles.html"
+            }
+        ]
+    },
+    {
+        "title": "La conjecture du nid d’abeille",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/honeycomb-conjecture/",
+        "filename": "index.html",
+        "children": [
+            {
+                "title": "Introduction : les nids d’abeilles",
+                "filename": "/academic-works/dense-packing/honeycomb-conjecture/honeycomb-intro.html"
+            },
+            {
+                "title": "Preuve de la conjecture",
+                "filename": "/academic-works/dense-packing/honeycomb-conjecture/conjecture-proof.html"
+            },
+            {
+                "title": "L'inégalité isopérimétrique hexagonale pour les courbes planes fermées",
+                "filename": "/academic-works/dense-packing/honeycomb-conjecture/hexagonal-isoperimetric-inequality.html"
+            }
+        ]
+    },
+    {
+        "title": "Simulations",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/simulations/",
+        "filename": "index.html",
+        "children": [
+            {
+                "title": "Première partie : Isopérimétrie",
+                "filename": "/academic-works/dense-packing/simulations/isoperimetry.html"
+            },
+            {
+                "title": "Deuxième partie : Densité",
+                "filename": "/academic-works/dense-packing/simulations/density.html"
+            },
+            {
+                "title": "Troisième partie : Diagramme de Voronoï",
+                "filename": "/academic-works/dense-packing/simulations/voronoi-diagram.html"
+            }
+        ]
+    },
+    {
+        "title": "Rappels sur les polygones",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/polygons/",
+        "filename": "/academic-works/dense-packing/polygons/index.html",
+        "children": []
+    },
+    {
+        "title": "Code et aspect mathématique des simulations informatiques",
+        "type": "chapter",
+        "isNumbered": true,
+        "folder_name": "/academic-works/dense-packing/code-and-math/",
+        "filename": "index.html",
+        "children": [
+            {
+                "title": "Aspects mathématiques",
+                "filename": "/academic-works/dense-packing/code-and-math/mathematical-aspects.html"
+            },
+            {
+                "title": "Théorie de la simulation de l'inégalité isopérimétrique",
+                "filename": "/academic-works/dense-packing/code-and-math/simulation-theory.html"
+            },
+            {
+                "title": "Les diagrammes de Voronoï",
+                "filename": "/academic-works/dense-packing/code-and-math/voronoi-diagrams.html"
+            },
+            {
+                "title": "Le code",
+                "filename": "/academic-works/dense-packing/code-and-math/source-code.html"
+            }
+        ]
+    }
+]

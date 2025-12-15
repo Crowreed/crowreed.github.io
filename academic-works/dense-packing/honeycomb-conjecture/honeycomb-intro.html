@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Lucas Petit</title>
+        <title></title>
 
         <meta
             name="description"
@@ -40,32 +40,33 @@
  
         <link rel="stylesheet" href="/assets/css/main.css">
     </head>
-
     <body>
-        <header id="main-header"></header>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            Empilements compacts
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
         
-        <div class="homepage">
+        <main>
+            <div id="toc-container" style="height: 100vh;">
+                <div id="min-toc"></div>
+                <div id="full-toc" class="hidden"></div>
+            </div>
 
-                <div class="hero">      
-                    <div>
-                        <p style="text-transform: uppercase; color: var(--secondary-text-color);"> Bonjour, je suis </p>
-                        <h1>Lucas Petit</h1>
-                    </div>
-                    
-                    <div>
-                        <img src="/assets/img/lucas-petit-portrait.JPG" alt="">
-                    </div>
+            <div id="article">
+            </div>
 
-                    <div>
-                        <h2 style="color: var(--secondary-text-color);">Titulaire d'un Master 2 en Algorithmie & Mathématiques.</h2>
-                        <p style="text-align: justify;">
-                            Grâce à une double compétence en informatique théorique et en mathématique, j'ai l'expertise pour transformer l'abstraction mathématique en solutions logicielles concrètes, performantes et rigoureusement optimisées.
-                        </p>
-                    </div>
-                     
-                </div>
+        </main>
 
-        </div>
+        <footer id="main-footer"></footer>
+        
         <script type="module" src="/assets/js/main.js"></script>
     </body>
 </html>
