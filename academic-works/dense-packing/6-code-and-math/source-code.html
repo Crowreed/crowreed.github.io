@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Le code</title>
 
         <meta
             name="description"
@@ -58,6 +58,362 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h3>Le code</h3>
+    <!--
+    \subsection{Le code de la classe Graphe}
+    \begin{lstlisting}
+    class Graphe:
+        """
+        Classe representant un graphe, avec ses sommets et ses aretes. 
+        """
+        
+        def __init__(self, (nodes, edges)):
+            """
+            nodes : tableau de paire de coordonnees
+            edges : tableau de paire d'index de sommets
+            dx : decalage sur l'axe x par rapport au coin superieur gauche
+            dy : decalage sur l'axe y par rapport au coin superieur gauche
+            scale : facteur de zoom du graphe
+            """
+            self.nodes = nodes
+            self.edges = edges
+            self.dx = 0
+            self.dy = 0
+            self.scale = 0
+            
+        def perim(self):
+            """
+            Cette fonction renvoie le perimetre du graphe.
+            
+            Elle parcourt toutes les aretes du graphe et renvoie la somme le leur longueur.
+            """
+            p = 0
+            
+            def d((xA, yA), (xB, yB)):
+                return sqrt((xB-xA)**2.0+(yB-yA)**2.0)
+            
+            for i in range(len(self.edges)):
+                xA = self.nodes[self.edges[i][0]][0]
+                yA = self.nodes[self.edges[i][0]][1]
+                xB = self.nodes[self.edges[i][1]][0]
+                yB = self.nodes[self.edges[i][1]][1]
+                
+                p = p + d(( xA, yA), (xB , yB))
+            
+            return p
+            
+        def intersect_circ(self, r):
+            """
+            Cette fonction renvoie l'intersection du graphe avec un disque de 
+            rayon r centre en l'origine.
+            
+            Elle construit un nouveau graphe.
+            """
+                    
+            def dist(xA, yA):
+                return sqrt(xA*xA+yA*yA)
+                
+            points = []
+            edges = []
+            
+            #on parcourt toutes les aretes
+            for i in range(len(self.edges)):
+                
+                xA = self.nodes[self.edges[i][0]][0]
+                yA = self.nodes[self.edges[i][0]][1]
+                xB = self.nodes[self.edges[i][1]][0]
+                yB = self.nodes[self.edges[i][1]][1]
+                
+                d1 = dist(xA, yA) 
+                d2 = dist(xB, yB)
+                
+                #si l'arete coupe la frontiere du cercle            
+                if((d1<r and d2>r) or (d1>r and d2<r)):
+                    
+                    t=0
+                    #alors la solution se trouve sur cette arete [A, B] on a alors le point solution S = tA+(1-t)B pour un certain t
+                    #tant que le point du segment est a une distance > 0.05 du cercle
+                    while(abs(dist(xA*t+xB*(1-t), yA*t+yB*(1-t))-r) > 0.05):
+                        t = t+0.005
+                        if t > 10:
+                            break
+                    
+                    #solution
+                    xS = t*xA+(1.0-t)*xB
+                    yS = t*yA+(1.0-t)*yB
+                    
+                    #on rajoute aux points du nouveau graphe les points solutions
+                    points = points + [(xS, yS)]
+                    
+                    #on rajoute les aretes [A, S] ou [B, S] suivant le cas
+                    if(dist(xB, yB)<r):
+                        points = points + [(xB, yB)]
+                        edges = edges + [(len(points)-1, len(points)-2)]
+                    
+                    if(dist(xA, yA)<r):
+                        points = points + [(xA, yA)]
+                        edges = edges + [(len(points)-1, len(points)-2)]
+                
+                #si l'arete est completement dans le cercle
+                if(dist(xA, yA) < r and dist(xB, yB) <r):
+                    points = points + [(xA, yA)] + [(xB, yB)]
+                    edges = edges + [(len(points)-1, len(points)-2)]
+                    
+            graph = Graphe((points, edges))
+            
+            graph.scale = self.scale
+            graph.dx = self.dx
+            graph.dy = self.dy
+            
+            return graph
+    
+        def render(self):
+            """
+            Affichage du graphe
+            """
+            for i in range(len(self.edges)):
+                xA = self.nodes[self.edges[i][0]][0]
+                yA = self.nodes[self.edges[i][0]][1]
+                xB = self.nodes[self.edges[i][1]][0]
+                yB = self.nodes[self.edges[i][1]][1]
+                
+                rendline((xA, yA), (xB, yB), self.dx, self.dy, self.scale, (255,0,0), 2)
+    
+    \end{lstlisting}
+    
+    \subsection{Le code des algorithmes créant des graphes particuliers}
+    \begin{lstlisting}
+    def pavage_hexagonale(thickness, dx, dy, scale):
+        """
+        Cette fonction renvoie le graphe du pavage hexagonale
+        thickness : nombre de couches d'hexagone
+        """
+        
+        c1 = 3**(1./4.)/sqrt(2.)
+        c2 = 1./sqrt(2.*sqrt(3.))
+        c3 = sqrt(2.0/(3.0*sqrt(3.0)))
+        
+        points = [(c1*(i+j), c2*(j-i)) for i in
+        range(-thickness/2, thickness/2) for j in range(-thickness/2, thickness/2)]
+        points = points + [(c3 + c1*(i+j), c2*(j-i)) for 
+        i in range(-thickness/2, thickness/2) for j in range(-thickness/2, thickness/2)]
+        
+        edges = [(j+thickness,j+thickness*thickness) for
+        j in range(thickness*thickness) if j < thickness*thickness-thickness]
+        edges = edges + [(j,j+thickness*thickness) for j
+        in range(1,thickness*thickness-1)]
+        edges = edges + [(j+1,j+thickness*thickness) for j
+        in range(thickness*thickness-1) if j%thickness != thickness-1]
+        
+        graph = Graphe((points, edges))
+        
+        graph.scale = scale
+        graph.dx = dx
+        graph.dy = dy
+        
+        return graph    
+    
+    def pavage_carre(thickness, dx, dy, scale):
+        """
+        Cette fonction renvoie le graphe du pavage carre
+        thickness :  nombre de couches de carres
+        """
+        
+        points = [(i,j) for i in range(-thickness/2, thickness/2) for j 
+        in range(-thickness/2, thickness/2)]
+        edges = [(i,i+thickness) for i in range(thickness*thickness-thickness)]
+        edges = edges + [(i,i+1) for i in range(thickness*thickness-1) if i%thickness != thickness-1]
+        
+        graph = Graphe((points, edges))
+        
+        graph.scale = scale
+        graph.dx = dx
+        graph.dy = dy
+        
+        return graph
+    
+    def pavage_triangulaire_equi(thickness, dx, dy, scale):
+        """
+        Cette fonction renvoie le graphe du pavage par des triangles equilateraux
+        thickness : nombre de couches de triangle
+        """
+        
+        c3 = 3**(1./4.)
+        c1 = 2.0/c3
+        c2 = 1.0/c3
+        
+        points = [(i*c1+j*c2, j*c3) for i
+        in range(-thickness/2, thickness/2) for j in range(-thickness/2, thickness/2)]
+        edges = [(i,i+thickness) for i 
+        in range(thickness*thickness-thickness)] 
+        
+        + [(i,i+1) for i in range(thickness*thickness-1)
+        if i%thickness != thickness-1] 
+        
+        edges = edges + [(i,i+thickness-1) for i 
+        in range(thickness*thickness-thickness+1)]
+        
+        
+        graph = Graphe((points, edges))
+        
+        graph.scale = scale
+        graph.dx = dx
+        graph.dy = dy
+        
+        return graph
+    
+    def pavage_carre_random(r, thickness, dx, dy, scale):
+        """
+        perturbe les valeurs dans un intervalle [-r,+r]
+        """
+        points = [(i+random(-r,+r),j+random(-r,+r)) for i 
+        in range(-thickness/2, thickness/2) for j in range(-thickness/2, thickness/2)]
+        edges = [(i,i+thickness) for i in 
+        range(thickness*thickness-thickness)]
+        edges = edges + [(i,i+1) for i in
+        range(thickness*thickness-1) if i%thickness != thickness-1]
+        
+        graph = Graphe((points, edges))
+        
+        graph.scale = scale
+        graph.dx = dx
+        graph.dy = dy
+        
+        return graph
+    \end{lstlisting}
+    
+    \subsection{Le code de la classe polygone régulier}
+    \begin{lstlisting}
+    class Polygone_regulier():
+        def __init__(self, (c_x, c_y), N, (p_x, p_y), dx, dy, scale):
+            """
+            (c_x, c_y) | le centre du polygone regulier
+            N | le nombre de cote du polygone regulier
+            (p_x, p_y) | la coordonnee du point de depart du polygone
+            dx | decallage x
+            dy | decallage y
+            """
+            
+            self.center = (c_x, c_y)
+            self.N = N
+            self.p = (p_x, p_y)
+            
+            self.dx = dx
+            self.dy = dy
+            self.scale = scale
+            
+            #on creer les matrices 
+            m_centre = Matrice([[c_x],[c_y]])
+            m_p = Matrice([[p_x],[p_y]])
+            
+            #on creer les points du polygone regulier
+            points = [(  (m_centre+(R((2*pi*i)/float(N))*m_p)).tuple[0][0]  ,
+                         (m_centre+(R((2*pi*i)/float(N))*m_p)).tuple[1][0]  ) for i in
+                         range(N)]
+            
+            self.points = points
+        
+            #on relie les points successifs, et, le premier point avec le dernier point
+            edges = [(len(points)-1, 0)] + [(i,i+1) for i in range(len(points)-1)]
+            
+            graphe = Graphe((points, edges))
+            
+            graphe.dx = self.dx
+            graphe.dy = self.dy
+            graphe.scale = self.scale
+            
+            self.graph = graphe
+            
+        def inCarre(self, (x, y, c)):
+            """
+            Cette fonction test si le polygone est situe dans un carre de cote
+            c et de sommet (x,y)
+            """
+            
+            for i in range(len(self.graph.nodes)):
+                if((self.graph.nodes[i][0] <= x-0.01) or (self.graph.nodes[i][0]
+                >= x+c+0.01)
+                       or (self.graph.nodes[i][1] <= y-0.01)or 
+                       (self.graph.nodes[i][1] >= y+c+0.01)):
+                    return False
+            return True
+        
+        def intersect(self, pol):
+            """
+            Cette fonction donne une approximation de si deux polygones s'intersectent,
+            elle renvoie True si ils s'intersectent et False sinon
+            """
+            
+            #creation des trois points
+            (x_c, y_c) = self.center
+            
+            (x_p1, y_p1) =  self.points[0]
+                
+            #calcul du grand et petit rayon
+            grand_rayon = d(self.center, (x_p1,y_p1))
+            petit_rayon = self.apothem()
+            
+            #on parcourt tous les cotes du polygone
+            for i in range(len(pol.graph.edges)):
+                
+                #on definit les deux points extremites du segment
+                x0 = (pol.graph.nodes[pol.graph.edges[i][0]][0])
+                y0 = (pol.graph.nodes[pol.graph.edges[i][0]][1])
+                x1 = (pol.graph.nodes[pol.graph.edges[i][1]][0])
+                y1 = (pol.graph.nodes[pol.graph.edges[i][1]][1])
+                            
+                #on parcourt les points de ce segment
+                n =1 # precision
+                for t in range(n):
+                    s = t*(1/float(n))
+                    dist = d(self.center, (x0*s+(1-s)*x1, y0*s+(1-s)*y1))
+                    if(dist < petit_rayon):
+                        return True
+            return False
+        
+        def apothem(self):
+            """
+            Cette fonction renvoie le rayon du cercle inscrit dans le polygone
+            """
+             
+            (x_p1, y_p1) =  self.points[0]
+            (x_p2, y_p2) =  self.points[1]
+            
+            l = d(self.center, ((x_p1+x_p2)/2.0, (y_p1+y_p2)/2.0))
+            
+            return l
+        
+        def rayon(self):
+            """
+            Cette fonction renvoie le rayon du cercle circonscrit ?
+            """
+            
+            l = d(self.center, self.points[0])
+            
+            return l
+    
+        def mid(self):
+            """
+            Retourne la moyenne entre le rayon et l'apotheme
+            """
+            
+            return (self.apothem()+self.rayon())/2.0
+            
+        def intersect2(self, pol):
+            """
+            Cette fonction donne une approximation de si deux polygones s'intersectent,
+            elle renvoie True si ils s'intersectent et False sinon
+            """
+            
+            if(d(self.center, pol.center) < self.mid() + pol.apothem()):
+                return True
+            return False
+    
+        def render(self):
+            self.graph.render()
+    \end{lstlisting}
+    \end{appendices}-->
             </div>
 
         </main>

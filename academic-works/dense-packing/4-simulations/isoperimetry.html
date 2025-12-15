@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Première partie : Isopérimétrie</title>
 
         <meta
             name="description"
@@ -58,6 +58,141 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h3>Première partie : Isopérimétrie</h3>
+    
+    Le but de cette première partie est d'estimer la constante isopérimétrique de graphes donnés.
+    Pour cela, nous devons implémenter un algorithme qui, pour un graphe donné, estimera sa constante isopérimétrique.
+    Le lecteur est invité à lire l'annexe sur l'aspect informatique pour plus de détails sur les graphes.
+    
+                <h4>Algorithme de calcul de la constante isopérimétrique</h4>
+    
+    
+    Nous avons besoin d'élaborer un algorithme pour estimer l'inégalité isopérimétrique de n'importe quel graphe, avec la formule du théorème du nid d'abeille version naïve. 
+    On a donc besoin de mettre en place la notion d'intersection entre un graphe et une boule centrée en l'origine de rayon r.
+    Une fois ce nouveau graphe obtenu, nous aurons besoin de calculer son périmètre. Que l'on divisera par l'aire du cercle, nous obtiendrons alors une valeur correspondant à la formule donnée, qui sera bien sure fiable pour de grandes valeurs de r.
+    Voici les grandes étapes visuellement de l'algorithme.
+    
+    <figure>
+        
+        \includegraphics[width=5cm]{pic1.png} 
+        
+        \centering \includegraphics[width=5cm]{pic2.png} 
+        
+        \centering \includegraphics[width=5cm]{pic3.png}
+        
+        <figcaption>Déroulement de l'algorithme}</figcaption>
+        
+    </figure>
+    
+    { Pour appuyer nos résultats pratiques, nous avons calculé théoriquement la valeur exacte de la constante isopérimétrique des graphes illustrés dans les exemples suivants. Afin de voir que les valeurs trouvées pratiquement seront très proches des valeurs théoriques, donnant ainsi du crédit à notre algorithme. Elles seront mises en annexe dans la partie code}
+    
+    \subsection{Résultats}
+    
+    
+    { Voici quelques résultats pour le triangle, le carré et l'hexagone.}
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{qqq3.png}
+        
+        
+        <figcaption>Constante isopérimétrique de l'empilement triangulaire = 2.27}</figcaption>
+        
+    </figure>
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{eee3.png}
+        
+        
+        <figcaption>Constante isopérimétrique de l'empilement triangulaire = 2.00}</figcaption>
+        
+    </figure>
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{ss1.png}
+        
+        
+        <figcaption>Constante isopérimétrique de l'empilement triangulaire = 1.87}</figcaption>
+        
+    </figure>
+                <div class="paragraph">
+                    Ces résultats correspondent bien aux valeurs trouvées théoriquement dans l'annexe.
+                </div>
+    
+                <h4>Remarque sur les altérations aléatoires compactes du graphe</h4>
+    
+    { Une altération aléatoire compacte d'un graphe consiste à déplacer chaque point du graphe dans une direction aléatoire et une distance aléatoire bornée par un réel fixé.}
+    Par exemple, une altérations aléatoire compacte de ce graphe à une distance de 0.5 est :
+    (image)
+    L'idée de compacité vient du fait de ne pas autoriser à ce que les nouvelles cellules du graphes ne soient pas compactes.
+    Dans nos recherches de simulations, nous nous sommes demandés comment évoluerait la constante isopérimétrique d'un tel graphe.
+    Si l'on considère tout d'abord l'aire de ce nouveau graphe, si nous le tronquons comme les autres graphe par un compacte, le graphe tronqué conservera la même aire, celle de cette boule $ \pi r^2$.
+    L'aire ne change donc pas, intéressons nous maintenant au périmètre de ce graphe tronqué.
+    Regardons informatiquement ce qu'il se passe, on va poser le cadre des simulations, on va étudier le pavage carré, tous d'unité d'aire, donc de côté unitaire, avec des altérations d'intensités croissantes ${0,25 ; 0,5 ; 0,75 ; 1}$
+    Nous allons tester ces valeurs pour des graphes de taille croissante. Voici un tableau récapitulatif des valeurs trouvées.
+    Nous avons pour chaque simulation répété ceci un grand nombre de fois et calculé une moyenne du périmètre dans chaque simulation afin d'avoir une idée plus proche de la réalité.
+    
+    
+    
+    \begin{table}[Résultats]
+    \centering
+    \textbf{Pavage carré de 10x10} 
+    
+    \begin{tabular}{|c|c|c|}
+      \hline
+      valeur d'altération & périmètre moyen & constante isopérimétrique 
+      \hline
+      0 & 220 & 1.98
+      0.25 & 224.6 & 2.02
+      0.5 & 239.4 & 2.15
+      0.75 & 266.3 & 2.38
+      1 & 303.9 & 2.74
+      \hline
+    \end{tabular}
+    
+    \newline
+    \textbf{Pavage carré de 50x50} 
+    
+    \begin{tabular}{|c|c|c|}
+      
+      \hline
+      valeur d'altération & périmètre moyen & constante isopérimétrique 
+      \hline
+      0 & 5100 & 1.99
+      0.25 & 5208 & 2.04
+      0.5 & 5550 & 2.17
+      0.75 & 6170 & 2.41
+      1 & 7040 & 2.75
+      \hline
+    
+    \end{tabular}
+    
+    \newline
+    \textbf{Pavage carré de 100x100} 
+    
+    \begin{tabular}{|c|c|c|}
+      \hline
+      valeur d'altération & périmètre moyen & constante isopérimétrique 
+      \hline
+      0 & 20200 & 2
+      0.25 & 20628 & 2.04
+      0.5 & 21981 & 2.17
+      0.75 & 24444 & 2.42
+      1 & 27896 & 2.76
+      \hline
+    \end{tabular}
+    \end{table}
+    
+    
+    { On voit donc que la constante isopérimétrique augmente. Ainsi la constante isopérimétrique est sensibles aux altérations aléatoires compactes.}
+    <!--#################################################################################################################
+    #####################################################################################################################
+    ###################################################################################################################-->
+              
+    
             </div>
 
         </main>

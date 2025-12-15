@@ -58,6 +58,44 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                <h4></h4>
+                \subsection{Un début de formalisme}
+                Nous pouvons essayer de formaliser mathématiquement cette idée de prendre pour une aire donnée la surface ayant le plus grand périmètre, ou, de façon équivalente, pour un périmètre donné, la figure ayant la plus petit aire.
+                Essayons de formaliser un peu l'idée derrière le problème isopérimétrique.
+                Si on se donne un périmètre, quelle est la figure géométrique qui a la plus grande aire ? Ce problème s'appelle le problème isopérimétrique. On peut remarquer que :
+                
+                { 1. La solution ne peut pas être une figure concave. En effet, en modifiant la figure comme dans l'image qui suit, on peut voir que l'on augmente l'aire sans changer le périmètre.}
+                <figure>
+                    
+                    \includegraphics[width = 4cm]{explication_0.png}
+                    
+                    \includegraphics[width = 4cm]{explication_1.png}
+                    
+                    
+                    
+                </figure>
+                
+                { La réponse à ce problème est donc forcément une figure qui n'est pas concave, autrement dit une figure convexe.}
+                2. Elle doit avoir partout la même courbure.
+                En effet, regardons l'image suivante.
+                <figure>
+                    
+                    \includegraphics[width = 4cm]{explication_2.png}
+                    
+                    \includegraphics[width = 4cm]{explication_3.png}
+                    
+                    
+                    
+                </figure>
+                { Comment peut on trouver une surface plus grande que celle-ci ?}
+                On peut essayer de découper un morceau de la figure où la courbure est forte, et découper un autre morceau là où la courbure est assez faible, de telle sorte que l'on puisse échange ces deux morceaux, comme les images précédentes le montre.
+                On voit que le périmètre est resté inchangé, et que la figure nouvellement obtenue est cette fois ci concave. On voit que l'on a créé des petites concavités.
+                En répétant ces deux étapes un grand nombre de fois, on voit que l'on obtient une figure qui se rapproche du cercle. Autrement dit, l'unique solution du problème isopérimétrique est une figure convexe à courbure constante : le cercle.
+                Nous pouvons enfin introduire le théorème de l'inégalité isopérimétrique, lien entre la surface délimitée par une courbe et avec le périmètre de la surface délimitée par cette dernière.
+                <h4></h4>
+                
+                
+                
             </div>
 
         </main>

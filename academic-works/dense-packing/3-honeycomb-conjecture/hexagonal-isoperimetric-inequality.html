@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>L'inégalité isopérimétrique hexagonale pour les courbes planes fermées</title>
 
         <meta
             name="description"
@@ -58,6 +58,79 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h4>L'inégalité isopérimétrique hexagonale pour les courbes planes fermées.</h4>
+    
+    { Maintenant, tout se passera sur un compact, plus précisément un tore.}
+    Il y a une remarque importante pour les graphes à formuler.
+    
+    <div class="definition">[Caractéristique d'Euler]
+    La caractéristique d'Euler est un invariant numérique, un nombre qui décrit un aspect d'une forme d'un espace topologique, ou qui décrit la structure de cet espace, elle est notée $\kappa $.
+    Soit un graphe dans cet espace topologique, on a alors 
+    On a $\kappa  = V - E + F$, avec V le nombre de sommets du graphe, E le nombre de côtés du graphe et F le nombre de faces délimités par ce graphe.
+    Nous ne rentreront pas dans les détails de ceci, nous allons juste insister sur la valeur de ce nombre quand l'espace considéré est un tore, la caractéristique d'Euler pour un graphe toroïdale est de 0 et non 2 comme on aurait pu le penser de prime abord, 2 étant la caractéristique d'Euler pour un graphe planaire.
+    
+    </div>
+    
+    
+    { Nous allons expliquer une formule qui a été donnée par Thomas C. Halles sans explications de celle-ci, c'est donc une valeur ajoutée de notre travail. Cette formule sera utile pour montrer que le théorème isopérimétrique hexagonal pour les courbes planes fermée implique le théorème du nid d'abeille sur un tore.}
+    
+    \begin{tcolorbox}[colback=red!6]
+    \begin{proposition}
+    On rappelle que la caractéristique d'Euler pour un graphe toroïdale est 0, c'est à dire que l'on a $V-E+F = 0$.
+    Supposons que ce graphe soit de degré 3, c'est à dire que chaque sommets est relié à 3 arêtes.
+    Alors on a $\underset{P}{\sum}(1-\frac{N(P}{6}) = 0.$
+    \end{proposition}
+    \end{tcolorbox}
+    
+    <div class="proof">
+    On remarque que chaque sommets du graphe est relié à 3 arêtes. Si on compte le nombre d'arêtes pour chaque points et qu'on en fait la somme, on se rend compte à la fin que l'on a compté chaque arêtes deux fois (elle a été comptée par chacun de ses deux points extrémités), on a donc $E = \frac{3}{2} V$.
+    On obtient alors un système d'équation où $F = E - V$et$ \frac{3}{2}V = E$ qui donne le système $F = \frac{1}{2} V$ et $E = 3F$.
+    Or on a $\underset{P}{\sum}N(P) = 2E = 6F \Rightarrow F = \underset{P}{\sum} \frac{N(P}{6}$.
+    On rappelle que $F = \underset{P}{\sum}1$, on a donc $\underset{P}{\sum}(1-\frac{N(P)}{6})=0$. Ce qui achève la démonstration.
+    </div>
+    
+    { Nous énonçons maintenant le théorème final, l'inégalité isopérimétrique hexagonale pour les courbes planes fermées. }Pour démontrer ce dernier théorème, Thomas C. Halles a trouvé différentes bornes inférieures de la longueur du graphe selon différents cas, qui utilisent différents théorèmes isopérimétriques comme le théorème isopérimétrique pour les polygones, qui énonce qu'à périmètre fixé, c'est le polygone régulier qui enferme la plus grande aire. Il a ensuite au cas par cas (il y en a beaucoup), calculé $\Delta (P)$ et montré qu'il était positif. Nous ne présenterons pas cette preuve qui est très longue, parfois compliqué et répétitive.
+    Mettons un peu de contexte avant d'énoncer le dernier théorème.
+    
+    On note $\Gamma$ une courbe rectifiable simple fermée par morceaux dans le plan, en considérant ici $\Gamma$ comme étant la version injectée de la courbe du tore vers le plan.
+    
+    On va maintenant placer sur cette courbe $\Gamma$ des points $v_i$, placés dans l'ordre du parcourt de la courbe, ils ne sont pas obligés d'être distincts.
+    On définit maintenant les cordes $f_i = [e_i, e_{i+1}]$ avec $f_n = [e_n, e_1]$ du graphe. Ces cordes sont orientées.
+    On note $A_P$ l'aire du polygone formée par les cordes $f_i$.
+    On note ensuite $e_i$, le côté du graphe joignant $v_i$ à $v_{i+1}$. Avec $e_n$ joignant $v_n$ à $v_1$. On a $\Gamma = \cup_i e_i$. On note ensuite $E(P)$ l'ensemble des cotés de $\Gamma$. Ces côtés sont orientés.
+    Si f est une corde, on note $f^{op}$ la corde avec l'orientation opposée.
+    Dans son papier de recherche, Thomas C. Halles utilise l'existence et l'unicité de l'intégrale qu'il utilise pour mesurer ces objets.
+    On note $x(e)$ la valeur de l'intégrale formée par la corde $f_i$ et le côté $e_i$.
+    On a pour finir $aire(\Gamma) = A_p + \underset{e \in E(P)}{\sum} x(e)$. 
+    <figure>
+        
+        \includegraphics[width=5cm]{seingeur.png} 
+        
+        
+    </figure>
+    On définit finalement une fonction de troncation $T : \mathbb{R} \rightarrow \mathbb{R}$, par 
+    \centerline{$T(x) = \frac{1}{2}, x \geq \frac{1}{2}, \frac{-1}{2}, x \leq \frac{-1}{2}, x, x \in [\frac{-1}{2}, \frac{1}{2}]$}
+    Cette fonction est équivalente à tronquer un ensemble par un compact. Elle est indispensable à la validité du théorème.
+    
+    
+    \begin{theorem}[Théorème isopérimétrique hexagonal pour les courbes planes fermées]
+    Soit $\Gamma$ une courbe plane fermée. Soit $L(P)$ la longueur de $\Gamma$. Soit  N(P) le nombre de points $v_i$ sur $\Gamma$ comptés avec leur multiplicités.
+    Alors $L(P) \geq - T(P) \sqrt[4]{12} - (N(P)-6)0.0505+2 \alpha(P) \sqrt[4]{12}$
+    \end{theorem}
+    
+    \begin{lemma}
+    Ce théorème implique le théorème du nid d'abeille sur un tore. On considère un tore découpé en régions (ensembles ouverts). On va appliquer cette inégalité aux n différentes régions $R_1, \cdots, R_n$ formant la partition du tore, (Grâce à la compacité du tore, on peut y appliquer des choses globalement.)
+    
+    On définit les points $v_i$ comme les points formant le début et la fin de chaque courbe simple. Soit P une des régions $R_i$. On a que chaque côté de P apparaît avec une orientation opposée $e^{op}$ sur une région voisine car c'est un graphe toroïdale de degré 3. On a donc par construction $x(e) + x(e^{op}) = 0$.
+    En effectuant la somme par rapport à toutes les côtés e de la partition, on obtient $\underset{e}{\sum} x(e) = 0$.
+    De plus, comme $\tau$ est une fonction impaire, on a $\tau(x(e)) + \tau(x(e^{op})) = 0.$
+    On a donc aussi $\underset{e}{\sum} \tau (x(e)) = \underset{P}{\sum} T(P) = 0.$
+    D'après ce dernier théorème, on a donc : 
+    \centerline{$ 2 \text{perim} (\Gamma) = \underset{P}{\sum} L(P) \geq - \sqrt[4]{12} \underset{P}{\sum} T(P) +6(0.0505) \underset{P}{\sum} (1- \frac{N(P)}{6} + 2 \underset{P}{\sum} \alpha (P) \sqrt[4]{12}$}
+    La démonstration s'achève en remarquant que deux des trois termes s'annulent suite à une proposition précédemment énoncée et une remarque faite dans la preuve, ce qui achève la preuve.
+    \end{lemma}
+    
             </div>
 
         </main>

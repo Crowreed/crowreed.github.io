@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Aspects mathématiques</title>
 
         <meta
             name="description"
@@ -58,6 +58,34 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h3>Aspects mathématiques</h3>
+    
+    Pour nos simulations informatiques, nous avons du implémenter des objets mathématiques, permettant souvent de simplifier les méthodes utilisées et les résultats obtenus.
+    
+    { \Large\textbf{Comment générer des polygones réguliers }}
+    
+    { Pour faire nos simulations nous avons besoin de savoir créer efficacement des polygones réguliers.
+    On peut d'abord essayer de créer ses sommets.}
+    On peut remarquer pour cela que l'on peut, à partir d'un seul sommet, et une matrice de rotation, générer tous les points du polygone, et ceci de façon exacte.
+    L'idée est de partir d'un point, et de lui appliquer successivement n fois la matrice de rotation, afin de trouver tous les autres sommets.
+    Si n est le nombre de côtés du triangle, pour trouver le prochain sommet, on doit faire une rotation de ce dernier d'angle $\frac{2 \pi}{n}$
+    \textbf{Matrice de rotation } : 
+    Une matrice de rotation dans le plan est de la forme $\begin{bmatrix} cos{\theta} & -sin(\theta)  sin(\theta) & cos(\theta) \end{bmatrix}, ~~\theta \in \mathbb{R}$. 
+    On va noter cette matrice $R(\theta)$. 
+    \textbf{Génération des sommets } :
+    Ainsi, pour générer les sommets d'un polygone à n côtés, on peut utiliser la matrice $R( \frac{2 \pi}{n})$. 
+    On pose $p1$ dans le plan le point de base, puis on pose $p2 = R( \frac{2 \pi}{n})p1$, puis $\cdots$, puis $p_n = R( \frac{2 \pi}{n}) p_n_-_1$. 
+    On remarque que $p_n_+_1 = p1$, en effet, l'ensemble $\{ p_1, \cdots, p_n\}$ est fini, car $(R(\frac{2 \pi}{n}), \times)$ est isomorphe à $\mathbb{Z}/n\mathbb{Z}$ qui est cyclique. 
+    
+    
+    
+    
+                <!-- les subsection deviennent des h4-->
+    
+    
+    
+    
             </div>
 
         </main>

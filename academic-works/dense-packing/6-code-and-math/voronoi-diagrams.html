@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Les diagrammes de Voronoï</title>
 
         <meta
             name="description"
@@ -58,6 +58,89 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h3>Les diagrammes de Voronoï</h3>
+    Nous mettons dans cette appendice tous les résultats non présentés de nos simulations, ceci n'étant pas fondamentalement différents des résultats déjà présentés ici.
+    
+    
+    %\subsection{Algorithme de calcul de la constante isopérimétrique}
+    
+    %\subsection{Diagrammes de Voronoï}
+    
+    %\cite{Voronoi}
+    { Nous avons précédemment vu le diagramme de Voronoï pour l'hexagone, nous allons présenter les résultats pour le carré, le carré dit perturbé et enfin pour le triangle.
+    Dans un premier temps, voici les résultats pour le pavage des carrés par diagramme de Voronoï.}
+    
+    
+    <figure>
+        \includegraphics[width = 3.5cm]{square_0.png}
+        \includegraphics[width = 3.5cm]{square_1.png}
+        \includegraphics[width = 3.5cm]{square_2.png}
+    </figure>
+    
+    <figure>
+    
+        
+        \includegraphics[width = 3.5cm]{square_3.png}
+        
+        \includegraphics[width = 3.5cm]{square_4.png}
+        
+        
+        <figcaption>Diagramme de Voronoï d'un ensemble de points placés selon les centres des disques de l'empilement carré.}
+        
+    </figure>
+    Maintenant, nous présentons le résultat pour des carrés dit perturbés :
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{square_rand_0.png}
+        
+        \includegraphics[width = 3.5cm]{square_rand_1.png}
+        
+        \includegraphics[width = 3.5cm]{square_rand_2.png}
+        
+        
+    </figure>
+    <figure>
+    
+        
+        \includegraphics[width = 3.5cm]{square_rand_3.png}
+        
+        \includegraphics[width = 3.5cm]{square_rand_4.png}
+        
+        
+        <figcaption>Diagramme de Voronoï d'un ensemble de points placés sur un grillage carré un peu perturbé.}
+        
+    </figure>
+    { Voici un exemple d'altération aléatoire du graphe. Une altération aléatoire sur un graphe consiste à déplacer chaque point du graphe dans une direction aléatoire et une distance aléatoire bornée. Comme appliqué ci-dessus.} 
+    Dans nos recherches de simulation, nous nous sommes demandés comment évoluait la constante isopérimétrique d'un graphe altéré aléatoirement. Si l'on considère tout d'abord l'aire de ce nouveau graphe et en le tronquant comme les autres graphes par une boule ouverte centrée en 0 de rayon r. Le graphe tronqué conservera alors son aire, celle de la boule : $\pi r^2$.
+    L'aire ne change donc pas, intéressons nous maintenant au périmètre de ce graphe tronqué.
+    On va poser le cadre des simulations, le pavage carré étudier correspond à des altérations de distances ... .
+    
+    Et pour finir, le diagramme de Voronoï avec des triangles :
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{triangle_0.png}
+        
+        \includegraphics[width = 3.5cm]{triangle_1.png}
+        
+        \includegraphics[width = 3.5cm]{triangle_2.png}
+        
+        
+    </figure>
+    <figure>
+    
+        
+        \includegraphics[width = 3.5cm]{triangle_3.png}
+        
+        \includegraphics[width = 3.5cm]{triangle_4.png}
+        
+        \includegraphics[width = 3.5cm]{triangle_5.png}
+        
+        
+        <figcaption>Diagramme de Voronoï d'un ensemble de points situés sur les sommets des hexagones d'un pavage hexagonale.}
+        
+    </figure>
             </div>
 
         </main>

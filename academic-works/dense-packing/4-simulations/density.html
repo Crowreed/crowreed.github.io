@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Deuxième partie : Densité</title>
 
         <meta
             name="description"
@@ -58,6 +58,107 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                <h3>Deuxième partie : Densité</h3>
+
+                { Dans cette deuxième partie sur la densité, nous allons essayer de créer différentes situations, et estimer la densité moyenne dans chacune de ces situations.}
+                
+                \subsection{Algorithme de calcul de la densité}
+                { L'algorithme de calcul de la densité consiste simplement à calculer la somme des aires des objets et de la diviser par l'aire dans laquelle ces objets sont contenus.}
+                Nous avons aussi implémentés un petit code qui permet de tester si deux polygones sont grossièrement en contact ou non : on regarde la distance entre leurs centres respectifs et nous voulons que cette distance respecte une certaine distance minimale en fonction du nombre de côté de ce polygone régulier.\}\
+                Plus le nombre de côté augmente, plus l'apothème se rapproche du rayon, on peut donc utiliser une distance entre les centres de deux fois l'apothème, on constate que visuellement les polygones ne se superposent pas pour un nombre de côtés plus grand que 7.
+                Pour un nombre de côtés plus petit que 7, l'apothème est assez différent du rayon, mais le rayon est une trop grossière approximation pour notre système de collisions entre les polygones, on choisit donc de prendre la moyenne entre l'apothème et le rayon, le résultat est satisfaisant sauf pour un nombre de coté égal à 3 ou à 4 où l'on constate qu'ils se chevauchent un peu.
+                
+                \subsection{Résultats}
+                \subsubsection{Polygones réguliers dans un compact : aléatoirement}
+                
+                { Dans cette première situation, nous avons généré des polygones réguliers de même nombre de côtés, aléatoirement sur l'écran, le principe est le suivant : à chaque étapes, nous essayons de générer un polygone régulier convexe P, si il n'intersecte pas un autre polygone et qu'il n'intersecte pas le bord de l'écran, on peut le placer. On répète cette étape un grand nombre de fois.}
+                (image)
+                Voici un tableau récapitulant les valeurs de densité après un grand nombre d'étapes pour les polygones réguliers convexes de côtés $3, \cdots, 10$.
+                <figure>
+                    
+                    \includegraphics{compact.png}
+                    
+                    
+                    <figcaption>Empilement compact aléatoire}
+                </figure>
+                
+                
+                
+                \begin{table}[Résultats]
+                \centering
+                
+                
+                \begin{tabular}{|c|c|c|c|}
+                  \hline
+                  Nombre de côtés & Densité & Nombre de côtés & Densité  
+                  \hline
+                  3 & 0.52 & 7 & 0.44
+                  4 & 0.49 & 8 & 0.43
+                  5 & 0.45 & 9 & 0.42
+                  6 & 0.44 & 10 & 0.43 
+                  \hline
+                \end{tabular}
+                \end{table}
+                
+                { On voit que la densité décroît au fur et à mesure que le nombre de côtés augmente. On voit aussi que la densité n'excède jamais $0.5$, ce qui peut paraître vraiment très peu, il a été démontré qu'avec cet méthode, on peut espérer une densité maximale de $0.54$ environ.}
+                
+                \subsubsection{Polygones réguliers dans un compact : une méthode moins aléatoire}
+                
+                { Dans cette nouvelle simulation, nous avons gardés le principe de placer des objets aléatoirement en rajoutant une nouvelle condition : on a rajouté une gravité, les permettant de s'écraser au sol.}
+                
+                <figure>
+                    
+                    \includegraphics{gravity_0.png}
+                    
+                    \includegraphics{gravity_1.png}
+                    
+                    
+                    
+                    <figcaption>Empilement compact aléatoire avec de la gravité}
+                </figure>
+                
+                { La densité grimpe en flèche pour atteindre rapidement plus de 0.5, on en présentera donc pas les résultats de densités obtenus.}
+                Voici cependant une structure naturellement apparue au cours de la simulation. Cette structure est naturellement l'empilement hexagonal. La nature fait bien les choses.
+                
+                <figure>
+                    
+                    \includegraphics{gravity_2.png}
+                    
+                    
+                    <figcaption>Empilement compact aléatoire}
+                </figure>
+                
+                \subsubsection{Polygones réguliers placés selon différents empilements}
+                
+                { Dans cette dernière partie de simulation, nous avons décidés de placer des polygones réguliers convexes à n côtés selon les empilements réguliers carré et hexagonal.}
+                On voit directement que plus le nombre de côté augmente, plus la densité de notre empilement tend vers la densité de l'empilement hexagonal ou carré ce dont il a été choisi.
+                On voit cependant que certains agencements sont plus optimale pour certaines formes géométriques. L'empilement carré est parfait pour un carré, alors que l'empilement hexagonale ne l'est pas.
+                
+                <figure>
+                    
+                    \includegraphics[width = 5cm]{empilement_carre_12.png}
+                    
+                    \includegraphics[width = 5cm]{empilement_hexagonal_19.png}
+                    
+                    
+                    
+                    <figcaption>Empilement régulier de polygones réguliers convexes selon le réseau carré et hexagonal}
+                </figure>
+                
+                { Voici un exemple d'empilement parfaitement adapté et l'autre très peu adapté.}
+                
+                <figure>
+                    
+                    \includegraphics[width = 5cm]{parfait_1.png}
+                    
+                    \includegraphics[width = 5cm]{parfait_0.png}
+                    
+                    
+                    
+                    <figcaption>Empilement non adapté et adapté}
+                </figure>
+                
+                            <hr>
             </div>
 
         </main>

@@ -8,7 +8,7 @@
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title></title>
+        <title>Théorie de la simulation de l'inégalité isopérimétrique</title>
 
         <meta
             name="description"
@@ -58,6 +58,195 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
+                
+                <h3>Théorie de la simulation de l'inégalité isopérimétrique</h3>
+    
+                <h4>Simulation 1 : Pavage hexagonale</h4>
+    
+                <div class="paragraph">
+                    Le but de cette simulation sera d'estimer l'inégalité isopérimétrique pour le pavage hexagonale.
+                    Nous verrons que le théorème est bien vérifié : l'inégalité est bien atteinte !
+                </div>
+    
+    
+    { \textbf{\Large Génération d'un hexagone régulier d'aire 1}}
+    { Le côté d'un hexagone d'aire 1 vaut $\sqrt{\frac{2}{3\sqrt{3}}}$ 
+    On le note $c_h__1$ }
+    (centré en l'origine)
+    <figure>
+        
+        \includegraphics{hexagon_dots.png}
+        
+        
+        
+    </figure>
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{h1.png}
+        
+        \includegraphics[width = 3.5cm]{h2.png}
+        
+        \includegraphics[width = 3.5cm]{h3.png}
+        
+        
+        <figcaption>Étape 1,2 et 3}
+        
+    </figure>
+    
+    \textbf{\Large Conjecture du nombres d'hexagones à chaque étapes }
+    
+    { Soit la suite d'entiers naturels $(NH_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total d'hexagones à l'étape n, définie par récurrence :} 
+    $$NH_n_+_1=NH_n+6\times n.$$
+    
+    { \textbf{Proposition :}}
+    Cette suite est définie par $NH_n = n(n-1)\times3+1$
+    
+    { \textbf{Preuve :}}
+    Soit $P_n : "NH_n = n(n-1)\times 3 + 1" \forall n  \in \mathbb{N}^*$ 
+    
+    { \underline{Initialisation }} : Pour $n=1$:
+    On a $NH_1 = 1$ selon la conjecture de base, et selon la formule on a aussi $1$. 
+    Donc $P_1$ est vraie. 
+    
+    { \underline{Hérédité}} : On suppose que $P_n$ est vraie pour un certain $n \in \mathbb{N}^*$. 
+    
+    { On a $NH_n = n(n-1) \times 3+1$ }
+    Selon la conjecture, on obtient $NH_n + 6 \times n = n(n-1) \times 3 +1 + 6 \times n$
+    Et donc $NH_n_+_1 = n((n-1) \times 3 +6)+1$
+    Et $NH_n_+_1 = n(3n+3)+1 = n(n+1)\times 3 +1$
+    Donc $P_n_+_1$ est vraie donc $P_n$ est vraie $\forall n  \in \mathbb{N}$. 
+    
+    \textbf{\Large Conjecture du nombres de traits à chaque étapes }
+    
+    { Soit la suite d'entiers naturels $(NT_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total de traits à l'étape n, définie par récurrence :}
+    $$NT_n_+_1=NT_n + 6 \times (3n + 1)$$
+    avec $NT_1 = 6$ 
+    
+                <div class="proposition">
+                    Cette suite est définie par $NT_n = 9n^2-3n$                 
+                </div>
+    
+                <div class="proof">
+                    <div class="paragraph">
+                        Soit $P_n : "NT_n = 9n^2-3n" \forall n \in \mathbb{N}$
+                    </div>
+                    
+                    <div class="paragraph">
+                        <strong>Initialisation</strong> <br>
+                        Pour $n=1$:
+                        On a $NT_1 = 6$ selon la conjecture de base, et selon la formule on a aussi $NT_1 = 6$
+                        Donc $P_1$ est vraie.     
+                    </div>
+                    
+                    <div class="paragraph">
+                        <strong>Hérédité</strong> <br>
+                        On suppose que $P_n$ est vraie pour un certain $n \in \mathbb{N}^*$.
+                        On a $NT_n = 9n^2-3n$
+                        Puis d'après la conjecture on a $NT_n + 6 \times (3n + 1) = 9n^2-3n + 6 \times (3n + 1)$
+                        Et donc $NT_n_+_1 =  9n^2+15n+6=9(n+1)^2-3(n+1)$
+                        Donc $P_n_+_1$ est vraie et $P_n$ est vraie $\forall n \in \mathbb{N}$
+                    </div>
+                </div>
+    
+    { \textbf{Proposition }}
+    $\overset{n}{\underset{k=0}{\sum}}1+3k = n + 1 + 3 \times \frac{n(n+1)}{2}$ 
+    \textbf{Preuve }
+    $\overset{n}{\underset{k=0}{\sum}}1+3k = \overset{n}{\underset{k=0}{\sum}}1+3\overset{n}{\underset{k=0}{\sum}}k = n + 1 + 3 \times \frac{n(n+1)}{2}$ 
+    \textbf{\Large Calcul de l'inégalité isopérimétrique}
+    
+    { \textbf{Proposition }}
+    $3\sqrt{\frac{2}{3\sqrt{3}}} = \sqrt[4]{12}$ 
+    \textbf{Preuve }
+    $3\sqrt{\frac{2}{3\sqrt{3}}} = \sqrt{\frac{18}{3\sqrt{3}}} = \sqrt{\frac{6}{\sqrt{3}}} = \sqrt{2\sqrt{3}} = \sqrt{\sqrt{12}} = \sqrt[4]{12}$ 
+    On prend une sous-suite divergente vers l'infini.
+    On aura alors 
+    $lim \frac{c_h__1\times(9n^2-3n}{n(n-1)\times3+1} \rightarrow \sqrt[4]{12}$
+    On constate que l'inégalité est bien atteinte.
+    
+                <h4>Simulation 2 : Pavage triangulaire</h4>
+                
+                <div class="paragraph">
+                    Le but de cette deuxième simulation sera d'estimer l'inégalité isopérimétrique pour le triangle.
+                    On constatera qu'elle vérifie bien l'inégalité !
+                </div>
+    
+    
+    { \textbf{\Large Génération d'un triangle équilatéral d'aire 1}}
+    Le côté d'un triangle équilatéral d'aire 1 vaut $\frac{2}{\sqrt[4]{3}}$.
+    
+    (centré en l'origine)
+    
+    \centerline{\includegraphics[width=6cm]{tttt.png}} 
+    
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{t1.png}
+        
+        \includegraphics[width = 3.5cm]{t2.png}
+        
+        \includegraphics[width = 3.5cm]{t3.png}
+        
+        
+        <figcaption>Étape 1, 2 et 3}
+        
+    </figure>
+    
+    { \textbf{Conjecture du nombres de triangles à chaque étapes }}
+    Soit la suite d'entiers naturels $(NTR_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total de triangles équilatéraux à l'étape n, définie par récurrence : 
+    $NTR_n = 4 \times NTR_n_-_1$ avec $NTR_1 = 1$ 
+    \textbf{Proposition }
+    Cette suite est définie par $NTR_n = 4^{n-1}$ 
+    \textbf{Preuve  }
+    Soit $P_n : "NTR_n = 4^{n-1}"$ 
+    { \underline{Initialisation}} : Pour n = 1 : $NTR_1 = 1$ pour les deux formules. Donc $P_1$ est vraie. 
+    { \underline{Hérédité} : On suppose $P_n$ vraie pour un certain rang $n \in \mathbb{N}$. }
+    On a alors : $NTR_n = 4^{n-1}$ 
+    Puis on a par la conjecture : $NTR_n_+_1 = 4^n$ 
+    Donc $P_n_+_1$ est vraie donc $P_n$ est vraie $\forall n \in \mathbb{N}$ 
+    
+    {{ \textbf{\Large Conjecture du nombres de traits à chaque étapes }}}
+    Soit la suite d'entiers naturels $(NT_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total de traits à l'étape n, définie par : 
+    \centerline{$NT_n = \frac{3 \times 2^{n-1}(2^{n-1}+1)}{2}$ }
+    
+    { \textbf{\Large Calcul de l'inégalité isopérimétrique }}
+    
+    { Le périmètre est donné par la multiplication du nombre de traits avec la longueur d'un trait, on aura donc comme périmètre à l'étape n : }
+    $p_n = 3*2^{n-1}(2^{n-1}+1) \times \frac{2}{\sqrt[4]{3}}$ 
+    Donc on aura $\underset{n \rightarrow \infty}{\lim} \frac{3*2^{n-1}(2^{n-1}+1)}{2 \times 4^{n-1}}\times \frac{2}{\sqrt[4]{3}} = \frac{3}{\sqrt[4]{3}}$ 
+    
+    
+    \subsection{Simulation 3 : Pavage carré dans le plan }
+    
+    
+    <figure>
+        
+        \includegraphics[width = 3.5cm]{c1.png}
+        
+        \includegraphics[width = 3.5cm]{c2.png}
+        
+        \includegraphics[width = 3.5cm]{c3.png}
+        
+        
+        <figcaption>Étape 1,2 et 3}
+        
+    </figure>
+    
+    \textbf{\Large Conjecture du nombres de carrés à chaque étapes }
+    Soit la suite d'entiers naturels $(NH_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total de carrés à l'étape n, définie par :
+    $$NC_n = 4n^2-4n+1$$
+    
+    \textbf{\Large Conjecture du nombres de traits à chaque étapes }
+    Soit la suite d'entiers naturels $(NT_n)_n_\in_\mathbb{N}$, qui conjecture le nombre total de traits à l'étape n, définie par :
+    $$NT_n = 8n^2-4n$$
+    
+    \textbf{\Large Calcul de l'inégalité isopérimétrique }
+    $\underset{n \rightarrow \infty}{\lim} \frac{NT_n}{NC_n} = \underset{n \rightarrow \infty}{\lim} \frac{8n^2-4n}{4n^2-4n+1} \approx 2$ 
+    On remarque que le théorème est vérifié.
+    La deuxième partie de cette appendice est consacrée au code source de nos programmes informatiques. Les codes seront commentés in vitro mais non commentés ex vivo, les algorithmes principaux étant bien sûr présentés en détails dans le chapitre sur les simulations.
+    
+    
             </div>
 
         </main>
