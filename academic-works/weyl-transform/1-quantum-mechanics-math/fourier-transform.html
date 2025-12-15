@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Transformee de Fourier</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                <h3>Transformée de Fourier</h3>
+
+                <div class="paragraph">
+                    L'objectif de cette partie est d'étudier la transformée de Fourier et de lui en donner une interprétation physique.
+                    Comme on est amené à travaillé sur des éléments de $L^2(\R^n)$, on va devoir introduire des notations qui seront
+                    utiles afin de manipuler simplement et de façon compréhensive des points de $\R^n$.                
+                </div>
+                
+                <div class="paragraph">
+                    Les variables seront souvent notées $(\xi, x)$, ou $(p,q)$. En général dans l'espace des phase, on aura
+                    $p \in \mathbb{R}^n$ pour l'impulsion, $q \in \mathbb{R}^n$ pour la position, ces mêmes variables peuvent
+                    être notées $(\xi, x)$, dans l'espace des opérateurs pseudo-différentiels.
+                </div>
+    
+                <h4>Notations multi-indices</h4>
+    
+                <div class="definition">
+                    <div class="paragraph">
+                        On introduit l'opérateur de dérivation $\partial_i = \frac{\partial}{\partial x_i}$ usuel par rapport
+                        à la i-ème variable et un opérateur nommé $D_j = -i \partial_j$. L'intérêt de ce dernier opérateur
+                        sera clarifié plus tard, il servira avant tout à simplifier les propriétés de la transformée de Fourier.
+                    </div>
+                </div>
+    
+                <div class="paragraph">
+                    On appelle multi-indice de $\mathbb{R}^n$ un $n$-uplet d'entiers $\alpha = (\alpha_1, \cdots, \alpha_n)$.
+                </div>
+    
+                <div class="paragraph">
+                    On note alors, pour $\alpha$ un multi-indice :
+                    $\partial^\alpha = \partial_1^{\alpha_1} \cdots \partial_n^{\alpha_n}$ et
+                    $D^\alpha = D_1^{\alpha_1} \cdots D_n^{\alpha_n}$. 
+                </div>
+    
+                <div class="paragraph">
+                    On note aussi, pour $\alpha$ et  $\beta$ deux multi-indice, $\alpha! = \alpha_1! \cdots \alpha_n!$,
+                    $\binom{\beta}{\alpha} = \binom{\beta_1}{\alpha_1} \cdots \binom{\beta_n}{\alpha_n}$. Enfin on dit que
+                    $\alpha \leq \beta$ si $\alpha_j \leq \beta_j$  pour tout $j$.
+                </div>
+    
+                <h4>Étude de la transformée de Fourier</h4>
+    
+                <div class="paragraph">
+                    Commençons par introduire des espaces utiles pour tout la suite du mémoire, puisque l'on commencera
+                    souvent par établir des résultats sur ces espaces, car ils sont plus simple à démontrer, et utiliser
+                    leur densités dans les espaces $L^p$ pour étendre les résultats aux espaces $L^p$.
+                </div>
+    
+                <div class = "definition">[Fonction à décroissance rapide (sur $\mathbb{R}^n$)]
+                    Une fonction $f : \mathbb{R}^n \rightarrow \mathbb{R}^n$ est dite "à décroissance rapide" si elle est
+                    indéfiniment différentiable et telle que
+                    $ \underset{x \in \mathbb{R}^n}{sup} |x^\alpha (\partial ^\beta \varphi)(x)| < \infty$ pour tout
+                    multi-indice $\alpha$ et $\beta$.
+                </div>
+    
+    <div class = "definition">[Espace de Schwartz (sur $\mathbb{R}^n$)]
+    L'espace de Schwartz $\mathcal{S}(\mathbb{R}^n)$ est l'ensemble des fonctions à décroissance rapide sur $\mathbb{R}^n$.
+    </div>
+    
+    <div class = "definition">[Fonction $C_c^\infty(\R^n)$]
+        On dit qu'une fonction de $\R^n$ appartient à $C_c^\infty(\R^n)$ si elle est lisse à support compact dans $\R^n$.
+    </div>
+    
+    <div class="theorem">
+        Les espaces $C_c^\infty(\R^n)$ et $\mathcal{S}(\R^n)$ sont denses dans les espaces $L^p(\R^n)$,$ p \in [1, \infty [$.
+    </div>
+    
+    <div class="remark">
+        Ce théorème ne sera pas démontré, on admet le résultat. Il existe une démonstration dans le cours d'analyse 2.
+    </div>
+    
+    <div class = "definition">[Transformée de Fourier d'une fonction $L^1(\mathbb{R}^n)$]
+    On note la transformée de Fourier d'une telle fonction f par $\hat{f}$, et on a 
+    $$\hat{f}(\xi) := (2 \pi)^{-n/2} \int _{\mathbb{R}^n} e^{-ix \xi} f(x) dx ~~ \xi \in \mathbb{R}^n$$
+    </div>
+    
+    La transformée de Fourier fournit un lien profond entre l'étalement spatiale d'un objet, par exemple une onde, une particule, et son étalement en fréquence. Elle est ainsi très utilisée dans l'ingénierie du son, ou par exemple pour étudier la propagation de la chaleur. Ce lien est expliqué par le fait que l'on peut interpréter la transformée de Fourier en chaque point comme un produit scalaire d'une exponentielle oscillante d'une certaine fréquence et d'une fonction f, on obtient ainsi naturellement la décomposition de f en une somme infiniment continue de ses fréquences.
+    
+    Pour une fonction d'onde $\psi : x \mapsto \psi(x)$ sur l'espace position on notera sa $\varphi : p \mapsto \varphi(p)$ sa transformée de Fourier sur l'espace impulsion. Quand on voit les variables $x$ et $p$ dans un couple, $x$ fera souvent référence à la position et $p$ à l'impulsion. 
+    
+    
+    <div class="remark">
+    $\| \psi \| = 1$ si et seulement si $\| \varphi \| =1$
+    </div>
+    
+    <div class="remark">
+    On peut donner une autre écriture de la transformée de Fourier :
+    $$\varphi(p) := \frac{1}{\sqrt{2 \pi \hbar}} \int_{\mathbb{R}^n} e^{-ix \frac{p}{\hbar}} \psi(x) dx$$
+    </div>
+    
+    On aura besoin du résultat suivant dans le chapitre 2, il sera admis, la démonstration utilisant des résultats d'analyse complexe.
+    
+    <div class="theorem">
+        Soit $a$ un réel strictement positif. Alors pour tout $\xi$ réel, la transformée de Fourier d'une gausienne $f$ définie par $f(x) = e^{-ax^2}$ est encore une gausienne définie par
+        $$\hat{f}(\xi) = \sqrt{\frac{\pi}{a}}e^{\frac{- \xi ^2}{4a}}$$
+    </div>
+    
+                <h4>Étude de la position et de l'impulsion et principe d'incertitude de Heisenberg</h4>
+    
+    
+    On va maintenant étudier les propriétés générales de la transformée de Fourier, il est important de bien maîtriser la transformée de Fourier et ses propriétés car elles seront souvent implicitement utilisées dans les démonstrations futures.
+    
+    <div class="proposition">[Le lemme de Riemann-Lebesgue]
+        Soit $f \in L^1(\R^n)$, alors $\hat{f}$ est une fonction continue sur $\mathbb{R}^n$ telle que $\underset{|\xi| \ra \infty}{lim} \hat{f}(\xi) = 0$.
+    </div>
+    
+    <div class="proposition">
+        Soit $f$ et $g$ dans $L^1(\R^n)$, alors
+        $$(f*g) \hat{~} (\xi) = (2 \pi)^{n/2} \hat{f} (\xi) \hat{g} (\xi),~~ \xi \in \R^n.$$
+    </div>
+    
+    <div class="proposition">
+        Soit $\varphi \in L^1(\R^n)$. Alors pour tout multi-indices $\alpha$, 
+    
+        
+        <ul>
+            <li></li> $(D^\alpha \varphi) \hat{~} (\xi) = \xi ^\alpha \hat{\varphi} (\xi) ,~~ \xi \in \R^n$.
+            <li></li> $(D^\alpha \hat{\varphi}) (\xi) = ((-x)^\alpha \varphi) \hat{~} (\xi),~~ x \in \R^n,~ \xi \in \R^n$.
+        </ul>
+    </div>
+    
+    Pour mieux comprendre comment la transformée de Fourier fonctionne et comment la position et l'impulsion d'une particule quantique sont reliés à travers elle, on peut introduire les opérateurs suivants et regarder comment elle agit sur eux.
+    
+    <div class = "definition">[Opérateurs de translation, dilatation et modulation]
+    On note les opérateurs suivants sur l'espace des fonctions : 
+        <ul>
+        <li></li> L'opérateur de <strong></strong>translation} : $T_yf~(x) := f(x+y),~~~x \in \mathbb{R}^n$.
+        <li></li> L'opérateur de <strong></strong>modulation} : $M_yf~(x) := e^{ixy}f(x),~~~x \in \mathbb{R}^n$.
+        <li></li> L'opérateur de <strong></strong>dilatation} : $D_af~(x) := f(ax),~~~x \in \mathbb{R}^n$.
+        </ul>
+    pour tout $y \in \mathbb{R}^n$ et $~a \in \mathbb{R}^*$.
+    </div>
+    
+    <div class="proposition">[Comment agit la transformée de Fourier sur les opérateurs de translation, modulation et dilatation]
+     .
+     
+     
+    Soit $f \in L^1(\mathbb{R}^n)$, on a : %dans L2 ?
+    <ul>
+        <li></li> $\widehat{T_yf}(\xi) = M_y\hat{f}(\xi)$.
+        <li></li> $\widehat{M_yf}(\xi) = T_{-y}\hat{f}(\xi)$.
+        <li></li> $\widehat{D_af}(\xi) = |a|^{-n}(D_{\frac{1}{a}} \hat{f})(\xi)$.
+    </ul>
+    pour tout $\xi \in \mathbb{R}^n$.
+    </div>
+    
+    <div class="remark">
+    Le troisième point signifie que contracter une fonction dans la variable de Fourier revient à la dilater dans l'autre variable.
+    </div>
+    On comprend ainsi que plus une particule quantique sera localisée dans l'espace, plus son impulsion sera très étalée, inversement si une particule quantique à une impulsion très localisée, elle sera très étalée dans l'espace des positions.
+    
+    
+    <div class="theorem">[La formule d'inversion de Fourier]
+    La transformée de Fourier est une application bijective de $S(\mathbb{R}^n)$ sur $S(\mathbb{R}^n)$, de plus $\check{\hat{f}} = f, ~f \in S(\mathbb{R}^n)$ où 
+    $$ \check{g} = (2 \pi)^{-n/2} \int _{\mathbb{R}^n} e^{ix \xi} g( \xi) d \xi$$
+    </div>
+    
+    Il est bon d'étendre cet opérateur aux fonctions de carrés intégrables, justifié par le postulat de la mécanique quantique de l'interprétation probabiliste des fonctions d'ondes.
+    
+    <div class="theorem">[Le théorème de Plancherel]
+    L'application $\mathcal{F} : S(\mathbb{R}^n) \rightarrow S(\mathbb{R}^n)$ peut être étendue de façon <strong></strong>unique} en un opérateur unitaire de $L^2(\mathbb{R}^n)$
+    </div>
+    
+    <div class="proposition">[$\mathcal{F}$ est un opérateur symétrique.]
+        Soit $f,~ g \in L^1(\R^n)$, alors
+        $$\int_{\R^n}  \hat{f} (x) g(x) dx = \int_{\R^n} f(x) \hat{g} (x) dx.$$
+    </div>
+    
+    On comprend ainsi comment l'espace position et impulsion sont étroitement liés. On par peut choisir d'étudier une particule dans un état quantique sur l'espace position ou l'espace impulsion, qui vont chacun décrire respectivement la position ou l'impulsion de la particule. En étudiant par exemple un électron sur l'espace position, on peut utiliser la transformée de Fourier pour étudier cet électron sur son espace impulsion.
+    
+                <h4>Introduction des opérateurs position et impulsion</h4>
+    
+    On peut maintenant introduire deux opérateurs très important en mécanique quantique, l'opérateur de position et l'opérateur d'impulsion, on aimerait représenter les coordonnées canoniques $(q,p)$ par des opérateurs auto-adjoints d'un espace de Hilbert $\mathcal{H}$, ils seront très importants pour la suite du mémoire. \vspace{10 pt}
+    
+    On va les introduire par une manière naïve, celle de calculer la valeur moyenne de la position et de l'impulsion d'une particule quantique.\vspace{10 pt}
+    
+    Soit une particule quantique dans l'état $\psi \in L^2(\mathbb{R}^n)$. \vspace{10 pt}
+    
+    Alors <strong></strong>la valeur moyenne de sa position} est, 
+    $$\langle \mathcal{Q} \rangle_\psi = \langle \psi, \mathcal{Q} \psi \rangle = \int \psi^*(x)(x\psi(x))dx$$
+    
+    On définit donc l'opérateur position par 
+    $$\mathcal{Q} : \psi(x) \mapsto x \psi(x)$$
+    
+    Normalement, on s'attend à ce que l'opérateur impulsion et position soient liés par la transformé de Fourier, en effet, la transformée de Fourier relie la position et la fréquence.
+    
+    La <strong></strong>valeur moyenne de l'impulsion} sur l'espace impulsion est donnée par 
+    $$ \langle \varphi, p \varphi \rangle = \int \varphi^* (p)(p \varphi(p)) dp$$
+    
+    Cependant on aimerait que ces opérateurs soient définis sur le même espace position, on cherche donc à ne plus avoir une intégrale en $p$ mais une intégrale en $x$. Comme la transformée de Fourier est un opérateur symétrique, on obtient :
+    $$\int \psi^* (x) \frac{\hbar}{i} \frac{d \psi(x)}{dx}$$
+    
+    On définit donc l'<strong></strong>opérateur impulsion} $\hat{p}$ par
+    $$\hat{P}: \psi(x) \mapsto \frac{\hbar}{i} \frac{d \psi(x)}{dx}$$
+    
+    On définit finalement l'<strong></strong>opérateur de position} (resp. <strong></strong>impulsion}) par rapport à la $i$-ème(resp. $j$-ème) variable par :
+    
+    $$(Q_i \psi)(x) = x_i \psi(x)$$
+    $$(P_j \psi)(x) =-i \hbar \frac{\partial \psi}{ \partial x_j}(x)$$
+    
+    Pour tout $x \in \R^n$.
+    <div class="remark">
+    On remarque qu'elles sont transformées de Fourier l'une de l'autre.
+    </div> \vspace{10 pt}
+    
+    Est-ce que comme en mécanique classique, $\hat{P}$ et $\hat{Q}$ commutent ? La réponse est non.
+    
+    En effet, calculons le commutateur de $P_j$ et $Q_k$: \vspace{10 pt}
+    
+    Soit $\psi \in L^2(\R^n)$ un état.
+    On a $$(Q_k \psi)(x) = x_k \psi(x) \text{ et } (P_j \psi)(x) = -i \hbar \frac{ \partial \psi}{\partial x_j}(x)$$
+    
+    Donc $$Q_k(P_j \psi)(x) = -i x_k \hbar \frac{\partial \psi}{\partial x_j}(x) \text{ et } P_j(Q_k \psi)(x) = -i \hbar \frac{\partial x_k \psi}{\partial x_j}(x) = -i \hbar \left( \delta_k^j\psi(x) + x_k \frac{\partial \psi}{ \partial x_j} (x)\right)$$
+    
+    Donc $$Q_k(P_j \psi)(x)- P_j(Q_k \psi)(x) = -i x_k \hbar \frac{\partial \psi}{\partial x_j}(x)-\left(-i \hbar \left( \delta_k^j \psi(x) + x_k \frac{\partial \psi}{\partial x_j}(x)\right)\right)=-i \hbar \delta_k^j \psi(x)$$
+    
+    Donc $[Q_k, P_j] = \delta _k^j i \hbar Id$
+    
+                <h4>Relation de commutation canonique</h4>
+    En 1925, Max Born énonce une future définition de la mécanique quantique qui affirme que deux observables qui sont conjuguées par la transformée de Fourier ( c'est à dire que l'une est transformée de Fourier de l'autre) satisfont la <strong></strong>relation de commutation canonique}, c'est à dire qu'elles commutent à un facteur $ i \hbar$ près. C'est bien différent de la mécanique classique où toutes les valeurs physiques commutent pour le produit de fonctions.
+    
+    <div class="remark">
+        On voit que le terme $i \hbar$ est vraiment très petit, ridiculement petit, et pourtant c'est ce minuscule terme qui empêche la mécanique quantique d'être égale à la mécanique classique, et qui a autant de répercussions sur cette théorie.
+    </div>
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

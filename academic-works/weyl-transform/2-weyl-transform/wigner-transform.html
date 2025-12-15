@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>La transformee de Wigner</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                
+
+
+                <h3>La transformée de Wigner</h3>
+    
+    On introduit maintenant la transformée de Wigner et certaines de ses propriétés. On peut considérer la transformée de Wigner $W(f)$ d'une fonction $f \in L^2(\R^n)$.% pour étudier "the non existing joint probability distribution of position and momentum in the state f".
+    
+    On commence par calculer la transformée de Fourier de la transformée de Fourier-Wigner.
+    
+    <div class="theorem">
+        Soit $f$ et $g$ dans $\mathcal{S}(\R^n)$. Alors
+        $$V(f,g)\hat{~}(x, \xi) = (2 \pi) ^{-n/2} \int_{\R^n} e^{-i \xi p} f\left(x+ \frac{p}{2}\right) \overline{g\left(x-\frac{p}{2}\right)} dp, x, \xi \in \R^n$$
+    </div>
+    
+    <div class="remark">
+        On note que cette expression ne diffère de la transformée de Fourier-Wigner que d'un signe $-$ dans le coefficient de l'exponentielle.
+    </div>
+    
+                <div class="proof">
+                    <div class="paragraph">
+                        Soit $\epsilon >0$, on définit la fonction $I_\epsilon$ sur $\R^{2n}$ par
+                        $$I_\epsilon(x, \xi) = \int_{\R^n} \int_{\R^n} e^{-\frac{\epsilon ^2 |q|^2}{2}} e^{-ix  q - i \xi  p}V(f,g)(q,p)~dqdp,~ x,~ \xi \in \R^n$$
+                        
+                    </div>
+                   <div class="paragraph">
+                    On a alors, en décomposant $V(f,g)$,
+                    $$I_\epsilon(x, \xi) = (2 \pi)^{-n/2}\int_{\R^n} \int_{\R^n} e^{-\frac{\epsilon ^2 |q|^2}{2}} e^{-ix  q - i \xi  p} \times \left(\int_{\R^n} e^{iqy} f\left(y+\frac{p}{2}\right) \overline{g\left(y-\frac{p}{2}\right)}dy\right) dp dq$$
+                    
+                    </div>
+                    <div class="paragraph">
+                        Par Fubini, on a :
+                        $$= (2 \pi)^{-n/2}\int_{\R^n} e^{ - i \xi  p} \left(\int_{\R^n}\left(\int_{\R^n}  e^{-i(x-y)q}e^{-\frac{\epsilon ^2 |q|^2}{2}} dq\right) f\left(y+\frac{p}{2}\right) \overline{g\left(y-\frac{p}{2}\right)} \right) dy dp$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        On essaye de faire apparaître autant que possible $V(f,g)$,
+                        $$= (2 \pi)^{-n/2}\int_{\R^n} e^{ - i \xi  p} \left(\int_{\R^n} \epsilon^{-n} e^{-\frac{|x-y|^2}{2 \epsilon^2}} f\left(y+\frac{p}{2}\right) \overline{g\left(y-\frac{p}{2}\right)} dy \right)dp$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        Maintenant, pour tout $p \in \R^n$, on définit la fonction $F_p$ sur $\R^n$ par
+                        $$F_p(y) = f\left(y+\frac{p}{2}\right)\overline{g\left(y-\frac{p}{2}\right)},~ y \in \R^n$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        Et on définit la fonction $\varphi_\epsilon$ par $\varphi_\epsilon(y) = \epsilon^{-n} e^{-\frac{|x-y|^2}{2 \epsilon ^2}}$
+                    
+                    </div>
+                    <div class="paragraph">
+                        Alors on a,
+                        $$I_\epsilon (x, \xi) = \int_{\R^n} e^{-i \xi  p}(F_p * \varphi_\epsilon)(x)dp$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        Pour $p$ fixé on a, 
+                        $$F_p * \varphi_\epsilon \ra (2 \pi) ^{n/2} F_p \text{ uniformément sur chaque compact de } \R^n \text{ quand } \epsilon \ra 0$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        On va essayer de majorer la valeur absolue de ce qu'on intègre pour pouvoir applique le théorème de convergence dominé de Lebesgue,
+                    
+                    </div>
+                    <div class="paragraph">
+                        On peut appliquer l'inégalité de Young pour la convolution avec $p =1, q = 0$ dans ce cas précis.
+                    
+                    </div>
+                    <div class="paragraph">
+                        $$|(F_p * \varphi _\epsilon)(x)| \leq \|F_p\|_{L^\infty(\R^n)} \|\varphi _\epsilon\|_{L^1(\R^n)}$$
+                        $$= \|F_p\|_{L^\infty(\R^n)} \|\varphi\|_{L^1(\R^n)}$$
+                        $$\leq (2 \pi) ^{n/2} \underset{y \in \R^n}{sup}\left|f(y+\frac{p}{2}) f(y- \frac{p}{2})\right|$$
+                        Comme ce sont des fonctions Schwarz, il existe un entier positif $N$ et une constante $C_N$ tel que
+                        $$\leq C_N (1+|p|^2)^{-N}, x, p \in \R^n$$ 
+                        pour tout $\epsilon \geq 0$.
+                        
+                    </div>
+                    <div class="paragraph">
+                        Donc on peut utiliser le théorème de convergence dominé de Lebesgue,
+                        $$\underset{\epsilon \ra 0}{lim} ~I_\epsilon (x \xi) = (2 \pi)^{n/2} \int_{\R^n} e^{-i \xi p}f(x+ \frac{p}{2}) \overline{g(x-\frac{p}{2})} dp, x, \xi \in \R^n$$
+                        
+                    </div>
+                    <div class="paragraph">
+                        Ensuite en réutilisant le théorème de convergence dominé de Lebesgue on montre l'autre limite.        
+    
+                    </div>
+                </div>
+    
+    <div class="remark">
+        Cette démonstration est intéressante car elle montre une technique usuelle de démonstration, on pose un $\epsilon$ positif et on étudie un objet très proche, pour lequel les convergences et les calculs se dérouleront plus facilement, puis une fois le calcul fini on fait tendre $\epsilon$ vers $0$.
+    
+        On a introduit le terme gaussien car sa transformée de Fourier sera gausienne et donc le calcul est simplifié.
+    </div>
+    
+    
+    
+    On peut maintenant définir la transformée de Wigner de deux fonctions de $\mathcal{S}(\R^n)$.
+    
+    <div class = "definition">[Transformée de Wigner]
+        Soit $f$ et $g$ dans $\mathcal{S}(\R^n)$, alors la fonction $W(f,g)$ sur $\R^{2n}$ définie par,
+        $$W(f,g)(x, \xi) = (2 \pi)^{-n/2} \int_{\R^n} e^{-i \xi \; p} f\left(x+\frac{p}{2}\right) \overline{g\left(x-\frac{p}{2}\right)} dp, ~x, ~\xi \in \R^n$$,
+        est appelée la <strong></strong>transformée de Wigner} de f et g.
+    </div>
+    
+    <div class="theorem">[Identité de Moyal]
+    Pour tout $f_1, g_1, f_2, g_2 \in \mathcal{S}(\R^n)$, on a,
+    $$\langle W(f_1, g_1), W(f_2, g_2) \rangle = \langle f_1, f_1 \rangle \overline{\langle g_1,g_2 \rangle}.$$
+    </div>
+    
+    <div class="remark">
+        Elle est aussi vraie pour la transformée de Fourier-Wigner. Elle ne sera pas démontrée, n'étant pas au centre de ce mémoire.
+    </div>
+    
+    Encore une fois, il est bon de chercher à étendre l'opérateur $W$ sur l'espace $L^2(\R^n)$. Justifié par l'interprétation probabiliste des états.
+    
+    <div class="proposition">%c'est un corollaire
+        $W : \mathcal{S}(\R^n) \times \mathcal{S}(\R^n) \ra \mathcal{S}(\R^{2n})$ peut être étendu de façon <strong></strong>unique} en un opérateur bilinéaire
+        $$W : L^2(\R^n) \times L^2(\R^n) \ra L^2(\R^{2n})$$
+    
+        tel que
+        $$\|W(f,g)\|_{L^2(\R^{2n})}=\|f\|_{L^2(\R^n)}\|g\|_{L^2(\R^n)}.$$
+    </div>
+    
+    <div class="remark">
+        Il est est de même de la transformée de Fourier-Wigner V.
+    </div>
+    
+    <div class="proposition">
+        Pour tout $f, g \in \mathcal{S}(\R^n)$, on a $W(g,f) = \overline{W(f,g)}$.
+    </div>
+    
+    <div class="proposition">%c'est un corollaire
+        On pose $W(f) = W(f,f), f \in L^2(\R^n)$, alors, 
+        <ul>
+            <li></li> $W(\rho(a,b)f)(x, \xi) = W(f)(x+b, \xi-a)$, $a$, $b$, $x$, $\xi \in \R^n$
+            <li></li> $W(f)$ est à valeur réelle.
+        </ul>
+    </div>
+    
+    %lien avec des probas ??
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

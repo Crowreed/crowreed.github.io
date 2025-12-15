@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Introduction et postulats</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+
+                
+                <h3>Introduction et postulats</h3>
+    
+                <div class="paragraph">
+                    La mécanique quantique est <strong>régie par des postulats</strong>, l'équivalent des axiomes en
+                    mathématiques, ces postulats sont assumés pour vrai.
+                </div>
+                <div class="paragraph">
+                    On l'a vu en introduction, une particule quantique est représentée par une fonction d'onde appelée
+                    état, qu'on manipule par des opérateurs auto-adjoints qui sont appelés observables.
+               
+                </div>
+                
+               <div class="paragraph">
+                    On va maintenant décrire certains postulats de la mécanique quantique qui seront utiles pour expliquer
+                    et justifier l'introduction de certaines définitions ou propriétés.
+                </div>
+                
+                <h4>Postulats</h4>
+    
+                <div class="paragraph">
+                    La mécanique quantique affirme que les particules ont un aspect ondulatoire. Une des expériences
+                    les plus illustratrices de ce point est celle des fentes de Young. Pour les décrire, on introduit
+                    la notion de fonction d'onde. L'évolution de ces fonctions d'ondes vérifient une équation
+                    différentielle appelée équation de Schrödinger.
+                </div>
+    
+                <div class="paragraph">
+                    On identifiera par la suite les fonctions d'ondes aux états.
+                </div>
+    
+                <div class="definition">
+                    <span class="title">État pur</span>
+                    <div class="paragraph">
+                        Soit $\mathcal{H}$ un espace de Hilbert, un <strong>état pur</strong> de $\mathcal{H}$ est
+                        une classe d"équivalence de vecteurs unitaires de $\mathcal{H}$ pour la relation d'équivalence
+                        $\psi' \simeq \psi$ si et seulement si $\psi ' = z \psi$ avec $z \in \mathbb{C}$ de module $1$.
+                    </div>
+                </div>
+                
+                <div class="paragraph">
+                    On appelle n'importe quel représentant de ces classes d'équivalence un <strong>état</strong>.
+                </div>
+    
+                <div class="remark">
+                    On généralise en arrêtant de parler de fonctions d'ondes. Pour la suite de ce mémoire, les états
+                    seront considérés comme des éléments de $\mathcal{H} = L^2(\R^n) \bigcap \mathcal{C}^0(\R^n)$.
+                    Pour tout instant $t$, on aura un espace d'état $H_t = L^2(\R^n) \bigcap \mathcal{C}^0(\R^n)$.
+                </div>
+    
+                <div class="paragraph">
+                    Introduite par Paul Dirac en 1939, la notation bra-ket a pour but de souligner l'aspect vectoriel
+                    d'un état quantique, son nom vient de $\langle \cdot, \cdot \rangle$ prononcé bracket en anglais.
+                    Bien que cette notation ne sera pas utilisée dans la suite de ce mémoire, je trouvais intéressant
+                    de la présenter.
+                </div>
+    
+                <div class="definition">
+                    <span class="title">Notation bra-ket</span>
+    
+                    <ul>
+                        <li>
+                            <strong>Les Kets</strong> : Soit $\psi$ un vecteur de l'espace des états $\mathcal{H}$,
+                            il est souvent noté $| \psi \rangle$, ils forment un espace vectoriel complexe. On introduit 
+                            maintenant leur duaux : les bras
+                        </li>
+                        <li>
+                            <strong>Les bras</strong> : L'espace duale des états est noté $\mathcal{H}^*$ et ses
+                            éléments sont appelés bras, si $v \in \mathcal{H}^*$, on l'écrit $\langle v |$
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="paragraph">
+                    Le premier postulat est le <strong>principe de superposition</strong>, à chaque instant $t$, l'état
+                    d'un système est entièrement défini par un vecteur $|\psi(t)\rangle$ d'un espace de Hilbert $\mathcal{H}$.
+                </div>
+    
+                <div class="definition">
+                    <span class="title">Observable</span>
+                    <span class="paragraph">
+                        Soit $\mathcal{H}$ un Hilbert. Une <strong>observable</strong> est un opérateur auto-adjoint de $\mathcal{H}$.
+                    </span>
+                </div>
+    
+                <div class="remark">
+                    D'après la proposition 3, son spectre est donc réel.
+                </div>
+    
+                <div class="paragraph">
+                    On comprendra l'intérêt du spectre réel dans le troisième postulat. Le prochain postulat, appelé le
+                    <strong>principe de correspondance</strong>, dit qu'à toute propriété observable, on va associer un
+                    opérateur auto-adjoint linéaire agissant sur les vecteurs états d'un espace de Hilbert $\mathcal{H}$.
+                    Cet opérateur est nommé <strong>observable</strong>. On va associer à une quantité physique $A$
+                    l'observable $\hat{A}$, par exemple à la position $x,~y,~z,~r$ on associe la multiplication par
+                    $x,~y,~z,~r$, à l'impulsion $p_x,~ p_y,~ p_z$ on associe les opérateurs de dérivations
+                    $-i \hbar \frac{\partial}{\partial x}$, $-i \hbar \frac{\partial}{\partial y}$,
+                    $-i \hbar \frac{\partial}{\partial z}$.
+                </div>
+    
+                <div class="remark">
+                    On peut définir la valeur attendue d'une observable $A$ dans l'état $\psi$ est défini par
+                    $ \langle A \rangle_{\psi} := \langle \psi, A \psi \rangle = \langle A \psi, \psi \rangle.$
+                    Cette valeur est réelle. On peut l'interpréter comme une moyenne, une espérance. Par exemple la valeur
+                    moyenne de la position d'une particule quantique dans un état $\psi \in L^2(\R^n)$ est $\langle P \rangle _\psi$.
+                </div>
+    
+                <div class="paragraph">
+                    Le <strong>troisième postulat</strong> porte sur la valeur possible des observables, la mesure d'une grandeur
+                    physique représentée par l'observable $A$ ne peut fournir que l'une des valeurs propres de $A$. Cela explique
+                    que dans la définition d'une observable il y a la condition nécessaire d'être auto-adjoint.
+                </div>
+    
+                <h4>Interprétation probabiliste</h4>
+    
+                <div class="paragraph">
+                    Les physiciens se sont demandés si l'on pouvait donner une interprétation physique à un état quantique.
+                    En 1929, Max Born a soumis l'idée que l'on pourrait interpréter le carré de l'état comme une densité de
+                    probabilité. Cette idée fait partie du courant de pensée de l'interprétation de Copenhague qui donne une
+                    interprétation cohérente de la mécanique quantique. C'est pour cela que l'on est amené à travailler avec
+                    l'espace d'états $\mathcal{H} = L^2(\R^n)$.
+                </div>
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

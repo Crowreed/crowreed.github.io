@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Operateurs pseudo-differentiels</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                
+
+
+
+                <h3>Opérateurs pseudo-différentiels</h3>
+    
+    On va introduire maintenant la <strong></strong>théorie des opérateurs pseudo-différentiels} qui sont essentiels à la compréhension de la suite du mémoire. Ils serviront essentiellement à justifier une généralisation de $(Weyl)$.
+    
+    <div class = "definition">[Opérateur différentiel linéaire (sur $\mathbb{R}^n$)] 
+    On définit un <strong></strong>opérateur différentiel linéaire} (sur $\mathbb{R}^n$) par $\underset{|\alpha| \leq m}{\sum} a_\alpha (x) D^\alpha, ~~ x \in \mathbb{R}^n$ et noté $P(x, D)$.
+    Où $\alpha = (\alpha_1, \cdots, \alpha_n)$ est un multi-index, $m$ est un entier naturel, $a_\alpha$ est une fonction de $\R^n$, $D^\alpha = D_{\alpha_1}^{\alpha_1} \cdots D_{\alpha_n}^{\alpha_n}$ et $D_x = -i \partial _x$
+    </div>
+    
+    On va maintenant essayer d'écrire cet opérateur différemment, en utilisant son écriture de Fourier, 
+    
+    Pour $f \in \mathcal{S}(\R^n)$, d'après la formule d'inversion de Fourier, on peut écrire $f$ comme : $$f(x) = \check{\hat{f}}(x) =\frac{1}{(2 \pi)^{n/2}} \check{\int}_{\mathbb{R}^n} e^{-i x t} f(t) ~ dt =\frac{1}{(2 \pi)^{n/2}} \int_{\mathbb{R}^n} e^{i \xi x} \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d \xi$$
+    
+    Alors $$P(x,D)(f(x)) = P(x,D)\left(\frac{1}{(2 \pi)^{n/2}}\int_{\mathbb{R}^n} e^{i \xi x} \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d \xi\right)$$
+    $$= \underset{|\alpha| \leq m}{\sum} a_\alpha (x) D^\alpha \left(\frac{1}{(2 \pi)^{n/2}}\int_{\mathbb{R}^n} e^{i \xi x} \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d \xi\right)$$
+    $$= \underset{|\alpha| \leq m}{\sum} a_\alpha (x) \left(\frac{1}{(2 \pi)^{n/2}}\int_{\mathbb{R}^n} D^\alpha (e^{i \xi x}) \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d \xi\right)$$
+    $$= \underset{|\alpha| \leq m}{\sum} a_\alpha (x) \left(\frac{1}{(2 \pi)^{n/2}}\int_{\mathbb{R}^n} \xi^\alpha e^{i \xi x} \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d \xi\right)$$
+    $$=\frac{1}{(2 \pi)^{n/2}} \int_{\mathbb{R}^n} \underset{symbole}{\underbrace{\underset{|\alpha| \leq m}{\sum} a_\alpha (x) \xi^\alpha}} e^{i \xi x} \left(\int_{\mathbb{R}^n} e^{-ixt} f(t) dt\right) ~ d\xi$$
+    
+    On appelle alors $\underset{|\alpha| \leq m}{\sum} a_\alpha (x) \xi^\alpha$ le <strong></strong>symbole} de l'opérateur différentiel $P(x,D)$. Car formellement on remarque que $P(x,D)$ ne dépend que se ce symbole. On peut ainsi donner une définition plus large des opérateurs différentiels, en les définissant par leurs symboles et non plus par un opérateur. On les appelle opérateurs pseudo-différentiels. On sera amené à choisir des espaces de symboles plus grand dans la suite.
+    
+    <div class = "definition">[Symbole]
+    Soit $m \in \mathbb{R}$. On définit comme $S^m$ l'ensemble des fonctions $~\mathcal{C}^\infty(\mathbb{R}^{2n})$ telles que pour tous multi-indices $\alpha$ et $\beta$, il existe une constante positive $C_{\alpha, \beta}$ dépendant uniquement de $\alpha$ et $\beta$, tel que l'on ait :
+    $$|(D_x^\alpha D_\xi^\beta \sigma)(x, \xi)| \leq C_{\alpha, \beta}(1+|\xi|)^{m-|\beta|},~ x,~ \xi \in \mathbb{R}^n$$
+    
+    On appelle n'importe quel $\sigma \in \underset{m \in \mathbb{R}}{\bigcup} S^m$ <strong></strong>un symbole}.
+    </div>
+    
+    <div class="remark">
+    On demande à contrôler la croissance par rapport à la variable $\xi$, l'intérêt est dans son utilisation future dans la transformée de Fourier afin d'assurer la convergence.
+    </div>
+    
+    On peut donc maintenant associer de façon beaucoup plus générale un symbole à un opérateur, que l'on appellera opérateur pseudo-différentiel.
+    
+    <div class = "definition">[Opérateur pseudo-différentiel associé à un symbole]
+    
+    On définit l'<strong></strong>opérateur pseudo-différentiel} $T_\sigma$ correspond au symbole $\sigma$ par
+    $$(T_\sigma \varphi)(x) = (2\pi)^{-n/2} \int_{\mathbb{R}^n} e^{ix \xi} \sigma(x, \xi) \hat{\varphi} (\xi) d \xi, ~~ x \in \mathbb{R}^n$$
+    pour tout $\varphi \in S(\mathbb{R}^n)$
+    </div>
+    
+    On remarque le lien avec le <strong></strong>problème de la quantification}, on a pu associer à une fonction particulière de $\mathbb{R}^{2n}$ un opérateur. On peut donc maintenant commencer à étudier l'opérateur proposé par Weyl $(Weyl)$ en le généralisant aux opérateurs pseudo-différentiels, formulée par Hörmander en.
+    
+    <div class="proposition">
+    Soit $\sigma$ un symbole. Alors l'opérateur pseudo différentiel $T_\sigma$ est une <strong></strong>application continue} de $\mathcal{S}(\mathbb{R}^n)$ dans $\mathcal{S}(\mathbb{R}^n)$.
+    </div>
+    
+    \emptypage
+    \emptypage
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

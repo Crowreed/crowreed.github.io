@@ -3,23 +3,23 @@
         "title": "Mathematiques de la mecanique quantique",
         "type": "chapter",
         "isNumbered": true,
-        "filename": "quantum-mechanics-math.html",
+        "filename": "/academic-works/weyl-transform/1-quantum-mechanics-math/",
         "children": [
             {
                 "title": "Rappels sur les espaces de Hilbert et les operateurs",
-                "filename": "hilbert-spaces-operators.html"
+                "filename": "/academic-works/weyl-transform/1-quantum-mechanics-math/hilbert-spaces-operators.html"
             },
             {
                 "title":"Introduction et postulats",
-                "filename": "qm-introduction-postulates.html"
+                "filename": "/academic-works/weyl-transform/1-quantum-mechanics-math/qm-introduction-postulates.html"
             },
             {
                 "title":"Transformee de Fourier",
-                "filename": "fourier-transform.html"
+                "filename": "/academic-works/weyl-transform/1-quantum-mechanics-math/fourier-transform.html"
             },
             {
                 "title":"Operateurs pseudo-differentiels",
-                "filename":"pseudo-differential-operators.html"
+                "filename":"/academic-works/weyl-transform/1-quantum-mechanics-math/pseudo-differential-operators.html"
             }
         ]
     },
@@ -28,19 +28,19 @@
         "title": "La transformee de Weyl",
         "type": "chapter",
         "isNumbered": true,
-        "filename": "weyl-transform.html",
+        "filename": "/academic-works/weyl-transform/2-weyl-transform/",
         "children": [
             {
                 "title": "La transformee de Fourier-Wigner",
-                "filename": "fourier-wigner-transform.html"}
+                "filename": "/academic-works/weyl-transform/2-weyl-transform/fourier-wigner-transform.html"}
                 ,
             {
                 "title": "La transformee de Wigner",
-                "filename":"wigner-transform.html"
+                "filename":"/academic-works/weyl-transform/2-weyl-transform/wigner-transform.html"
             },
             {
-                "title": "La transformee de Weyl",
-                "filename": "weyl-transform-details.html"
+                "title": "La transformee de Weyl en details",
+                "filename": "/academic-works/weyl-transform/2-weyl-transform/weyl-transform-details.html"
             }
         ]
     }

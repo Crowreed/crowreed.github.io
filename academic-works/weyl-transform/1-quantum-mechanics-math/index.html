@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Mathematiques de la mecanique quantique</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                <h2>Introduction</h2>
+            
+                <div class="paragraph">
+                    En <strong>mécanique classique</strong>, l'état d'un système constitué d'une particule 
+                    <strong>se mouvant sur une droite</strong> à un instant $t$ peut-être décrit par la donnée
+                    de la <strong>position</strong> $x$ et de la <strong>vitesse</strong> $v$. On peut prédire
+                    son évolution en appliquant l'équation de Newton $\vec{a} = \frac{\vec{F}}{m}$, où $\vec{F}$
+                    représente la somme des forces extérieures agissant sur ce système, $m$ est la masse de la
+                    particule et $\vec{a}$ son accélération. L'étude de l'évolution d'un objet dans $\R^n$ se
+                    fait souvent dans l'espace des phases
+                    $\R^n \times \R^n = \{(\xi,x)$ tel que $ \xi \in \R^n, x \in \R^n\}$,
+                    l'espace dans lequel tous les états possibles d'un objet sont représentés, où en général $x$
+                    représente la position et $\xi$ l'impulsion, les lettres $q$ et $p$ seront aussi utilisées.
+                    Par exemple on peut choisir de représenter une balle de tennis, assimilée à un point matériel,
+                    par sa position et sa vitesse dans l'espace, donc par un point de $\R^3 \times \R^3$ à chaque
+                    instant $t$ ! Puis en appliquant l'équation de Newton on va pouvoir prédire l'évolution au cours
+                    du temps de la position de la balle de tennis. On appelle grandeur physique toute propriété d'un
+                    système qui peut être mesurée ou calculée et dont les valeurs possibles sont réelles. Ce sont des
+                    fonctions définies sur l'espace des phases, par exemple l'énergie du système considéré.
+                </div>
+    
+                <div class="paragraph">
+                    En <strong>mécanique quantique</strong>, c'est conceptuellement différent, on ne décrit plus
+                    l'état d'un système par sa position et son impulsion mais par une fonction à valeurs complexes
+                    appelée <strong>fonction d'onde</strong> $\Psi_t$ à chaque instant $t$. On parle d'état quantique.
+                    Les fonctions d'onde sont régies par la célèbre équation de Schrödinger
+                    $i \hbar \frac{d \Psi}{dt}=\hat{H}\Psi$, où $\hat{H}$ s'appelle l'Hamiltonien du système et joue le
+                    même rôle que $\vec{F}$, c'est un opérateur qui agit sur les fonctions d'onde $\psi _t$, $\hbar$ vaut
+                    $\frac{h}{2 \pi}$, $h$ étant la célèbre constante de Planck. On veut maintenant manipuler ces fonctions
+                    d'onde à l'aide d'opérateurs auto-adjoints qui agissent sur ces états. Ces opérateurs sont appelés des
+                    <strong>observables</strong> et jouent un rôle analogue à celui des grandeurs physiques en mécanique
+                    classique. Ils sont appelés observables car c'est par l'action de ces opérateurs sur les états qu'on
+                    peut comprendre et observer les particules quantiques. Par exemple, une observable peut être l'opérateur 
+                    représentant la position, associe la valeur moyenne de la position dans un état $\psi$.
+                </div>
+    
+                <div class="paragraph">
+                    Deux opérateurs sont au centre de la <strong>mécanique quantique</strong>, l'opérateur de <strong>position</strong>
+                    $\hat{Q} : \psi \mapsto x \psi$ défini sur $\mathcal{H}=L^2(\R^n)$ et l'opérateur d'<strong>impulsion</strong>
+                    $\hat{P} : \psi \mapsto -i \hbar \frac{\partial \psi}{\partial x}$ défini sur $\mathcal{H}=L^2(\R^n)$. Ces espaces
+                    seront amenés à changer lors de ce mémoire.
+                </div>
+                
+                <div class="paragraph">
+                    Lorsqu'on mesure une observable sur un état quantique, on obtient une des valeurs spectrales de l'observable avec
+                    une certaine probabilité. Cette probabilité est donnée par le carré du module de la projection de l'état quantique
+                    sur le vecteur propre associé à cette valeur propre. Après la mesure, l'état quantique du système est projeté sur
+                    ce vecteur propre. C'est ce qu'on appelle le postulat de la réduction du paquet d'ondes. Il est important de noter
+                    que <strong>les observables ne commutent pas toujours entre elles</strong>, ce qui a pour conséquence le fameux
+                    principe d'incertitude de Heisenberg, donné par la célèbre inégalité $\Delta_x \Delta_p \geq \frac{\hbar}{2}$,
+                    où $\Delta_x$ (resp. $\Delta_p)$ représente l'écart-type de $\hat{Q}$ (resp. $\hat{P}$). Ce principe formulé en
+                    1927 par Werner Heisenberg, stipule qu'il est impossible de mesurer simultanément avec une précision arbitraire
+                    la position et l'impulsion d'une particule quantique. En d'autres termes, plus on mesure précisément la position
+                    d'une particule, moins on peut connaître précisément son impulsion, et inversement. Ce principe se généralise pour
+                    tout couple d'observables ne commutant pas. Ce qui rend <strong>difficile</strong> la formulation de cette théorie
+                    dans l'espace des phases. Ce principe est souvent interprété comme une limitation fondamentale de la nature de la
+                    réalité physique quantique.
+                </div>
+    
+                <div class="paragraph">
+                    C'est dans ce contexte que la transformée de Weyl trouve toute son <strong>importance</strong>.
+                </div>
+    
+                <div class="paragraph">
+                    Dans ce mémoire, on sera intéressé par l'étude d'une particule se déplaçant dans $\mathbb{R}^n$, on prendra
+                    l'espace des opérateurs de $L^2(\R^n)$ auto-adjoints. L'une des motivations de la transformée de Weyl est de
+                    vouloir formuler la mécanique quantique sur l'espace des phases, qui de base est formulée sur l'espace des
+                    positions, avec la grandeur physique $q$ (resp. $p$).
+                </div>
+    
+                <div class="paragraph">
+                    La <strong>problématique de la quantification</strong> est d'associer à chaque fonction $f$ sur l'espace des
+                    phase $\R^{2n}$ un opérateur $\hat{f}$ sur $L^2(\mathbb{R}^n)$ <strong>auto-adjoint</strong>. La première
+                    procédure de quantification et l'une des plus satisfaisante a été proposée par Weyl, elle propose d'associer
+                    un opérateur $\sigma(\hat{P},\hat{Q})$ agissant sur $\mathcal{H} = L^2(\R^n)$ à une fonction $\sigma(\xi, x)$
+                    par la formule
+    
+                    $$
+                    \sigma(\hat{P},\hat{Q}) = \frac{1}{2 \pi \hbar} \iint \hat{\sigma} (p,q) e^{ \frac{i}{\hbar}(p\hat{P}+q\hat{Q})} dpdq
+                    $$
+    
+                    où $\hat{P}, \hat{Q}$ représentent les opérateurs d'impulsion et de position, et $\hat{\sigma}$ est la transformée
+                    de Fourier $\sigma$. On appellera cette formule $(Weyl)$ dans la suite du mémoire.
+                </div>
+    
+                <div class="paragraph">
+                    Cette formule vient du fait suivant :
+                    Si on se donne une fonction $\sigma(\xi, x)$, on aimerait lui faire correspondre un opérateur $\sigma(D,x)$
+                    auto-adjoint. En supposant que l'on peut écrire $\sigma(x, \xi)$ en son écriture de Fourier
+                    $\iint \hat{\sigma} (p,q) e^{2 \pi i (p \xi + q x)} dpdq$, en supposant que
+                    $e^{2 \pi i (p \xi + qx)}, p, q \in \R^n$ devrait correspondre à l'opérateur $e^{2 \pi i (p\hat{P} + q\hat{Q})}$.
+                    On serait alors amené à postuler la définition $(Weyl)$.
+                </div>
+    
+                <div class="paragraph">
+                    Le but de ce mémoire est d'expliquer la formule $(Weyl)$ mathématiquement et physiquement, qu'on illustrera
+                    par quelques exemples. On finira par étudier ses propriétés, en faisant un lien solide entre les aspects
+                    physique et mathématique des objets que l'on va être amenés à étudier au cours de ce mémoire afin d'expliquer
+                    $(4.2)$. On a besoin de cette correspondance car il n'est pas si évident d'associer un opérateur à une fonction
+                    sur l'espace des phase. Il serait tentant de penser que $pq$ devrait être associé à $\hat{P}\hat{Q}$ mais
+                    $pq = qp$ alors que le commutateur de $\hat{P}$ et $\hat{Q}$, $[\hat{P}, \hat{Q}] \neq 0$, c'est non commutatif.
+                    On doit alors réfléchir à une manière plus subtile de faire cette correspondance. On devra alors finalement munir
+                    cet espace de phase de nouvelles opérations afin de garder une belle structure.
+                </div>
+    
+                <div class="paragraph">
+                    La première partie sera consacrée à l'étude de certains objets mathématiques nécessaires à la compréhension de
+                    la suite du mémoire, elle introduit les bases mathématiques de la mécanique quantique ainsi que ses postulats, 
+                    puis on va étudier la transformée de Fourier et son interprétation physique qui sera au coeur de beaucoup
+                    d'objets étudiés dans ce mémoire, on finira ensuite cette première partie par une introduction aux opérateurs
+                    pseudo-différentiels ainsi que leurs symboles, objet mathématique au c\oe ur de la transformée de Weyl, bien
+                    que non nécessaire mais fournissant de mon point de vue une bonne motivation à l'étude de la transformée de Weyl. 
+                </div>
+    
+                <div class="paragraph">
+                    La deuxième partie, centre de ce mémoire, sera consacrée à l'étude de la transformée de Weyl, on y commencera
+                    par étudier la transformée de Fourier-Wigner et son lien avec le groupe de Heisenberg et ses représentations
+                    irréductibles unitaires, puis on introduira la transformée de Wigner, qui sera avant tout expliquée pour motiver
+                    la transformée de Weyl rigoureusement, on finira cette partie par l'illustration de quelques exemples de
+                    correspondance entre fonction et opérateur par cet outil qu'est la transformée de Weyl, puis par le développement
+                    d'un calcul fonctionnel et agréable sur ces nouveaux objets.
+                </div>
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

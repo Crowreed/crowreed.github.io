@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Rappels sur les espaces de Hilbert et les operateurs</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                <h3>Rappels sur les espaces de Hilbert et les opérateurs</h3>
+            
+                <div class="paragraph">
+                    Cette partie servira de rappels mathématiques sur des notions très utiles dans ce mémoire.
+                </div>
+                
+                <div class="paragraph">
+                    On introduit la notion d'espace de Hilbert, un objet qui est <strong>à la la base de la formulation</strong> de
+                    la mécanique quantique.
+                </div>
+                
+                <div class="definition">
+                    <span class="title">Espace de Hilbert</span>
+                    <p>
+                        On dit que $\mathcal{H}$ est un <strong>espace de Hilbert</strong> si c'est un espace vectoriel complexe,
+                        muni d'un produit scalaire hermitien, noté $\langle \cdot, \cdot \rangle$ :
+                        $\mathcal{H} \times \mathcal{H} \rightarrow \mathbb{C}$, on le considère anti-linéaire dans le premier argument.
+                        Et si il est complet pour la norme associée à son produit scalaire.
+                    </p>
+                </div>
+    
+                <div class="remark">
+                    Un espace de Hilbert n'est pas nécessairement de dimension finie.
+                </div>
+    
+                <div class = "definition">
+                    <span class="title">Base hilbertienne d'un espace de Hilbert</span>
+                    <div class="paragraph">
+                        Soit $\mathcal{H}$ un espace de Hilbert, on dit que $\{e_n\}_{n \in \mathbb{N}}$ est une
+                        <strong>base hilbertienne</strong> de $\mathcal{H}$ si : <br>
+                        $\langle e_i, e_j \rangle = \delta_{ij}$ et pour tout $n \in \mathbb{N}$, $\langle \psi, e_n \rangle = 0$
+                        entraîne $\psi = 0$.
+                    </div>
+                </div>
+                
+                <div class="paragraph">
+                    Deux inégalités seront maintenant présentée, celle de Cauchy-Schwarz pour les espaces $L^p$, et celle
+                    de Young pour le produit de convolution. Elles seront très utiles pour les démonstrations du mémoire.
+                </div>
+    
+    
+                <div class="proposition">
+                    <span class="title">Inégalité de Cauchy-Schwarz</span> <br>
+                    Soit $\mathcal{H}$ un espace de Hilbert muni du produit scalaire $\langle  ~ , ~  \rangle$. 
+    
+                    <div class="paragraph">
+                        Alors pour tout $x$, $y \in \mathcal{H}$,
+                        $$
+                        | \langle x, y \rangle | \leq \| x \| \cdot \| y \|.
+                        $$
+                    </div>
+                </div>
+    
+                <div class="proof">
+                    <div class="paragraph">
+                        Soit $x, y \in \mathcal{H}$.
+                    </div>
+                    
+                    <div class="paragraph">
+                        Si $\| x \| = 0$ alors $x=0$ et l'inégalité est immédiate.
+                    </div>
+                    
+                    <div class="paragraph">
+                        Si $\| x\| \neq 0$ alors en développant 
+                        
+                        $$
+                        \left\|y-\langle x, y \rangle \frac{x}{\|x\|^2}\right\|^2 \geq 0
+                        $$
+    
+                        Il vient
+                        
+                        $$
+                        \|x\|^2\|y\|^2 \geq \langle x, y \rangle ^2
+                        $$
+    
+                        Comme $\|x\| \cdot \|y\| \geq 0$, on a finalement $\|x\| \cdot \|y\| \geq |\langle x, y\rangle|$
+                    </div>
+                </div>
+    
+                <div class="paragraph">
+                    Dans la proposition suivante, les espaces $L^p$ désigneront les espaces de Lebesgue.
+                </div>
+    
+                <div class="proposition">
+                    <span class="title">Inégalité de Young pour le produit de convolution</span>
+                    
+                    <div class="paragraph">
+                        Soit $f$ dans $L^p$ et $g$ dans $L^q$, soit $p, ~q,~r \in [1, \infty ]$
+                        tel que $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r}.$
+                    </div>
+                    
+                    <div class="paragraph">
+                        Alors le produit de convolution $f * g$ appartient à $L^r$ et,
+                        $$\|f * g\|_r \leq \|f\|_p\|g\|_q.$$
+                    </div>
+                </div>
+    
+                <div class="paragraph">
+                    Cette inégalité sera assumée pour vraie, la preuve utilisant deux autres inégalités qu'il aurait fallut introduire,
+                    ce qui n'est pas le sujet de ce mémoire.
+                </div>
+                
+                <div class="paragraph">
+                    L'autre objet <strong>fondamental</strong> de la mécanique quantique est la notion d'opérateur.
+                </div>
+    
+                <div class="definition">
+                    <span class="title">Opérateur</span>
+                    <div class="paragraph">
+                        Un <strong>opérateur</strong> $T$ entre deux espaces de Hilbert est une application $T :
+                        \mathcal{D}(T) \subset \mathcal{H}_1 \ra \mathcal{H}_2$ telle que,
+    
+                        <ul>
+                            <li>
+                                $\mathcal{D}(T)$ est un sous-espace vectoriel de $\mathcal{H}_1$.
+                            </li>
+                            <li>
+                                T est une application linéaire : <br>
+                                $T(\alpha u + \beta v) = \alpha T u + \beta T v$ pour tout $\alpha$,
+                                $\beta \in \mathbb{C}$, pour tout $u$, $v \in \mathcal{D}(T)$. 
+                            </li>
+                        </ul>
+                        où $\mathcal{D}(T)$ est le domaine de T.
+                    
+                    </div>
+    
+                    <div class="paragraph">
+                        Quand $\mathcal{H}_1 = \mathcal{H}_2 = \mathcal{H}$ on dit que $T$ est un
+                        <strong>opérateur sur$\mathcal{H}$</strong>.
+                    </div>
+                </div>
+    
+                <div class="paragraph">
+                    On considère habituellement les opérateurs avec un <strong>domaine dense</strong>.
+                </div>
+    
+                <div class = "definition">
+                    <span class="title">Opérateur borné</span> <br>
+                    
+                    Un opérateur $T : \mathcal{D} (T) \subset \mathcal{H}_1 \ra \mathcal{H}_2$ est <strong>borné</strong>
+                    si il existe une constante $c > 0$ telle que
+    
+                    $$
+                    \|T u\|_2 \leq c \|u\|_1, \text{ pour tout }u \in \mathcal{D}(T).
+                    $$
+    
+                    La norme d'un opérateur borné est la plus petite constante c vérifiant l'inégalité précédente,
+                    et elle est donnée par
+    
+                    $$
+                    \| T \| = \underset{u \in \mathcal{D} (T), u \neq 0}{sup} \frac{\|T u\|_2}{\|u\|_1}.
+                    $$
+                </div>
+    
+                <div class="proposition">
+                    Un opérateur est borné si et seulement si il est continu.
+                </div>
+    
+                <div class="theorem">
+                    <span class="title">Théorème de Riesz</span>
+    
+                    <div class="paragraph">
+                        Soit $l : \mathcal{D}(l) \subset \mathcal{H} \ra \mathbb{C}$ une forme linéaire densément définie.
+                        Alors il existe un unique vecteur $v_l \in \mathcal{H}$ tel que,
+                        $$l(u) = \langle v_l, u \rangle, \text{ pour tout } u \in \mathcal{D}(l).$$
+                    
+                        On a $\|l\|=\|v_l\|$.
+                    </div>
+        
+                </div>
+    
+                <div class="paragraph">
+                    On sera souvent amenés dans ce mémoire à prolonger des opérateurs $\hat{A}$ densément définis sur des
+                    espaces plus grand, souvent pour généraliser le résultat aux espaces $L^2(\R^n)$, on doit alors savoir
+                    qu'il y a unicité du prolongement.
+                </div>
+    
+                <div class="paragraph">
+                    On introduit maintenant la notion d'<strong>adjoint d'un opérateur</strong>, notre but est d'associer
+                    à un opérateur $T$ densément défini un opérateur $T^*$ de domaine $\mathcal{D}(T^*)$ qui a la propriété
+                    $\langle T^*, u \rangle = \langle v, T u \rangle$ pour tout $u \in \mathcal{D} (T)$, pour tout
+                    $u \in \mathcal{D}(T^*)$.
+                </div>
+    
+                <div class="paragraph">
+                    On définit $\mathcal{D}(T^*) := \{ v \in \mathcal{H} ; u \mapsto \langle v, T u \rangle$ est une forme
+                    linéaire bornée sur $\mathcal{D}(T)\}$, d'après le théorème de Riesz, il existe un unique $v^* \in \mathcal{H}$
+                    telle que $\langle v^*, u \rangle = \langle v, Tu \rangle$.
+                </div>
+    
+                <div class = "definition">
+                    <span class="title">L'adjoint d'un opérateur</span>
+                    
+                    <div class="paragraph">
+                        Soit $T : \mathcal{D}(T) \subset \mathcal{H} \ra \mathcal{H}$ un opérateur densément défini.
+                        L'<strong>adjoint</strong> de $T$ est l'opérateur
+                        $T^* : \mathcal{D} (T^*) \subset \mathcal{H} \ra \mathcal{H}$ définit de façon <strong>unique</strong>
+                        par les conditions :
+                        
+                        <ul>
+                            <li>
+                                $\mathcal{D}(T^*) := \{ v \in \mathcal{H} ; \exists ! v^* \in \mathcal{H}$
+                                tel que $\langle v^*, u \rangle = \langle v, T u \rangle \text{ pour tout } u \in \mathcal{D}(T) \}$.
+                            </li>
+                            <li>
+                                $T^*v= v^*$ pour tout $v \in \mathcal{D}(T^*)$.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="definition">
+                    <span class="title">Opérateur auto-adjoint</span>
+    
+                    <div class="paragraph">
+                        Un opérateur densément défini $T : \mathcal{D}(T) \subset \mathcal{H} \ra \mathcal{H}$
+                        est <strong>auto-adjoint</strong> si $T^* = T$.
+                    </div>
+                </div>
+    
+                <div class="paragraph">
+                    En particulier, on a $\mathcal{D} (T) = \mathcal{D}(T^*)$.
+                </div>
+    
+    
+                <div class = "definition">
+                    <span class="title">Opérateur symétrique</span>
+                    <p>
+                        Un opérateur $T : \mathcal{D} \subset \mathcal{H} \ra \mathcal{H}$ est <strong>symétrique</strong> si
+                        $\langle u, Tv \rangle = \langle T u, v \rangle, ~~\text{ pour tout } u, ~v \in \mathcal{D}(T).$
+                    </p>
+                </div>
+    
+                <div class="paragraph">
+                    En conséquence, pour les opérateurs auto-adjoints, on a, 
+    
+                    $$
+                    \langle u, T v \rangle = \langle T u, v \rangle, ~~\text{ pour tout } u,~v \in \mathcal{D}(T).
+                    $$
+                </div>
+    
+                <div class="paragraph">
+                    En particulier, un opérateur auto-adjoint est symétrique.
+                </div>
+    
+                <div class = "definition">
+                    <span class="title">Spectre et valeurs propres</span>
+    
+                    <p>
+                        Soit $T : \mathcal{D} \subset \mathcal{H} \ra \mathcal{H}$
+                    
+                        <ul>
+                            <li>
+                                Un nombre complexe $\lambda$ est une valeur propre de $T$ s'il existe un vecteur
+                                $h \in \mathcal{H}, h \neq 0$ tel que $Th = \lambda h$. Un tel %vecteur est appelé
+                                un <strong>vecteur propre</strong> de $T$ associé à la <strong>valeur propre</strong> $\lambda$.
+                            </li>
+                            <li>
+                                On appelle <strong>spectre ponctuel</strong> de $T$, et on note $\sigma _p(T)$ l'ensemble des
+                                valeurs propres de $T$.
+                            </li>
+                            <li>
+                                Le <strong>spectre</strong> de $T$ est défini comme
+                                $$
+                                \sigma (T) := \{ \lambda \in \mathbb{C} \text{ tel que } T _ \lambda Id \text{ n'est pas inversible.} \}
+                                $$
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <div class="paragraph">
+                    En général en dimension infinie, le spectre d'un opérateur <strong>n'est pas égal</strong> à l'ensemble
+                    de ses valeurs propres, on a une inclusion de l'ensemble des valeurs propres dans le spectre. Parce
+                    qu'un opérateur inversible est nécessairement injectif.
+                    L'égalité est vraie en dimension finie grâce au théorème spectral et au théorème du rang. Il faudra donc
+                    faire attention lorsqu'on parle du spectre ou des valeurs propres d'un opérateur.
+                </div>
+    
+                <div class="paragraph">
+                    Une propriété intéressante des opérateurs auto-adjoint est par rapport à leur spectre.
+                </div>
+    
+                <div class="proposition">
+                    Le spectre d'un opérateur auto-adjoint est <strong>réel</strong>.
+                </div>
+    
+                <div class="paragraph">
+                    Toutes ces propositions sur les espaces de Hilbert ou les opérateurs ont été assumées pour vrai,
+                    l'objectif de cette partie étant avant tout de rappeler des résultats utiles pour la suite du mémoire.
+                </div>
+    
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>

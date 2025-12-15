@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <!-- metadata -->
+
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>La transformee de Fourier-Wigner</title>
+
+        <meta
+            name="description"
+            content=""
+        >
+
+        <meta
+            name="keywords"
+            content=""
+        >
+        
+        <meta
+            name="author"
+            content="Lucas Petit"
+        >
+
+        <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
+        
+        <!-- for rendering latex -->
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+        <!-- JS -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+        <!-- ALL STYLESHEET -->
+ 
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../">
+                            <svg class="ArrowBackwardIcon" style="fill:black;display: inline;" width="24" viewBox="0 0 24 24" transform="matrix(-1,0,0,1,0,0)"> <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path> </svg>
+                            La transformée de Weyl
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="toc-container" style="height: 100vh;"></div>
+
+            <div id="article">
+                
+
+           
+
+                <h4>La transformée de Fourier-Wigner</h4>
+    
+    Cette partie aura pour but de présenter la transformée de Fourier-Wigner.
+    
+    Soit $q$ et $p$ dans $\R^n$, et f une fonction mesurable sur $\R^n$. On définit la fonction $\rho (q,p) f$ sur $\R^n$ par
+    $$(\rho(q,p)f)(x) = e^{iqx + \frac{1}{2} iq p}f(x+p), ~~x\in\R^n.$$
+    
+    <div class="proposition">
+        $\rho(q,p)f : L^2(\R^n) \ra L^2(\R^n)$ est un <strong></strong>opérateur unitaire} pour tout $q$ et $p$ dans $\R^n$.
+    </div>
+    
+    
+    <div class = "definition">
+        Soit $f$ et $g$ dans $\mathcal{S}(\R^n)$, on définit alors la fonction $V(f,g)$ sur $\R^{2n}$ par
+        $$V(f,g)(q,p) = (2 \pi)^{-n/2} \langle \rho (q,p)f,g \rangle, ~~q,p \in \R^n$$
+        où $\langle ,  \rangle$ est le produit scalaire de $L^2(\R^n)$.
+        On appelle alors $V(f,g)$ la transformée de Fourier-Wigner de $f$ et $g$.
+    </div>
+    
+    <div class="remark">
+        Pour $f, ~ g \in L^2(\R^n)$, $V(f,g)$ correspond au coefficient matriciel en $(f,g)$ de la représentation $\rho$. On obtient ainsi une meilleure intuition de ce qu'elle signifie.
+    </div>
+    <div class="remark">
+        On peut mieux comprendre cette écriture en essayant d'écrire la transformée de Fourier sous la forme d'un produit scalaire !
+        On a alors $\hat{f} (\xi) = (2 \pi)^{-n/2} \langle \rho(-\xi,0)f, Id \rangle$
+    </div>
+    
+    <div class="remark">
+        C'est une transformée de Fourier tordue.
+    </div>
+    
+    On peut alors donner une formule plus explicite de $V(f,g)$.
+    
+    <div class="proposition">
+        Soit $f$ et $g$ dans $\mathcal{S}(\R^n)$, alors
+        $$V(f,g)(q,p) = (2 \pi)^{-n/2} \int_{R^n} e^{iq  y} f\left(y + \frac{p}{2}\right) \overline{g\left(y-\frac{p}{2}\right)}dy$$
+        pour tout q et p dans $\R^n$.
+    </div>
+                <div class="proof">
+                    <div class="paragraph">
+                        Soit $f$ et $g$ dans $\mathcal{S}(\R^n)$, alors d'après la définition, on a
+                        
+                        $$
+                        V(f,g)(q,p) = (2 \pi)^{-n/2} \langle \rho(q,p)f,g \rangle
+                        $$
+    
+                        Comme $\rho(p,q)$ est un <strong>opérateur unitaire</strong>, on peut l'écrire sous la forme d'une intégrale,
+                        la convergence de l'intégrale étant justifiée par l' <strong>inégalité de Cauchy-Schwartz</strong>.
+                    </div>
+                    
+                    <div class="paragraph">
+                        $$
+                        (2 \pi)^{-n/2} \int_{\R^n}e^{iqx+\frac{1}{2}iqp}f(x+p)\overline{g(x)}dx
+                        $$
+    
+                        On fait alors le changement de variable $x = y-\frac{p}{2}$ et on obtient
+                    </div>
+                
+                    <div class="paragraph">
+                        $$
+                        V(f,g)(q,p) = (2 \ pi)^{-n/2} \int_{R^n} e^{iq  y} f\left(y + \frac{p}{2}\right) \overline{g\left(y-\frac{p}{2}\right)}dy
+                        $$               
+                    </div>
+                </div>
+    
+    
+    Une propriété intéressante est la bilinéarité de la transformée de Fourier-Wigner.
+    <div class="proposition">
+        $V : \mathcal{S} (\R^n) \times \mathcal{S} (\R^n) \ra \mathcal{S} (\R^{2n})$ est une <strong></strong>application bilinéaire}.
+    </div>
+    
+    \subsubsection{La théorie des radars}
+    Une application intéressante et concrète de la transformée de Fourier-Wigner est dans la théorie des radars, un bref aperçu sera donné, sans rentrer dans trop de détails techniques.
+    Plaçons nous dans le cas d'un appareil radar qui transmet un signal électromagnétique qui rebondi sur la cible et revient à l'appareil. On peut représenter le signal par une fonction à valeurs complexes $f(t) = f_0(t) e^{2 \pi i w t}$, où $w$ représente la fréquence et $t$ le temps. Le signal revenu n'est pas le même signal que celui émis, disons que, après quelques approximations, le signal reçu est $f_{\tau \phi}(t) = f(t - \tau) e^{2 \pi i \phi t}$, où $\tau$ représente le délai de retour du signal et $\phi$ la nouvelle fréquence.
+    On se place maintenant dans la situation de deux cibles qui produisent des signaux $f_{\tau_1 \phi_1}$ et $f_{\tau_2 \phi_2}$. Le problème est que si ces signaux se ressemblent, il sera difficile de distinguer les 2 cibles.
+    On peut alors s'intéresser à la moyenne quadratique de la différence.
+    $$\int |f_{\tau_1 \phi_1} - f_{\tau _2 \phi_2}|^2(t) ~dt$$
+    En développant la valeur absolue au carré, on obtient
+    $$2 \int |f|^2 dt -2 Re \langle f_{\tau_1 \phi_1} , f_{\tau _2 \phi_2} \rangle$$
+    On va alors étudier le second terme qui ne dépend que des variables. 
+    
+    On a $$\langle f_{\tau_1 \phi_1} , f_{\tau _2 \phi_2} \rangle = e^{2 \pi i w (\tau _1 - \tau _1)} \int f_0(t- \tau_1) \overline{f_0(t-\tau_2)}e^{2 \pi i(\phi_1 - \phi_2)t}dt$$
+    
+    On voit que ce terme ressemble à transformée de Fourier-Wigner, en faisant un changement de variable adapté on trouve que ce terme peut s'exprimer comme la transformée de Fourier-Wigner d'une certaine fonction appelée fonction d'ambiguïté qui est égale à $V(f,f)$.
+    
+            </div>
+        </main>
+
+        <footer id="main-footer"></footer>
+
+        <script type="module" src="/assets/js/main.js"></script>
+    </body>
+</html>
