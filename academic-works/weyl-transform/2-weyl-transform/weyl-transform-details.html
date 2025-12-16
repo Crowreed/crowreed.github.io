@@ -113,10 +113,15 @@
     
     On appelle $W_\sigma$ la transformée de Weyl associée au symbole $\sigma$. Le théorème suivant <strong></strong>illustre le lien} de la transformée de Weyl avec la transformée de Wigner.
     
-    <div class="theorem">
-        Soit $\sigma \in S^m, m \in \R$, alors
-        $$\langle W_\sigma f, g \rangle = (2 \pi)^{-n/2} \int_{\R^n} \int_{\R^n} \sigma(x, \xi) W(f,g) (x, \xi) dx d\xi,~ f,~ g \in \mathcal{S} (\R^n)$$
-    </div>
+                <div class="theorem">
+                    <p>
+                        Soit $\sigma \in S^m, m \in \R$, alors
+                    
+                        $$
+                        \langle W_\sigma f, g \rangle = (2 \pi)^{-n/2} \int_{\R^n} \int_{\R^n} \sigma(x, \xi) W(f,g) (x, \xi) dx d\xi,~ f,~ g \in \mathcal{S} (\R^n)
+                        $$
+                    </p>
+                </div>
     
                 <div class="proof">
                     Soit $\theta \in C_0^\infty(\R^n)$ tel que $\theta(0)=1$, alors,
@@ -154,11 +159,22 @@
     On appelle la $\mathbb{C}^*$-algèbre de tous les opérateurs linéaires bornés de $L^2(\R^n)$ dans $L^2(\R^n)$ par $B(L^2(\R^n))$. Les opérateurs bornés sont préservés par l'involution.
     
     Il est bon de chercher à étendre cet opérateur.
-    <div class="theorem">
-        Il existe un unique opérateur linéaire borné $Q : L^2(\R^{2n}) \ra B(L^2(\R^n))$ tel que
-        $$\langle ( Q_\sigma)f,g\rangle = (2 \pi)^{-n/2} \int_{\R^n} \int_{\R^n} \sigma(x, \xi) W(f,g)(x, \xi) dx d\xi$$
-        et $$\|Q \sigma\|_* \leq (2 \pi)^{-n/2}\|\sigma\|_{L^2(\R^{2n})}$$
-    </div>
+    
+                <div class="theorem">
+                    <p>
+                        Il existe un unique opérateur linéaire borné $Q : L^2(\R^{2n}) \ra B(L^2(\R^n))$ tel que
+                    
+                        $$
+                        \langle ( Q_\sigma)f,g\rangle = (2 \pi)^{-n/2} \int_{\R^n} \int_{\R^n} \sigma(x, \xi) W(f,g)(x, \xi) dx d\xi
+                        $$
+    
+                        et
+                        
+                        $$
+                        \|Q \sigma\|_* \leq (2 \pi)^{-n/2}\|\sigma\|_{L^2(\R^{2n})}
+                        $$
+                    </p>
+                </div>
     
                 <div class="proof">
                     Soit $\sigma \in \mathcal{S}(\R^{2n})$. Alors pour tout $f \in \mathcal{S}(\R^n)$, on définit $(\mathcal{Q}_\sigma) f$ par
@@ -293,13 +309,16 @@
     
     On est donc amené au <strong></strong>théorème principal} de cette partie.
     
-    <div class="theorem">
-        Soit $S_g$ et $S_h$ deux opérateurs de Hilbert-Schmidt correspondant aux noyaux $g$ et $h$ respectivement. Alors,
-        <ul>
-            <li></li> $S_g S_h = S_{g \circ h}$.
-            <li></li> $S_h* = S_{h*}$.
-        </ul>
-    </div>
+                <div class="theorem">
+                    <p>
+                        Soit $S_g$ et $S_h$ deux opérateurs de Hilbert-Schmidt correspondant aux noyaux $g$ et $h$ respectivement. Alors,
+                    </p>
+                    
+                    <ul>
+                        <li>$S_g S_h = S_{g \circ h}$.</li>
+                        <li>$S_h* = S_{h*}$.</li>
+                    </ul>
+                </div>
     
                 <div class="proof">
                     Soit $g$ et $h$ dans $L^2(\R^n)$.
@@ -389,9 +408,13 @@
     
     Les théorèmes principaux de ce chapitre sont maintenant introduits.
     
-    <div class="theorem">
-        Soit $\sigma \in L^2(\R^{2n})$, alors $W_\sigma : L^2(\R^n) \ra L^2(\R^n)$ est un <strong></strong>opérateur de Hilbert-Schmidt} de noyau $(2 \pi)^{-n/2}K_\sigma$
-    </div>
+                <div class="theorem">
+                    <p>
+                        Soit $\sigma \in L^2(\R^{2n})$, alors
+                        $W_\sigma : L^2(\R^n) \ra L^2(\R^n)$ est un <strong>opérateur de Hilbert-Schmidt</strong>
+                        de noyau $(2 \pi)^{-n/2}K_\sigma$
+                    </p>
+                </div>
     
                 <div class="proof">
                     Soit $f$ et $g$ dans $L^2(\R^n)$, $\sigma$ dans $L^2(\R^{2n})$ 
@@ -417,9 +440,12 @@
                 </div>
     
     
-    <div class="theorem">
-        Soit $S_h$ un opérateur de Hilbert-Schmidt dans $L^2(\R^n)$, alors $S_h$ est une <strong></strong>transformée de Weyl} de symbole $\sigma = (2 \pi)^{n/2}K^{-1}h$.
-    </div>
+                <div class="theorem">
+                    <p>
+                        Soit $S_h$ un opérateur de Hilbert-Schmidt dans $L^2(\R^n)$, alors $S_h$ est une
+                        <strong>transformée de Weyl</strong> de symbole $\sigma = (2 \pi)^{n/2}K^{-1}h$.
+                    </p>
+                </div>
     
                 <div class="proof">
         Soit $S_h$ un opérateur de Hilbert-Schmidt, $h \in L^2(\R^{2n})$.
@@ -506,17 +532,27 @@
     
     
                     <div class="theorem">
-                    L'application 
-                    $$L^2(\R^{2n}) \ni \sigma \mapsto (2 \pi)^{n/2} W_\sigma \in HS(L^2(\R^n))$$ est un $*-$isomorphisme isométrique de $(L^2(\R^{2n}), \times, -)$ dans $HS(L^2(\R^{2n}))$. 
+                        <p>
+                            L'application
+
+                            $$
+                            L^2(\R^{2n}) \ni \sigma \mapsto (2 \pi)^{n/2} W_\sigma \in HS(L^2(\R^n))
+                            $$
+                            
+                            est un $*-$isomorphisme isométrique de $(L^2(\R^{2n}), \times, -)$ dans $HS(L^2(\R^{2n}))$.         
+                        </p>
                     
-                    En conséquence, on a,
-                    <ul>
-                        <li></li> $W_\sigma^* = W_{\bar{\sigma}}$
-                        <li></li> $W_\sigma W_\tau = W_{(2 \pi)^{-n/2} \sigma \times \tau}$
-                        <li></li> $W_\sigma + W_\tau = W_{\sigma+\tau}$
-                        <li></li> $\lambda W_\sigma = W_{\lambda \sigma}$
-                        <li></li> $\|W_\sigma\|_* \leq (2 \pi)^{-n/2} \|\sigma\|_{L^2(\R^n)} = \|W_\sigma\|_{HS}$
-                    </ul>
+                        <p>
+                            En conséquence, on a,
+                        </p>
+                        
+                        <ul>
+                            <li>$W_\sigma^* = W_{\bar{\sigma}}$</li> 
+                            <li>$W_\sigma W_\tau = W_{(2 \pi)^{-n/2} \sigma \times \tau}$</li> 
+                            <li>$W_\sigma + W_\tau = W_{\sigma+\tau}$</li> 
+                            <li>$\lambda W_\sigma = W_{\lambda \sigma}$</li> 
+                            <li>$\|W_\sigma\|_* \leq (2 \pi)^{-n/2} \|\sigma\|_{L^2(\R^n)} = \|W_\sigma\|_{HS}$</li>
+                        </ul>
                     </div>
     
     

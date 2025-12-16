@@ -59,11 +59,15 @@
 
             <div id="article">
                 <h3>Preuve de la conjecture</h3>
-                Nous allons essayer d'expliquer sa démarche, et de démontrer, avec nos propres mots et nos formulations, la conjecture du nid d'abeille, nous essayerons d'illustrer les concepts.
-                (mise en contexte math : que l'on passe à l'inégalité isopérimétrique)
-                Il faut créer une formulation mathématique à cette conjecture, nous allons donner quelques définitions d'objets mathématiques nécessaires à la compréhension du théorème.
-                On va tout d'abord énoncer les différentes définitions utilisées ci-dessous
-                Nous verrons dans la fin de cette partie que Thomas C. Halles utilise beaucoup de fonction qui ne gardent que certaines valeurs, c'est une façon équivalente de faire la troncation d'ensembles. Nous ne savons cependant pas exactement pourquoi il a choisit ces valeurs particulières.
+
+                <div class="paragraph">
+                    Nous allons essayer d'expliquer sa démarche, et de démontrer, avec nos propres mots et nos formulations, la conjecture du nid d'abeille, nous essayerons d'illustrer les concepts.
+                    (mise en contexte math : que l'on passe à l'inégalité isopérimétrique)
+                    Il faut créer une formulation mathématique à cette conjecture, nous allons donner quelques définitions d'objets mathématiques nécessaires à la compréhension du théorème.
+                    On va tout d'abord énoncer les différentes définitions utilisées ci-dessous
+                    Nous verrons dans la fin de cette partie que Thomas C. Halles utilise beaucoup de fonction qui ne gardent que certaines valeurs, c'est une façon équivalente de faire la troncation d'ensembles. Nous ne savons cependant pas exactement pourquoi il a choisit ces valeurs particulières.
+                    
+                </div>
                 
                 <div class="definition">[Courbe lisse]
                 Une courbe dans le plan de classe $\mathcal{C}^{\infty}$ sera qualifiée de lisse.
@@ -77,17 +81,29 @@
                 Un graphe infini dont chaque sommets a un degré fini est dit localement fini.
                 </div>
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[La conjecture du nid d'abeille]
-                Soit $\Gamma$ un graphe localement fini de $\mathbb{R}^2$, composé de courbes lisses et tel que $\mathbb{R}^2 \backslash \Gamma$ ait une infinité de composantes connexes bornées, toute d'aire 1.
-                Soit C l'union de ces composantes bornées.
-                Alors $\underset{r \rightarrow \infty}{\limsup}~ \frac{\text{perim}(C \cap B(0,r))}{\text{aire}(C \cap B(0,r))}$
-                \end{theorem}
-                \end{tcolorbox}
+
+                <div class="theorem">
+                    <span class="title">La conjecture du nid d'abeille</span>
+                    <p>
+                        Soit $\Gamma$ un graphe localement fini de $\mathbb{R}^2$, composé de courbes lisses
+                        et tel que $\mathbb{R}^2 \backslash \Gamma$ ait une infinité de composantes connexes
+                        bornées, toute d'aire 1.
+                        
+                        Soit C l'union de ces composantes bornées.
+                    </p>
+
+                    <p>
+                        Alors
+                        
+                        $$\underset{r \rightarrow \infty}{\limsup}~ \frac{\text{perim}(C \cap B(0,r))}{\text{aire}(C \cap B(0,r))}$$        
+                    </p>
+                </div>
                 
                 Cependant ce problème pose problème car il n'est pas assez général. Et l'auteur Thomas C. Halles se demande pourquoi a t'on besoin d'utiliser une limite supérieure.
-                \subsection{La conjecture du nid d'abeille pour les ensembles ouverts non connexes}
-                <h4></h4>
+                
+
+                <h4>La conjecture du nid d'abeille pour les ensembles ouverts non connexes</h4>
+
                 Nous avons choisis de simplifier le théorème suivant, mais en restant assez général pour la suite de notre mémoire. 
                 Nous allons introduire les aspects mathématiques nécessaire à la compréhension du théorème.
                 Nous devons calculer la longueur d'une courbe paramétrée, si la courbe paramétrée est régulière, c'est à dire de classe $C^1$, la longueur d'une courbe paramétrée $\alpha : I \rightarrow \mathbb{R}$ est donnée par $\int^b_a ||\alpha ' (t) || dt$. Mais si la courbe paramétrée n'est pas de classe $C^1$, nous ne pouvons plus utiliser cette formule, on introduira donc la notion de courbe rectifiable pour ce cas de figure.
@@ -109,30 +125,38 @@
                 2.$\lambda([0,1])=1$
                 </div>
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[La conjecture du nid d'abeille pour les ensembles ouverts non connexes]
-                Soit K un ensemble compact dans le plan contenant des ensembles disjoints mesurables $R_1, R_2, \cdots$. 
-                On suppose que $R_i$ a une frontière rectifiable $\partial R_i$ pour tout i. 
-                On pose $\alpha _i = min(1, aire(R_i))$.  
-                On pose $\Gamma = \underset{i}{\cup} \partial R_i$. 
-                On suppose  qu'il existe i tel que $\alpha _i >0$. 
-                Alors $\lambda(\Gamma) > \sqrt[4]{12} \sum \alpha _i$.
+                <div class="theorem">
+                    <span class="title">La conjecture du nid d'abeille pour les ensembles ouverts non connexes</span>
+                    <p>
+                        Soit K un ensemble compact dans le plan contenant des ensembles disjoints mesurables $R_1, R_2$, ... 
+                        On suppose que $R_i$ a une frontière rectifiable $\partial R_i$ pour tout i. 
+                        On pose $\alpha _i = min(1, aire(R_i))$.  
+                        On pose $\Gamma = \underset{i}{\cup} \partial R_i$. 
+                        On suppose  qu'il existe i tel que $\alpha _i >0$.
+                    </p>
+
+                    <p>
+                        Alors
+                        
+                        $$\lambda(\Gamma) > \sqrt[4]{12} \sum \alpha _i$$.
+                    </p>
+                </div>
                 
-                \end{theorem}
-                \end{tcolorbox}
-                <h4></h4>
-                \subsection{La conjecture du nid d'abeille, version finie}
+                <h4>La conjecture du nid d'abeille, version finie</h4>
                 
                 { Voyons maintenant ce que cela donne en dimension finie.}
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[Conjecture du nid d'abeille, version finie]
-                Supposons que $0 < \alpha _i \leq 1$ pour $i = 1, \cdots, n$. Soit $A = \sum _i \alpha _i$. Alors
-                $$\text{perim}(\Gamma(\alpha_1, \cdots, \alpha_n)) > A \sqrt[4]{12}$$
-                
-                \end{theorem}
-                \end{tcolorbox}
-                
+                <div class="theorem">
+                    <span class="title">Conjecture du nid d'abeille, version finie</span>
+                    <p>
+                        Supposons que $0 < \alpha _i \leq 1$ pour $i = 1, \cdots, n$. Soit $A = \sum _i \alpha _i$. Alors
+                        
+                        $$
+                        \text{perim}(\Gamma(\alpha_1, \cdots, \alpha_n)) > A \sqrt[4]{12}
+                        $$
+                    </p>
+                </div>
+
                 { Nous ne démontrerons pas que ce théorème implique le théorème du nid d'abeille pour les ensembles ouverts non connexes car la démonstration est très compliquée, mais pas très longue, elle utilise des théories mathématiques comme celle des courants.}
                 Nous allons en revanche démontrer que ce théorème implique le théorème du nid d'abeille version naïve.
                 
@@ -152,18 +176,20 @@
                 
                 
                 </div>
-                            <hr>
+
+                <h4>La conjecture du nid d'abeille sur un tore</h4>
                 
-                            <h4>La conjecture du nid d'abeille sur un tore</h4>
                 { Ce théorème va nous permettre de passer de l'infini au fini.}
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[La conjecture du nid d'abeille sur un tore]
-                Soit les $R_i$, régions connectées de notre graphe, tel que l'union des $R_i$ est connectée. 
-                En supposant que chaque $R_i$ est un hexagone régulier d'aire 1 avec chaque $\alpha_i$ = 1, on a :
-                \centerline{perim~(${\bigcup}{\partial}{R_i}$)}
-                \end{theorem}
-                \end{tcolorbox}
+                <div class="theorem">
+                    <span class="title">La conjecture du nid d'abeille sur un tore</span>
+                    <p>
+                        Soit les $R_i$, régions connectées de notre graphe, tel que l'union des $R_i$ est connectée. 
+                        En supposant que chaque $R_i$ est un hexagone régulier d'aire 1 avec chaque $\alpha_i$ = 1, on a :
+                    
+                        $$perim~\left({\bigcup}{\partial}{R_i}\right)$$
+                    </p>
+                </div>
                 
                 { Montrons que le théorème de la conjecture du nid d'abeille sur un tore implique la conjecture du nid d'abeille version finie.} 
                 Il y aura deux situations dans la démonstration, un cas où l'on, pourra directement appliquer le théorème isopérimétrique afin d'obtenir l'inégalité voulue et un cas où l'on devra amener le graphe planaire fini sur un tore afin d'y appliquer le théorème nouvellement défini. Soit un graphe de l'énoncé du théorème du nid d'abeille version finie. On va alors transformer notre graphe en un cylindre. On va replier ce cylindre d'un bout à l'autre afin d'obtenir un tore. On se retrouve donc dans une situation où le tore peut être partitionné en des régions simplement connexes d'aire finie.
@@ -211,7 +237,10 @@
                 Par conséquent, l'aire  du graphe est au plus l'aire du carré de coté $|v|$, soit $|v|^2$.
                 On a donc $|v| \geq \sqrt{A}$ avec $A = \sum \alpha _i$ et $\alpha _i = min(1, aire(R_i)$.
                 Cette remarque sera importante pour la fin de la démonstration.
+                
                 On va maintenant passer au tore.
+
+
                 Soit w un vecteur orthogonal au vecteur v et unitaire. On choisit $\mu$ le plus grand nombre réel tel que $\Gamma + \mu v$ touche $\Gamma$ sans se superposer. Cela revient à pouvoir former le tore sans que le graphe ne se chevauche lui même. (avant dernière image)
                 Posons $\Delta = \mathbb{Z}v + \mathbb{Z}(\mu + \sqrt{\frac{1}{A}})w$
                 La fonction qui envoie le graphe du cylindre sur le tore $T = \mathbb{R}^2 \backslash \Delta$ est injective sauf aux deux points définissant le diamètre du graphe, on va donc ajouter un segment de longueur $ \frac{1}{\sqrt{A}} $ qui lie le graphe et son translaté, qui aura une utilité double : rendre la fonction qui envoie le graphe du cylindre sur le tore injective, et, éviter des cas dégénérés qui rendent invalide le théorème du nid d'abeille sur un tore. (dernière image)

@@ -35,7 +35,6 @@
         <!-- JS -->
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script defer src="/assets/js/katex-config.js"></script>
 
         <!-- ALL STYLESHEET -->
  
@@ -56,10 +55,7 @@
         </header>
         
         <main>
-            <div id="toc-container" style="height: 100vh;">
-                <div id="min-toc"></div>
-                <div id="full-toc" class="hidden"></div>
-            </div>
+            <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
 
@@ -118,19 +114,23 @@
                </div>
 
                 <div class="theorem">
-                    <span class="title">Règle de Cramer</span> <br>
-                    Soient \( A \in \mathbb{K}^{n \times n} \) une matrice inversible et \( b \in \mathbb{K}^n \).
-                    Alors les coefficients de l’unique solution \( y = (y_1, \ldots, y_n)^t \in \mathbb{K}^n \)
-                    du système linéaire \( A y = b \) sont donnés par
-
-                    \[
-                    y_i = \frac{\det (A_i)}{\det (A)},
-                    \]
-
-                    <span class="nowrap">
-                        où \( A_i \in \mathbb{K}^{n \times n} \) désigne la matrice obtenue à partir de \( A \) en remplaçant
-                        sa \( i \)-ième colonne par le vecteur \( b \).
-                    </span>
+                    <span class="title">Règle de Cramer</span>
+                    <p>
+                        Soient \( A \in \mathbb{K}^{n \times n} \) une matrice inversible et \( b \in \mathbb{K}^n \).
+                        Alors les coefficients de l’unique solution \( y = (y_1, \ldots, y_n)^t \in \mathbb{K}^n \)
+                        du système linéaire \( A y = b \) sont donnés par
+    
+                        \[
+                        y_i = \frac{\det (A_i)}{\det (A)},
+                        \]
+                    </p>
+                    
+                    <p>
+                        <span class="nowrap">
+                            où \( A_i \in \mathbb{K}^{n \times n} \) désigne la matrice obtenue à partir de \( A \) en remplaçant
+                            sa \( i \)-ième colonne par le vecteur \( b \).
+                        </span>
+                    </p>
                 </div>
             </div>
         </main>

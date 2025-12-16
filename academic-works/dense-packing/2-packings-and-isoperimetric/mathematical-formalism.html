@@ -58,78 +58,149 @@
             <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
-                \subsection{Le formalisme mathématique}
+                <h3>Le formalisme mathématique</h3>
 
-                { Nous allons aborder les théorèmes isopérimétrique, maintenant que nous avons expliqués qu'est ce que cela était intuitivement, nous allons essayer de mêler ces idées avec les mathématiques.}
-                Un théorème isopérimétrique étudie les propriétés des formes géométriques qui partagent une même mesure, par exemple le périmètre ou l'aire dans le plan. Ou par exemple la surface et le volume dans l'espace.
-                On verra que la figure du plan, qui, à périmètre fixé a la plus grande aire est le cercle, ou de façon équivalente, la figure du plan qui à aire fixée a le plus petit périmètre.
-                On verra de même que dans l'espace, c'est la boule qui pour une aire fixée, aura la plus petite surface. Cette affirmation se généraliser aux dimensions supérieures, la réponse sera une hypershpère de dimension n.
-                Cette dernière formulation est particulièrement utile dans le monde physique, une bulle de savon cherchera à minimiser sa surface, pour un volume donné, elle prendra donc la forme d'une sphère, les lièvres arctiques ont une forme plus arrondies que leur amis européens, en effet, pour un volume donné, ils veulent minimiser leur surface. On voit que la nature a l'aire particulièrement forte pour déterminer les solutions des problèmes isopérimétriques.
-                Introduisons les courbes de Jordan, qui seront le principal type de courbes dans le plan que nous étudierons et le théorème de Jordan, un théorème important en rapport avec les courbes de Jordan.
-                Nous ne démontrerons pas ce théorème.
-                
-                <div class="definition">[Courbe de Jordan]
-                Une courbe de Jordan est une application continue $\gamma : [0,1] \rightarrow \mathbb{R}^2$ telle que $\gamma(0) = \gamma(1)$ et $\gamma$ est injective, autrement dit, elle ne possède pas de points doubles.
-                
+                <div class="paragraph">
+                    Nous allons aborder les théorèmes isopérimétrique, maintenant que nous avons expliqués
+                    qu'est ce que cela était intuitivement, nous allons essayer de mêler ces idées avec
+                    les mathématiques.
+                </div>
+
+                <div class="paragraph">
+                    Un théorème isopérimétrique étudie les propriétés des formes géométriques qui partagent
+                    une même mesure, par exemple le périmètre ou l'aire dans le plan. Ou par exemple la surface
+                    et le volume dans l'espace.
+                </div>
+
+                <div class="paragraph">
+                    On verra que la figure du plan, qui, à périmètre fixé a la plus grande aire est le cercle,
+                    ou de façon équivalente, la figure du plan qui à aire fixée a le plus petit périmètre.
+                    On verra de même que dans l'espace, c'est la boule qui pour une aire fixée, aura la plus
+                    petite surface. Cette affirmation se généraliser aux dimensions supérieures, la réponse
+                    sera une hypershpère de dimension n.
+                </div>
+
+                <div class="paragraph">
+                    Cette dernière formulation est particulièrement utile dans le monde physique, une bulle de
+                    savon cherchera à minimiser sa surface, pour un volume donné, elle prendra donc la forme d'une
+                    sphère, les lièvres arctiques ont une forme plus arrondies que leur amis européens, en effet,
+                    pour un volume donné, ils veulent minimiser leur surface. On voit que la nature a l'aire
+                    particulièrement forte pour déterminer les solutions des problèmes isopérimétriques.
+                    Introduisons les courbes de Jordan, qui seront le principal type de courbes dans le plan
+                    que nous étudierons et le théorème de Jordan, un théorème important en rapport avec les courbes de Jordan.
+                    Nous ne démontrerons pas ce théorème.  
                 </div>
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[Théorème de Jordan]
-                Soit C une courbe de Jordan de $\mathbb{R}^2$ tel que $C = \gamma([0, t])$.
-                Alors le complémentaire $\mathbb{R}^2 \backslash C$, sous-ensemble ouvert de $\mathbb{R}^2$, est composé de deux composantes connexes : $\mathbb{R}^2 \backslash C = Int(C) \cup Ext(C)$
+                <div class="definition">[Courbe de Jordan]
+                    Une courbe de Jordan est une application continue $\gamma : [0,1] \rightarrow \mathbb{R}^2$ telle que
+                    $\gamma(0) = \gamma(1)$ et $\gamma$ est injective, autrement dit, elle ne possède pas de points doubles.
+                </div>
                 
-                La première partie, intérieure à C, bornée et relativement compacte.
-                la seconde, extérieure à C, non bornée allant vers l'infini.
-                \end{theorem}
-                \end{tcolorbox}
-                
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[Inégalité isopérimétrique]
-                Soit a,b $\in \mathbb{R}$, on a $[a,b]$ un intervalle compact de R. Soit $\gamma$ : $[a,b]$ $\rightarrow$ $\mathbb{C}$ une courbe de Jordan de classe $C^1$ par morceaux, de longueur L et enfermant une surface S (C'est-à-dire que $\gamma$ est une courbe continue fermée). Alors
-                \centerline{$L^2$ $\geq$ 4$\pi$S}
-                \centerline{i.e $\pi .(\frac{L}{2\pi})^2 \geq S$}
-                On voit que la surface délimitée par n'importe quelle courbe est inférieure à la surface d'un cercle de rayon $\frac{L}{2\pi}$. Autrement dit, avec une courbe de périmètre L, on peut construire un cercle de rayon $\frac{L}{2\pi}$, et on retrouve bien le périmètre du cercle L.
-                \end{theorem}
-                \end{tcolorbox}
-                
-                { Avant de prouver ce théorème, on doit introduire un peu de la théorie des séries de Fourier, tous les résultats présentés ici ne seront pas démontrés afin de ne pas s'éloigner de notre sujet. Cette théorie nous servira en effet à mieux comprendre la preuve. Nous verrons ensuite pourquoi les séries de Fourier sont utilisée pour cette preuve, notamment car on peut assimiler une courbe de Jordan à une fonction périodique.}
-                Les séries de Fourier sont un outil fondamental dans l'étude des fonctions périodiques.
+                <div class="theorem">
+                    <span class="title">Théorème de Jordan</span>
+                    
+                    <p>
+                        Soit C une courbe de Jordan de $\mathbb{R}^2$ tel que $C = \gamma([0, t])$.
+                    </p>
+
+                    <p>
+                        Alors le complémentaire $\mathbb{R}^2 \backslash C$, sous-ensemble ouvert de $\mathbb{R}^2$,
+                        est composé de deux composantes connexes : $\mathbb{R}^2 \backslash C = Int(C) \cup Ext(C)$    
+                    </p>
+                    
+                    <p>
+                        La première partie, intérieure à C, bornée et relativement compacte.
+                        la seconde, extérieure à C, non bornée allant vers l'infini.    
+                    </p>
+                </div>
+
+
+                <div class="theorem">
+                    <span class="title">Inégalité isopérimétrique</span>
+
+                    <p>
+                        Soit a,b $\in \mathbb{R}$, on a $[a,b]$ un intervalle compact de R. Soit $\gamma$ :
+                        $[a,b]$ $\rightarrow$ $\mathbb{C}$ une courbe de Jordan de classe $C^1$ par morceaux,
+                        de longueur L et enfermant une surface S (C'est-à-dire que $\gamma$ est une courbe continue fermée).
+                        
+                        Alors
+                        
+                        $$
+                        L^2 \geq 4\pi S
+                        $$
+                        
+                        i.e 
+                        
+                        $$
+                        \pi .\left(\frac{L}{2\pi}\right)^2 \geq S
+                        $$
+
+                        On voit que la surface délimitée par n'importe quelle courbe est inférieure à la surface d'un
+                        cercle de rayon $\frac{L}{2\pi}$. Autrement dit, avec une courbe de périmètre L, on peut
+                        construire un cercle de rayon $\frac{L}{2\pi}$, et on retrouve bien le périmètre du cercle L.
+                    </p>                
+                </div>
+
+                <div class="paragraph">
+                    { Avant de prouver ce théorème, on doit introduire un peu de la théorie des séries de Fourier, tous les résultats présentés ici ne seront pas démontrés afin de ne pas s'éloigner de notre sujet. Cette théorie nous servira en effet à mieux comprendre la preuve. Nous verrons ensuite pourquoi les séries de Fourier sont utilisée pour cette preuve, notamment car on peut assimiler une courbe de Jordan à une fonction périodique.}
+                    Les séries de Fourier sont un outil fondamental dans l'étude des fonctions périodiques.
+                    
+                </div>
                 
                 <div class="definition">[Fonction périodique]
                 Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ et $t \in \mathbb{R}$, on dit que f est t-périodique si 
                 \centerline{$\forall x \in \mathbb{R}, f(x+t) = f(x)$}
                 </div>
                 
-                { L'idée derrière les séries de Fourier est de décomposer une fonction t-périodique est une somme, finie ou infinie, de fonctions sinusoïdales.}
-                On suppose désormais que f est $L^p$ intégrable au sens de Lebesgue.
+                <div class="paragraph">
+                    { L'idée derrière les séries de Fourier est de décomposer une fonction t-périodique est une somme, finie ou infinie, de fonctions sinusoïdales.}
+                    On suppose désormais que f est $L^p$ intégrable au sens de Lebesgue.    
+                </div>
+
                 <div class="definition">[Coefficient de Fourier de f]
-                Soit f une fonction réelle T-périodique.
-                On définit le coefficient de Fourier de f par $ \frac{1}{T} \int _T f(t) e^{-i2 \pi \frac{n}{T}t} dt$ avec $n \in \mathbb{Z}$.
+                    Soit f une fonction réelle T-périodique.
+                    On définit le coefficient de Fourier de f par $ \frac{1}{T} \int _T f(t) e^{-i2 \pi \frac{n}{T}t} dt$ avec $n \in \mathbb{Z}$.
                 </div>
                 
                 <div class="definition">[Série de Fourier]
-                La série de Fourier de f est donc
-                $f(x) = \underset{n \in \mathbb{Z}}{\sum} c_n(f) e^{i2 \pi \frac{n}{T}x}$
+                    La série de Fourier de f est donc
+                    $f(x) = \underset{n \in \mathbb{Z}}{\sum} c_n(f) e^{i2 \pi \frac{n}{T}x}$
                 </div>
                 
-                Sire, voici une égalité qui nous sera bien utile.
+                <div class="paragraph">
+                    Sire, voici une égalité qui nous sera bien utile.
+                </div>
                 
                 <div class="definition">[Égalité de Parseval]
                 Soit f une fonction $T$-périodique, continue par morceaux, de carré intégrable $(f \in L^2)$. L'égalité de Parseval est :
                 $$ \underset{n \in \mathbb{Z}}{\sum} | c_n (f) | ^2 = \frac{1}{T} \int _T |f(t)|^2 dt$$
                 </div>
                 
-                { Introduisons maintenant des inégalitées qui seront utiles, ici nous ne le démontreront pas car elle sont très compliquée.}
+                <div class="paragraph">
+                    { Introduisons maintenant des inégalitées qui seront utiles, ici nous ne le démontreront pas car elle sont très compliquée.}
+                </div>
                 
-                \begin{tcolorbox}[colback=green!6]
-                \textbf{Théorème de Green}
-                \begin{center}
-                Soit C une courbe orientée positivement de classe $C^1$ délimitant un domaine borné D du plan. Soient P(x,y) et Q(x,y) deux fonctions continûment différentiables sur un ouvert contenant D. Alors :
-                \centerline{$\int_C$ P(x,y)dx + Q(x,y)dy = $\iint_D (\frac{\partial Q}{\partial x}$ - $\frac{\partial P}{\partial y})dxdy$}
-                \end{center}
-                \end{tcolorbox}
+                <div class="theorem">
+                    <span class="title">Théorème de Green</span>
+                    
+                    <p>
+                        Soit C une courbe orientée positivement de classe $C^1$ délimitant un domaine borné D du plan.
+                        Soient P(x,y) et Q(x,y) deux fonctions continûment différentiables sur un ouvert contenant D.
+                    </p>
+                    
+                    <p>
+                        Alors :
+                        
+                        $$
+                        \int_C P(x,y)dx + Q(x,y)dy = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dxdy
+                        $$
+                    </p>
+                </div>
                 
-                { Afin de comprendre le théorème isopérimétrique, nous allons introduire les concepts mathématiques nécessaires à sa compréhension}
+                <div class="paragraph">
+                    { Afin de comprendre le théorème isopérimétrique, nous allons introduire les concepts mathématiques nécessaires à sa compréhension}
+                
+                </div>
                 
                 <div class="definition">[La formule de Stokes]
                 Soit D un domaine régulier d'une sous-variété de dimension 2 orientée S et soit $\partial D$ son bord orienté. Soit $\alpha$ une 1-forme définie sur un ouvert contenant S, alors :
@@ -137,53 +208,84 @@
                 </div>
                 
                 <div class="proof">[Preuve du théorème isopérimétrique pour les courbes de Jordan]
-                { Pour prouver ce théorème, nous allons utiliser la théorie de la mesure de Lebesgue. D'après le théorème de Jordan, $\mathbb{C} \backslash \Gamma$ possède exactement deux composantes connexes, l'une notée A bornée et l'autre non bornée. On a alors S=$\lambda$(A).
+
+                    <div class="paragraph">
+                        { Pour prouver ce théorème, nous allons utiliser la théorie de la mesure de Lebesgue. D'après le théorème de Jordan, $\mathbb{C} \backslash \Gamma$ possède exactement deux composantes connexes, l'une notée A bornée et l'autre non bornée. On a alors S=$\lambda$(A).
+                    </div>
                 
-                { De plus, si on pose $f=x+iy$, avec f orientée positivement, on a avec la formule de Green-Riemann avec Q: (x,y) $\rightarrow$ $\frac{x}{2}$, P: (x,y) $\rightarrow$ $\frac{-y}{2}$ et $\Omega$ l'intérieur de la courbe $\Gamma$ on a $\frac{\partial Q}{\partial x}$ - $\frac{\partial P}{\partial y}$=1 et donc 
-                S=$\iint_\Omega$dxdy = $\int_{\partial\Omega} (P(x,y)dx + Q(x,y)dy)$= $\frac{1}{2}\int^b_a$x(t)y'(t) - y(t)x'(t)dt =$\frac{1}{2}$Im($\int^b_a f'(s)\overline{f(s)}$ds)}}
-                On peut supposer sans perdre de généralité que L = 1. De même, quitte à paramétrer la courbe différemment, on peut la paramétrer par une abscisse curviligne de la courbe, c'est à dire rendre notre paramétrage normal, et supposer que notre courbe est orientée positivement.
-                On va maintenant préparer le contexte pour introduire les séries de Fourier.
-                Transformons f en une fonction périodique. Puisque $f(0) = f(1)$, on peut prolonger f en une fonction 1-périodique et $C^1$ par morceaux.
-                Alors, pour $n \in \mathbb{Z}$, on peut définir, le n-ème coefficient de Fourier de cette application :
-                $C_n(f) := \int _{[0,1]} f(s) e^{-2 i \pi ns} ds$.
-                Comme f est de classe $C^1$ sur $[0,1]$, on a $C_n(f') = 2i \pi n C_n(f)$. On retrouve ce résultat par une simple intégration par partie.
-                La formule de Parseval appliquée à $f'$ qui est bien $L^2$ car continue sur un compact, donne alors :
-                $L = 1 = \int _{[0,1]} -f'(s)| ds = \underset{n \in \mathbb{Z}}{\sum} |C_n(f')|^2 = \underset{n \in \mathbb{Z}}{\sum} 4 \pi ^2 n^2 |C_n(f)|^2$.
-                Comme $f$ et $f'$ sont $L^2$ elles sont sommes au sens $L^2$ de leur séries de Fourier. En particulier :
-                $\int _{[0,1]} f'(s) \overline{f(s)} ds =\underset{n \in \mathbb{Z}}{\sum} C_n(f') \overline{C_n(f)}$. On a ainsi par la formule définie au début de la preuve : $S = \frac{1}{2} Im(\int _{[0,1]} f'(s) \overline{f(s)}) = \frac{1}{2} Im(\underset{n \in \mathbb{Z}}{\sum} C_n(f') \overline{C_n(f)}) = \frac{1}{2} Im(\underset{n \in \mathbb{Z}}{\sum} 2 i \pi c C_n(f) \overline{C_n(f)}) = \underset{n \in \mathbb{Z}}{\sum} \pi n |C_n(f)|^2$ car $C_n(f) \overline{C_n(f)} = |C_n(f)|^2$.
-                Pour finir la preuve, étudions maintenant le signe de la différence de $L = L^2 = 1$ et $4 \pi S$
-                $$L-4 \pi S = \sum 4 n^2 \pi ^2 |C_n(f)|^2 - 4 \pi \sum \pi n |C_n(f)|^2$$
-                $$= 4 \pi ^2 \sum ((n^2-n) |C_n(f)|^2)) \geq 0$$
-                Car c'est une somme de termes positifs, d'où $L^2 \geq 4 \pi S$.
-                Pour le cas de l'égalité $L^2 = 4 \pi S$. Comme $n^2-n > 0 \forall n \geq 2$ et tout n strictement négatif, cela implique que les coefficients $C_n(f)$ sont nulles pour tout $n \in \mathbb{Z} \backslash {0,1}$.
-                Ainsi $L^2 = 4 \pi S$ si et seulement si pour tout $s \in [0,1], f(s)$ est égal à $C_0(f) +C_1(f) e^{i 2 \pi s}$.
-                Ce qui définit le cercle d'équation de centre $c_0(f)$ et de rayon $|c_1(f)|$.
+                    <div class="paragraph">
+                        { De plus, si on pose $f=x+iy$, avec f orientée positivement, on a avec la formule de Green-Riemann avec Q: (x,y) $\rightarrow$ $\frac{x}{2}$, P: (x,y) $\rightarrow$ $\frac{-y}{2}$ et $\Omega$ l'intérieur de la courbe $\Gamma$ on a $\frac{\partial Q}{\partial x}$ - $\frac{\partial P}{\partial y}$=1 et donc 
+                        S=$\iint_\Omega$dxdy = $\int_{\partial\Omega} (P(x,y)dx + Q(x,y)dy)$= $\frac{1}{2}\int^b_a$x(t)y'(t) - y(t)x'(t)dt =$\frac{1}{2}$Im($\int^b_a f'(s)\overline{f(s)}$ds)}}
+                        
+                    </div>
+
+                    <div class="paragraph">
+                        On peut supposer sans perdre de généralité que L = 1. De même, quitte à paramétrer la courbe différemment, on peut la paramétrer par une abscisse curviligne de la courbe, c'est à dire rendre notre paramétrage normal, et supposer que notre courbe est orientée positivement.
+                        On va maintenant préparer le contexte pour introduire les séries de Fourier.
+                        Transformons f en une fonction périodique. Puisque $f(0) = f(1)$, on peut prolonger f en une fonction 1-périodique et $C^1$ par morceaux.
+                        Alors, pour $n \in \mathbb{Z}$, on peut définir, le n-ème coefficient de Fourier de cette application :
+                        $C_n(f) := \int _{[0,1]} f(s) e^{-2 i \pi ns} ds$.
+                        Comme f est de classe $C^1$ sur $[0,1]$, on a $C_n(f') = 2i \pi n C_n(f)$. On retrouve ce résultat par une simple intégration par partie.
+                        La formule de Parseval appliquée à $f'$ qui est bien $L^2$ car continue sur un compact, donne alors :
+                        $L = 1 = \int _{[0,1]} -f'(s)| ds = \underset{n \in \mathbb{Z}}{\sum} |C_n(f')|^2 = \underset{n \in \mathbb{Z}}{\sum} 4 \pi ^2 n^2 |C_n(f)|^2$.
+                        Comme $f$ et $f'$ sont $L^2$ elles sont sommes au sens $L^2$ de leur séries de Fourier. En particulier :
+                        $\int _{[0,1]} f'(s) \overline{f(s)} ds =\underset{n \in \mathbb{Z}}{\sum} C_n(f') \overline{C_n(f)}$.
+                        On a ainsi par la formule définie au début de la preuve :
+                        
+                        $S = \frac{1}{2} Im(\int _{[0,1]} f'(s) \overline{f(s)}) = \frac{1}{2} Im(\underset{n \in \mathbb{Z}}{\sum} C_n(f') \overline{C_n(f)}) = \frac{1}{2} Im(\underset{n \in \mathbb{Z}}{\sum} 2 i \pi c C_n(f) \overline{C_n(f)}) = \underset{n \in \mathbb{Z}}{\sum} \pi n |C_n(f)|^2$
+                         car $C_n(f) \overline{C_n(f)} = |C_n(f)|^2$
+                    </div>    
+                    <div class="paragraph">    
+                        Pour finir la preuve, étudions maintenant le signe de la différence de $L = L^2 = 1$ et $4 \pi S$
+                            
+                            $$
+                            L-4 \pi S = \sum 4 n^2 \pi ^2 |C_n(f)|^2 - 4 \pi \sum \pi n |C_n(f)|^2
+                            $$
+                            
+                            $$
+                            = 4 \pi ^2 \sum ((n^2-n) |C_n(f)|^2)) \geq 0
+                            $$
+                        
+                            Car c'est une somme de termes positifs, d'où $L^2 \geq 4 \pi S$.
+                        Pour le cas de l'égalité $L^2 = 4 \pi S$. Comme $n^2-n > 0 \forall n \geq 2$ et tout n strictement négatif, cela implique que les coefficients $C_n(f)$ sont nulles pour tout $n \in \mathbb{Z} \backslash {0,1}$.
+                        Ainsi $L^2 = 4 \pi S$ si et seulement si pour tout $s \in [0,1], f(s)$ est égal à $C_0(f) +C_1(f) e^{i 2 \pi s}$.
+                        Ce qui définit le cercle d'équation de centre $c_0(f)$ et de rayon $|c_1(f)|$.
+                    </div>
                 </div>
                 
-                { \textbf{}Nous allons maintenant énoncer d'autres théorèmes isopérimétriques, nous les donnons pour comprendre ce qu'il se passe en dimensions supérieure. Nous avons choisis de ne pas les démontrer.}
+                <div class="paragraph">
+                    { \textbf{}Nous allons maintenant énoncer d'autres théorèmes isopérimétriques, nous les donnons pour comprendre ce qu'il se passe en dimensions supérieure. Nous avons choisis de ne pas les démontrer.}
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[Théorème isopérimétrique dans l'espace]
-                Soit un compact K, de volume V, de frontière d'aire S.
-                Alors $S^3 \geq 36 \pi V^2$ avec égalité si et seulement si K est une boule.
-                \end{theorem}
-                \end{tcolorbox}
+                </div>
                 
-                { En dimension supérieure à 3, nous devons donner plus de contexte car le théorème est plus délicat à mettre en place.}
+                <div class="theorem">
+                    <span class="title">Théorème isopérimétrique dans l'espace</span>
+
+                    <p>
+                        Soit un compact K, de volume V, de frontière d'aire S.
+                        Alors $S^3 \geq 36 \pi V^2$ avec égalité si et seulement si K est une boule.    
+                    </p>
+                </div>
+
+                <div class="paragraph">
+                    { En dimension supérieure à 3, nous devons donner plus de contexte car le théorème est plus délicat à mettre en place.}
                 Soit E un espace euclidien, de dimension $n \geq 4$. On munit E de la mesure de Lebesgue $\mu$.
                 On note B la boule unité de E.
                 Soit A un compact de E dont on note $\partial A$ la frontière.
                 Ainsi $\mu(A)$ représente le "volume" de A.
                 Cependant, on ne peut pas mesurer simplement $\partial A$, on ne sait pas si cet ensemble est mesurable au sens de Lebesgue. On va donc utiliser la formule de Steiner-Minkowski :
                 \centerline{$\lambda( \partial A) = \underset{ \epsilon \rightarrow 0}{liminf} \frac{\mu(A+ \overline{B_\epsilon} - \mu (A)}{\epsilon}$} où $\overline{B_\epsilon}$ est la boule fermée de E de rayon $\epsilon$.
+
+                </div>
                 
-                \begin{tcolorbox}[colback=green!6]
-                \begin{theorem}[Inégalité isopérimétrique en dimension n]
-                On a $\lambda (\partial A)^n \geq n^n \mu (A)^{n-1} \mu (B)$ avec égalité si et seulement si A = B.
-                \end{theorem}
-                \end{tcolorbox}
+                <div class="theorem">
+                    <span class="title">Inégalité isopérimétrique en dimension $n$</span>
+
+                    <p>
+                        On a $\lambda (\partial A)^n \geq n^n \mu (A)^{n-1} \mu (B)$ avec égalité si et seulement si A = B.
+                    </p>
+                </div>
                 
-                            <hr>
             </div>
 
         </main>

@@ -35,7 +35,6 @@
         <!-- JS -->
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-        <script defer src="/assets/js/katex-config.js"></script>
         
         <!-- ALL STYLESHEET -->
  
@@ -56,10 +55,7 @@
         </header>
         
         <main>
-            <div id="toc-container" style="height: 100vh;">
-                <div id="min-toc"></div>
-                <div id="full-toc" class="hidden"></div>
-            </div>
+            <div id="toc-container" style="height: 100vh;"></div>
 
             <div id="article">
                 <h2>Vers une réduction LLL adaptée aux réseaux d’approximation</h2>
@@ -211,7 +207,9 @@ où \(r \coloneqq \rang(F) \), \( P \) est une matrice de permutation, \( L \) e
                 </div>
 
                 <div class="theorem">
-                    L'algorithme PLE calcule correctement une décomposition qui satisfait 6.1.
+                    <p>
+                        L'algorithme PLE calcule correctement une décomposition qui satisfait 6.1.
+                    </p>
                 </div>
 
                 <div class="counterexample">
@@ -310,31 +308,33 @@ où \(r \coloneqq \rang(F) \), \( P \) est une matrice de permutation, \( L \) e
                 </div>
 
                 <div class="theorem">
-                    Les matrices
-                    \[
-                    \begin{bmatrix}
-                        L_r \cdot p^\sigma & 0 \\
-                        G & I_{m-r}
-                    \end{bmatrix}
-                    \cdot
-                    \begin{bmatrix}
-                        e_{\tau(1)} \\
-                        \vdots \\
-                        e_{\tau(n)}
-                    \end{bmatrix}
-                    , \quad
-                    \begin{bmatrix}
-                        I_r \cdot p^\sigma & 0 \\
-                        G & I_{m-r}
-                    \end{bmatrix}
-                    \cdot
-                    \begin{bmatrix}
-                        e_{\tau(1)} \\
-                        \vdots \\
-                        e_{\tau(n)}
-                    \end{bmatrix}
-                    \]
-                    sont deux bases de \( F_{p^\sigma}\)
+                    <p>
+                        Les matrices
+                        \[
+                        \begin{bmatrix}
+                            L_r \cdot p^\sigma & 0 \\
+                            G & I_{m-r}
+                        \end{bmatrix}
+                        \cdot
+                        \begin{bmatrix}
+                            e_{\tau(1)} \\
+                            \vdots \\
+                            e_{\tau(n)}
+                        \end{bmatrix}
+                        , \quad
+                        \begin{bmatrix}
+                            I_r \cdot p^\sigma & 0 \\
+                            G & I_{m-r}
+                        \end{bmatrix}
+                        \cdot
+                        \begin{bmatrix}
+                            e_{\tau(1)} \\
+                            \vdots \\
+                            e_{\tau(n)}
+                        \end{bmatrix}
+                        \]
+                        sont deux bases de \( F_{p^\sigma}\)
+                    </p>
                 </div>
 
                 <div class="remark">

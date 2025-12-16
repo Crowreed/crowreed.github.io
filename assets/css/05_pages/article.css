@@ -75,9 +75,7 @@ table{
   content: "Remarque.";
 }
 
-.theorem > .label::before{
-  content: "Théorème.";
-}
+
 
 
 .proof > .label::before{
@@ -260,4 +258,34 @@ a:hover{
 
   justify-content: flex-end;
   margin-right: 20px;
+}
+
+
+
+.theorem{
+    
+    border-left: 1px solid var(--primary-border-color);
+    border-bottom: 1px solid var(--primary-border-color);
+}
+
+.theorem > .label::before{
+  content: "Théorème:";
+}
+
+.theorem > .title{
+    font-weight: 700;
+    font-style: normal;
+    color: var(--secondary-text-color)
+}
+
+.theorem{
+    padding: 0.5rem;    
+}
+
+.theorem > p{
+    padding-top: 0.5rem;
+}
+
+.theorem > ul{
+    padding-top: 0.5rem;
 }
