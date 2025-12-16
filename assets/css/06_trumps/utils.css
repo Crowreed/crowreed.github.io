@@ -1,11 +1,11 @@
 .nowrap{
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .hidden{
-  display: none;
+  display: none !important;
 }
 
 .underline {
-  text-decoration: underline; 
+  text-decoration: underline !important; 
 }

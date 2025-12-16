@@ -1,32 +1,247 @@
+/*
+Liste des selecteurs
+
+.conjecture
+.counterexample
+.definition
+.example
+.lemma
+.notation
+.paragraph
+.problem
+.proof
+.proposition
+.remark
+.theorem
+*/
+
 #article{
-    width: 900px;
-    margin: 0 auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    max-width: 900px;
+    width: 100%;
+    margin: 1rem auto;
 }
 
-/*
-#article ol, 
-#article ul{
-  padding: 0px 40px;
-}
+/*--------------------------------------*/
+/*                                      */
+/* -------- gestion des listes -------- */
 
-
-#article li{
-  padding: 2px 0px;
-}*/
-/*
-#article ul > li{
+.conjecture > ul,
+.counterexample > ul,
+.definition > ul,
+.example > ul,
+.lemma > ul,
+.notation > ul,
+.paragraph > ul,
+.problem > ul,
+.proof > ul,
+.proposition > ul,
+.remark
+.theorem > ul{
+  margin: 1rem 0;
   list-style-type:disc;
 }
 
-#article ol > li{
-  list-style-type:decimal;
+.conjecture ul,
+.counterexample ul,
+.definition ul,
+.example ul,
+.lemma ul,
+.notation ul,
+.paragraph ul,
+.problem ul,
+.proof ul,
+.proposition ul,
+.remark
+.theorem ul{
+  padding: 0px 40px;
 }
 
-.article li ul > li{
+.conjecture ol,
+.counterexample ol,
+.definition ol,
+.example ol,
+.lemma ol,
+.notation ol,
+.paragraph ol,
+.problem ol,
+.proof ol,
+.proposition ol,
+.remark
+.theorem ol{
+  list-style-type:decimal;
+  padding: 0px 40px;
+}
+
+.conjecture ul ul,
+.counterexample ul ul,
+.definition ul ul,
+.example ul ul,
+.lemma ul ul,
+.notation ul ul,
+.paragraph ul ul,
+.problem ul ul,
+.proof ul ul,
+.proposition ul ul,
+.remark
+.theorem ul ul{
   list-style-type: square;
-}*/
+  margin-bottom: 0.75rem;
+}
+
+.conjecture ul ol,
+.counterexample ul ol,
+.definition ul ol,
+.example ul ol,
+.lemma ul ol,
+.notation ul ol,
+.paragraph ul ol,
+.problem ul ol,
+.proof ul ol,
+.proposition ul ol,
+.remark
+.theorem ul ol{
+  margin-bottom: 0.75rem;
+}
+
+.conjecture > ul > li,
+.counterexample > ul > li,
+.definition > ul > li,
+.example > ul > li,
+.lemma > ul > li,
+.notation > ul >li,
+.paragraph > ul > li,
+.problem > ul > li,
+.proof > ul > li,
+.proposition > ul > li,
+.remark
+.theorem > ul > li{
+  margin-bottom: 6px 0px;
+}
+
+.conjecture li,
+.counterexample li,
+.definition li,
+.example li,
+.lemma li,
+.notation li,
+.paragraph li,
+.problem li,
+.proof li,
+.proposition li,
+.remark
+.theorem li{
+  padding: 3px 0px;
+}
+
+/*--------------------------------------*/
+/*                                      */
+/* -------- gestion des label --------- */
+
+.conjecture > .label::before{
+  content: "Conjecture.";
+}
+
+.counterexample > .label::before{
+  content: "Contre-exemple.";
+}
+
+.definition > .label::before{
+  content: "Définition.";
+}
+
+.example > .label::before{
+  content: "Exemple.";
+}
+
+.lemma > .label::before{
+  content: "Lemme.";
+}
+
+.notation > .label::before{
+  content: "Notation.";
+}
+
+.paragraph > .label::before{
+  content: "";
+}
+
+.problem > .label::before{
+  content: "Problème.";
+}
+
+.proof > .label::before{
+  content: "Preuve.";
+}
+
+.proposition > .label::before{
+  content: "Proposition";
+}
+
+.remark > .label::before{
+  content: "Remarque.";
+}
+
+.theorem > .label::before{
+  content: "Théorème:";
+}
+
+/* Gestion des liens */
+
+.conjecture a,
+.counterexample a,
+.definition a,
+.example a,
+.lemma a,
+.notation a,
+.paragraph a,
+.problem a,
+.proof a,
+.proposition a,
+.remark a,
+.theorem a{
+  color: var(--secondary-text-color);
+  display: inline;
+  text-decoration: underline;
+}
+
+.conjecture a:hover,
+.counterexample a:hover,
+.definition a:hover,
+.example a:hover,
+.lemma a:hover,
+.notation a:hover,
+.paragraph a:hover,
+.problem a:hover,
+.proof a:hover,
+.proposition a:hover,
+.remark a:hover,
+.theorem a:hover{
+  text-decoration: none;
+}
+
+/*-------------------------*/
+
+#article > h1, 
+#article > h2, 
+#article > h3, 
+#article > h4, 
+#article > h5, 
+#article > h6{
+  margin: 1.5rem 0rem;
+}
+
+
+
+/*-----------------------*/
+.qed{
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+
 
 
 .remark,
@@ -49,146 +264,12 @@ table{
   margin: 0.75rem 0rem;
 }
 
-
-.paragraph a{
-  display: inline;
-  text-decoration: underline;
-}
-
-/*#article a {
-  color: var(--secondary-text-color);
-}*/
-
-.paragraph a:hover{
-  text-decoration: none;
-}
-
-.counterexample > .label::before{
-  content: "Contre-exemple.";
-}
-
-.example > .label::before{
-  content: "Exemple.";
-}
-
-.remark > .label::before{
-  content: "Remarque.";
-}
-
-
-
-
-.proof > .label::before{
-  content: "Preuve.";
-}
-
-/*faire un aft'er pour le symbole qed*/
- 
-
-.proposition > .label::before{
-  content: "Proposition.";
-}
-
-.problem > .label::before{
-  content: "Problème.";
-}
-
-.conjecture > .label:before{
-  content: "Conjecture.";
-}
-
-.definition > .label::before{
-  content: "Définition.";
-}
-
-.lemma > .label::before{
-  content: "Lemme.";
-}
-
-
-.notation > .label:before{
-  content: "Notation.";
-}
-
-.example, 
-.counterexample,
-.notation,
-.proof{
-
-  font-weight: 200;
-  font-style: italic;
-  line-height: 26px;
-  letter-spacing: 0px;
-}
-
-.definition, 
-.remark, 
-.theorem, 
-.proposition, 
-.problem, 
-.lemma,
-.paragraph{
-
-  font-weight: 200;
-  font-style: normal;
-  line-height: 26px;
-  letter-spacing: 0px;
-}
-
-.problem{
-  border-left: rgba(171, 71, 188, 0.74) 2px solid;
-  padding-left: 12px;
-}
-
-.proof{
-  border-left: 2px solid var(--primary-border-color);
-  padding-left: 12px;
-
-}
-
-.proof > .paragraph{
-  padding-left: 12px;
-}
-
-.label{
-
-  font-weight: 700;
-  font-style: italic;
-  line-height: 26px;
-  letter-spacing: 0px;
-  padding-right: 3px;
-}
-
-
-/*
-.article h1, 
-.article h2, 
-.article h3, 
-.article h4, 
-.article h5, 
-.article h6,
-#article h1, 
-#article h2, 
-#article h3, 
-#article h4, 
-#article h5, 
-#article h6{
-  margin: 1.5rem 0rem;
-  white-space: nowrap;
-}
-*/
-
-
-
-
 strong{
-
   font-weight: 700;
   font-style: normal;
   line-height: 26px;
   letter-spacing: 0px;
 }
-
 
 /*
 .paragraph, p, li, figcaption{
@@ -198,10 +279,6 @@ strong{
   line-height: 1.5;
   letter-spacing: 0px;
 }
-
-
-
-
 
 h1{
 
@@ -246,10 +323,7 @@ a:hover{
   text-decoration: none;
 }
 
-.qed{
-  width: 20px;
-  height: 20px;
-}
+
 
 .end-proof{
   display: flex;
@@ -260,17 +334,12 @@ a:hover{
   margin-right: 20px;
 }
 
-
-
 .theorem{
     
     border-left: 1px solid var(--primary-border-color);
     border-bottom: 1px solid var(--primary-border-color);
 }
 
-.theorem > .label::before{
-  content: "Théorème:";
-}
 
 .theorem > .title{
     font-weight: 700;
@@ -288,4 +357,51 @@ a:hover{
 
 .theorem > ul{
     padding-top: 0.5rem;
+}
+
+
+.example, 
+.counterexample,
+.notation,
+.proof{
+
+  font-weight: 200;
+  font-style: italic;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+.definition, 
+.remark, 
+.theorem, 
+.proposition, 
+.problem, 
+.lemma,
+.paragraph{
+  font-weight: 200;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0px;
+}
+
+.problem{
+  border-left: rgba(171, 71, 188, 0.74) 2px solid;
+  padding-left: 12px;
+}
+
+.proof{
+  border-left: 2px solid var(--primary-border-color);
+  padding-left: 12px;
+}
+
+.proof > .paragraph{
+  padding-left: 12px;
+}
+
+.label{
+  font-weight: 700;
+  font-style: italic;
+  line-height: 26px;
+  letter-spacing: 0px;
+  padding-right: 3px;
 }
