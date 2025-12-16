@@ -270,39 +270,40 @@
                     détaillera la notion de cycles isomorphes plus tard.
                 </div>
     
-                <figure>
-                    <div class="fig-container">
-                        <table>
-                            <tr>
-                                <td>$n$</td>
-                                <td>Sans compter les cycles isomorphes</td>
-                                <td>En comptant tous les cycles</td>
-                            </tr>
-                            <tr>
-                                <td>$2$</td>
-                                <td>$1$</td>
-                                <td>$1$</td>
-                            </tr>
-                            <tr> 
-                                <td>$3$</td>
-                                <td>$1$</td>
-                                <td>$6$</td>
-                            </tr>
-                            <tr>
-                                <td>$4$</td>
-                                <td>$9$</td>
-                                <td>$1344$</td>
-                            </tr>
-                            <tr>
-                                <td>$5$</td>
-                                <td>$275065$</td>
-                                <td>$906~545~760$</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <figcaption>Nombre de cycle Hamiltoniens</figcaption>
-                </figure>
-    
+                <table>
+                    <caption>Nombre de cycle Hamiltoniens</caption>
+                    
+                    <thead>
+                        <tr>
+                            <th>$n$</th>
+                            <th>Sans compter les cycles isomorphes</th>
+                            <th>En comptant tous les cycles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$2$</td>
+                            <td>$1$</td>
+                            <td>$1$</td>
+                        </tr>
+                        <tr> 
+                            <td>$3$</td>
+                            <td>$1$</td>
+                            <td>$6$</td>
+                        </tr>
+                        <tr>
+                            <td>$4$</td>
+                            <td>$9$</td>
+                            <td>$1344$</td>
+                        </tr>
+                        <tr>
+                            <td>$5$</td>
+                            <td>$275065$</td>
+                            <td>$906~545~760$</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 <div class="paragraph">
                     Pour $n \geq 6$ ces valeurs ne sont pas connues.
                 </div>
@@ -312,36 +313,44 @@
                     représenté en rouge.
                 </div>
     
-                <figure>
-                    <div class="fig-container">
-                        <table>
-                            <tr>
-                                <td>Code de Gray associé</td>
-                                <td>Hypercube</td>
-                            </tr>
-                            <tr>
-                                <td>$0 \rightarrow 1$</td>
-                                <td>
-                                    <!-- https://q.uiver.app/#q=WzAsMixbMCwwLCIwIl0sWzEsMCwiMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d -->
-                                    <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMixbMCwwLCIwIl0sWzEsMCwiMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed" width="304" height="176" style="border-radius: 8px; border: none;"></iframe>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>$00 \rightarrow 10 \rightarrow 11 \rightarrow 01$</td>
-                                <td><!-- https://q.uiver.app/#q=WzAsNCxbMCwwLCIwMCJdLFsxLDAsIjEwIl0sWzAsMSwiMDEiXSxbMSwxLCIxMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d -->
-                                    <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsNCxbMCwwLCIwMCJdLFsxLDAsIjEwIl0sWzAsMSwiMDEiXSxbMSwxLCIxMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed" width="304" height="304" style="border-radius: 8px; border: none;"></iframe></td>
-                            </tr>
-                            <tr>
-                                <td>$000 \rightarrow 001 \rightarrow 101 \rightarrow 100 \rightarrow 110 \rightarrow  111 \rightarrow 011 \rightarrow 010$</td>
-                                <td><!-- https://q.uiver.app/#q=WzAsOCxbMCwwLCIwMDEiXSxbMywwLCIwMTEiXSxbMSwxLCIxMDEiXSxbMiwxLCIxMTEiXSxbMSwyLCIxMDAiXSxbMiwyLCIxMTAiXSxbMCwzLCIwMDAiXSxbMywzLCIwMTAiXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ== -->
-                                    <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsOCxbMCwwLCIwMDEiXSxbMywwLCIwMTEiXSxbMSwxLCIxMDEiXSxbMiwxLCIxMTEiXSxbMSwyLCIxMDAiXSxbMiwyLCIxMTAiXSxbMCwzLCIwMDAiXSxbMywzLCIwMTAiXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==&embed" width="560" height="560" style="border-radius: 8px; border: none;"></iframe></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <figcaption> Un code de Gray sur $n$ bits associé à un cycle Hamiltonien dans $\mathcal{Q}_n$</figcaption>
-                </figure>
-    
-                <div class="paragraph">Dans ce mémoire, nous allons principalement nous concentrer sur l'analyse de $\mathcal{Q}_5$, étant donné que les codes de Beckett-Gray sont disponibles pour tout $n\geq5$. Nous aborderons brièvement le cas $n=6$, bien que les temps de calcul soient considérablement plus longs dans ce cas. Le diamètre de $\mathcal{Q}_5$ (resp. $\mathcal{Q}_6$ est de $5$ (resp. $6$), son ordre est de $32$ (resp. $64$) et sa taille est de $80$ (resp. $192$), chaque sommet de $\mathcal{Q}_5$ (resp. $\mathcal{Q}_6$) a un degré de $5$ (resp. $6$), une somme totale de toutes les distances égale à $1280$ (resp. $6144$) ainsi qu'une distance moyenne entre deux sommets de $2,58$ (resp. $3,04$).
+                <table>
+                    <caption>Un code de Gray sur $n$ bits associé à un cycle Hamiltonien dans $\mathcal{Q}_n$</caption>
+
+                    <thead>
+                        <tr>
+                            <th>Code de Gray associé</th>
+                            <th>Hypercube</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$0 \rightarrow 1$</td>
+                            <td>
+                                <!-- https://q.uiver.app/#q=WzAsMixbMCwwLCIwIl0sWzEsMCwiMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d -->
+                                <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMixbMCwwLCIwIl0sWzEsMCwiMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed" width="304" height="176" style="border-radius: 8px; border: none;"></iframe>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>$00 \rightarrow 10 \rightarrow 11 \rightarrow 01$</td>
+                            <td><!-- https://q.uiver.app/#q=WzAsNCxbMCwwLCIwMCJdLFsxLDAsIjEwIl0sWzAsMSwiMDEiXSxbMSwxLCIxMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d -->
+                                <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsNCxbMCwwLCIwMCJdLFsxLDAsIjEwIl0sWzAsMSwiMDEiXSxbMSwxLCIxMSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDIsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed" width="304" height="304" style="border-radius: 8px; border: none;"></iframe></td>
+                        </tr>
+                        <tr>
+                            <td>$000 \rightarrow 001 \rightarrow 101 \rightarrow 100 \rightarrow 110 \rightarrow  111 \rightarrow 011 \rightarrow 010$</td>
+                            <td><!-- https://q.uiver.app/#q=WzAsOCxbMCwwLCIwMDEiXSxbMywwLCIwMTEiXSxbMSwxLCIxMDEiXSxbMiwxLCIxMTEiXSxbMSwyLCIxMDAiXSxbMiwyLCIxMTAiXSxbMCwzLCIwMDAiXSxbMywzLCIwMTAiXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ== -->
+                                <iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsOCxbMCwwLCIwMDEiXSxbMywwLCIwMTEiXSxbMSwxLCIxMDEiXSxbMiwxLCIxMTEiXSxbMSwyLCIxMDAiXSxbMiwyLCIxMTAiXSxbMCwzLCIwMDAiXSxbMywzLCIwMTAiXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwyLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDcsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwwLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNiwiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs2LDcsIiIsMCx7ImN1cnZlIjoxLCJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxLCIiLDAseyJjdXJ2ZSI6MSwiY29sb3VyIjpbMCw2MCw2MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMywiIiwwLHsiY3VydmUiOjEsImNvbG91ciI6WzAsNjAsNjBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==&embed" width="560" height="560" style="border-radius: 8px; border: none;"></iframe></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="paragraph">
+                    Dans ce mémoire, nous allons principalement nous concentrer sur l'analyse de $\mathcal{Q}_5$,
+                    étant donné que les codes de Beckett-Gray sont disponibles pour tout $n\geq5$. Nous aborderons
+                    brièvement le cas $n=6$, bien que les temps de calcul soient considérablement plus longs dans
+                    ce cas. Le diamètre de $\mathcal{Q}_5$ (resp. $\mathcal{Q}_6$ est de $5$ (resp. $6$), son ordre
+                    est de $32$ (resp. $64$) et sa taille est de $80$ (resp. $192$), chaque sommet de $\mathcal{Q}_5$
+                    (resp. $\mathcal{Q}_6$) a un degré de $5$ (resp. $6$), une somme totale de toutes les distances
+                    égale à $1280$ (resp. $6144$) ainsi qu'une distance moyenne entre deux sommets de $2,58$ (resp. $3,04$).
                 </div>
             </div>
 

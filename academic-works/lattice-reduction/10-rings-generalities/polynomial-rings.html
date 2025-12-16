@@ -92,98 +92,91 @@
                     Quand on a deux variables, la structure d’idéaux se complique et ne peut pas être engendrée par un seul polynôme dans la plupart des cas.
                 </div>
 
-                <figure>
-                    <div class="fig-container">
-                        <table>
-                            <tr>
-                                <td>
-                                    <strong>Anneau</strong>
-                                </td>
-                                <td>
-                                    <strong>Commutatif</strong>
-                                </td>
-                                <td>
-                                    <strong>Intègre</strong>
-                                </td>
-                                <td>
-                                    <strong>Principal</strong>
-                                </td>
-                                <td>
-                                    <strong>Factoriel</strong>
-                                </td>
-                                <td>
-                                    <strong>Noethérien</strong>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\K[x]$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\K[x,y]$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\times$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                           
-                            <tr>
-                                <td>$\Z[x]$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\times$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\F_p[x]$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\F_p[x,y]$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\times$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\R[x]/(x^2 + 1)$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>$\K[x]/(x^n)$, $n \geq 2$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\times$</td>
-                                <td>$\checkmark$</td>
-                                <td>$\times$</td>
-                                <td>$\checkmark$</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <figcaption>Exemples d’anneaux de polynômes et leurs propriétés</figcaption>
-                </figure>
+                <table>
+                    <caption>Exemples d’anneaux de polynômes et leurs propriétés</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                Anneau
+                            </th>
+                            <th>
+                                <strong>Commutatif</strong>
+                            </th>
+                            <th>
+                                <strong>Intègre</strong>
+                            </th>
+                            <th>
+                                <strong>Principal</strong>
+                            </th>
+                            <th>
+                                <strong>Factoriel</strong>
+                            </th>
+                            <th>
+                                <strong>Noethérien</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>$\K[x]$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>                    
+                        <tr>
+                            <td>$\K[x,y]$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\times$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>           
+                        <tr>
+                            <td>$\Z[x]$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\times$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>            
+                        <tr>
+                            <td>$\F_p[x]$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>            
+                        <tr>
+                            <td>$\F_p[x,y]$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\times$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>                            
+                        <tr>
+                            <td>$\R[x]/(x^2 + 1)$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\checkmark$</td>
+                        </tr>            
+                        <tr>
+                            <td>$\K[x]/(x^n)$, $n \geq 2$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\times$</td>
+                            <td>$\checkmark$</td>
+                            <td>$\times$</td>
+                            <td>$\checkmark$</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
         </main>
 
         <footer id="main-footer"></footer>

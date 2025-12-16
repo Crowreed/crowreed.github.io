@@ -57,113 +57,110 @@
         <main>
             <div id="toc-container" style="height: 100vh;"></div>
 
-            <div id="article">
-                
+            <div id="article">                
                 <h3>Un mot sur les dimensions supérieures</h3>
     
-                On remarque en augmentant de dimensions, que la densité globale a l'air de décroître.
-    Dorénavant, parlons des dimensions 8 et 24. Pourquoi passe-t-on de 3 dimensions à 8 et 24 dimensions ? 
-    Car ces dimensions sont particulières, nous allons le voir plus en détail. Dans des articles publiés en 2016, la mathématicienne Ukrainienne Maryna Viazovska a résolu la question des empilements de sphères en 8 et 24 dimensions. Elle a démontrée que deux arrangements particuliers en dimension 8 et 24 permettent de placer les sphères de la façon la plus dense possible. Mais pourquoi ces dimensions particulières ? Quant on augmente en dimension, on augmente le nombre de cas à considérer, tout devient bien plus compliqué à étudier, pourtant il existe deux dimensions particulières dans lesquels les choses s'arrangent parfaitement : la dimension 8 et 24. Les réseaux des empilements sont respectivement nommé réseau E8 et réseau de Leech, chaque point du réseau représentant le centre d'une sphère. Plus l'on augmente en dimension, plus l'espace entre les oranges dans un empilement augmente, mais en dimension 8 et 24 il augmente suffisamment pour laisser la place à une nouvelle orange. Ce qui simplifie considérablement les objets à étudier.
-    L'empilement compact a amené à un autre problème, le "Kissing Number". On veut savoir combien de sphères identiques au maximum peuvent se ranger autour d'une sphère de même type. Le problème se pose dans toutes les dimensions, allant de la première à la 24ième.
-    <figure>
-        \hspace{2cm}
-        \includegraphics[width = 3.5cm]{Kissing-2d.png}
-        \hspace{4cm}
-        \includegraphics[width = 3.5cm]{Kissing-3d.png}
-        <figcaption>Kissing Number en dimension 2 et 3}
-        
-    </figure>
-    
-    Combien de sphères identiques au maximum peuvent se ranger autour d'une sphère de même type ? Autrement dit combien peut on placer de sphères tangentes ne se coupant pas à une même sphère ?
-    Voici un tableau regroupant les valeurs connus ou estimées des valeurs possibles en chaque dimension.
-    On remarque pour les dimensions 2, 8 et 24 qu'il n'y a pas d'espaces entre les sphères tangentes, elles sont toutes tangentes avec les sphères voisines.
-    On a donc l'absence d'espace entre les boules qui permet l'unicité de l'arrangement le plus dense.
-    
+                <div class="paragraph">
+                    On remarque en augmentant de dimensions, que la densité globale a l'air de décroître.
+                    Dorénavant, parlons des dimensions 8 et 24. Pourquoi passe-t-on de 3 dimensions à 8 et 24 dimensions ? 
+                    Car ces dimensions sont particulières, nous allons le voir plus en détail. Dans des articles publiés
+                    en 2016, la mathématicienne Ukrainienne Maryna Viazovska a résolu la question des empilements de sphères
+                    en 8 et 24 dimensions. Elle a démontrée que deux arrangements particuliers en dimension 8 et 24 permettent
+                    de placer les sphères de la façon la plus dense possible. Mais pourquoi ces dimensions particulières ?
+                    Quant on augmente en dimension, on augmente le nombre de cas à considérer, tout devient bien plus
+                    compliqué à étudier, pourtant il existe deux dimensions particulières dans lesquels les choses s'arrangent
+                    parfaitement : la dimension 8 et 24. Les réseaux des empilements sont respectivement nommé réseau E8 et
+                    réseau de Leech, chaque point du réseau représentant le centre d'une sphère. Plus l'on augmente en
+                    dimension, plus l'espace entre les oranges dans un empilement augmente, mais en dimension 8 et 24 il
+                    augmente suffisamment pour laisser la place à une nouvelle orange. Ce qui simplifie considérablement
+                    les objets à étudier.
+                    L'empilement compact a amené à un autre problème, le "Kissing Number". On veut savoir combien de sphères
+                    identiques au maximum peuvent se ranger autour d'une sphère de même type. Le problème se pose dans toutes
+                    les dimensions, allant de la première à la 24ième.
+                </div>
+                
                 <figure>
-                    <div class="fig-container">
-                        <table>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-    
-                        </table>
-                    </div>
+                    Kissing-2d.png
+                    Kissing-3d.png
+                    <figcaption>Kissing Number en dimension 2 et 3</figcaption>
                 </figure>
-    \begin{tabular}{|c|c|}
-    \rowcolor{orange!50}
-    \hline Dimension & Kissing Number
-    \hline 1 & 2 
-    \hline 2 & 6 
-    \hline 3 & 12 
-    \hline 4 & 24 
-    \hline 5 & 40 à 44 
-    \hline 6 & 72 à 78 
-    \hline 7 & 126 à 134 
-    \hline 8 & 240 
-    \hline 9 & 306 à 364 
-    \hline 10 & 500 à 554 
-    \hline 11 & 582 à 870 
-    \hline 24 & 196 560 
-    \hline
-    \end{tabular}
     
-    { Pour les autres dimensions, on peut se demander ce qu'il se passera pour la densité et,à en croire les différents résultats publiés, il semblerait que la densité décroît.}
-    %parler des codes d'erreurs 
-    Cependant il n'y a pas seulement l'empilement de cercles qui fascinent les scientifiques, mais aussi les empilements d'autres polygones réguliers comme le carré, le triangle,les hexagones  ou même les ellipses .
-    %automatiquement moins dense : moins bon rapport entre surface et volume ?
-    %conjecture kelvin,
+                <div class="paragraph">
+                    Combien de sphères identiques au maximum peuvent se ranger autour d'une sphère de même type ? Autrement dit combien peut on placer de sphères tangentes ne se coupant pas à une même sphère ?
+                    Voici un tableau regroupant les valeurs connus ou estimées des valeurs possibles en chaque dimension.
+                    On remarque pour les dimensions 2, 8 et 24 qu'il n'y a pas d'espaces entre les sphères tangentes, elles sont toutes tangentes avec les sphères voisines.
+                    On a donc l'absence d'espace entre les boules qui permet l'unicité de l'arrangement le plus dense.    
+                </div>
     
-            </div>
+                <table>
+                    <caption>Kissing number en fonction de la dimension</caption>
 
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Kissing Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr> 
+                            <td>2</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>24</td>
+                        </tr>
+                        <tr> 
+                            <td>5</td>
+                            <td>40 à 44</td>
+                        </tr>
+                        <tr> 
+                            <td>6</td>
+                            <td>72 à 78</td>
+                        </tr>
+                        <tr> 
+                            <td>7</td>
+                            <td>126 à 134</td>
+                        </tr>
+                        <tr> 
+                            <td>8</td>
+                            <td>240</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>306 à 364</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>500 à 554</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>582 à 870</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>196 à 560</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="paragraph">
+                    { Pour les autres dimensions, on peut se demander ce qu'il se passera pour la densité et,à en croire les différents résultats publiés, il semblerait que la densité décroît.}
+                    %parler des codes d'erreurs 
+                    Cependant il n'y a pas seulement l'empilement de cercles qui fascinent les scientifiques, mais aussi les empilements d'autres polygones réguliers comme le carré, le triangle,les hexagones  ou même les ellipses .
+                    %automatiquement moins dense : moins bon rapport entre surface et volume ?
+                    %conjecture kelvin,
+                </div>
+            </div>
         </main>
 
         <footer id="main-footer"></footer>

@@ -186,313 +186,318 @@
     
 
                 <table>
-                    <tr>
-                        <td>
-                            \( G \)
-                        </td>
-                        <td>
-                            \( U \)
-                        </td>
-                        <td>
-                            \( G^* \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                d_1, d_2 \\
-                                D
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                \|g_1^*\|^2 \\
-                                \|g_2^*\|^2 \\
-                                \|g_3^*\|^2
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            Gram(G)
-                            \)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            \[
-                            \begin{pmatrix}
-                            1\quad 1\quad 1 \\
-                            -1\quad 0\quad 2\\
-                            3\quad 5\quad 6
-                            \end{pmatrix}
-                            \]
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                \frac{1}{3} & 1 & 0 \\
-                                \frac{14}{3} & \frac{13}{14} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 1 & 1 \\
-                                -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
-                                -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                3, 14 \\
-                                42
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                3 \\ \frac{14}{3} \\
-                                \frac{9}{14}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                3 & 1 & 14 \\
-                                1 & 1 & 9 \\
-                                14 & 9 & 70
-                            \end{pmatrix}
-                            \)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            \[
-                            \begin{pmatrix}
+                    <caption>Différentes étapes de LLL</caption>
+                    <thead>
+                        <tr>
+                            <th>
+                                \( G \)
+                            </th>
+                            <th>
+                                \( U \)
+                            </th>
+                            <th>
+                                \( G^* \)
+                            </th>
+                            <th>
+                                $$
+                                \begin{matrix}
+                                    d_1, d_2 \\
+                                    D
+                                \end{matrix}
+                                $$
+                            </th>
+                            <th>
+                                \(
+                                \begin{pmatrix}
+                                    \|g_1^*\|^2 \\
+                                    \|g_2^*\|^2 \\
+                                    \|g_3^*\|^2
+                                \end{pmatrix}
+                                \)
+                            </th>
+                            <th>
+                                \(
+                                Gram(G)
+                                \)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                \[
+                                \begin{pmatrix}
                                 1\quad 1\quad 1 \\
-                                -1\quad 0\quad 2 \\
-                                0\quad 1\quad 0
-                            \end{pmatrix}
-                            \]
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                \frac{1}{3} & 1 & 0 \\
-                                \frac{1}{3} & \frac{-1}{14} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 1 & 1 \\
-                                -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
-                                -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                3, 14 \\
-                                42
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                3 \\
-                                \frac{14}{3} \\
-                                \frac{9}{14}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                3 & 1 & 1 \\
-                                1 & 5 & 0 \\
-                                1 & 0 & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            \[
-                            \begin{pmatrix}
-                                1& 1& 1 \\
-                                0& 1& 0 \\
-                                -1& 0& 2
-                            \end{pmatrix}
-                            \]
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1           & 0            & 0 \\
-                                \frac{1}{3} & 1            & 0 \\
-                                \frac{1}{3} & \frac{-1}{2} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1            & 1           & 1 \\
-                                -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
-                                -\frac{3}{2} & 0           & \frac{3}{2}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                3, 2 \\
-                                6
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td>
-                            \( 
-                            \begin{pmatrix}
-                                3 \\
-                                \frac{2}{3} \\
-                                \frac{9}{2}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                0 & 1 & 0 \\
-                                \frac{1}{3} & \frac{-1}{2} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            \[
-                            \begin{pmatrix}
-                                0& 1& 0 \\
-                                1& 1& 1 \\
-                                -1& 0& 2
-                            \end{pmatrix}
-                            \]
-                        </td>
-                        <td>
-                            \( 
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                1 & 1 & 0 \\
-                                \frac{1}{3} & \frac{-1}{2} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                0 & 1 & 0 \\
-                                1 & 0 & 1 \\
-                                -\frac{3}{2} & 0 & \frac{3}{2}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                1, 2 \\
-                                2
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td> 
-                            \(
-                            \begin{pmatrix}
-                                1 \\ 
-                                2 \\ 
-                                \frac{9}{2} 
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\ 
-                                0 & 1 & 0 \\ 
-                                \frac{1}{3} & \frac{-1}{2} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            \[
-                            \begin{pmatrix}
-                                0 & 1 & 0 \\
-                                1 & 0 & 1 \\
-                                -1& 0 & 2
-                            \end{pmatrix}
-                            \]
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                0 & 1 & 0 \\
-                                \frac{1}{3} & \frac{-1}{2} & 1
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                0 & 1 & 0 \\
-                                1 & 0 & 1 \\
-                                -\frac{3}{2} & 0 & \frac{3}{2}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            $$
-                            \begin{matrix}
-                                1, 2 \\
-                                2
-                            \end{matrix}
-                            $$
-                        </td>
-                        <td>
-                            \( 
-                            \begin{pmatrix}
-                                1 \\
-                                2 \\
-                                \frac{9}{2}
-                            \end{pmatrix}
-                            \)
-                        </td>
-                        <td>
-                            \(
-                            \begin{pmatrix}
-                                1 & 0 & 0 \\
-                                0 & 2 & 1 \\
-                                0 & 1 & 5
-                            \end{pmatrix}
-                            \)
-                        </td>
-                    </tr>
+                                -1\quad 0\quad 2\\
+                                3\quad 5\quad 6
+                                \end{pmatrix}
+                                \]
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    \frac{1}{3} & 1 & 0 \\
+                                    \frac{14}{3} & \frac{13}{14} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 1 & 1 \\
+                                    -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
+                                    -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                $$
+                                \begin{matrix}
+                                    3, 14 \\
+                                    42
+                                \end{matrix}
+                                $$
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    3 \\ \frac{14}{3} \\
+                                    \frac{9}{14}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    3 & 1 & 14 \\
+                                    1 & 1 & 9 \\
+                                    &14 & 9 & 70
+                                \end{pmatrix}
+                                \)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                \[
+                                \begin{pmatrix}
+                                    1\quad 1\quad 1 \\
+                                    -1\quad 0\quad 2 \\
+                                    0\quad 1\quad 0
+                                \end{pmatrix}
+                                \]
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    \frac{1}{3} & 1 & 0 \\
+                                    \frac{1}{3} & \frac{-1}{14} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 1 & 1 \\
+                                    -\frac{4}{3} & -\frac{1}{3} & \frac{5}{3} \\
+                                    -\frac{3}{7} & \frac{9}{14} & - \frac{3}{14}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                $$
+                                \begin{matrix}
+                                    3, 14 \\
+                                    42
+                                \end{matrix}
+                                $$
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    3 \\
+                                    \frac{14}{3} \\
+                                    \frac{9}{14}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    3 & 1 & 1 \\
+                                    1 & 5 & 0 \\
+                                    1 & 0 & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                \[
+                                \begin{pmatrix}
+                                    1& 1& 1 \\
+                                    0& 1& 0 \\
+                                    -1& 0& 2
+                                \end{pmatrix}
+                                \]
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1           & 0            & 0 \\
+                                    \frac{1}{3} & 1            & 0 \\
+                                    \frac{1}{3} & \frac{-1}{2} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1            & 1           & 1 \\
+                                    -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
+                                    -\frac{3}{2} & 0           & \frac{3}{2}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                $$
+                                \begin{matrix}
+                                    3, 2 \\
+                                    6
+                                \end{matrix}
+                                $$
+                            </td>
+                            <td>
+                                \( 
+                                \begin{pmatrix}
+                                    3 \\
+                                    \frac{2}{3} \\
+                                    \frac{9}{2}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    0 & 1 & 0 \\
+                                    \frac{1}{3} & \frac{-1}{2} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                \[
+                                \begin{pmatrix}
+                                    0& 1& 0 \\
+                                    1& 1& 1 \\
+                                    -1& 0& 2
+                                \end{pmatrix}
+                                \]
+                            </td>
+                            <td>
+                                \( 
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    1 & 1 & 0 \\
+                                    \frac{1}{3} & \frac{-1}{2} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    0 & 1 & 0 \\
+                                    1 & 0 & 1 \\
+                                    -\frac{3}{2} & 0 & \frac{3}{2}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                $$
+                                \begin{matrix}
+                                    1, 2 \\
+                                    2
+                                \end{matrix}
+                                $$
+                            </td>
+                            <td> 
+                                \(
+                                \begin{pmatrix}
+                                    1 \\ 
+                                    2 \\ 
+                                    \frac{9}{2} 
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\ 
+                                    0 & 1 & 0 \\ 
+                                    \frac{1}{3} & \frac{-1}{2} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                \[
+                                \begin{pmatrix}
+                                    0 & 1 & 0 \\
+                                    1 & 0 & 1 \\
+                                    -1& 0 & 2
+                                \end{pmatrix}
+                                \]
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    0 & 1 & 0 \\
+                                    \frac{1}{3} & \frac{-1}{2} & 1
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    0 & 1 & 0 \\
+                                    1 & 0 & 1 \\
+                                    -\frac{3}{2} & 0 & \frac{3}{2}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                $$
+                                \begin{matrix}
+                                    1, 2 \\
+                                    2
+                                \end{matrix}
+                                $$
+                            </td>
+                            <td>
+                                \( 
+                                \begin{pmatrix}
+                                    1 \\
+                                    2 \\
+                                    \frac{9}{2}
+                                \end{pmatrix}
+                                \)
+                            </td>
+                            <td>
+                                \(
+                                \begin{pmatrix}
+                                    1 & 0 & 0 \\
+                                    0 & 2 & 1 \\
+                                    0 & 1 & 5
+                                \end{pmatrix}
+                                \)
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 On obtient la base  LLL réduite :
