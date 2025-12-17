@@ -24,7 +24,7 @@ summary .label::before{
 
 details[open] > p, details[open] > .paragraph{
     padding-top: 15px;
-    margin-left: 4px;
+    margin-left: 0.25rem;
     padding-left: 15px;
     padding-bottom: 15px;
     border-left: 1px solid var(--primary-border-color);

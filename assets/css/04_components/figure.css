@@ -29,11 +29,11 @@ figure{
   margin: 1.5rem 0rem;
   text-align: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 1.2rem;
 }
 
 figcaption{
-  padding-top: 20px;
+  padding-top: 1.5rem;
 }
 
 /*Pourquoi en faire deux différents déjà ?*/

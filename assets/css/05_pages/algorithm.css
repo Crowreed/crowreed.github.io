@@ -2,7 +2,7 @@
     border: 1px solid var(--primary-border-color);
     border-radius: 2px;
     padding: 15px;
-    margin: 20px 0;
+    margin: 1.25rem 0;
     background-color: #f9f9f9;
     font-family: monospace, Courier, 'Consolas', sans-serif;
     line-height: 1.4;
@@ -11,7 +11,7 @@
 
 .algorithm h2{
     margin-top: 0 !important;
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     font-size: 1.2em;
     color: var(--primary-text-color);
 }
@@ -21,7 +21,7 @@
 }
 
 .meta {
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     padding-bottom: 5px;
     border-bottom: 1px dashed var(--primary-border-color);
 }
@@ -84,8 +84,8 @@
     opacity: 0.8; /* Légère transparence pour atténuer */
     
     /* BOX MODEL */
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     padding-left: 20px; /* Ajoute un léger retrait pour les distinguer du code */
 }
 
