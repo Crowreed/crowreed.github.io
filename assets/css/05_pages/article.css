@@ -419,3 +419,10 @@ a:hover{
   letter-spacing: 0px;
   padding-right: 3px;
 }
+
+
+@media (max-width: 1024px) {
+ .paragraph{
+  text-align: justify;
+ }
+}
