@@ -15,10 +15,20 @@
 
 }
 
+
 .previous{
-  left: 33px;
+  left: 0px;
   border-radius: 0px 20px 20px 0px;
 }
+@media (min-width: 768px) {
+  .previous{
+    left: 33px;
+    border-radius: 0px 20px 20px 0px;
+  }
+}
+
+
+
 
 .next{    
   right: 0;
@@ -51,8 +61,16 @@
 }
 
 .hhh{  
-  max-width: 300px;
+  max-width: 40%;
+  overflow-x: hidden;
 }
+
+@media (min-width: 768px) {
+  .hhh{  
+    max-width: 300px;
+  }
+}
+
 
 .previous .hhh{
   padding-left: 1rem;
