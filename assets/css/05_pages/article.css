@@ -378,7 +378,7 @@ a:hover{
 }
 
 .problem{
-  border-left: rgba(171, 71, 188, 0.74) 2px solid;
+  border-left: var(--secondary-text-color) 2px solid;
   padding-left: 12px;
 }
 
