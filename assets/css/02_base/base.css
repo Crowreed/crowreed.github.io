@@ -1,12 +1,18 @@
 html {
-  /*The font appear smoother*/
-  -webkit-font-smoothing: antialiased; /* only works on macOS */
-  -moz-osx-font-smoothing: grayscale; /* only works on macOS */
-  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: InterVariable, sans-serif;
-  font-size: 1.2rem;
+  background: #fff;
 
-  background:#fff;
+  /* 1. Taille par défaut pour MOBILE (et tout le monde) */
+  font-size: 1rem; 
+}
+
+/* 2. Si l'écran est plus large que 768px (Tablette et PC), on grossit */
+@media (min-width: 768px) {
+  html {
+    font-size: 1.2rem;
+  }
 }
 
 body{
