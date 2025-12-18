@@ -61,12 +61,12 @@
 }
 
 .hhh{  
-  max-width: 40%;
-  overflow-x: hidden;
+  display: none;
 }
 
 @media (min-width: 768px) {
   .hhh{  
+    display: initial;
     max-width: 300px;
   }
 }
