@@ -1,6 +1,8 @@
 
 
 #profile-description{
+  
+  z-index: 6;
   text-align: justify;
 }
 
@@ -10,11 +12,14 @@
   line-height: 1.1; /* Resserrer un peu l'interlignage */
   margin: 10px 0;
   text-align: center;
+  
+  z-index: 99;
 }
 
 #profile-picture{
   width: 280px;
   max-width: 80vw;
+  z-index: 3;
   height: auto;
   aspect-ratio: 1 / 1; 
   object-fit: cover; /* Coupe l'image si nécessaire au lieu de l'écraser */
@@ -24,6 +29,8 @@
 
 #hello-world{
   font-size: 1.5rem;
+  
+  z-index: 5;
   color: var(--secondary-text-color);
   text-transform: uppercase; color: var(--secondary-text-color);
 
