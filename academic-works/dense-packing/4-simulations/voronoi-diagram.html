@@ -70,22 +70,26 @@
                     se rencontrent, nous les feront s'écraser l'un contre l'autre. Voir le schéma suivant.                   
                 </div>
   
-                <figure>
-                    <img src="0.png" alt="">
-                    
-                    <img src="50.png" alt="">
-                    
-                    <img src="100.png" alt="">
-                </figure>
+                
+                
+
+                <div class="evolution-container">
+                    <img src="0.png" class="evo-img active" alt="Étape 1">
+                    <img src="50.png" class="evo-img" alt="Étape 2">
+                    <img src="100.png" class="evo-img" alt="Étape 3">
+                    <img src="150.png" class="evo-img" alt="">
+                    <img src="200.png" class="evo-img" alt="">
+                    <img src="350.png" class="evo-img" alt="">
+                    <img src="450.png" class="evo-img" alt="">
+
+                    <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="nav-btn nextd" onclick="changeSlide(1)">&#10095;</button> 
+                    <div class="counter">1 / 7</div>
+                </div>
+
                 
                 <figure>
-                    <img src="150.png" alt="">
                     
-                    <img src="200.png" alt="">
-                    
-                    <img src="350.png" alt="">
-                    
-                    <img src="450.png" alt="">
                     
                     <figcaption>Étapes de l'algorithme</figcaption>
                 </figure>
@@ -108,11 +112,16 @@
                     étape, et finir avec un empilement compact d'hexagones.            
                 </div>
                 
+                <div class="evolution-container">
+                    <img src="hexa_0.png" class="evo-img active" alt="Étape 1">
+                    <img src="hexa_1.png" class="evo-img" alt="Étape 2">
+                    <img src="hexa_2.png" class="evo-img" alt="Étape 3">
+                    <img src="hexa_3.png" class="evo-img" alt="">
+
+                    <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button> <button class="nav-btn nextd" onclick="changeSlide(1)">&#10095;</button>  <div class="counter">1 / 7</div>
+                </div>
                 <figure>
-                    <img src="hexa_0.png" alt="">
-                    <img src="hexa_1.png" alt="">
-                    <img src="hexa_2.png" alt="">
-                    <img src="hexa_3.png" alt="">
+               
                     
                     
                     <figcaption>Diagramme de Voronoï des centres des disques de l'empilement hexagonal</figcaption>
@@ -127,6 +136,57 @@
         </main>
 
         <footer id="main-footer"></footer>
+        <script>
+            // On sélectionne TOUS les conteneurs de carrousel présents sur la page
+const carousels = document.querySelectorAll(".evolution-container");
+
+// On configure chaque carrousel un par un
+carousels.forEach(carousel => {
+    
+    // 1. Pour CE carrousel, on récupère ses propres éléments
+    const slides = carousel.querySelectorAll(".evo-img");
+    const prevBtn = carousel.querySelector(".prev");
+    const nextBtn = carousel.querySelector(".nextd");
+    const counter = carousel.querySelector(".counter");
+    
+    let currentIndex = 0; // Chaque carrousel a son propre index qui commence à 0
+
+    // Fonction interne pour mettre à jour l'image
+    const updateSlide = (index) => {
+        // On cache tout
+        slides.forEach(slide => slide.classList.remove("active"));
+        
+        // Gestion de la boucle (fin -> début ou début -> fin)
+        if (index >= slides.length) currentIndex = 0;
+        else if (index < 0) currentIndex = slides.length - 1;
+        else currentIndex = index;
+
+        // On affiche la bonne image
+        slides[currentIndex].classList.add("active");
+
+        
+        if (counter) {
+            counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+        }
+    
+    };
+
+    // 2. On écoute les clics sur les boutons DE CE carrousel uniquement
+    if(nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            updateSlide(currentIndex + 1);
+        });
+    }
+
+    if(prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            updateSlide(currentIndex - 1);
+        });
+
+        
+    }
+});
+        </script>
         
         <script type="module" src="/assets/js/main.js"></script>
     </body>

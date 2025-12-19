@@ -39,14 +39,259 @@
         <!-- ALL STYLESHEET -->
  
         <link rel="stylesheet" href="/assets/css/main.css">
+
+        <style>
+            /* --- CONFIGURATION GLOBALE DU CV --- */
+.cv-page {
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    /* Un fond légèrement différent pour détacher le CV si besoin */
+    /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+}
+
+.cv-container {
+    width: 100%;
+    max-width: 1000px; /* Largeur type papier A4 paysage ou page web */
+    background: rgba(255, 255, 255, 0.6); /* Effet verre global */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* Pour que les coins arrondis coupent le contenu */
+}
+
+/* --- HEADER --- */
+.cv-header {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cv-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--secondary-text-color); /* Ton bleu ou couleur sombre */
+}
+
+.cv-header h2 {
+    margin: 5px 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: var(--primary-text-color);
+}
+
+.tagline {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* --- GRILLE (SIDEBAR vs MAIN) --- */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 pour la gauche, 2/3 pour la droite */
+}
+
+/* --- SIDEBAR (Gauche) --- */
+.cv-sidebar {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.cv-sidebar h3 {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-text-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.info-block {
+    margin-bottom: 40px;
+}
+
+.contact-list, .lang-list {
+    list-style: none;
+    padding: 0;
+    line-height: 1.8;
+}
+
+.contact-list a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-weight: 500;
+}
+
+/* Nuage de tags (Reprise de ton style .skills) */
+.skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* --- MAIN CONTENT (Droite) --- */
+.cv-main {
+    padding: 40px;
+}
+
+.cv-section {
+    margin-bottom: 40px;
+}
+
+.cv-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--secondary-text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- LA TIMELINE (Le truc cool) --- */
+.timeline {
+    position: relative;
+    border-left: 2px solid #e0e0e0; /* La ligne verticale */
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Le point sur la ligne */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px; /* Ajuster pour centrer sur la ligne */
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--secondary-text-color); /* Ta couleur principale */
+    border-radius: 50%;
+    border: 2px solid white; /* Petit contour blanc pour détacher */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+.timeline-item .date {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.timeline-item h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.timeline-item .place {
+    display: block;
+    font-style: italic;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* --- BOUTON DE TÉLÉCHARGEMENT --- */
+.download-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--secondary-text-color);
+    fill: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    z-index: 100;
+}
+.download-btn:hover {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .cv-grid {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+    
+    .cv-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        background: rgba(255,255,255,0.2); /* Un peu plus transparent sur mobile */
+    }
+
+    .cv-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- VERSION IMPRESSION (Le secret !) --- */
+@media print {
+    .download-btn, header#main-header, footer {
+        display: none !important; /* On cache les boutons et le menu du site */
+    }
+    
+    .cv-page {
+        padding: 0;
+        background: white;
+    }
+    
+    .cv-container {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+        backdrop-filter: none; /* Pas de flou à l'impression */
+    }
+    
+    body {
+        font-size: 12pt;
+        color: black;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+        </style>
     </head>
 
     <body>
         <header id="main-header" ></header>
 
-        <main style="min-height: calc(100vh - 65px); display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <h1>En construction !</h1>
-        </main>
+            <main style="min-height: calc(100vh - 65px); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <h1>En construction !</h1>
+                <img
+                    class="image-rotative"
+                    src="/assets/img/logo/logo-512x512.png" style="height: 700px;" title="Logo de Lucas Petit - étoile à 8 branches" 
+                    alt="Logo de Lucas Petit - étoile à 8 branches">
+            </main>
         
         <script type="module" src="/assets/js/main.js"></script>
     </body>

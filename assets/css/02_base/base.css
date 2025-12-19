@@ -36,3 +36,70 @@ main{
   max-width: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.evolution-container {
+  position: relative; /* Important pour placer les flèches */
+  max-width: 800px;   /* Largeur max de ton image */
+  margin: auto;       /* Centré */
+}
+
+/* Par défaut, TOUTES les images sont cachées */
+.evo-img {
+  display: none;
+  width: 100%;       /* Responsive */
+  height: auto;
+  border-radius: 10px; /* Joli arrondi */
+  /* Petite animation de fondu sympa */
+  animation: fade 0.5s;
+}
+
+/* SEULE l'image avec la classe 'active' est affichée */
+.evo-img.active {
+  display: block;
+}
+
+/* Le style des boutons flèches */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Centré verticalement pile poil */
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev { left: 10px; }
+.nextd { right: 10px; }
+
+/* Compteur en bas */
+.counter {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--secondary-text-color);
+}
+
+/* Animation simple */
+@keyframes fade {
+from {opacity: .4} 
+to {opacity: 1}
+}

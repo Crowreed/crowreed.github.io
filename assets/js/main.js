@@ -43,3 +43,4 @@ window.addEventListener("scroll", () => {
   // On met à jour la position pour le prochain tour
   lastScrollY = currentScrollY;
 });
+
