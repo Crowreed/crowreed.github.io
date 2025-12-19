@@ -12,7 +12,8 @@
 
         <meta
             name="description"
-            content="Expert en algorithmique et mathématiques. Je transforme l'abstraction mathématique en solutions logicielles performantes."
+            content="Expert en algorithmique et mathématiques. Je transforme l'abstraction mathématique en solutions
+            logicielles performantes."
         >
 
         <meta
@@ -41,31 +42,95 @@
         <link rel="stylesheet" href="/assets/css/main.css">
     </head>
 
-    <body style="height: 100vh;">
-        <header id="main-header" ></header>
+    <body id="tsparticles">
+        <header id="main-header"></header>
         
-        <div class="homepage" style="height: 100vh;">
-
-                <div class="hero">      
-                    <div>
-                        <p style="text-transform: uppercase; color: var(--secondary-text-color);"> Bonjour, je suis </p>
-                        <h1>Lucas Petit</h1>
+        <main
+            style="
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;">
+    
+                    <div id="eee">
+                        <p id="hello-world">Bonjour, je suis </p>
+                        <h1 id="profile-name">Lucas Petit</h1>
                     </div>
                     
-                    <div>
-                        <img src="/assets/img/lucas-petit-portrait.JPG" alt="Portrait de Lucas Petit">
-                    </div>
+                    <img id="profile-picture" src="/assets/img/lucas-petit-portrait.JPG" alt="Portrait de Lucas Petit">
 
-                    <div>
-                        <h2 style="color: var(--secondary-text-color);">Titulaire d'un Master 2 en Algorithmie & Mathématiques.</h2>
-                        <p style="text-align: justify;">
-                            Grâce à une double compétence en informatique théorique et en mathématique, j'ai l'expertise pour transformer l'abstraction mathématique en solutions logicielles concrètes, performantes et rigoureusement optimisées.
-                        </p>
-                    </div>
-                     
-                </div>
+                    <h2 style="color: var(--secondary-text-color);">Titulaire d'un Master 2 en Algorithmie & Mathématiques.</h2>
 
-        </div>
+                    <p id="profile-description">
+                        Grâce à une double compétence en informatique théorique et en mathématique, j'ai l'expertise pour transformer l'abstraction mathématique en solutions logicielles concrètes, performantes et rigoureusement optimisées.
+                    </p>         
+
+            </main>
         <script type="module" src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+        <script>
+            tsParticles.load("tsparticles", {
+                fpsLimit: 30,
+                particles: {
+                    number: {
+                        value: 50, // Pas trop de points pour ne pas ramer
+                        density: { enable: true, value_area: 800 }
+                    },
+                    color: {
+                        value: "#7451eb" // <--- COULEUR NOIRE (Visible sur fond blanc)
+                    },
+                    shape: {
+                        type: "circle"
+                    },
+                    opacity: {
+                        value: 1,
+                        random: false
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#000000", // <--- LIGNES NOIRES
+                        opacity: 1,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 0.3,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                    }
+                },
+                interactivity: {
+                    detect_on: "window",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "repulse" // L'effet de fuite
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        repulse: {
+                            distance: 100,
+                            duration: 1.4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        </script>
     </body>
 </html>

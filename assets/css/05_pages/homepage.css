@@ -1,51 +1,39 @@
 
-.homepage {
-  width: 100%;        /* Prend toute la largeur disponible */
-  max-width: 1200px;  /* Ne dépasse pas 1200px sur les grands écrans */
-  min-height: 100vh;  /* Permet de scroller si l'écran est petit */
-  box-sizing: border-box; /* Important pour que le padding ne s'ajoute pas à la largeur */
-  margin: 0 auto;
-  padding: 20px;
-}
 
-.hero{
-  width: 100%;
-  height: 100%;
-  margin: auto;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.hero > p:first-child{
-  font-size: 1.5rem;
-  color: var(--secondary-text-color);
-}
-
-.hero > p{
+#profile-description{
   text-align: justify;
 }
 
-.hero img {
-  width: 280px;      /* Taille de base */
-  max-width: 80vw;   /* Ne dépasse jamais 80% de l'écran mobile */
-  height: auto;      /* Garde le ratio */
-  aspect-ratio: 1 / 1; 
-  object-fit: cover; /* Coupe l'image si nécessaire au lieu de l'écraser */
-  border-radius: 50%;
-  /* ... ton ombre ... */
-}
 
-.hero h1 {
-  /* Minimum 3rem, Idéal 10vw (10% de la largeur écran), Max 6rem */
+#profile-name{
   font-size: clamp(3rem, 10vw, 6rem); 
   line-height: 1.1; /* Resserrer un peu l'interlignage */
   margin: 10px 0;
   text-align: center;
 }
+
+#profile-picture{
+  width: 280px;
+  max-width: 80vw;
+  height: auto;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover; /* Coupe l'image si nécessaire au lieu de l'écraser */
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--primary-border-color);
+}
+
+#hello-world{
+  font-size: 1.5rem;
+  color: var(--secondary-text-color);
+  text-transform: uppercase; color: var(--secondary-text-color);
+
+}
+#eee{
+  margin-top: 4rem;
+  text-align: center;
+}
+
+
 
 .hero h2{
   margin: 15px 0;

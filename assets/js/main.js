@@ -18,8 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
     createNews();
 });
 
+
+///////////////////////////
+
 // On sélectionne le header
 const header = document.getElementById("main-header-hihi");
+const headerr = document.getElementById("main-header");
 let lastScrollY = window.scrollY; // Mémorise la position de départ
 
 window.addEventListener("scroll", () => {
@@ -28,16 +32,19 @@ window.addEventListener("scroll", () => {
   // Si on est tout en haut de la page, on affiche toujours le header
   if (currentScrollY <= 0) {
     header.classList.remove("header-hidden");
+    headerr.classList.remove("header-hidden");
     return;
   }
 
   // Si on descend (et qu'on a scrolé un peu pour éviter les faux mouvements)
   if (currentScrollY > lastScrollY && currentScrollY > 50) {
     header.classList.add("header-hidden"); // Hop, on le cache vers le haut
+    headerr.classList.add("header-hidden");
   } 
   // Si on remonte
   else if (currentScrollY < lastScrollY) {
     header.classList.remove("header-hidden"); // Hop, on le fait réapparaître
+    headerr.classList.remove("header-hidden");
   }
 
   // On met à jour la position pour le prochain tour

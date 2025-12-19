@@ -8,7 +8,6 @@ header{
 }
 
 header nav{
-
   /* box model */
   max-width: 1200px;
   width: 100%;
@@ -71,11 +70,12 @@ header nav ul{
 }
 
 #main-header nav ul li{
-  
+  height: 100%;
   transition: transform 0.3s ease;
 }
 
 header nav ul li a{
+  height: 100%;
   /* typography */
   font-weight: 200;
   font-style: normal;
@@ -97,3 +97,22 @@ header a{
   flex-direction: row;
   align-items: center;
 }
+
+header img{
+  height: 45px;
+}
+
+#main-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Exemple de hauteur */
+  background-color: white; /* Important sinon on voit le texte passer dessous */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 5; /* Toujours au-dessus du reste */
+  
+  /* C'est ici que la magie de l'animation se passe */
+  transition: transform 0.3s ease-in-out;
+}
+

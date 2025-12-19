@@ -103,3 +103,7 @@ main{
 from {opacity: .4} 
 to {opacity: 1}
 }
+
+.concept-tag{
+  background-color: white;
+}
