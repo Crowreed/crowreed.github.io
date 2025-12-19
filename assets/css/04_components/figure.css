@@ -77,10 +77,3 @@ figcaption{
   text-align: center;
 }
 
-img{
-  transition: transform 0.3s ease;
-}
-figure img:hover{
-  transform: scale(1.05);
-}
-
