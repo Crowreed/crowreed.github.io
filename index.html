@@ -28,6 +28,60 @@
 
         <link rel="icon" href="/assets/img/logo/logo.ico" type="image/x-icon">
         
+        <style>
+            /* On cache le moteur */
+/* 1. On cache la checkbox */
+.lang-check { display: none; }
+
+/* 2. Le Conteneur (La piste grise) */
+.lang-label {
+    display: flex;             /* Pour aligner FR et EN */
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 80px;               /* Largeur totale */
+    height: 30px;
+    background-color: #eee;    /* Fond gris clair */
+    border-radius: 30px;
+    position: relative;        /* Référence pour le curseur */
+    cursor: pointer;
+    padding: 0 5px;            /* Un peu d'espace sur les bords */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); /* Petite ombre intérieure */
+}
+
+/* 3. Le Curseur (La "bille" qui est devenue un rectangle arrondi) */
+.slider {
+    position: absolute;
+    top: 2px; 
+    left: 2px;                 /* Départ à gauche (sur FR) */
+    width: 38px;               /* Environ la moitié moins les marges */
+    height: 26px;
+    background-color: white;
+    border-radius: 20px;
+    transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); /* Animation fluide */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 0;                /* IL EST EN DESSOUS DU TEXTE */
+}
+
+/* 4. Le Texte (FR / EN) */
+.lang-text {
+    z-index: 1;                /* IL EST AU-DESSUS DU CURSEUR */
+    font-size: 12px;
+    font-weight: bold;
+    width: 50%;                /* Chacun prend la moitié */
+    text-align: center;
+    color: #555;
+    user-select: none;         /* Empêche de sélectionner le texte */
+}
+
+/* --- L'ANIMATION --- */
+
+/* Quand c'est coché, le curseur glisse à droite */
+.lang-check:checked + .lang-label .slider {
+    transform: translateX(38px); /* On le pousse vers EN */
+}
+        </style>
+
         <!-- for rendering latex -->
 
         <!-- CSS -->
@@ -46,149 +100,841 @@
     <body>
         <div style="z-index: -6;" id="tsparticles"></div>
         <header id="main-header"></header>
-        
-        <main style="background-color: rgba(255,255,255, 0.5); display: flex; flex-direction: column; justify-content: space-between; max-width: 1200px; width: 100%;">
-    
-                    <div id="eee">
-                        <p id="hello-world">Bonjour, je suis </p>
-                        <h1 id="profile-name">Lucas Petit</h1>
+
+        <main>
+            <section id="homepage" style=" min-height: 100vh;">
+                <div id="eee" class=" fade-in-up delay-1">
+                    <p id="hello-world">Bonjour, je suis </p>
+                    <h1 id="profile-name">Lucas Petit</h1>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center;" class=" fade-in-up delay-2">
+                    <img id="profile-picture" src="/assets/img/P1034037.png" alt="Portrait de Lucas Petit">
+                    <h2 style="padding: 1rem; color: var(--secondary-text-color);">Titulaire d'un Master 2 en Algorithmie & Mathématiques.</h2>
+                </div>
+                    
+                <div id="profile-description" class=" fade-in-up delay-3">
+                    <div style="display: flex; justify-content: center;">
+                        <h3>À propos de moi</h3>
                     </div>
-
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <img id="profile-picture" src="/assets/img/P1034037.png" alt="Portrait de Lucas Petit">
-
-                        <h2 style="padding: 1rem; color: var(--secondary-text-color);">Titulaire d'un Master 2 en Algorithmie & Mathématiques.</h2>
-    
+                        
+                    <p>
+                        Combinant informatique théorique et mathématiques, je transforme l'abstraction complexe en solutions logicielles concrètes, performantes et rigoureusement optimisées.
+                    </p>
+                </div>      
+            </section>
+            
+            <section id="cv">
+                <h1 style="text-align: center; font-size: 3rem; padding: 2rem;">Compétences</h1>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <span class="skill-title">Programmation</span>
+                        <ul class="skill-list">
+                            <li>C / C++</li>
+                            <li>Python</li>
+                            <li>HTML5 / CSS3 / JavaScript</li>
+                        </ul>
+                    </div>
+        
+                    <div class="skill-box">
+                        <span class="skill-title">Logiciels & OS</span>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>VS Code, Inkscape</li>
+                            <li>LaTeX</li>
+                            <li>Linux / Ubuntu <span class="linux-badge">Expert</span></li>
+                            <li>Suite Office</li>
+                        </ul>
+                    </div>
+        
+                    <div class="skill-box">
+                        <span class="skill-title">Langues</span>
+                        <ul class="skill-list">
+                            <li><strong>Anglais :</strong> C1 (Technique courant)</li>
+                            <li><strong>Français :</strong> Langue maternelle</li>
+                        </ul>
                     </div>
                     
-                    <div id="profile-description">
-                        <div style="display: flex; justify-content: center;">
-                            <h3>À propos de moi</h3>
-                        </div>
+                    <div class="skill-box">
+                        <span class="skill-title">Mathématiques</span>
+                        <ul class="skill-list">
+                            <li>Théorie des graphes</li>
+                            <li>Algorithmique</li>
+                            <li>Optimisation</li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <h3>Qualités Humaines</h3>
+                <div class="soft-skills">
+                    <span class="tag">Rigueur scientifique</span>
+                    <span class="tag">Curiosité</span>
+                    <span class="tag">Travail d'équipe</span>
+                    <span class="tag">Pédagogie</span>
+                    <span class="tag">Résolution de problèmes</span>
+                </div>
+            </div> 
+        
+            Coq / Preuve formelle
+
+Optimisation combinatoire / Graphes
+
+C++ / OCaml / Python (Mets tes langages forts)
+
+Master Mathématiques
+            <!--   <main>
+                <h1>En construction !</h1>
+                <img
+                    class="image-rotative"
+                    style="max-width: 90%;"
+                    src="/assets/img/logo/logo-512x512.png" style="height: 700px;" title="Logo de Lucas Petit - étoile à 8 branches" 
+            <div id="tsparticles"></div>
+                    alt="Logo de Lucas Petit - étoile à 8 branches">
+            </main>-->
+
+            <div class="download-section fade-in-up delay-2">
+                <a href="mon-cv.pdf" download class="btn-cv">
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    Télécharger mon CV (PDF)
+                </a>
+            </div>
+    
+            <h3 class="fade-in-up delay-3">Me Contacter</h3>
+    
+
+            Disponible dès maintenant pour des projets de R&D ou d'Ingénierie complexe.
+
+
+            Ingénieur R&D en Algorithmique & Mathématiques Appliquées" Sous-titre : Spécialisé en Méthodes Formelles, Optimisation et Cryptographie.
+            INGÉNIEUR ALGORITHMIQUE & SÉCURITÉ
+            Je conçois des systèmes logiciels critiques et optimisés." Sous-titre : À la recherche d'opportunités en Recherche Opérationnelle, Preuve Formelle (Coq) ou Cybersécurité.
+
+Fort d'un Master en Mathématiques et d'une expertise en méthodes formelles (Coq) et théorie des graphes, je cherche à rejoindre une équipe technique ambitieuse pour résoudre des problèmes d'optimisation ou de sécurité critique.
+            je recherche ...
+            <div class="contact-container fade-in-up delay-3">
+                
+                <a href="mailto:ton.email@gmail.com" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <span>Email</span>
+                </a>
+    
+                <a href="https://linkedin.com" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </div>
+                    <span>LinkedIn</span>
+                </a>
+    
+                <a href="https://github.com" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <span>GitHub</span>
+                </a>
+    
+          
+        </section>
+      
+        <section id="projects">
+            <h1  style="text-align: center; font-size: 3rem; padding: 2rem;">Projets de développement</h1>
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Tout voir</button>
+                <button class="filter-btn" data-filter="cpp">C++</button>
+                <button class="filter-btn" data-filter="web">HTML / CSS / JS</button>
+                <button class="filter-btn" data-filter="java">java</button>
+                <button class="filter-btn" data-filter="python">python</button>
+    
+            </div>
+            
+
+                    <div id="dev" class="project-grid" >
+                        <div class="project" data-category="cpp">
+                            <a href="https://github.com/ton-profil/cpp-lattice-crypto" target="_blank">
                         
-                        <p>
-                            Combinant informatique théorique et mathématiques, je transforme l'abstraction complexe en solutions logicielles concrètes, performantes et rigoureusement optimisées.
-                        </p>
-                    </div>      
-
-            </main>
-
-
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Cryptosystème & Cryptanalyse</h3>
+                                    <h4>Implémentation d'un protocole de chiffrement post-quantique et attaque par réduction</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Domaine</strong>
+                                        <span>Cybersécurité / R&D</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Cœur</strong>
+                                        <span>C++ & Maths Appliquées</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    <p>
+    
+                                    </p>
+                                    Développement d'un protocole de chiffrement asymétrique basé sur la dureté des problèmes de réseaux euclidiens (SVP/CVP).
+                                    Mise en œuvre d'une attaque par cryptanalyse : utilisation d'algorithmes de réduction de base (type LLL/BKZ) pour tenter de casser la clé privée et évaluer la robustesse du système.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                
+                                    <span class="tech-tag">
+                                        C++
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        Algèbre Linéaire
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Cryptographie
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Post-Quantique
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Réseaux Euclidiens
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Algorithme LLL
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Cryptanalyse
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Voir le code et l'attaque" style="color: var(--secondary-text-color);" href="https://github.com/ton-profil/cpp-lattice-crypto">
+                                    Voir l'implémentation ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <div class="project" data-category="web">
+                            <a href="https://ton-site.github.io" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Portfolio Personnel</h3>
+                                    <h4>Développement d'une interface web responsive "from scratch"</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Projet Personnel</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Période</strong>
+                                        <span>Décembre 2025</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Conception et implémentation d'une vitrine numérique pour exposer mes travaux, projets, blog et CV.
+                                    Architecture modulaire sans framework, optimisation des performances <!--(Score Lighthouse 100%)--> et design adaptatif mobile-first.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                
+                                    <span class="tech-tag">
+                                        HTML5
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        CSS3
+                                    </span>
+    
+                                    <class class="tech-tag">
+                                        JavaScript
+                                    </class>
+                        
+                                    <span class="tech-tag">
+                                        Git / GitHub Pages
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Responsive Design
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Performance Web
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Accessibilité
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Voir le code source" style="color: var(--secondary-text-color);" href="https://github.com/ton-profil/portfolio-repo">
+                                    Voir le code source ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <div class="project" data-category="maths python">
+                            <a href="https://github.com/ton-profil/ray-tracing-python" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Moteur de Ray Tracing</h3>
+                                    <h4>Génération d'images 3D par simulation physique de la lumière</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Projet Universitaire (Univ. de Bourgogne)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Type</strong>
+                                        <span>Implémentation "From Scratch"</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Exploration et implémentation d'algorithmes de lancer de rayons (Ray Tracing) pour le rendu de scènes 3D. 
+                                    Développement du moteur physique pour calculer les intersections rayons-objets, les ombres et la réflexion de la lumière sans moteur graphique externe.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                
+                                    <span class="tech-tag">
+                                        Python
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        NumPy
+                                    </span>
+                                    
+                                    <span class="tech-tag">
+                                        POO
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Ray Tracing
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Géométrie Vectorielle
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Optique Géométrique
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Rendu 3D
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Voir le code du Ray Tracer" style="color: var(--secondary-text-color);" href="https://github.com/ton-profil/ray-tracing-python">
+                                    Voir le code source ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <div class="project" data-category="cpp maths">
+                            <a href="https://github.com/ton-profil/cpp-network-game" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Jeu Multijoueur en Réseau</h3>
+                                    <h4>Architecture Client-Serveur et protocole de communication custom</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Type</strong>
+                                        <span>Application Réseau / Système</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Langage</strong>
+                                        <span>C++ (Sockets Berkeley)</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Développement d'un moteur de jeu multijoueur en temps réel (LAN).
+                                    Conception d'un protocole de communication binaire/texte propriétaire pour la synchronisation des états de jeu. Gestion des sockets (TCP/IP), des connexions entrantes et de la sérialisation des données.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Compétences Clés</strong>
+                                
+                                    <span class="tech-tag">
+                                        C++
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        Sockets API
+                                    </span>
+                                    
+                                    <span class="tech-tag">
+                                        TCP/IP
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Réseaux
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Protocole Custom
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Client-Serveur
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Sérialisation
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Voir l'implémentation réseau" style="color: var(--secondary-text-color);" href="https://github.com/ton-profil/cpp-network-game">
+                                    Voir le code source ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <div class="project" data-category="maths">
+                            <a href="fichiers/cours-calcul-diff.pdf" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Cours de Calcul Différentiel</h3>
+                                    <h4>Rédaction intégrale d'un manuel universitaire (100+ pages)</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Format</strong>
+                                        <span>Polycopié / Livre</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Rôle</strong>
+                                        <span>Auteur & Éditeur</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Création d'un support pédagogique complet destiné aux étudiants de Licence/Prépas. 
+                                    Structuration progressive des concepts, création de figures vectorielles (TikZ) et mise en page professionnelle via LaTeX.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Compétences Clés</strong>
+                                
+                                    <span class="tech-tag">
+                                        LaTeX
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        TikZ (Graphisme)
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Pédagogie
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Vulgarisation
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Rédaction Technique
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Mathématiques
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Lire un extrait" style="color: var(--secondary-text-color);" href="fichiers/cours-calcul-diff.pdf" target="_blank">
+                                    📄 Télécharger / Lire le cours ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <!-- idee : banque d images pour chaaques projet's-->
+                        <div class="project" data-category="maths java">
+                            <a href="https://github.com/ton-profil/java-fractals" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Générateur de Fractales Interactif</h3>
+                                    <h4>Visualisation d'ensembles mathématiques complexes via la récursivité</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Projet Universitaire (Licence 2)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Langage</strong>
+                                        <span>Java (POO)</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Conception d'une application graphique pour générer et explorer des structures fractales (ex: Ensemble de Mandelbrot, Julia, Sierpinski).
+                                    Utilisation intensive d'algorithmes récursifs et gestion de l'interface utilisateur (zoom, paramètres en temps réel) en Java.
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                
+                                    <span class="tech-tag">
+                                        Java
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        Swing / JavaFX
+                                    </span>
+                                    
+                                    <span class="tech-tag">
+                                        POO
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Récursivité
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Géométrie Fractale
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Algorithmique
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Rendu Graphique
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a class="hidden" title="Voir le code Java" style="color: var(--secondary-text-color);" href="https://github.com/ton-profil/java-fractals">
+                                    Voir le code source ->
+                                </a>
+                            </div>
+                        
+                        </div>
+                        <div class="project" data-category="web">
+                            <a href="https://github.com/ton-profil/js-habit-tracker" target="_blank">
+                        
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Habit Tracker App</h3>
+                                    <h4>Application web interactive de suivi de productivité et visualisation de données</h4>  
+                                </div>
+                        
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Type</strong>
+                                        <span>Web App (Front-End)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Tech</strong>
+                                        <span>Vanilla JavaScript</span>
+                                    </div>
+                                </div>
+                        
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    Développement d'une application "Single Page" pour la gestion d'habitudes quotidiennes.
+                                    Implémentation de la logique métier en JavaScript pur (ES6+), manipulation dynamique du DOM pour l'interactivité, et système de persistance des données via le LocalStorage du navigateur. Visualisation graphique de la progression (streaks/constance).
+                                </div>
+                        
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                
+                                    <span class="tech-tag">
+                                        JavaScript (ES6+)
+                                    </span>
+                        
+                                    <span class="tech-tag">
+                                        HTML5 / CSS3
+                                    </span>
+                                    
+                                    <span class="tech-tag">
+                                        LocalStorage
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        DOM Manipulation
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        Data Visualization
+                                    </span>
+                        
+                                    <span class="concept-tag">
+                                        UX / UI
+                                    </span>
+                                    
+                                    <span class="concept-tag">
+                                        Persistance de données
+                                    </span>
+                                </div>
+                            </a>
+                        
+                            <div style="
+                                width: 100%;
+                                text-align: center;
+                                font-weight: 500;
+                                margin-top: 15px;
+                            ">
+                                <a  class="hidden" title="Tester l'application" style="color: var(--secondary-text-color);" href="https://ton-profil.github.io/js-habit-tracker">
+                                    Voir la démo live ->
+                                </a>
+                            </div>
+                        
+                        </div>
+    
+                        <!--afficher une belle fleche sur le bas en js si on est' pas en abs
+    
+                        faire FR EN en vrai, darkmode aussi
+     -->
+                                       </div>        
+         
+                    <h1  style="text-align: center; font-size: 3rem; padding: 2rem;">Projets académiques</h1>
+                    <div id="acad" class="project-grid">
+                    
+                        <div class="project">
+                            <a href="/academic-works/reduction-reseaux/" style="text-decoration: none; color: inherit;">
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Réduction de réseaux</h3>
+                                    <h4>Adaptations d’idées provenant du cas polynomial au cas entier</h4>  
+                                </div>
+                                
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Stage académique (M2)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Période</strong>
+                                        <span>Février 2025 - Juin 2025</span>
+                                    </div>
+                                </div>
+    
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    <p>
+                                        Étude et adaptation d'algorithmes de réduction de réseaux (type LLL/BKZ) du contexte des polynômes vers celui des entiers. 
+                                        Travail de recherche incluant l'implémentation de prototypes en <strong>Python</strong> et <strong>SageMath</strong> pour analyser la complexité algorithmique et la stabilité numérique des nouvelles variantes proposées.
+                                    </p>
+                                </div>
+                            
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">LaTeX</span>
+                                    <span class="tech-tag">SageMath</span>
+                                    <span class="concept-tag">Algorithmique</span>
+                                    <span class="concept-tag">Réduction de réseau</span>
+                                    <span class="concept-tag">Algèbre linéaire</span>
+                                </div>
+                            </a>
+    
+                            <div class="project-footer">
+                                <a title="Découvrir en détail le projet" href="/academic-works/lattice-reduction/">
+                                    <strong>
+                                        Découvrir en détail le projet ->
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <div class="project">
+                            <a href="/academic-works/beckett-gray/" style="text-decoration: none; color: inherit;">
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Codes de Beckett-Gray</h3>
+                                    <h4>Implémentation, heuristiques et analyses de graphes</h4>            
+                                </div>     
+                                
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Mémoire (M1)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Période</strong>
+                                        <span>Janvier 2024 - Mai 2024</span>
+                                    </div>
+                                </div>
+                
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    <p>
+                                        Recherche de codes de Gray sans "flip" (Beckett-Gray) sur des graphes complexes. 
+                                        Développement de solvers performants en <strong>C++</strong> (Backtracking et Heuristiques) pour explorer l'espace des solutions, identifier des contre-exemples et optimiser la recherche de cycles hamiltoniens spécifiques.
+                                    </p>
+                                </div>
+            
+                                <div>
+                                    <strong class="keyword-item">Technologies &amp; Concepts</strong>
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">LaTeX</span>
+                                    <span class="concept-tag">Théorie des graphes</span>
+                                    <span class="concept-tag">Heuristique</span>
+                                    <span class="concept-tag">Optimisation Combinatoire</span>
+                                </div>
+                            </a>
+                            <div class="project-footer">
+                                <a title="Découvrir en détail le projet" href="/academic-works/beckett-gray-codes/">
+                                    <strong>
+                                        Découvrir en détail le projet ->
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+    
+                        <div class="project">
+                            <a href="/academic-works/weyl-transform/" style="text-decoration: none; color: inherit;">
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>La transformation de Weyl</h3>
+                                    <h4>Une transformée de Fourier non commutative</h4>  
+                                </div>
+                              
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Projet de Recherche (L3)</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Domaine</strong>
+                                        <span>Analyse Fonctionnelle</span>
+                                    </div>
+                                </div>
+    
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    <p>
+                                        Étude approfondie de la quantification de Weyl et de ses propriétés harmoniques. 
+                                        Rédaction d'un mémoire de synthèse liant l'analyse fonctionnelle mathématique aux formalismes d'opérateurs utilisés en mécanique quantique.
+                                    </p>
+                                </div>
+    
+                                <div>
+                                    <strong class="keyword-item">Technologies & Concepts</strong>
+                                    <span class="tech-tag">LaTeX</span>
+                                    <span class="concept-tag">Transformée de Fourier</span>
+                                    <span class="concept-tag">Mécanique quantique</span>
+                                    <span class="concept-tag">Analyse harmonique</span>
+                                </div>
+                            </a>         
+                            
+                            <div class="project-footer">
+                                <a title="Découvrir en détail le projet" href="/academic-works/weyl-transform/">
+                                    <strong>
+                                        Découvrir en détail le projet ->
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>
+    
+                       <div class="project">
+                            <a href="/academic-works/dense-packing/" style="text-decoration: none; color: inherit;">
+                                <div style="margin-bottom:1.5rem;" class="description">
+                                    <h3>Empilement compact</h3>
+                                    <h4>Étude de l'inégalité isopérimétrique et simulations</h4>
+                                </div>
+                                
+                                <div class="meta-grid">
+                                    <div>
+                                        <strong class="keyword-item">Contexte</strong>
+                                        <span>Projet Académique</span>
+                                    </div>
+                                    <div>
+                                        <strong class="keyword-item">Langage</strong>
+                                        <span>Java</span>
+                                    </div>
+                                </div>
+    
+                                <div style="margin-bottom: 1.5rem;">
+                                    <strong class="keyword-item">Résumé</strong>
+                                    <p>
+                                        Analyse géométrique du problème de l'empilement optimal (Sphere Packing). 
+                                        Étude des bornes de densité via l'inégalité isopérimétrique et développement de simulations numériques en <strong>Java</strong> pour visualiser les configurations critiques.
+                                    </p>
+                                </div>
+    
+                                <div>
+                                    <strong class="keyword-item">Technologies & Concepts</strong>
+                                    <span class="tech-tag">Java</span>
+                                    <span class="concept-tag">Analyse</span>
+                                    <span class="concept-tag">Géométrie</span>
+                                    <span class="concept-tag">Simulation</span>
+                                </div>
+                            </a>            
+                            
+                            <div class="project-footer">
+                                <a title="Découvrir en détail le projet" href="/academic-works/dense-packing/">
+                                    <strong>
+                                        Découvrir en détail le projet ->
+                                    </strong>
+                                </a>
+                            </div>
+                        </div>    
+                    
+                    </div>        
+         
+            </section>
+     
             <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-            <script>
-                tsParticles.load("tsparticles", {
-                    fpsLimit: 100,
-                    "particles": {
-                        "number":  {
-                            "value": 100,
-                            "density": {
-                                "enable": true,
-                                "value_area": 800
-                            }
-                        },
-                        "color": {
-                            "value": "#7451eb"
-                        },
-                        "shape": {
-                            "type": "circle",
-                            "stroke": {
-                                "width": 1.5,
-                                "color": "#7451eb"
-                            },
-                            "polygon": {
-                                "nb_sides": 5
-                            },
-                            "image": {
-                                "src": "img/github.svg",
-                                "width": 100,
-                                "height": 100
-                            }
-                        },
-                        "opacity": {
-                            "value": 0.5,
-                            "random": false,
-                            "anim": {
-                                "enable": false,
-                                "speed": 1,
-                                "opacity_min": 0.1,
-                                "sync": false
-                            }
-                        },
-                        "size": {
-                            "value": 3,
-                            "random": true,
-                            "anim": {
-                                "enable": true,
-                                "speed": 1,
-                                "size_min": 1,
-                                "sync": false
-                            }
-                        },
-                        "line_linked": {
-                            "enable": true,
-                            "distance": 170,
-                            "color": "#271a38",
-                            "opacity": 0.75,
-                            "width": 1
-                        },
-                        "move": {
-                            "enable": true,
-          "speed": 1,
-          "direction": "none",
-          "random": true,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "window",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "bubble"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 300,
-            "size": 7,
-            "duration": 5,
-            "opacity": 8,
-            "speed": 5
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
-       });
-        </script>
+         
         <script type="module" src="/assets/js/main.js"></script>
-       
     </body>
 </html>

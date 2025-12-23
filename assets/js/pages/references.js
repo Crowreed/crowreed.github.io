@@ -20,12 +20,14 @@ function createAuthor(author) {
 }
 
 export async function loadReferences() {
+	const refs = document.querySelectorAll('a[class^=ref-]');
+	if(refs.length === 0) return;
+	
 	const referencesData = await fetchReferences();
-    if (!referencesData) return console.error("Impossible de charger references.json"); // un seul gros fichier references ou c est bizarre ?
+    if (!referencesData) return; // un seul gros fichier references ou c est bizarre ?
 
     const refList = [];
-    const refs = document.querySelectorAll('a[class^=ref-]');
-
+    
 
 
     refs.forEach(ref => {

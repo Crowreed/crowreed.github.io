@@ -28,11 +28,14 @@ export async function loadTableOfContents() {
         is_TOC_open = true;
     }
 
+    const TOC = document.getElementById('toc-container');
+
+    if(!TOC) return;
+    
     const tocData = await fetchTOC();
     if (!tocData) return console.error("Impossible de charger toc.json");
     
-    const TOC = document.getElementById('toc-container');
-
+    
     let chapNum = 0;
     let appendixNum = 0;
 

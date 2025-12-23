@@ -1,4 +1,37 @@
 
+/* 1. L'animation de base (invisible au départ) */
+.fade-in-up {
+    opacity: 0; /* Caché par défaut */
+    transform: translateY(30px); /* Décalé vers le bas de 30px */
+    
+    /* L'animation : nom, durée, courbe de vitesse, et 'forwards' pour qu'il reste visible à la fin */
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+main section{
+  width: 100%;
+  max-width: 1500px;
+}
+
+/* 2. Les Keyframes (Le mouvement) */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        backdrop-filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        transform: translateY(0);
+    }
+}
+
+/* 3. Les Délais (C'est ça qui crée l'effet de cascade) */
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+.delay-4 { animation-delay: 0.6s; }
 
 #profile-description{
   padding: 1rem;
@@ -18,7 +51,7 @@
 }
 
 #profile-picture{
-  width: 280px;
+  width: 200px;
   max-width: 80vw;
   z-index: 13;
   height: auto;
@@ -26,6 +59,20 @@
   object-fit: cover; /* Coupe l'image si nécessaire au lieu de l'écraser */
   border-radius: 50%;
   box-shadow: 0 0 0 2px var(--primary-border-color);
+}
+
+
+@media (min-width: 768px) {
+  #profile-picture{
+    width: 280px;
+    max-width: 80vw;
+    z-index: 13;
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; /* Coupe l'image si nécessaire au lieu de l'écraser */
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--primary-border-color);
+  }
 }
 
 #hello-world{

@@ -13,11 +13,12 @@ async function fetchProject() {
 }
 
 export async function createProject() {
-    const projectData = await fetchProject();
-
-    console.log(projectData.context);
-
+    
     const project = document.getElementById("project-container");
+
+    if(!project) return;
+
+    const projectData = await fetchProject();
 
     let techList = projectData.skills.tech.map(tech => {
         return `

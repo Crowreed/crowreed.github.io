@@ -16,9 +16,14 @@ button{
   border: 0;
 }
 
+/* Applique la règle à TOUS les éléments du site */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 .katex-display{
   overflow: hidden;
+
   overflow-x: scroll;
 }
 

@@ -75,17 +75,19 @@ header nav ul{
 }
 
 header nav ul li a{
+  
   height: 100%;
   /* typography */
   font-weight: 200;
   font-style: normal;
+
   line-height: 1.5;
   letter-spacing: 0px;
 }
 
-#main-header nav ul li:hover{
+/*#main-header nav ul li:hover{
   transform: scale(1.1);
-}
+}*/
 
 header nav ul li a:hover{
   color: var(--secondary-text-color);
@@ -116,3 +118,69 @@ header img{
   transition: transform 0.3s ease-in-out;
 }
 
+.ggg{
+  position: relative; /* Indispensable pour que l'enfant se cale par rapport à lui */
+    display: inline-block;
+}
+
+/*
+.jac{
+  display: none;
+  position: absolute; 
+  top: 100%;          
+  left: 0;             
+  
+
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  border-left: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
+  border-right: 1px solid var(--primary-border-color);
+}
+*/
+.jac a{
+  padding: 0.5rem;
+padding-top: 0;
+}
+
+
+.ggg:hover .jac{
+  display: flex;
+  background-color: white;
+}
+
+
+/* L'état initial (Caché) */
+.jac {
+    position: absolute;
+    top: 100%; /* Juste en dessous */
+    left: 0;
+    flex-direction: column;
+    /* On remplace display: none par ça : */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Le petit décalage vers le haut pour l'effet de descente */
+    transform: translateY(-10px);
+    
+    /* La vitesse de l'animation */
+    transition: all 0.3s ease-in-out;
+
+    /* Tes autres styles (ombre, background...) */
+    background-color: white;
+    box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.2); 
+    /* ... */
+
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+/* L'état final (Au survol du parent) */
+.ggg:hover .jac {
+    /* On le rend visible */
+    opacity: 1;
+    visibility: visible;
+    
+    /* Il revient à sa place normale (descente fluide) */
+    transform: translateY(0);
+}

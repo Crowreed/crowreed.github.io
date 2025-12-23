@@ -13,7 +13,6 @@
 @import '04_components/references.css';
 @import '04_components/toc.css';
 
-@import '05_pages/academic-works.css';
 @import '05_pages/algorithm.css';
 @import '05_pages/article.css';
 @import '05_pages/homepage.css';
@@ -25,3 +24,9 @@
 @import 'news.css';
 @import 'animation.css';
 @import 'components/carousel.css';
+
+@import 'scroll-down.css';
+
+@import 'project-filter.css';
+@import 'cv.css';
+@import 'blog.css';

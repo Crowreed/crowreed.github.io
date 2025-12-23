@@ -16,8 +16,10 @@ async function fetchTOC() {
 
 export async function loadFooter() {
     const footer = document.getElementById('main-footer');
+    if (!footer) return;
+    
     const tocData = await fetchTOC();
-    if (!tocData) return console.error("Impossible de charger toc.json");
+    
 
     const list = []
     tocData.forEach(chapter => {

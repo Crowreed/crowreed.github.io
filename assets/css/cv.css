@@ -1,0 +1,192 @@
+/* =========================================
+CONFIGURATIONS DE BASE
+========================================= */
+:root {
+ --primary: #2c3e50e1;    /* Bleu nuit professionnel 2c3e50 */
+ --accent: #3498db;     /* Bleu plus clair pour les liens/boutons */
+ --bg-card: #ffffff;
+ --bg-page: #ffffff;
+ --text-main: #333;
+ --text-light: #666;
+ --radius: 12px;
+ --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+body {
+ font-family: 'Segoe UI', system-ui, sans-serif;
+ display: flex;
+ justify-content: center;
+ color: var(--text-main);
+}
+
+/* =========================================
+LA CARTE PRINCIPALE (CONTENEUR)
+========================================= */
+.cv-card {
+ width: 100%;
+ max-width: 1500px;
+ border-radius: var(--radius);
+ overflow: hidden; /* Pour que rien ne dépasse des coins arrondis */
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 40px;
+ box-sizing: border-box; /* Indispensable ! */
+}
+
+/* TITRES DE SECTIONS */
+h3 {
+ text-transform: uppercase;
+ font-size: 0.9rem;
+ letter-spacing: 1.5px;
+ color: var(--text-light);
+ padding-bottom: 10px;
+ margin-bottom: 20px;
+ width: 100%;
+ text-align: center;
+}
+
+/* =========================================
+1. BOUTON TÉLÉCHARGEMENT
+========================================= */
+.download-section {
+ margin-bottom: 40px;
+ text-align: center;
+}
+
+.btn-cv {
+ background-color: var(--primary);
+ color: white;
+ padding: 12px 25px;
+ border-radius: 50px; /* Forme pilule */
+ text-decoration: none;
+ font-weight: 600;
+ display: inline-flex;
+ align-items: center;
+ gap: 10px;
+ transition: transform 0.2s, background-color 0.2s;
+ box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+}
+
+.btn-cv:hover {
+ background-color: black;
+ transform: translateY(-2px);
+}
+
+.btn-cv svg { width: 20px; height: 20px; fill: white; }
+
+/* =========================================
+2. GRID COMPÉTENCES (Le cœur du sujet)
+========================================= */
+.skills-grid {
+ display: grid;
+ width: 100%;
+ /* Magie : 2 colonnes sur PC, 1 sur mobile automatiquement */
+ grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+ gap: 30px;
+ margin-bottom: 40px;
+}
+
+.skill-box {
+ background: #f9f9f9;
+ padding: 20px;
+ border-radius: 8px;
+
+}
+
+.skill-title {
+ font-weight: bold;
+ display: block;
+ margin-bottom: 10px;
+ color: var(--primary);
+}
+
+.skill-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ font-size: 0.95rem;
+ color: var(--text-light);
+}
+
+.skill-list li { margin-bottom: 6px; }
+
+/* Petit bonus pour Linux */
+.linux-badge {
+ background-color: #333;
+ color: #fff;
+ padding: 2px 6px;
+ border-radius: 4px;
+ font-size: 0.8rem;
+ margin-left: 5px;
+}
+
+/* =========================================
+3. QUALITÉS HUMAINES (Tags)
+========================================= */
+.soft-skills {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 10px;
+ margin-bottom: 40px;
+}
+
+.tag {
+ background-color: #e3f2fd;
+ color: var(--accent);
+ padding: 8px 16px;
+ border-radius: 20px;
+ font-weight: 500;
+ font-size: 0.9rem;
+}
+
+/* =========================================
+4. CONTACT (Flex Row)
+========================================= */
+.contact-container {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ gap: 30px;
+ margin-top: 10px;
+}
+
+.contact-item {
+ display: flex;
+ background-color: white;
+ padding: 1rem;
+ flex-direction: row;
+ align-items: center;
+ 
+ border: 1px solid #eee;
+ border-radius: 30px;
+ text-decoration: none;
+ color: var(--text-light);
+ transition: color 0.2s;
+ font-size: 0.85rem;
+}
+
+.contact-icon {
+ width: 50px;
+ height: 50px;
+ 
+ border-radius: 50%; /* Rond parfait */
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-bottom: 8px;
+ transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet rebond */
+}
+
+.contact-icon svg { width: 24px; height: 24px; fill: var(--primary); }
+
+/* Hover Effects */
+.contact-item:hover {
+ background-color: var(--primary);
+ transform: scale(1.1);
+ border-color: var(--primary);
+ color: white !important;
+}
+.contact-item:hover .contact-icon svg { fill: white; }
+

@@ -435,3 +435,7 @@ a:hover{
 #article > h4::before{
   content: counter(subsubchapter) ". ";
 }
+
+#article img{
+  max-width: 100%;
+}

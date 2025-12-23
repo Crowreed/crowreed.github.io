@@ -1,22 +1,65 @@
 
 
+
+/* grille des projets, contient des .project*/
+
+.project-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr; 
+  }
+  
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: 1fr 1fr; 
+      gap: 2rem;
+    }
+  }
+  
+  
+/*carte d'un projet*/
+
+.project{
+    aspect-ratio: auto;
+    cursor: pointer;
+    padding: 1rem;
+    border: 1px solid rgb(218, 217, 220);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: transform 0.8s ease, backdrop-filter 0.8s ease, box-shadow 0.8s ease;
+}
+
+@media (min-width: 768px) { 
+    .project{
+        aspect-ratio: 5/3;
+    }
+}
+
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0px 5px var(--secondary-text-color);
+    /* backdrop-filter: blur(3px); */
+ }
+
+
+
+
+
+
+
+
+
 .projects{
   padding: 2rem;
   width: 90%;
   max-width: 1400px; 
 }
-.project-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr; 
-}
-
-@media (min-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr 1fr; 
-  }
-}
-
 
 
 .project-page{
@@ -26,56 +69,7 @@
 
   height: 100%;
 }
-.project{
-  aspect-ratio: auto;
-  /* La transition est la clé : ça dit "Prends 0.3 secondes pour bouger" */
-  transition: transform 0.3s ease, box-shadow 3s ease;
-  cursor: pointer; /* Change la souris en main pour montrer que c'est cliquable */
 
-}
-
-/* 2. L'état survolé (Quand la souris est dessus) */
-.project:hover {
-    /* La carte remonte de 5 pixels */
-    transform: translateY(-5px);
-    
-    /* L'ombre devient plus floue et plus large en dessous */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-
-@media (min-width: 768px) {
- 
- 
-  .project{
-    aspect-ratio: 5/3;
-  }
-}
-
-
-.project{
-  padding: 1rem;
-
-  border: 1px solid rgb(218, 217, 220);
-  border-radius: 10px;
-    
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-   
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-
-  transition: backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-
-}
-
-.project:hover{
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-   }
 
 .project-card{
   display: flex;
@@ -83,6 +77,7 @@
   align-items: center;
   text-align: center;
 }
+
 
 .description h3{
   font-size: 2rem;
@@ -97,6 +92,13 @@
 
 }
 
+@media (max-width: 768px) {
+  .description h3{
+    font-size: 1.5rem;
+  }
+}
+
+
 .description h4{
   font-size: 1rem;
   text-align: center;
@@ -107,7 +109,6 @@
 
 .project p{
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 15px;
   border-radius: 10px;
   font-size: 1rem;
   text-align: justify;
@@ -166,3 +167,100 @@
   align-items: center;
   max-width: 900px; width: 100%;
 }
+    
+  .keyword-item{
+    color: #555;
+    display: block;
+    font-size: 0.9em;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  
+  
+  .lecture{
+    margin: auto;
+  
+    background-color: rgba(171, 71, 188, 0.9);
+    color: rgb(255, 250, 238);
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    padding: 0.5rem 1rem;
+      
+    height: 1.5rem;
+    
+  
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .lecture:hover{
+    background-color: rgba(171, 71, 188, 0.74);
+  }
+  
+  
+  .tech-tag{
+    background-color: #e9ecef;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+    
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  .concept-tag{
+    border: 1px solid var(--secondary-text-color);
+    color: var(--secondary-text-color);
+    padding: 3px 9px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  .resume{
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: left;
+
+    border: 1px solid var(--primary-border-color);
+    width: 100%;
+  }
+  
+  .meta-grid{
+    display: grid;
+                          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                          gap: 1rem;
+                          margin-bottom: 1rem;
+  }
+  
+  .project-footer {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+
+.project-footer a {
+    padding: 0.5rem;
+    color: var(--secondary-text-color);
+    background-color: white;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 50px;
+}
+
+.project-footer a:hover {
+    text-decoration: underline; 
+}
+  
+  
