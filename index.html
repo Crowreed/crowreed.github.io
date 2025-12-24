@@ -41,6 +41,20 @@
  
         <link rel="stylesheet" href="/assets/css/main.css">
 
+        <style>
+            .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  /* On définit la durée ici, le délai sera géré par le JS */
+  transition: all 0.6s ease-out; 
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+        </style>
+
     </head>
 
     <body>
@@ -100,19 +114,19 @@
 
         <main>
             <section id="homepage" style="min-height: 100vh;">
-                <div id="eee" class=" fade-in-up delay-1">
+                <div id="eee" class="reveal">
                     <p data-i18n="welcome" id="hello-world">Bonjour, je suis</p>
                     <h1 id="profile-name">Lucas Petit</h1>
                 </div>
 
-                <div style="display: flex; flex-direction: column; align-items: center;" class=" fade-in-up delay-2">
+                <div style="display: flex; flex-direction: column; align-items: center;" class="reveal">
                     <img id="profile-picture" src="/assets/img/P1034037.png" alt="Portrait de Lucas Petit">
                     <h2 data-i18n="education_master_degree" style="padding: 1rem; color: var(--secondary-text-color);">
                         Titulaire d'un Master 2 en Algorithmie & Mathématiques.
                     </h2>
                 </div>
                     
-                <div id="profile-description" class=" fade-in-up delay-3">
+                <div id="profile-description" class="reveal">
                     <div style="display: flex; justify-content: center;">
                         <h3 data-i18n="section_about_title">À propos de moi</h3>
                     </div>
@@ -124,8 +138,8 @@
             </section>
             
             <section id="cv">
-                <h1 data-i18n="section_skills_title" style="text-align: center; font-size: 3rem; padding: 2rem;">Compétences</h1>
-                <div class="skills-grid">
+                <h1 data-i18n="section_skills_title" style="text-align: center; font-size: 3rem; padding: 2rem;" class="reveal">Compétences</h1>
+                <div class="skills-grid reveal">
                     <div class="skill-box">
                         <span class="skill-title">Programmation</span>
                         <ul class="skill-list">
@@ -135,7 +149,7 @@
                         </ul>
                     </div>
         
-                    <div class="skill-box">
+                    <div class="skill-box reveal">
                         <span class="skill-title">Logiciels & OS</span>
                         <ul class="skill-list">
                             <li>Git & GitHub</li>
@@ -146,7 +160,7 @@
                         </ul>
                     </div>
         
-                    <div class="skill-box">
+                    <div class="skill-box reveal">
                         <span class="skill-title">Langues</span>
                         <ul class="skill-list">
                             <li><strong>Anglais :</strong> C1 (Technique courant)</li>
@@ -154,7 +168,7 @@
                         </ul>
                     </div>
                     
-                    <div class="skill-box">
+                    <div class="skill-box reveal">
                         <span class="skill-title">Mathématiques</span>
                         <ul class="skill-list">
                             <li>Théorie des graphes</li>
@@ -165,7 +179,7 @@
                 </div>
         
           
-                <div style="display: flex; justify-content: center;">
+                <div style="display: flex; justify-content: center;" class="reveal">
                     <h3 data-i18n="section_soft_skills_title">Qualités Humaines</h3>
                 </div>
                 <div style="padding: 1rem;" class="soft-skills">
@@ -199,7 +213,7 @@ Master Mathématiques
                     alt="Logo de Lucas Petit - étoile à 8 branches">
             </main>-->
 
-            <div class="download-section fade-in-up delay-2">
+            <div class="download-section  reveal">
                 <a
                 id="cv-link"
                 href="https://raw.githubusercontent.com/Crowreed/resume/main/fr/sample.pdf"
@@ -218,12 +232,12 @@ Master Mathématiques
             </div>
 
 
-            <div style="display: flex; justify-content: center;">
+            <div class="reveal" style="display: flex; justify-content: center;">
                 <h3 data-i18n="btn_contact_me">Me Contacter</h3>
             </div>
     
 
-            <div data-i18n="status_availability" style="display: flex; justify-content: center; padding: 1rem;">
+            <div class="reveal" data-i18n="status_availability" style="display: flex; justify-content: center; padding: 1rem;">
                 Disponible dès maintenant pour des projets de R&D ou d'Ingénierie complexe.
             </div>
     
@@ -238,7 +252,7 @@ Fort d'un Master en Mathématiques et d'une expertise en méthodes formelles (Co
     je recherche ...   -->
            
 
-            <div class="contact-container fade-in-up delay-3">    
+            <div class="contact-container  reveal">    
                 <a
                 href="mailto:lucas.noirot.contact@gmail.com"
                 rel="noopener noreferrer"
@@ -298,7 +312,7 @@ Fort d'un Master en Mathématiques et d'une expertise en méthodes formelles (Co
         <span  id="dev" ></span>
         <section id="projects">
             <h1 data-i18n="section_dev_projects_title" style="text-align: center; font-size: 3rem; padding: 2rem;">Projets de développement</h1>
-            <div class="filter-container">
+            <div class="filter-container reveal">
                 <button class="filter-btn active" data-filter="all">Tout voir</button>
                 <button class="filter-btn" data-filter="cpp">C++</button>
                 <button class="filter-btn" data-filter="web">HTML / CSS / JS</button>
@@ -308,7 +322,7 @@ Fort d'un Master en Mathématiques et d'une expertise en méthodes formelles (Co
             </div>
             
 
-                    <div class="project-grid" >
+                    <div class="project-grid reveal" >
                         <div class="project" data-category="cpp">
                             <a href="https://github.com/ton-profil/cpp-lattice-crypto" target="_blank">
                         
@@ -809,7 +823,7 @@ Fort d'un Master en Mathématiques et d'une expertise en méthodes formelles (Co
 <span id="acad" ></span>
                                        <h1 data-i18n="section_academic_projects_title" style="text-align: center; font-size: 3rem; padding: 2rem;">Projets académiques</h1>
                         
-                    <div class="project-grid">
+                    <div class="project-grid reveal">
                         
                         <div class="project">
                             <a href="/academic-works/reduction-reseaux/" style="text-decoration: none; color: inherit;">
@@ -1128,6 +1142,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+        </script>
+
+        <script>
+            const observer = new IntersectionObserver((entries) => {
+  // 'entries' contient la liste des éléments qui viennent d'apparaître à l'écran
+  entries.forEach((entry, index) => {
+    
+    if (entry.isIntersecting) {
+      // C'est ici que la magie opère :
+      // On ajoute un délai inline directement en JS.
+      // Ex: 1er élément = 0s, 2ème = 0.2s, 3ème = 0.4s, etc.
+      entry.target.style.transitionDelay = `${index * 0.2}s`;
+      
+      entry.target.classList.add('active');
+      
+      // On arrête d'observer une fois l'anim lancée (pour la performance)
+      observer.unobserve(entry.target); 
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+const hiddenElements = document.querySelectorAll('.reveal');
+hiddenElements.forEach((el) => observer.observe(el));
         </script>
     </body>
 </html>
